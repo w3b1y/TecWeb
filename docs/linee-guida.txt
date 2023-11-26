@@ -12,3 +12,36 @@ Almeno durante lo sviluppo del sito (sentiamo anche cose dice la prof se mantene
 ed ho bisogno di un hook per fare qualcosa in javascript trasformiamo il tutto in
 <div class="element js-element"></div>
 (link: https://www.freecodecamp.org/news/css-naming-conventions-that-will-save-you-hours-of-debugging-35cea737d849/#css-names-with-javascri)
+
+GITHUB
+Dopo un'attenta valutazione si è deciso di utilizzare gitflow per miglioreare il processo di sviluppo.
+Facendo un breve recap generale di git flow:
+1) Clonare la repo in locale: git clone https://github.com/Mang00o/TechWeb.git
+2) Entrate nella cartella clonata: cd TechWeb
+3) Inizializzare git flow (avviene in locale): git flow init
+  I vari branch o prefix names lasciateli come sono, quindi master, develop, feature, etc...
+4) Controllate i vari branch locali: git branch -a
+  Dovreste vedere:
+  *develop
+  main (oppure master)
+  ...
+  Se sono presenti sia main (oppure master) che develop allora va tutto bene.
+5) Create un feature branch: git flow start [nome feature branch] --> git flow start subscriptions
+6) Controllate i vari branch locali: git branch -a
+  Dovreste vedere:
+  develop
+  main (oppure master)
+  *feature/[nome feature branch] --> *feature/subscriptions
+  ...
+  Se sono presenti main (oppure master), develop e feature/[nome feature branch] allora va tutto bene.
+7) Fate tutto quello che dovate fare nella sessione di programmazione che volete dedicardi
+8) Aggiungete alla staged area: git add [nome file modificato] (se molteplici file allora velocizzate con git add .)
+9) Commitate il tutto: git commit -m "[Messaggio per il commit, niente di troppo lungo però nemmeno 'commit 4', cercate di essere esplicativi]"
+10) Terminate la feature (NON AL TERMINE DELLA SESSIONE DI PROGRAMMAZIONE MA AL TERMINE DELL'INTERA TASK ASSEGNATA): git flow feature finish [nome feature branch]
+11) Controllate i vari branch locali: git branch -a
+  Dovreste vedere:
+  *develop
+  main (oppure master)
+  ...
+  Se sono presenti solo main (oppure master) e develop allora va tutto bene.
+12) Pushate il tutto: git push origin develop
