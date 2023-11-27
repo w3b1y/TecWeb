@@ -26,7 +26,7 @@ Facendo un breve recap generale di git flow:
   main (oppure master)
   ...
   Se sono presenti sia main (oppure master) che develop allora va tutto bene.
-5) Create un feature branch: git flow start [nome feature branch] --> git flow start subscriptions
+5) Create un feature branch: git flow feature start [nome feature branch] --> git flow feature start subscriptions
 6) Controllate i vari branch locali: git branch -a
   Dovreste vedere:
   develop
@@ -37,6 +37,7 @@ Facendo un breve recap generale di git flow:
 7) Fate tutto quello che dovate fare nella sessione di programmazione che volete dedicardi
 8) Aggiungete alla staged area: git add [nome file modificato] (se molteplici file allora velocizzate con git add .)
 9) Commitate il tutto: git commit -m "[Messaggio per il commit, niente di troppo lungo però nemmeno 'commit 4', cercate di essere esplicativi]"
+#) OPZIONALE: se avete la necessità di pushare utilizzate la sintassi di git flow: git flow feature publish [nome feature branch]
 10) Terminate la feature (NON AL TERMINE DELLA SESSIONE DI PROGRAMMAZIONE MA AL TERMINE DELL'INTERA TASK ASSEGNATA): git flow feature finish [nome feature branch]
 11) Controllate i vari branch locali: git branch -a
   Dovreste vedere:
