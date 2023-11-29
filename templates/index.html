@@ -56,28 +56,37 @@
         <button id="add">+</button>
       </fieldset>
     </div>
-    <dl class="container__news">
-      <dt class="news__header">Soppressione tratta Padova - Bassano</dt>
-      <dd class="news__body">
-        <time class="news__body-date" datetime="2024-04-12">
+    <section class="container__news">
+      <header class="container__news-header">
+        <h2>COMUNICAZIONI</h2>
+      </header>
+      <article class="card__news">
+        <time class="news__date" datetime="2024-04-12">
           <span class="date__day">12</span>
           <span class="date__month">Aprile 2024</span>
         </time>
-        <p class="news__body-content">
-          La tratta Padova - Bassano sarà soppressa, causa lavori alla linea ferroviaria, a partire dal giorno 
-          <time datetime="2024-04-12">12 Aprile 2024</time> fino al giorno 
-          <time datetime="2024-04-26">26 Aprile 2024</time>.
-          Ci scusiamo per il disagio.
-        </p>
-      </dd>
-    </dl>
-    <ul class="container__offers">
-      <a class="offer" href="#">
-        <div class="offer__img"></div>
-        <h3 class="offer__title">Con Carnet smart oltre il 60% di sconto</h3>
-        <p class="offer__description">Scopri di più</p>
+        <div class="news__body">
+          <h3 class="news__body-title">Soppressione tratta Padova - Bassano</h3>
+          <p class="news__body-content">
+            La tratta Padova - Bassano sarà soppressa, causa lavori alla linea ferroviaria, a partire dal giorno 
+            <time datetime="2024-04-12">12 Aprile 2024</time> fino al giorno 
+            <time datetime="2024-04-26">26 Aprile 2024</time>.
+            Ci scusiamo per il disagio.
+          </p>
+        </div>
+      </article>
+    </section>
+    <section class="container__offers">
+      <header class="container__offers-header">
+        <h2>OFFERTE</h2>
+      </header>
+      <a class="card__offer" href="#">
+        <div class="offer__body">
+          <h3 class="offer__body-title">Con Carnet smart oltre il 60% di sconto</h3>
+          <p class="offer__body-content">Scopri di più</p>
+        </div>
       </a>
-    </ul>
+    </section>
   </main>
   
 </body>
