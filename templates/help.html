@@ -55,19 +55,31 @@
     <h2>FAQ</h2>
     <p>le faq sono le domande piu' frequenti, per altre domande utilizzare il modulo assistenza Reclami o Suggerimenti</p>
     <dl>
-      <dt>Domanda</dt>
-        <dd>Risposta</dd>
-      <dt>Domanda</dt>
-        <dd>Risposta</dd>
-      <dt>Domanda</dt>
-        <dd>Risposta</dd>
-      <dt>Domanda</dt>
-        <dd>Risposta</dd>
+      <dt>Come faccio a conoscere le offerte e le promozioni speciali di Trenitalia?</dt>
+        <dd>Per conoscere le offerte commerciali e le promozioni speciali, consulta la pagina Offerte</dd>
+      <dt>Il biglietto è cedibile?</dt>
+        <dd>Attualmente i biglietti acquistati per viaggiare sono nominativi per cui deve essere specificato, in fase d’acquisto, il nominativo cui è associato il biglietto e la verifica dei nominativi è soggetta a riscontro a bordo treno con documento d’identità valido. </dd>
+      <dt>Ho perso il treno. Come posso utilizzare il mio biglietto?</dt>
+        <dd>Dopo l’orario di partenza del treno prenotato non è possibile chiedere il rimborso. Per alcune tipologie di biglietto è possibile chiedere il cambio del biglietto e/o accedere ad un treno diverso da quello prenotato.</dd>
+      <dt>A chi posso rivolgermi se smarrisco un oggetto sul treno?</dt>
+        <dd>Nel caso di oggetti smarriti dai clienti, vengono applicate le norme del Codice Civile (art. 927 e seguenti) che prevedono la consegna degli oggetti rinvenuti all’apposito ufficio del comune in cui è stato ritrovato l’oggetto.</dd>
     </dl>
     <h2>Moduli assistenza</h2>
     <p>Di seguito trovate i moduli di assistenza per:</p>
+    <ul>
+      <li>Indennita' per ritardo</li>
+      <li>Richiesta rimborso</li>
+      <li>Modifica biglietto</li>
+      <li>Reclami o Suggerimenti</li>
+    </ul>
     <h3>Indennita' per ritardo</h3>
-    <p>Modulo per richiesta indennita' dovuta a ritardo bla bla</p>
+    <p>
+      Benvenuto nel modulo di richiesta indennità per ritardo. 
+      Se hai subito disagi a causa di un ritardo nei nostri servizi di trasporto, ti offriamo la possibilità di richiedere un'indennità. 
+      Compila il modulo fornendo le informazioni richieste. 
+      Per garantire l'efficacia della tua richiesta, assicurati di presentarla entro il periodo specificato e di supportarla con dettagli accurati. 
+      Siamo qui per risolvere ogni tua preoccupazione e migliorare la tua esperienza di viaggio.
+    </p>
     <form>
       <label for="email">Email:</label><br>
       <input type="email" id="email" name="email" required>
@@ -92,7 +104,13 @@
       <button type="submit">Invia Richiesta</button>
     </form>
     <h3>Richiesta rimborso</h3>
-    <p>Modulo per richiesta rimborso bla bla</p>
+    <p>
+      Benvenuto nel nostro form di richiesta rimborso. 
+      Se hai affrontato situazioni che richiedono un rimborso, compila il modulo fornendo le informazioni necessarie. 
+      Assicurati di includere dettagli accurati e documentazione pertinente per agevolare il processo di elaborazione. 
+      Siamo qui per garantire che ricevi il rimborso in modo rapido ed efficiente. 
+      Grazie per la tua comprensione e collaborazione.
+    </p>
     <form>
       <label for="email">Email:</label><br>
       <input type="email" id="email" name="email" required>
@@ -109,9 +127,36 @@
       <button type="submit">Invia Richiesta</button>
     </form>
     <h3>Modifica biglietto</h3>
-    <p>Modulo per richiesta di modifica biglietto bla bla</p>
+    <p>
+      Benvenuto nel nostro form di modifica biglietto. 
+      Se hai bisogno di apportare modifiche alla tua prenotazione, compila il form fornendo i dettagli richiesti. 
+      Assicurati di inserire le informazioni corrette e specificare chiaramente le modifiche desiderate. 
+      Siamo qui per facilitare il tuo viaggio, e faremo il possibile per gestire la tua richiesta tempestivamente. 
+      Grazie per la tua collaborazione.
+    </p>
+    <form>
+      <label for="email">Email:</label><br>
+      <input type="email" id="email" name="email" required>
+      <br>
+      <label for="codice_biglietto">Codice Biglietto:</label><br>
+      <input type="text" id="codice_biglietto" name="codice_biglietto">
+      <br>
+      <label for="data_acquisto">Data acquisto del biglietto:</label><br>
+      <input type="date" id="data_acquisto" name="data_acquisto" required>
+      <br>
+      <label for="data_ora_viaggio">Nuova Data e Ora del Viaggio:</label><br>
+      <input type="datetime-local" id="data_ora_viaggio" name="data_ora_viaggio" required>
+      <br>
+      <button type="submit">Invia Richiesta di Modifica</button>
+    </form>
     <h3>Reclami o Suggerimenti</h3>
-    <p>Modulo per richiesta rimborso bla bla</p>
+    <p>
+      Benvenuto nel nostro form per reclami e suggerimenti. 
+      La tua opinione è fondamentale per migliorare i nostri servizi. 
+      Compila il form fornendo i dettagli del reclamo o del suggerimento. 
+      Siamo qui per ascoltarti e fare il possibile per risolvere ogni problema o implementare nuove idee. 
+      Grazie per la tua collaborazione nel rendere la tua esperienza con noi sempre migliore.
+    </p>
     <form>
       <label for="feedback">Il tuo feedback:</label><br>
       <input type="text" id="feedback" name="feedback">
