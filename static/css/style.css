@@ -1,0 +1,560 @@
+@import url('https://fonts.googleapis.com/css2?family=Afacad:wght@400;500;700&display=swap');
+
+/*==================== VARIABLES CSS ====================*/
+:root {
+  --header-height: 3rem;
+
+  /*========== Colors ==========*/
+  --first-color: #a30000;
+  --second-color: #ffffff;
+  --third-color: #000000;
+
+  /*========== Font ==========*/
+  --body-font: 'Afacad', sans-serif;
+  --xxl-font-size: 2rem;
+  --xl-font-size: 1.25rem;
+  --l-font-size: 1rem;
+  --m-font-size: .875rem;
+  --s-font-size: .813rem;
+  --xs-font-size: .75rem;
+  --font-bold: 600;
+  --font-black: 800;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: var(--body-font);
+}
+
+a {
+  color: var(--first-color);
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+
+#submit {
+  font-weight: var(--font-bold);
+  color: var(--second-color);
+  background-color: var(--first-color);
+}
+
+
+/*==================== NAVBAR ====================*/
+
+#navbar {
+  display: flex;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 0 1.5rem;
+  height: var(--header-height);
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--first-color);
+}
+
+.nav__logo,
+.nav__toggle {
+  display: flex;
+}
+
+.nav__logo {
+  width: 2rem;
+  height: 2rem;
+  background-image: url("../img/logo.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  text-indent: -999px;
+  color: var(--second-color);
+}
+
+.nav__toggle {
+  font-size: 1.5rem;
+  font-weight: var(--font-black);
+  cursor: pointer;
+  color: var(--second-color);
+}
+
+.nav__list {
+  display: flex;
+  flex-direction: column;
+  padding: 5rem 0 0 3rem;
+  row-gap: 2.5rem;
+}
+
+.nav__item {
+  color: var(--title-color);
+  transition: color .3s;
+}
+
+.nav__item:hover {
+  color: var(--first-color);
+}
+.nav__item a {
+  display: block;
+  width: 100%;
+}
+.nav__close {
+  position: absolute;
+  top: 1rem;
+  right: 1.5rem;
+  font-size: 1.5rem;
+  color: var(--title-color);
+  cursor: pointer;
+}
+
+.show-menu {
+  right: 0 !important;
+}
+
+
+
+/*==================== REUSABLE CSS VARIABLES ====================*/
+.container {
+  padding: 1rem 1.5rem 2rem;
+}
+
+.container__news,
+.container__offers {
+  background-image: url("../img/background.jpg");
+  background-position: center; 
+  background-repeat: repeat;
+  z-index: -1;
+} 
+
+.container__search-header,
+.container__news-header,
+.container__offers-header {
+  text-align: center;
+  color: var(--first-color);
+  margin-bottom: 1rem;
+}
+
+.container__news-footer,
+.container__offers-footer {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 0.063em;
+  height: 0.063em;
+  margin: -0.063em;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+
+.show {
+  display: block !important;
+}
+
+.rotate {
+  transform: rotate(180deg);
+}
+
+
+
+/*==================== HOME ====================*/
+
+/*======================================== SEARCH ========================================*/
+.container__search::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background-image: url("../img/banner.jpg");
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  filter: blur(1.1px);
+}
+.container__search {
+  position: relative;
+}
+
+.container__search-header {
+  font-size: var(--xxl-font-size);
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: .5rem;
+}
+
+.container__search-form input {
+  margin: .1rem 0;
+  padding: 0 .5rem;
+  height: 2.2rem;
+  border: 3px solid var(--first-color);
+  border-radius: 5rem;
+  font-size: var(--l-font-size);
+}
+
+.form__train-stations {
+  position: relative;
+}
+#from,
+#to {
+  width: 100%;
+}
+#swap {
+  position: absolute;
+  top: 50%;
+  right: 5%;
+  transform: translateY(-50%);
+  border-radius: 100%;
+  border: 2px solid var(--first-color);
+  background-color: var(--first-color);
+  color: var(--second-color);
+}
+
+#seats {
+  background-image: url('../img/user-line.png');
+  background-position: 92%;
+  background-repeat: no-repeat;
+  background-size: 1.3rem 1.3rem;
+}
+
+/*======================================== FLEET ========================================*/
+.container__fleet {
+  color: var(--second-color);
+  background-color: var(--first-color);
+}
+
+.container__fleet-header {
+  text-align: center;
+  padding: .5rem 0;
+}
+
+.fleet {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.fleet__trains-total {
+  margin: 0 0 .5rem;
+}
+
+/*======================================== NEWS ========================================*/
+.card__news {
+  position: relative;
+  display: flex;
+  padding: .8rem .25rem 1.2rem;
+  border: 4px solid var(--first-color);
+  border-radius: 1.5rem;
+  background-color: var(--second-color);
+}
+.news__date {
+  flex: 1.1;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  color: var(--first-color);
+}
+.date__day {
+  font-size: 2.25rem;
+  font-weight: var(--font-bold);
+}
+
+.news__body {
+  flex: 3;
+  height: fit-content;
+  margin: auto 0;
+}
+
+.news__expand {
+  background-color: transparent;
+  border: none;
+  color: var(--first-color);
+  font-weight: var(--font-bold);
+  font-size: var(--xxl-font-size);
+}
+
+/*======================================== OFFERS ========================================*/
+.container__offers-body {
+  display: grid;
+}
+
+.card__offer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 1.5rem;
+  filter: blur(1px);
+  z-index: 1;
+}
+.card__offer {
+  position: relative;
+  display: block;
+  margin: 0 auto .5rem;
+  border-radius: 1.5rem;
+}
+.offer__body {
+  position: absolute;
+  width: 90%;
+  padding: .25rem;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--second-color);
+  border-radius: .5rem;
+  background-color: rgba(163, 0, 0, 0.785);
+  z-index: 1;
+}
+
+#offer__winter-days::before {
+  background-image: url('../img/winter-days.jpg');
+}
+#offer__christmas-gift::before {
+  background-image: url('../img/christmas-present.jpg');
+}
+
+
+/*==================== MEDIA QUERIES ====================*/
+
+
+@media (max-width: 1024px) {
+
+  #submit {
+    width: 100%;
+    font-size:  var(--xl-font-size);
+  }
+
+  /*==================== NAVBAR ====================*/
+  .nav__menu {
+    position: fixed;
+    background-color: var(--second-color);
+    backdrop-filter: blur(32px);
+    -webkit-backdrop-filter: blur(32px);
+    top: 0;
+    right: -100%;
+    width: 100%;
+    height: 100%;
+    transition: right .3s;
+    z-index: 1;
+  }
+
+
+  #breadcrumb {
+    display: none;
+  }
+  /*==================== HOME ====================*/
+
+  /*======================================== SEARCH ========================================*/
+  .container__search-header {
+    margin: 15% 0 8%;
+  }
+
+  #swap {
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size:  var(--xl-font-size);
+  }
+
+  #date {
+    width: calc(75% - 3px);
+  }
+  #seats {
+    width: calc(25% - 3px);
+  }
+
+  /*======================================== FLEET ========================================*/
+  .fleet {
+    font-size:  var(--xl-font-size);
+    font-weight: var(--font-bold);
+  }
+
+  /*======================================== NEWS ========================================*/
+  .card__news {
+    margin: 0 0 0.5rem;
+  }
+
+  .news__body-content {
+    display: none;
+    padding: 0 0 .5rem;
+  }
+
+  .news__expand {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    right: 50%;
+    transform: translateX(50%);
+  }
+  .news__expand.rotate {
+    transform: translateX(50%) rotate(180deg) !important;
+  }
+
+  /*======================================== OFFERS ========================================*/
+  .container__offers-body {
+    grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  }
+
+  .card__offer {
+    width: 16rem;
+    height: 20rem;
+  }
+  .offer__body-content {
+    display: none;
+  }
+}
+
+@media (min-width: 1025px) {
+  :root {
+    --xxl-font-size: 5.5rem;
+    --xl-font-size: 3.5rem;
+    --l-font-size: 2.75rem;
+    --m-font-size: 1.5rem;
+    --s-font-size: 1.1rem;
+    --xs-font-size: .813rem;
+  }
+
+  #submit {
+    width: calc(40% - 3px);
+  }
+
+
+  .container__fleet-header,
+  .container__news-header,
+  .container__offers-header {
+    font-size: var(--l-font-size);
+  }
+
+  .container__news-footer,
+  .container__offers-footer {
+    font-size: var(--m-font-size);
+  }
+
+  /*==================== NAVBAR ====================*/
+  .nav {
+    height: calc(var(--header-height) + 2rem);
+  }
+
+  .nav__menu {
+    height: 100%;
+  }
+  .nav__list {
+    height: 100%;
+    flex-direction: row;
+    padding: 0;
+    align-items: center;
+    column-gap: 4rem;
+  }
+  .nav__item {
+    display: flex;
+    height: 100%;
+    font-size: var(--s-font-size);
+    text-align: center;
+  }
+  .nav__item a,
+  .nav__item span {
+    margin: auto;
+    color: var(--second-color);
+  }
+
+  .nav__toggle,
+  .nav__close {
+    display: none;
+  }
+
+  #breadcrumb {
+    display: block;
+    margin: 0 0 0 1.5rem;
+  }
+
+  /*==================== HOME ====================*/
+
+  /*======================================== SEARCH ========================================*/
+  .container__search-header {
+    margin: 8% 0 5%;
+  }
+
+  .container__search-form {
+    width: 60%;
+    margin: auto;
+  }
+
+  .container__search-form input {
+    margin: .3rem 0;
+    padding: 0 1rem;
+    height: 3.4rem;
+    font-size: var(--m-font-size);
+  }
+
+  #swap {
+    width: 4rem;
+    height: 4rem;
+    font-size:  var(--l-font-size);
+  }
+
+  #date,
+  #seats {
+    width: calc(30% - 3px);
+  }
+
+  /*======================================== FLEET ========================================*/
+  .fleet {
+    font-size:  var(--m-font-size);
+    font-weight: var(--font-bold);
+  }
+
+  /*======================================== NEWS ========================================*/
+  .card__news {
+    width: 70%;
+    margin: 0 auto 0.5rem;
+  }
+  .news__date {
+    flex: 0.5;
+  }
+  .date__day {
+    font-size: 4rem;
+  }
+  .date__month {
+    font-size: var(--m-font-size);
+  }
+
+  .news__body-title {
+    font-size: var(--l-font-size);
+  }
+
+  .news__expand {
+    display: none;
+  }
+
+  /*======================================== OFFERS ========================================*/
+  .container__offers-body {
+    width: 80%;
+    margin: auto;
+    grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+    gap: 1rem;
+    justify-content: center;
+  }
+
+  .card__offer {
+    width: 18rem;
+    height: 25rem;
+  }
+}

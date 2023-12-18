@@ -6,79 +6,153 @@
   <meta name="description" content="MAX 150 CARATTERI">
   <meta name="author" content="Mang00o, Fabbricca, ElenaaaCh, Pax">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="shortcut icon" href="">
-  <link rel="stylesheet" href="./static/css/style.css">
-  <script defer src="./static/js/main.js"></script>
-  <title> Chi Siamo </title>
+  <link rel="shortcut icon" href="../static/img/logo.png">
+  <link rel="stylesheet" href="../static/css/style.css">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+  <script defer src="../static/js/main.js"></script>
+  <title> Homepage </title>
 </head>
 <body>
-  <nav>
-    <a href="#"></a>
-    <div>
-      <ul>
-        <li>
-          <span>Home</span>
+  <nav id="navbar">
+    <h1 class="nav__logo">
+      IBERU TRASPORTI
+    </h1>
+    <div class="nav__menu">
+      <ul class="nav__list">
+        <li class="nav__item visually-hidden">
+          <a href="#main">Salta la barra di navigazione</a>
         </li>
-        <li>
+        <li class="nav__item">
+          <span lang="en-US">Home</span>
+        </li>
+        <li class="nav__item">
           <a href="../templates/about.html">Chi Siamo</a>
         </li>
-        <li>
+        <li class="nav__item">
           <a href="../templates/offers.html">Offerte</a>
         </li>
-        <li>
-          <a href="../templates/trips.html">Viaggi</a>
-        </li>
-        <li>
+        <li class="nav__item">
           <a href="../templates/subscriptions.html">Abbonamenti</a>
         </li>
-        <li>
-          <a href="../templates/diversity_inclusion.html">Diversità ed inclusione</a>
-        </li>
       </ul>
+      
+      <div class="nav__close">
+        <span class="ri-close-line"></span>
+      </div>
+    </div>
+    
+    <div class="nav__toggle">
+      <span class="ri-menu-line"></span>
     </div>
   </nav>
-
-  <main>
-    <div class="container__search-bar">
-      <h2>Viaggia </h2>
-      <fieldset>
-        <legend>Ricerca tratta ferroviaria</legend>
-
-        <label for="from">Partenza</label>
-        <input type="text" name="from" id="from">
-        <label for="to">Arrivo</label>
-        <input type="text" name="to" id="to">
-        <label for="date">Data</label>
-        <input type="datetime" name="date" id="date">
-        <label for="seats">Passeggeri</label>
-        <button id="subtract" disabled>-</button>
-        <input type="number" name="seats" id="seats" placeholder="1" min="1" max="20">
-        <button id="add">+</button>
-      </fieldset>
-    </div>
-    <dl class="container__news">
-      <dt class="news__header">Soppressione tratta Padova - Bassano</dt>
-      <dd class="news__body">
-        <time class="news__body-date" datetime="2024-04-12">
+  <nav id="breadcrumb">
+    <p>Ti trovi in: <span lang="en-US">Home</span></p>
+  </nav>
+  <main id="main">
+    <section class="container container__search">
+      <header class="container__search-header">
+        <h2>VIAGGIA CON IBERU</h2>
+      </header>
+      <form class="container__search-form">
+        <div class="form__train-stations">
+          <label class="visually-hidden" for="from">Partenza</label>
+          <input type="text" name="from" id="from" placeholder="Partenza">
+          <label class="visually-hidden" for="to">Arrivo</label>
+          <input type="text" name="to" id="to" placeholder="Arrivo">
+          <button id="swap"><span class="visually-hidden">Inverti</span> <span class="ri-arrow-up-down-line"></span></button>
+        </div>
+        <label class="visually-hidden" for="date">Data</label>
+        <input type="datetime-local" name="date" id="date">
+        <label class="visually-hidden" for="seats">Passeggeri (massimo 20 passeggeri)</label>
+        <input type="number" name="seats" id="seats" placeholder="1" min="1" max="20" value="1">
+        <label class="visually-hidden" for="submit">Cerca</label>
+        <input type="submit" id="submit" value="Cerca">
+      </form>
+    </section>
+    <section class="container__fleet">
+      <header class="container__fleet-header">
+        <h2>LA NOSTRA FLOTTA</h2>
+      </header>
+      <dl class="fleet">
+        <dt class="fleet__trains">Treni elettrici</dt>
+        <dd class="fleet__trains-total">4535</dd>
+        <dt class="fleet__trains">Treni diesel</dt>
+        <dd class="fleet__trains-total">1023</dd>
+        <dt class="fleet__trains">Treni a carbone</dt>
+        <dd class="fleet__trains-total">26</dd>
+      </dl>
+    </section>
+    <section class="container container__news">
+      <header class="container__news-header">
+        <h2>COMUNICAZIONI</h2>
+      </header>
+      <article class="card__news">
+        <time class="news__date" datetime="2024-04-12">
           <span class="date__day">12</span>
           <span class="date__month">Aprile 2024</span>
         </time>
-        <p class="news__body-content">
-          La tratta Padova - Bassano sarà soppressa, causa lavori alla linea ferroviaria, a partire dal giorno 
-          <time datetime="2024-04-12">12 Aprile 2024</time> fino al giorno 
-          <time datetime="2024-04-26">26 Aprile 2024</time>.
-          Ci scusiamo per il disagio.
-        </p>
-      </dd>
-    </dl>
-    <ul class="container__offers">
-      <a class="offer" href="#">
-        <div class="offer__img"></div>
-        <h3 class="offer__title">Con Carnet smart oltre il 60% di sconto</h3>
-        <p class="offer__description">Scopri di più</p>
-      </a>
-    </ul>
+        <div class="news__body">
+          <h3 class="news__body-title">Soppressione tratta Padova - Bassano</h3>
+          <p class="news__body-content">
+            La tratta Padova - Bassano sarà soppressa, causa lavori alla linea ferroviaria, a partire dal giorno 
+            <time datetime="2024-04-12">12 Aprile 2024</time> fino al giorno 
+            <time datetime="2024-04-26">26 Aprile 2024</time>.
+            Ci scusiamo per il disagio.
+          </p>
+        </div>
+        <button aria-label="Espandi la notizia" class="ri-arrow-down-s-line news__expand"></button>
+      </article>
+      <article class="card__news">
+        <time class="news__date" datetime="2024-04-14">
+          <span class="date__day">14</span>
+          <span class="date__month">Aprile 2024</span>
+        </time>
+        <div class="news__body">
+          <h3 class="news__body-title">Soppressione tratta Roma - Napoli</h3>
+          <p class="news__body-content">
+            La tratta Roma - Napoli sarà soppressa, causa lavori alla linea ferroviaria, a partire dal giorno 
+            <time datetime="2024-04-14">14 Aprile 2024</time> fino al giorno 
+            <time datetime="2024-04-16">16 Aprile 2024</time>.
+            Ci scusiamo per il disagio.
+          </p>
+        </div>
+        <button aria-label="Espandi la notizia" class="ri-arrow-down-s-line news__expand"></button>
+      </article>
+      <footer class="container__news-footer">
+        <a href="offers.html">Visualizza tutte le comunicazioni</a>
+      </footer>
+    </section>
+    <section class="container container__offers">
+      <header class="container__offers-header">
+        <h2>OFFERTE</h2>
+      </header>
+      <div class="container__offers-body">
+        <a id="offer__christmas-gift" class="card__offer" href="#">
+          <div class="offer__body">
+            <h3 class="offer__body-title">Con i <span lang="en-US">Christmas Gifts</span> risparmi oltre il 20% nell'acquisto di un nuovo abbonamento</h3>
+            <p class="offer__body-content">Non lasciarti scappare quest'offerta</p>
+          </div>
+        </a>
+        <a id="offer__winter-days" class="card__offer" href="#">
+          <div class="offer__body">
+            <h3 class="offer__body-title">Con i <span lang="en-US">Winter Days</span> oltre il 60% di sconto</h3>
+            <p class="offer__body-content">Scopri di più</p>
+          </div>
+        </a>
+        <a id="offer__christmas-gift" class="card__offer" href="#">
+          <div class="offer__body">
+            <h3 class="offer__body-title">Con i <span lang="en-US">Christmas Gifts</span> risparmi oltre il 20% nell'acquisto di un nuovo abbonamento</h3>
+            <p class="offer__body-content">Non lasciarti scappare quest'offerta</p>
+          </div>
+        </a>
+      </div>
+      <footer class="container__offers-footer">
+        <a href="offers.html">Visualizza tutte le offerte</a>
+      </footer>
+    </section>
   </main>
-  
+  <footer>
+    <p>Societa' Viaggi - <span lang="en-US">All rights reserved.</span></p>
+  </footer>
 </body>
 </html>
