@@ -1,7 +1,7 @@
-const navMenu = document.querySelector('.nav__menu'),
-      navToggle = document.querySelector('.nav__toggle'),
-      navClose = document.querySelector('.nav__close'),
-      navLink = document.querySelectorAll('.nav__item');
+const navMenu = document.querySelector('.js-nav__menu'),
+      navToggle = document.querySelector('.js-nav__toggle'),
+      navClose = document.querySelector('.js-nav__close'),
+      navLink = document.querySelectorAll('.js-nav__item');
 
 if (navToggle) {
   navToggle.addEventListener('click', () => {
@@ -16,7 +16,6 @@ if (navClose) {
 }
 
 const linkAction = () => {
-  const navMenu = document.querySelector('.nav__menu');
   navMenu.classList.remove('show-menu');
 }
 navLink.forEach(l => l.addEventListener('click', linkAction));
@@ -46,10 +45,10 @@ if (searchSeats) {
   });
 }
 
-const newsCard = document.querySelectorAll('.card__news');
+const newsCard = document.querySelectorAll('.js-news');
 newsCard.forEach(card => {
-  let newsExpandButton = card.querySelector('.news__expand');
-  let newsDescription = card.querySelector('.news__body-content');
+  let newsExpandButton = card.querySelector('.js-news__expand');
+  let newsDescription = card.querySelector('.js-news__content');
   newsExpandButton.addEventListener('click', () => {
     newsDescription.classList.toggle('show');
     newsExpandButton.classList.toggle('rotate');

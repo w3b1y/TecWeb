@@ -14,34 +14,34 @@
 </head>
 <body>
   <nav id="navbar">
-    <h1 class="nav__logo">
+    <h1 class="nav__logo txt2img">
       IBERU TRASPORTI
     </h1>
-    <div class="nav__menu">
+    <div class="nav__menu js-nav__menu">
       <ul class="nav__list">
-        <li class="nav__item visually-hidden">
-          <a href="#main">Salta la barra di navigazione</a>
+        <li class="nav__item js-nav__item visually-hidden">
+          <a class="nav__link" href="#main">Salta la barra di navigazione</a>
         </li>
-        <li class="nav__item">
-          <span lang="en-US">Home</span>
+        <li class="nav__item js-nav__item">
+          <span class="nav__link" lang="en-US">Home</span>
         </li>
-        <li class="nav__item">
-          <a href="about.html">Chi Siamo</a>
+        <li class="nav__item js-nav__item">
+          <a class="nav__link" href="about.html">Chi Siamo</a>
         </li>
-        <li class="nav__item">
-          <a href="offers.html">Offerte</a>
+        <li class="nav__item js-nav__item">
+          <a class="nav__link" href="offers.html">Offerte</a>
         </li>
-        <li class="nav__item">
-          <a href="subscriptions.html">Abbonamenti</a>
+        <li class="nav__item js-nav__item">
+          <a class="nav__link" href="subscriptions.html">Abbonamenti</a>
         </li>
       </ul>
       
-      <div class="nav__close">
+      <div class="nav__close js-nav__close">
         <span class="ri-close-line"></span>
       </div>
     </div>
     
-    <div class="nav__toggle">
+    <div class="nav__toggle js-nav__toggle">
       <span class="ri-menu-line"></span>
     </div>
   </nav>
@@ -49,110 +49,139 @@
     <p>Ti trovi in: <span lang="en-US">Home</span></p>
   </nav>
   <main id="main">
-    <section class="container container__search">
-      <header class="container__search-header">
-        <h2>VIAGGIA CON IBERU</h2>
-      </header>
-      <form class="container__search-form">
-        <div class="form__train-stations">
+    <section id="index__search" class="container container--search">
+      <h2 class="container__heading container__heading--search">VIAGGIA CON IBERU</h2>
+      <form class="container__form--search">
+        <div class="posrel">
           <label class="visually-hidden" for="from">Partenza</label>
-          <input type="text" name="from" id="from" placeholder="Partenza">
+          <input class="container__input--search" type="text" name="from" id="from" placeholder="Partenza">
           <label class="visually-hidden" for="to">Arrivo</label>
-          <input type="text" name="to" id="to" placeholder="Arrivo">
+          <input class="container__input--search" type="text" name="to" id="to" placeholder="Arrivo">
           <button id="swap"><span class="visually-hidden">Inverti</span> <span class="ri-arrow-up-down-line"></span></button>
         </div>
         <label class="visually-hidden" for="date">Data</label>
-        <input type="datetime-local" name="date" id="date">
+        <input class="container__input--search" type="datetime-local" name="date" id="date">
         <label class="visually-hidden" for="seats">Passeggeri (massimo 20 passeggeri)</label>
-        <input type="number" name="seats" id="seats" placeholder="1" min="1" max="20" value="1">
+        <input class="container__input--search" type="number" name="seats" id="seats" placeholder="1" min="1" max="20" value="1">
         <label class="visually-hidden" for="submit">Cerca</label>
-        <input type="submit" id="submit" value="Cerca">
+        <input class="container__input--search" type="submit" id="submit" value="Cerca">
       </form>
     </section>
-    <section class="container__fleet">
-      <header class="container__fleet-header">
-        <h2>LA NOSTRA FLOTTA</h2>
-      </header>
+    <section class="container--fleet">
+      <h2 class="container__heading container__heading--fleet">LA NOSTRA FLOTTA</h2>
       <dl class="fleet">
-        <dt class="fleet__trains">Treni elettrici</dt>
-        <dd class="fleet__trains-total">4535</dd>
-        <dt class="fleet__trains">Treni diesel</dt>
-        <dd class="fleet__trains-total">1023</dd>
-        <dt class="fleet__trains">Treni a carbone</dt>
-        <dd class="fleet__trains-total">26</dd>
+        <dt>Treni elettrici</dt>
+        <dd class="fleet__total">4535</dd>
+        <dt>Treni diesel</dt>
+        <dd class="fleet__total">1023</dd>
+        <dt>Treni a carbone</dt>
+        <dd class="fleet__total">26</dd>
       </dl>
     </section>
-    <section class="container container__news">
-      <header class="container__news-header">
-        <h2>COMUNICAZIONI</h2>
-      </header>
-      <article class="card__news">
+    <section id="index__news" class="container container--background">
+      <h2 class="container__heading">COMUNICAZIONI</h2>
+      <article class="news js-news">
         <time class="news__date" datetime="2024-04-12">
-          <span class="date__day">12</span>
-          <span class="date__month">Aprile 2024</span>
+          <span class="news__day">12</span>
+          <span class="news__month">Aprile 2024</span>
         </time>
         <div class="news__body">
-          <h3 class="news__body-title">Soppressione tratta Padova - Bassano</h3>
-          <p class="news__body-content">
+          <h3 class="news__title">Soppressione tratta Padova - Bassano</h3>
+          <p class="news__content js-news__content">
             La tratta Padova - Bassano sarà soppressa, causa lavori alla linea ferroviaria, a partire dal giorno 
             <time datetime="2024-04-12">12 Aprile 2024</time> fino al giorno 
             <time datetime="2024-04-26">26 Aprile 2024</time>.
             Ci scusiamo per il disagio.
           </p>
         </div>
-        <button aria-label="Espandi la notizia" class="ri-arrow-down-s-line news__expand"></button>
+        <button aria-label="Espandi la notizia" class="ri-arrow-down-s-line news__expand js-news__expand"></button>
       </article>
-      <article class="card__news">
+      <article class="news js-news">
         <time class="news__date" datetime="2024-04-14">
-          <span class="date__day">14</span>
-          <span class="date__month">Aprile 2024</span>
+          <span class="news__day">14</span>
+          <span class="news__month">Aprile 2024</span>
         </time>
         <div class="news__body">
-          <h3 class="news__body-title">Soppressione tratta Roma - Napoli</h3>
-          <p class="news__body-content">
+          <h3 class="news__title">Soppressione tratta Roma - Napoli</h3>
+          <p class="news__content js-news__content">
             La tratta Roma - Napoli sarà soppressa, causa lavori alla linea ferroviaria, a partire dal giorno 
             <time datetime="2024-04-14">14 Aprile 2024</time> fino al giorno 
             <time datetime="2024-04-16">16 Aprile 2024</time>.
             Ci scusiamo per il disagio.
           </p>
         </div>
-        <button aria-label="Espandi la notizia" class="ri-arrow-down-s-line news__expand"></button>
+        <button aria-label="Espandi la notizia" class="ri-arrow-down-s-line news__expand js-news__expand"></button>
       </article>
-      <footer class="container__news-footer">
+      <footer class="container__footer">
         <a href="offers.html">Visualizza tutte le comunicazioni</a>
       </footer>
     </section>
-    <section class="container container__offers">
-      <header class="container__offers-header">
-        <h2>OFFERTE</h2>
-      </header>
-      <div class="container__offers-body">
-        <a id="offer__christmas-gift" class="card__offer" href="#">
+    <section id="index__offers" class="container container--background">
+      <h2 class="container__heading">OFFERTE</h2>
+      <div class="container__body--offers">
+        <a id="offer__christmas-gift" class="offer" href="#">
           <div class="offer__body">
-            <h3 class="offer__body-title">Con i <span lang="en-US">Christmas Gifts</span> risparmi oltre il 20% nell'acquisto di un nuovo abbonamento</h3>
-            <p class="offer__body-content">Non lasciarti scappare quest'offerta</p>
+            <h3 class="offer__title">Con i <span lang="en-US">Christmas Gifts</span> risparmi oltre il 20% nell'acquisto di un nuovo abbonamento</h3>
+            <p class="offer__content">Non lasciarti scappare quest'offerta</p>
           </div>
         </a>
-        <a id="offer__winter-days" class="card__offer" href="#">
+        <a id="offer__winter-days" class="offer" href="#">
           <div class="offer__body">
-            <h3 class="offer__body-title">Con i <span lang="en-US">Winter Days</span> oltre il 60% di sconto</h3>
-            <p class="offer__body-content">Scopri di più</p>
+            <h3 class="offer__title">Con i <span lang="en-US">Winter Days</span> oltre il 60% di sconto</h3>
+            <p class="offer__content">Scopri di più</p>
           </div>
         </a>
-        <a id="offer__christmas-gift" class="card__offer" href="#">
+        <a id="offer__christmas-gift" class="offer" href="#">
           <div class="offer__body">
-            <h3 class="offer__body-title">Con i <span lang="en-US">Christmas Gifts</span> risparmi oltre il 20% nell'acquisto di un nuovo abbonamento</h3>
-            <p class="offer__body-content">Non lasciarti scappare quest'offerta</p>
+            <h3 class="offer__title">Con i <span lang="en-US">Christmas Gifts</span> risparmi oltre il 20% nell'acquisto di un nuovo abbonamento</h3>
+            <p class="offer__content">Non lasciarti scappare quest'offerta</p>
           </div>
         </a>
       </div>
-      <footer class="container__offers-footer">
+      <footer class="container__footer">
         <a href="offers.html">Visualizza tutte le offerte</a>
       </footer>
     </section>
   </main>
-  <footer>
-    <p>Societa' Viaggi - <span lang="en-US">All rights reserved.</span></p>
+  <footer class="container container--footer">
+    <h2 class="container__heading container__heading--footer txt2img">IBERU TRASPORTI</h2>
+    <div class="container__body--footer">
+      <div>
+        <a href="index.html" class="container__link" lang="en-US">Homepage</a>
+        <ul>
+          <li>
+            <a href="index.html/#index__search" class="container__link container__link--heading">Ricerca Biglietto</a>
+          </li>
+          <li>
+            <a href="index.html/#index__news" class="container__link container__link--heading">Notizie</a>
+          </li>
+          <li>
+            <a href="index.html/#index__offers" class="container__link container__link--heading">Offerte</a>
+          </li>
+        </ul>
+        <a href="about.html" class="container__link">Chi Siamo</a>
+      </div>
+      <div>
+        <a href="offers.html" class="container__link">Offerte</a>
+        <ul>
+          <li>
+            <a href="offers.html/#offers__super" class="container__link container__link--heading">Ricerca Biglietto</a>
+          </li>
+          <li>
+            <a href="offers.html/#offers__special" class="container__link container__link--heading">Notizie</a>
+          </li>
+          <li>
+            <a href="offers.html/#offers__family" class="container__link container__link--heading">Offerte</a>
+          </li>
+          <li>
+            <a href="offers.html/#offers__carnet" class="container__link container__link--heading">Offerte</a>
+          </li>
+        </ul>
+        <a href="subscriptions.html" class="container__link">Abbonamenti</a>
+        <a href="helps.html" class="container__link"><abbr title="Informazioni">Info</abbr></a>
+      </div>
+    </div>  
+    <p class="container__copyright">Societa' Viaggi - <span lang="en-US">All rights reserved.</span></p>
   </footer>
 </body>
 </html>

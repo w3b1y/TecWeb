@@ -28,6 +28,10 @@
   font-family: var(--body-font);
 }
 
+ul {
+  list-style: none;
+}
+
 a {
   color: var(--first-color);
 }
@@ -73,10 +77,6 @@ input[type="number"]::-webkit-outer-spin-button {
   width: 2rem;
   height: 2rem;
   background-image: url("../img/logo.png");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  text-indent: -999px;
   color: var(--second-color);
 }
 
@@ -102,7 +102,7 @@ input[type="number"]::-webkit-outer-spin-button {
 .nav__item:hover {
   color: var(--first-color);
 }
-.nav__item a {
+.nav__link {
   display: block;
   width: 100%;
 }
@@ -119,31 +119,62 @@ input[type="number"]::-webkit-outer-spin-button {
   right: 0 !important;
 }
 
+/*======================================== FOOTER ========================================*/
+.container--footer {
+  padding-bottom: .25rem;
+  background-color: var(--first-color);
+  color: var(--second-color);
+}
+.container__heading--footer {
+  width: 2rem;
+  height: 2rem;
+  color: var(--second-color);
+  background-image: url("../img/logo.png");
+}
 
+.container__body--footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.container__link {
+  display: block;
+  margin: 0 0 .75rem;
+  color: var(--second-color);
+  font-size: var(--l-font-size);
+  font-weight: var(--font-bold);
+}
+
+.container__link--heading {
+  font-size: var(--m-font-size);
+  font-weight: 400;
+}
+
+.container__copyright {
+  text-align: center;
+  margin: 1rem 0 0;
+}
 
 /*==================== REUSABLE CSS VARIABLES ====================*/
 .container {
   padding: 1rem 1.5rem 2rem;
 }
 
-.container__news,
-.container__offers {
+.container--background {
   background-image: url("../img/background.jpg");
   background-position: center; 
   background-repeat: repeat;
   z-index: -1;
 } 
 
-.container__search-header,
-.container__news-header,
-.container__offers-header {
+.container__heading {
   text-align: center;
   color: var(--first-color);
   margin-bottom: 1rem;
 }
 
-.container__news-footer,
-.container__offers-footer {
+.container__footer {
   text-align: center;
   margin-top: 1rem;
 }
@@ -160,6 +191,13 @@ input[type="number"]::-webkit-outer-spin-button {
   white-space: nowrap;
 }
 
+.txt2img {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  text-indent: -999px;
+}
+
 .show {
   display: block !important;
 }
@@ -168,12 +206,14 @@ input[type="number"]::-webkit-outer-spin-button {
   transform: rotate(180deg);
 }
 
-
+.posrel {
+  position: relative;
+}
 
 /*==================== HOME ====================*/
 
 /*======================================== SEARCH ========================================*/
-.container__search::before {
+.container--search::before {
   content: "";
   position: absolute;
   top: 0;
@@ -187,17 +227,17 @@ input[type="number"]::-webkit-outer-spin-button {
   background-size: cover;
   filter: blur(1.1px);
 }
-.container__search {
+.container--search {
   position: relative;
 }
 
-.container__search-header {
+.container__heading--search {
   font-size: var(--xxl-font-size);
   background-color: rgba(255, 255, 255, 0.5);
   border-radius: .5rem;
 }
 
-.container__search-form input {
+.container__input--search {
   margin: .1rem 0;
   padding: 0 .5rem;
   height: 2.2rem;
@@ -206,9 +246,6 @@ input[type="number"]::-webkit-outer-spin-button {
   font-size: var(--l-font-size);
 }
 
-.form__train-stations {
-  position: relative;
-}
 #from,
 #to {
   width: 100%;
@@ -232,12 +269,13 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 /*======================================== FLEET ========================================*/
-.container__fleet {
+.container--fleet {
   color: var(--second-color);
   background-color: var(--first-color);
 }
 
-.container__fleet-header {
+.container__heading--fleet {
+  color: var(--second-color);
   text-align: center;
   padding: .5rem 0;
 }
@@ -248,12 +286,12 @@ input[type="number"]::-webkit-outer-spin-button {
   align-items: center;
 }
 
-.fleet__trains-total {
+.fleet__total {
   margin: 0 0 .5rem;
 }
 
 /*======================================== NEWS ========================================*/
-.card__news {
+.news {
   position: relative;
   display: flex;
   padding: .8rem .25rem 1.2rem;
@@ -268,7 +306,7 @@ input[type="number"]::-webkit-outer-spin-button {
   text-align: center;
   color: var(--first-color);
 }
-.date__day {
+.news__day {
   font-size: 2.25rem;
   font-weight: var(--font-bold);
 }
@@ -288,11 +326,11 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 /*======================================== OFFERS ========================================*/
-.container__offers-body {
+.container__body--offers {
   display: grid;
 }
 
-.card__offer::before {
+.offer::before {
   content: "";
   position: absolute;
   top: 0;
@@ -306,7 +344,7 @@ input[type="number"]::-webkit-outer-spin-button {
   filter: blur(1px);
   z-index: 1;
 }
-.card__offer {
+.offer {
   position: relative;
   display: block;
   margin: 0 auto .5rem;
@@ -364,7 +402,7 @@ input[type="number"]::-webkit-outer-spin-button {
   /*==================== HOME ====================*/
 
   /*======================================== SEARCH ========================================*/
-  .container__search-header {
+  .container__heading--search {
     margin: 15% 0 8%;
   }
 
@@ -388,11 +426,11 @@ input[type="number"]::-webkit-outer-spin-button {
   }
 
   /*======================================== NEWS ========================================*/
-  .card__news {
+  .news {
     margin: 0 0 0.5rem;
   }
 
-  .news__body-content {
+  .news__content {
     display: none;
     padding: 0 0 .5rem;
   }
@@ -409,15 +447,15 @@ input[type="number"]::-webkit-outer-spin-button {
   }
 
   /*======================================== OFFERS ========================================*/
-  .container__offers-body {
+  .container__body--offers {
     grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
   }
 
-  .card__offer {
+  .offer {
     width: 16rem;
     height: 20rem;
   }
-  .offer__body-content {
+  .offer__content {
     display: none;
   }
 }
@@ -437,14 +475,11 @@ input[type="number"]::-webkit-outer-spin-button {
   }
 
 
-  .container__fleet-header,
-  .container__news-header,
-  .container__offers-header {
+  .container__heading {
     font-size: var(--l-font-size);
   }
 
-  .container__news-footer,
-  .container__offers-footer {
+  .container__footer {
     font-size: var(--m-font-size);
   }
 
@@ -469,8 +504,7 @@ input[type="number"]::-webkit-outer-spin-button {
     font-size: var(--s-font-size);
     text-align: center;
   }
-  .nav__item a,
-  .nav__item span {
+  .nav__link {
     margin: auto;
     color: var(--second-color);
   }
@@ -488,16 +522,17 @@ input[type="number"]::-webkit-outer-spin-button {
   /*==================== HOME ====================*/
 
   /*======================================== SEARCH ========================================*/
-  .container__search-header {
+  .container__heading--search {
     margin: 8% 0 5%;
+    font-size: var(--xxl-font-size);
   }
 
-  .container__search-form {
+  .container__form--search {
     width: 60%;
     margin: auto;
   }
 
-  .container__search-form input {
+  .container__input--search {
     margin: .3rem 0;
     padding: 0 1rem;
     height: 3.4rem;
@@ -522,21 +557,21 @@ input[type="number"]::-webkit-outer-spin-button {
   }
 
   /*======================================== NEWS ========================================*/
-  .card__news {
+  .news {
     width: 70%;
     margin: 0 auto 0.5rem;
   }
   .news__date {
     flex: 0.5;
   }
-  .date__day {
+  .news__day {
     font-size: 4rem;
   }
-  .date__month {
+  .news__month {
     font-size: var(--m-font-size);
   }
 
-  .news__body-title {
+  .news__title {
     font-size: var(--l-font-size);
   }
 
@@ -545,7 +580,7 @@ input[type="number"]::-webkit-outer-spin-button {
   }
 
   /*======================================== OFFERS ========================================*/
-  .container__offers-body {
+  .container__body--offers {
     width: 80%;
     margin: auto;
     grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
@@ -553,8 +588,20 @@ input[type="number"]::-webkit-outer-spin-button {
     justify-content: center;
   }
 
-  .card__offer {
+  .offer {
     width: 18rem;
     height: 25rem;
+  }
+  .offer:hover {
+    transform: scale(1.1);
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .offer:hover .offer__content {
+    display: block;
+  }
+
+  .offer__content {
+    display: none;
   }
 }
