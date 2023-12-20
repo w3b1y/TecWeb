@@ -7,36 +7,201 @@
   <meta name="author" content="Mang00o, Fabbricca, ElenaaaCh, Pax">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="shortcut icon" href="">
-  <link rel="stylesheet" href="./static/css/style.css">
-  <script defer src="./static/js/main.js"></script>
-  <title> Chi Siamo </title>
+  <link rel="stylesheet" href="/static/css/style.css">
+  <script defer src="/static/js/main.js"></script>
+  <title> Offerte </title>
 </head>
 <body>
   <nav>
-    <a href="#"></a>
-    <div>
-      <ul>
-        <li>
-          <a href="index.html">Home</a>
+    <h1 class="nav__logo"></h1>
+    <div class="nav__menu">
+      <ul class="nav__list">
+        <li class="nav__item">
+          <a href="../templates/index.html">Home</a>
         </li>
-        <li>
-          <a href="about.html">Chi Siamo</a>
+        <li class="nav__item">
+          <a href="../templates/about.html">Chi Siamo</a>
         </li>
-        <li>
+        <li class="nav__item">
           <span>Offerte</span>
         </li>
-        <li>
-          <a href="trips.html">Viaggi</a>
-        </li>
-        <li>
-          <a href="subscriptions.html">Abbonamenti</a>
-        </li>
-        <li>
-          <a href="diversity_inclusion.html">Diversità ed inclusione</a>
+        <li class="nav__item">
+          <a href="../templates/subscriptions.html">Abbonamenti</a>
         </li>
       </ul>
+      
+      <div class="nav__close">
+        <span class="ri-close-line"></span>
+      </div>
+    </div>
+    
+    <div class="nav__toggle">
+      <span class="ri-menu-line"></span>
     </div>
   </nav>
-  
+  <nav id="breadcrumb">
+    <p>Ti trovi in: Offerte</p>
+  </nav>
+  <main>
+    <h2>Offerte</h2>
+    <p>
+      Esplora le nostre irresistibili offerte e scopri le destinazioni più affascinanti a prezzi imbattibili.</br> 
+      Nella nostra pagina dedicata alle offerte, ti attendono opportunità uniche per vivere esperienze straordinarie a costi convenienti.
+    </p>
+    <section class="container__offers">
+      <header class="container__offers-header">
+        <h3>Super Offerte</h3>
+        <p>
+          Benvenuto nella nostra esclusiva sezione Super Offerte.</br>
+          Ti presentiamo offerte straordinarie pensate per momenti speciali e celebrazioni uniche.</br> 
+          Che tu stia pianificando una vacanza natalizia, una fuga romantica o desideri celebrare un'occasione speciale, le nostre Super Offerte sono progettate per trasformare ogni viaggio in un'esperienza indimenticabile.
+        </p>
+      </header>
+      <a class="card__offer" href="#">
+        <div class="offer__body">
+          <h3 class="offer__body-title">Natale</h3>
+          <p class="offer__body-content">
+            Celebra il Natale con stile!</br>
+            Offerta speciale dal 23 dicembre 2023 al 27 dicembre 2023: risparmia il 15% su tutte le prenotazioni.</br> 
+            Regalati una vacanza indimenticabile con noi!
+          </p>
+        </div>
+      </a>
+      <a class="card__offer" href="#">
+        <div class="offer__body">
+          <h3 class="offer__body-title">Capodanno</h3>
+          <p class="offer__body-content">
+            Dai il benvenuto al nuovo anno con un'offerta speciale!</br> 
+            Prenota entro il 27 dicembre 2023 e risparmia il 20% su tutte le destinazioni.</br> 
+            Inizia il 2024 con una vacanza da sogno. Prenota ora!
+          </p>
+        </div>
+      </a>
+    </section>   
+    <section class="container__offers">
+      <header class="container__offers-header">
+        <h3>Offerte Speciali</h3>
+        <p>
+          Esplora le nostre Offerte Speciali, pensate appositamente per soddisfare le tue esigenze e rendere il tuo viaggio un'esperienza unica.</br> 
+          Se sei giovane o in coppia, troverai proposte su misura per te.</br> 
+          Approfitta di sconti esclusivi, servizi personalizzati e scopri destinazioni perfette per ogni fase della vita.</br> 
+          Pianifica il tuo viaggio perfetto con le nostre Offerte Speciali e crea ricordi indimenticabili.
+        </p>
+      </header>
+      <a class="card__offer" href="#">
+        <div class="offer__body">
+          <h3 class="offer__body-title">Coppie</h3>
+          <p class="offer__body-content">
+            Vivi momenti romantici con le nostre Offerte di Coppia! Sconto del 5%</br>
+            Prenota per il tuo anniversario o una fuga romantica entro il 10 febbraio e regalati un viaggio indimenticabile a due!
+          </p>
+        </div>
+      </a>
+      <a class="card__offer" href="#">
+        <div class="offer__body">
+          <h3 class="offer__body-title">Giovani</h3>
+          <p class="offer__body-content">
+            Esplora il mondo con le nostre Offerte Speciali per i Giovani!</br> 
+            Sconto imperdibile del 10%, riservato ai viaggiatori under 25.</br> 
+            Prenota per le tue avventure e vivi esperienze uniche.</br> 
+            Dai il via alla tua prossima avventura con servizi esclusivi e risparmia mentre crei ricordi indimenticabili!
+          </p>
+        </div>
+      </a>
+      <a class="card__offer" href="#">
+        <div class="offer__body">
+          <h3 class="offer__body-title">Senior</h3>
+          <p class="offer__body-content">
+            Esplora il mondo con le nostre Offerte Speciali per i Senior!</br> 
+            Sconto speciale del 15%, dedicato ai viaggiatori sopra i 60 anni.</br> 
+            Prenota per goderti un'esperienza di viaggio unica, con servizi pensati appositamente per te.</br> 
+            Approfitta dei vantaggi e scopri il lato meraviglioso del viaggio in età matura!
+          </p>
+        </div>
+      </a>
+    </section> 
+    <section class="container__offers">
+      <header class="container__offers-header">
+        <h3>Offerte per Famiglie e Gruppi</h3>
+        <p>
+          Esplora il mondo con le nostre Offerte Speciali per famiglie e gruppi.</br> 
+          Vivete insieme esperienze uniche e indimenticabili. Pianifica la tua avventura oggi!
+        </p>
+      </header>
+      <a class="card__offer" href="#">
+        <div class="offer__body">
+          <h3 class="offer__body-title">Famiglie</h3>
+          <p class="offer__body-content">
+            Offerta Famiglia: Vivete un'avventura insieme!</br> 
+            Prenotate un pacchetto per due genitori e due bambini sotto i 10 anni e godete dello sconto speciale del 15%.</br>
+            Creiamo ricordi indimenticabili per tutta la famiglia!
+          </p>
+        </div>
+      </a>
+      <a class="card__offer" href="#">
+        <div class="offer__body">
+          <h3 class="offer__body-title">Gruppi</h3>
+          <p class="offer__body-content">
+            Offerta Gruppi: Più siamo, più risparmiamo!</br> 
+            Prenota per un gruppo di oltre 8 persone e approfitta di uno sconto esclusivo del 20%.</br> 
+            Rendiamo il vostro viaggio di gruppo un'esperienza straordinaria!
+          </p>
+        </div>
+      </a>
+      <a class="card__offer" href="#">
+        <div class="offer__body">
+          <h3 class="offer__body-title">Scuole</h3>
+          <p class="offer__body-content">
+            Offerta Scolastica: Un'esperienza educativa straordinaria!</br>  
+            Prenota ora per la tua classe, con due professori e oltre 20 alunni, e ricevi uno sconto esclusivo del 30%.</br>  
+            Viaggiate e imparate insieme a tariffe speciali!
+          </p>
+        </div>
+      </a>
+    </section> 
+    <section class="container__offers">
+      <header class="container__offers-header">
+        <h3>Carnet</h3>
+        <p>
+          Esplora il mondo con flessibilità grazie alle nostre Offerte Carnet!</br> 
+          Prenota un carnet di viaggi e godi di tariffe speciali su una serie di destinazioni.</br> 
+          La libertà di viaggiare è nelle tue mani. Acquista il tuo carnet oggi e inizia un'avventura senza confini!
+        </p>
+      </header>
+      <a class="card__offer" href="#">
+        <div class="offer__body">
+          <h3 class="offer__body-title">5 viaggi</h3>
+          <p class="offer__body-content">
+            Esplora senza limiti con il nostro Carnet da 5 Viaggi! Acquista ora e risparmia 5%.</br> 
+            Viaggia quando vuoi, come vuoi, con tariffe bloccate e servizi esclusivi.</br> 
+            Un'offerta imperdibile per gli amanti dell'avventura! Condizioni applicate: Utilizzabile entro 4 mesi dall'acquisto.
+          </p>
+        </div>
+      </a>
+      <a class="card__offer" href="#">
+        <div class="offer__body">
+          <h3 class="offer__body-title">10 viaggi</h3>
+          <p class="offer__body-content">
+            Esplora senza limiti con il nostro Carnet da 10 Viaggi! Acquista ora e risparmia 10%.</br> 
+            Viaggia quando vuoi, come vuoi, con tariffe bloccate e servizi esclusivi.</br> 
+            Un'offerta imperdibile per gli amanti dell'avventura! Condizioni applicate: Utilizzabile entro 8 mesi dall'acquisto.
+          </p>
+        </div>
+      </a>
+      <a class="card__offer" href="#">
+        <div class="offer__body">
+          <h3 class="offer__body-title">15 viaggi</h3>
+          <p class="offer__body-content">
+            Esplora senza limiti con il nostro Carnet da 15 Viaggi! Acquista ora e risparmia 20%.</br> 
+            Viaggia quando vuoi, come vuoi, con tariffe bloccate e servizi esclusivi.</br> 
+            Un'offerta imperdibile per gli amanti dell'avventura! Condizioni applicate: Utilizzabile entro 12 mesi dall'acquisto.
+          </p>
+        </div>
+      </a>
+    </section> 
+  </main>
+  <footer>
+    <p>Societa' Viaggi - <span lang="en">All rights reserved.</span></p>
+  </footer>
 </body>
 </html>

@@ -7,36 +7,69 @@
   <meta name="author" content="Mang00o, Fabbricca, ElenaaaCh, Pax">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="shortcut icon" href="">
-  <link rel="stylesheet" href="./static/css/style.css">
-  <script defer src="./static/js/main.js"></script>
-  <title> Chi Siamo </title>
+  <link rel="stylesheet" href="/static/css/style.css">
+  <script defer src="/static/js/main.js"></script>
+  <title> Abbonamenti </title>
 </head>
 <body>
   <nav>
-    <a href="#"></a>
-    <div>
-      <ul>
-        <li>
-          <a href="index.html">Home</a>
+    <h1 class="nav__logo"></h1>
+    <div class="nav__menu">
+      <ul class="nav__list">
+        <li class="nav__item">
+          <a href="../templates/index.html">Home</a>
         </li>
-        <li>
-          <a href="about.html">Chi Siamo</a>
+        <li class="nav__item">
+          <a href="../templates/about.html">Chi Siamo</a>
         </li>
-        <li>
-          <a href="offers.html">Offerte</a>
+        <li class="nav__item">
+          <a href="../templates/offers.html">Offerte</a>
         </li>
-        <li>
-          <a href="trips.html">Viaggi</a>
-        </li>
-        <li>
+        <li class="nav__item">
           <span>Abbonamenti</span>
         </li>
-        <li>
-          <a href="diversity_inclusion.html">Diversità ed inclusione</a>
-        </li>
       </ul>
+      
+      <div class="nav__close">
+        <span class="ri-close-line"></span>
+      </div>
+    </div>
+    
+    <div class="nav__toggle">
+      <span class="ri-menu-line"></span>
     </div>
   </nav>
-  
+  <nav id="breadcrumb">
+    <p>Ti trovi in: Abbonamenti</p>
+  </nav>
+  <main>
+    <section class="card__subscription">
+      <header class="subscription__header">
+        <h3 class="subscription__header-users">Studenti</h3>
+        <h4 class="subscription__header-title">Abbonamento studenti</h4>
+        <p class="subscription__header-intro">Scopri tutte gli abbonamenti ed i vantaggi che Iberu propone agli studenti!</p>
+        <p class="subscription__header-description">A differenza delle altre linee ferroviarie Iberu offre
+          delle tariffe flat per i percorsi permettendoti di viaggiare all'interno del territorio liberamente, senza quindi essere limitati ad una singola tratta. 
+          Inoltre i nostri treni di ultima generazione assicurano un viaggio senza ritardi.</p>
+      </header>
+      <div class="subscription__body">
+        <div class="subscription__body-suboffer">
+          <h5 class="suboffer-title">Provinciali</h5>
+          <span class="suboffer-price">costo mensile <a href="#" class="price">$29.99</a></span>
+        </div>
+        <div class="subscription__body-suboffer">
+          <h5 class="suboffer-title">Regionali</h5>
+          <span class="suboffer-price">costo mensile <a href="#" class="price">$55.50</a></span>
+        </div>
+        <div class="subscription__body-suboffer">
+          <h5 class="suboffer-title">Nazionali</h5>
+          <span class="suboffer-price">costo mensile <a href="#" class="price">$95.50</a></span>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <p>Societa' Viaggi - <span lang="en">All rights reserved.</span></p>
+  </footer>
 </body>
 </html>
