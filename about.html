@@ -6,59 +6,109 @@
   <meta name="description" content="MAX 150 CARATTERI">
   <meta name="author" content="Mang00o, Fabbricca, ElenaaaCh, Pax">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="shortcut icon" href="">
-  <link rel="stylesheet" href="/static/css/style.css">
-  <script defer src="/static/js/main.js"></script>
+  <link rel="shortcut icon" href="./static/img/logo.png">
+  <link rel="stylesheet" href="./static/css/style.css">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+  <script defer src="./static/js/main.js"></script>
   <title> Chi Siamo </title>
 </head>
 <body>
-  <nav>
-    <h1 class="nav__logo"></h1>
-    <div class="nav__menu">
+  <nav id="navbar">
+    <h1 class="nav__logo txt2img">
+      IBERU TRASPORTI
+    </h1>
+    <div class="nav__menu js-nav__menu">
       <ul class="nav__list">
-        <li class="nav__item">
-          <a href="../templates/index.html">Home</a>
+        <li class="nav__item js-nav__item visually-hidden">
+          <a class="nav__link" href="#main">Salta la barra di navigazione</a>
         </li>
-        <li class="nav__item">
-          <span>Chi Siamo</span>
+        <li class="nav__item js-nav__item">
+          <a class="nav__link" href="index.html" lang="en-US">Home</a>
         </li>
-        <li class="nav__item">
-          <a href="../templates/offers.html">Offerte</a>
+        <li class="nav__item js-nav__item">
+          <span class="nav__link">Chi Siamo</span>
         </li>
-        <li class="nav__item">
-          <a href="../templates/subscriptions.html">Abbonamenti</a>
+        <li class="nav__item js-nav__item">
+          <a class="nav__link" href="offers.html">Offerte</a>
+        </li>
+        <li class="nav__item js-nav__item">
+          <a class="nav__link" href="subscriptions.html">Abbonamenti</a>
         </li>
       </ul>
       
-      <div class="nav__close">
+      <div class="nav__close js-nav__close">
         <span class="ri-close-line"></span>
       </div>
     </div>
-    <nav id="breadcrumb">
-      <p>Ti trovi in: Chi Siamo</p>
-    </nav>
-    <div class="nav__toggle">
+    
+    <div class="nav__toggle js-nav__toggle">
       <span class="ri-menu-line"></span>
     </div>
   </nav>
 
-  <main>
-    <h2>Chi Siamo</h2>
-        <p>Benvenuti nella sezione "Chi Siamo" del nostro sito, dove vi presentiamo la nostra azienda e la nostra passione per offrire esperienze di viaggio straordinarie tra le principali città europee.</p>
-        <p>Siamo una società di trasporti ferroviari impegnata nel collegare le metropoli europee, offrendo soluzioni di viaggio efficienti, confortevoli e sostenibili.</p>
-        <dl>
-          <dt>La Nostra Missione</dt>
-            <dd>La nostra missione è facilitare i viaggi tra le maggiori città europee, offrendo connessioni rapide e sicure che consentano ai nostri passeggeri di esplorare nuovi luoghi e culture.</dd>
-          <dt>La Nostra Esperienza</dt>
-            <dd>Siamo orgogliosi di offrire un'esperienza di viaggio unica, dove la comodità, l'efficienza e l'ecosostenibilità si incontrano. Abbiamo contratti con le maggiori società di trasporti europee e ciò ci consente di avere a disposizione e di offrire ai nostri clienti i più moderni treni, progettati per offrire il massimo comfort, consentendo ai passeggeri di godere del viaggio nel massimo relax.</dd>
-          <dt>Impegno Ambientale</dt>
-            <dd>Siamo consapevoli dell'importanza della sostenibilità ambientale. Ci impegniamo a ridurre la nostra impronta ecologica, adottando pratiche e tecnologie che contribuiscano a preservare l'ambiente.</dd>
-          <dt>Contattaci</dt>
-            <dd>Per ulteriori informazioni sui nostri servizi o per richieste specifiche, non esitate a contattarci attraverso i moduli di assistenza disponibili nella sezione <a href="help.html">Help</a>. Siamo qui per garantire un viaggio straordinario!</dd>
-        </dl>
-</main>
-  <footer>
-    <p>Societa' Viaggi - <span lang="en">All rights reserved.</span></p>
+  <main id="main">
+    <h2 class="main-heading">CHI SIAMO</h2>
+
+    <section id="about__presentation" class="container container--background container--about">
+      <h3 class="container__heading container__heading--about">CI PRESENTIAMO</h3>
+      <p class="container__content--about">Siamo una società di trasporti ferroviari impegnata nel collegare le città italiane, offrendo soluzioni di viaggio efficienti, confortevoli e sostenibili.</p>
+    </section>
+    <section id="about__mission" class="container container--about-inverse">
+      <h3 class="container__heading container__heading--about-inverse">LA NOSTRA MISSIONE</h3>
+      <p class="container__content--about-inverse">La nostra missione è facilitare i viaggi nello stivale, offrendo connessioni rapide e sicure che consentano ai nostri passeggeri di esplorare nuovi luoghi e culture.</p>
+    </section>
+    <section id="about__experience" class="container container--background container--about">
+      <h3 class="container__heading container__heading--about">LA NOSTRA ESPERIENZA</h3>
+      <p class="container__content--about">Siamo orgogliosi di offrire un'esperienza di viaggio unica, dove la comodità, l'efficienza e l'ecosostenibilità si incontrano. Offriamo ai nostri clienti i più moderni treni, progettati per offrire il massimo comfort, consentendo loro di godere del viaggio nel massimo relax.</p>
+    </section>
+    <section id="about__environment" class="container container--about-inverse">
+      <h3 class="container__heading container__heading--about-inverse">IMPEGNO AMBIENTALE</h3>
+      <p class="container__content--about-inverse">Siamo consapevoli dell'importanza della sostenibilità ambientale. Ci impegniamo a ridurre la nostra impronta ecologica, adottando pratiche e tecnologie che contribuiscano a preservare l'ambiente.</p>
+    </section>
+    <section id="about__contact" class="container container--background container--about">
+      <h3 class="container__heading container__heading--about">CONTATTACI</h3>
+      <p class="container__content--about">Per ulteriori informazioni sui nostri servizi o per richieste specifiche, non esitate a contattarci attraverso i moduli di assistenza disponibili nella sezione <a href="help.html">Help</a>. Siamo qui per garantire un viaggio straordinario!</p>
+    </section>
+  </main>
+  <footer class="container container--footer">
+    <h2 class="container__heading container__heading--footer txt2img">IBERU TRASPORTI</h2>
+    <div class="container__body--footer">
+      <div>
+        <a href="index.html" class="container__link" lang="en-US">Homepage</a>
+        <ul>
+          <li>
+            <a href="index.html/#index__search" class="container__link container__link--heading">Ricerca Biglietto</a>
+          </li>
+          <li>
+            <a href="index.html/#index__news" class="container__link container__link--heading">Notizie</a>
+          </li>
+          <li>
+            <a href="index.html/#index__offers" class="container__link container__link--heading">Offerte</a>
+          </li>
+        </ul>
+        <a href="about.html" class="container__link">Chi Siamo</a>
+      </div>
+      <div>
+        <a href="offers.html" class="container__link">Offerte</a>
+        <ul>
+          <li>
+            <a href="offers.html/#offers__super" class="container__link container__link--heading">Ricerca Biglietto</a>
+          </li>
+          <li>
+            <a href="offers.html/#offers__special" class="container__link container__link--heading">Notizie</a>
+          </li>
+          <li>
+            <a href="offers.html/#offers__family" class="container__link container__link--heading">Offerte</a>
+          </li>
+          <li>
+            <a href="offers.html/#offers__carnet" class="container__link container__link--heading">Offerte</a>
+          </li>
+        </ul>
+        <a href="subscriptions.html" class="container__link">Abbonamenti</a>
+        <a href="helps.html" class="container__link"><abbr title="Informazioni">Info</abbr></a>
+      </div>
+    </div>  
+    <p class="container__copyright">Societa' Viaggi - <span lang="en-US">All rights reserved.</span></p>
   </footer>
 </body>
 </html>

@@ -180,6 +180,13 @@ input[type="number"]::-webkit-outer-spin-button {
   margin-top: 1rem;
 }
 
+.main-heading {
+  font-size: var(--xxl-font-size);
+  font-weight: var(--font-bold);
+  color: var(--first-color);
+  text-align: center;
+}
+
 .visually-hidden {
   position: absolute;
   width: 0.063em;
@@ -372,6 +379,69 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 
+/*==================== ABOUT ====================*/
+.container--about::before,
+.container--about-inverse::before {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: 0;
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.container--about::before {
+  left: 0;
+  clip-path: polygon(0% 100%, 0% 0%, 70% 0%, 100% 100%);
+}
+.container--about-inverse::before {
+  right: 0;
+  clip-path: polygon(100% 100%, 100% 0%, 30% 0%, 0% 100%);
+}
+#about__presentation::before {
+  background-color: #25ae5e;
+  background-image: url('../img/presentation.png');
+}
+#about__mission::before {
+  background-color: #e4861b;
+  background-image: url('../img/mission.png');
+}
+#about__experience::before {
+  background-color: #298dc2;
+  background-image: url('../img/experience.png');
+}
+#about__environment::before {
+  background-color: #a30000;
+  background-image: url('../img/environment.png');
+}
+#about__contact::before {
+  background-color: #842ba7;
+  background-image: url('../img/contact.png');
+}
+
+
+.container--about,
+.container--about-inverse {
+  position: relative;
+  height: fit-content;
+  width: 100%;
+}
+
+.container__heading--about,
+.container__content--about,
+.container__heading--about-inverse,
+.container__content--about-inverse {
+  text-align: start;
+}
+.container__heading--about,
+.container__heading--about-inverse {
+  padding-top: 1rem;
+}
+.container__content--about,
+.container__content--about-inverse {
+  padding-bottom: 1rem;
+}
+
 /*==================== MEDIA QUERIES ====================*/
 
 
@@ -458,6 +528,24 @@ input[type="number"]::-webkit-outer-spin-button {
   }
   .offer__content {
     display: none;
+  }
+
+  /*==================== ABOUT ====================*/
+  .container--about::before,
+  .container--about-inverse::before {
+    width: 45%;
+    background-size: max(30%, 7rem);
+  }
+
+  .container__heading--about,
+  .container__content--about {
+    margin: 0 auto 0 45%;
+    width: 50%;
+  }
+  .container__heading--about-inverse,
+  .container__content--about-inverse {
+    margin: 0 45% 0 auto;
+    width: 50%;
   }
 }
 
@@ -629,5 +717,24 @@ input[type="number"]::-webkit-outer-spin-button {
 
   .offer__content {
     display: none;
+  }
+
+
+  /*==================== ABOUT ====================*/
+  .container--about::before,
+  .container--about-inverse::before {
+    width: 22%;
+    background-size: contain;
+  }
+
+  .container__heading--about,
+  .container__content--about {
+    margin: 0 auto 0 25%;
+    width: 60%;
+  }
+  .container__heading--about-inverse,
+  .container__content--about-inverse {
+    margin: 0 25% 0 auto;
+    width: 60%;
   }
 }
