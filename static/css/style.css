@@ -119,7 +119,7 @@ input[type="number"]::-webkit-outer-spin-button {
   right: 0 !important;
 }
 
-/*======================================== FOOTER ========================================*/
+/*==================== FOOTER ====================*/
 .container--footer {
   padding-bottom: .25rem;
   background-color: var(--first-color);
@@ -140,13 +140,14 @@ input[type="number"]::-webkit-outer-spin-button {
 
 .container__link {
   display: block;
-  margin: 0 0 .75rem;
+  margin: 2rem 0 0;
   color: var(--second-color);
   font-size: var(--l-font-size);
   font-weight: var(--font-bold);
 }
 
 .container__link--heading {
+  margin: .5rem 0 0;
   font-size: var(--m-font-size);
   font-weight: 400;
 }
@@ -517,6 +518,31 @@ input[type="number"]::-webkit-outer-spin-button {
   #breadcrumb {
     display: block;
     margin: 0 0 0 1.5rem;
+  }
+
+  /*==================== FOOTER ====================*/
+  .container__heading--footer {
+    width: 3rem;
+    height: 3rem;
+    margin: 0 auto 0 10%;
+  }
+
+  .container__body--footer {
+    width: 50%;
+    margin: 0 auto 0 10%;
+    justify-content: space-between;
+  }
+
+  .container__link {
+    font-size: var(--m-font-size);
+  }
+  
+  .container__link--heading {
+    font-size: var(--s-font-size);
+  }
+
+  .container__copyright {
+    margin-top: 2rem;
   }
 
   /*==================== HOME ====================*/
