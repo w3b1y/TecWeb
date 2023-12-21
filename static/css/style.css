@@ -28,6 +28,13 @@
   font-family: var(--body-font);
 }
 
+header {
+  display: flex;
+  padding: 0 1.5rem;
+  justify-content: space-between;
+  background-color: var(--first-color);
+}
+
 ul {
   list-style: none;
 }
@@ -63,27 +70,15 @@ fieldset {
   display: flex;
   top: 0;
   left: 0;
-  width: 100%;
-  padding: 0 1.5rem;
+  width: fit-content;
   height: var(--header-height);
   justify-content: space-between;
   align-items: center;
   background-color: var(--first-color);
 }
 
-.nav__logo,
 .nav__toggle {
   display: flex;
-}
-
-.nav__logo {
-  width: fit-content;
-  height: 2rem;
-  background-image: url("../img/logo.png");
-  color: var(--second-color);
-}
-
-.nav__toggle {
   font-size: 1.5rem;
   font-weight: var(--font-black);
   cursor: pointer;
@@ -161,6 +156,22 @@ fieldset {
 }
 
 /*==================== REUSABLE CSS VARIABLES ====================*/
+.logo {
+  display: flex;
+  margin: auto 0;
+  font-size: var(--m-font-size);
+  width: fit-content;
+  height: fit-content;
+  background-image: url("../img/logo.png");
+  color: var(--second-color);
+}
+.txt2img {
+  background-position: left;
+  background-repeat: no-repeat;
+  background-size: 2rem 2rem;
+} /* se non si riusa txt2img può essere raccolto in logo */
+
+
 .container {
   padding: 1rem 1.5rem 2rem;
 }
@@ -200,12 +211,6 @@ fieldset {
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
-}
-
-.txt2img {
-  background-position: left;
-  background-repeat: no-repeat;
-  background-size: 2rem 2rem;
 }
 
 .show {
@@ -473,7 +478,15 @@ fieldset {
     display: none;
   }
 
+  /*==================== FOOTER ====================*/
+  .container__heading--footer {
+    width: 2rem;
+  }
+
   /*==================== REUSABLE CSS VARIABLES ====================*/
+  .logo {
+    width: 2rem;
+  }
   .txt2img {
     text-indent: -999px;
   }
@@ -585,10 +598,6 @@ fieldset {
     height: calc(var(--header-height) + 2rem);
   }
 
-  .nav__logo {
-    padding-left: 2.5rem;
-  }
-
   .nav__menu {
     height: 100%;
   }
@@ -642,6 +651,11 @@ fieldset {
 
   .container__copyright {
     margin-top: 2rem;
+  }
+
+  /*==================== REUSABLE CSS VARIABLES ====================*/
+  .logo {
+    padding-left: 2.5rem;
   }
 
   /*==================== HOME ====================*/
