@@ -189,6 +189,10 @@ fieldset {
   margin-bottom: 1rem;
 }
 
+.container__heading--main {
+  font-size: var(--xxl-font-size);
+}
+
 .container__footer {
   text-align: center;
   margin-top: 1rem;
@@ -247,7 +251,6 @@ fieldset {
 }
 
 .container__heading--search {
-  font-size: var(--xxl-font-size);
   background-color: rgba(255, 255, 255, 0.5);
   border-radius: .5rem;
 }
@@ -394,20 +397,17 @@ fieldset {
   position: absolute;
   bottom: 0;
   height: 100%;
-  background-position: center;
   background-repeat: no-repeat;
 }
 .container--about::before {
   left: 0;
+  background-position: 25% center;
   clip-path: polygon(0% 100%, 0% 0%, 70% 0%, 100% 100%);
 }
 .container--about-inverse::before {
   right: 0;
+  background-position: 65% center;
   clip-path: polygon(100% 100%, 100% 0%, 30% 0%, 0% 100%);
-}
-#about__presentation::before {
-  background-color: #25ae5e;
-  background-image: url('../img/presentation.png');
 }
 #about__mission::before {
   background-color: #e4861b;
@@ -425,7 +425,6 @@ fieldset {
   background-color: #842ba7;
   background-image: url('../img/contact.png');
 }
-
 
 .container--about,
 .container--about-inverse {
@@ -495,9 +494,9 @@ fieldset {
 
   /*======================================== SEARCH ========================================*/
   .container__heading--search {
-    margin: 15% 0 8%;
+    margin-top: 15%;
+    margin-bottom: 8%;
   }
-
   #swap {
     width: 2.5rem;
     height: 2.5rem;
@@ -554,14 +553,14 @@ fieldset {
   /*==================== ABOUT ====================*/
   .container--about::before,
   .container--about-inverse::before {
-    width: 45%;
-    background-size: max(30%, 7rem);
+    width: 35%;
+    background-size: max(30%, 5.5rem);
   }
 
   .container__heading--about,
   .container__content--about {
     margin: 0 auto 0 45%;
-    width: 50%;
+    width: 60%;
   }
   .container__heading--about-inverse,
   .container__content--about-inverse {
@@ -658,14 +657,17 @@ fieldset {
     padding-left: 2.5rem;
   }
 
+  .container__heading--main {
+    font-size: var(--xxl-font-size);
+  }
+
   /*==================== HOME ====================*/
 
   /*======================================== SEARCH ========================================*/
   .container__heading--search {
-    margin: 8% 0 5%;
-    font-size: var(--xxl-font-size);
+    margin-top: 7%;
+    margin-bottom: 5%;
   }
-
   .container__form--search {
     width: 60%;
     margin: auto;
@@ -749,7 +751,28 @@ fieldset {
   .container--about::before,
   .container--about-inverse::before {
     width: 22%;
-    background-size: contain;
+    background-size: 8rem;
+  }
+
+  #about__presentation::before {
+    width: 45%;
+    background-image: url('../img/about.jpg');
+    background-size: cover;
+    filter: blur(1.2px);
+  }
+  #about__presentation {
+    padding: 6% 0;
+  }
+
+  .container__heading--presentation {
+    margin-right: 15%;
+    margin-left: 55%;
+    margin-bottom: 2% !important;
+    width: 30%;
+  }
+  .container__content--presentation {
+    width: 45%;
+    margin: 0 5% 1% 50%;
   }
 
   .container__heading--about,
