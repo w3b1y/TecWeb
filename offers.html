@@ -12,33 +12,43 @@
   <title> Offerte </title>
 </head>
 <body>
-  <nav>
-    <h1 class="nav__logo"></h1>
-    <div class="nav__menu">
-      <ul class="nav__list">
-        <li class="nav__item">
-          <a href="../templates/index.html">Home</a>
-        </li>
-        <li class="nav__item">
-          <a href="../templates/about.html">Chi Siamo</a>
-        </li>
-        <li class="nav__item">
-          <span>Offerte</span>
-        </li>
-        <li class="nav__item">
-          <a href="../templates/subscriptions.html">Abbonamenti</a>
-        </li>
-      </ul>
-      
-      <div class="nav__close">
-        <span class="ri-close-line"></span>
+  <header>
+    <h1 class="logo txt2img">
+      IBERU TRASPORTI
+    </h1>
+    <nav id="navbar" role="navigation">
+      <div class="nav__menu js-nav__menu">
+        <ul class="nav__list">
+          <li class="nav__item js-nav__item visually-hidden">
+            <a class="nav__link" href="#main">Salta la barra di navigazione</a>
+          </li>
+          <li class="nav__item js-nav__item">
+            <a class="nav__link" href="index.html" lang="en-US">Home</a>
+          </li>
+          <li class="nav__item js-nav__item">
+            <a class="nav__link" href="about.html">Chi Siamo</a>
+          </li>
+          <li class="nav__item js-nav__item">
+            <span class="nav__link">Offerte</span>
+          </li>
+          <li class="nav__item js-nav__item">
+            <a class="nav__link" href="subscriptions.html">Abbonamenti</a>
+          </li>
+          <li class="nav__item js-nav__item">
+            <a class="nav__link" href="helps.html">Help</a>
+          </li>
+        </ul>
+        
+        <div class="nav__close js-nav__close">
+          <span class="ri-close-line"></span>
+        </div>
       </div>
-    </div>
-    
-    <div class="nav__toggle">
-      <span class="ri-menu-line"></span>
-    </div>
-  </nav>
+      
+      <div class="nav__toggle js-nav__toggle">
+        <span class="ri-menu-line"></span>
+      </div>
+    </nav>
+  </header>
   <nav id="breadcrumb">
     <p>Ti trovi in: Offerte</p>
   </nav>
@@ -57,7 +67,7 @@
           Che tu stia pianificando una vacanza natalizia, una fuga romantica o desideri celebrare un'occasione speciale, le nostre Super Offerte sono progettate per trasformare ogni viaggio in un'esperienza indimenticabile.
         </p>
       </header>
-      <a class="card__offer" href="#">
+      <a class="offer" href="#">
         <div class="offer__body">
           <h3 class="offer__body-title">Natale</h3>
           <p class="offer__body-content">
@@ -67,7 +77,7 @@
           </p>
         </div>
       </a>
-      <a class="card__offer" href="#">
+      <a class="offer" href="#">
         <div class="offer__body">
           <h3 class="offer__body-title">Capodanno</h3>
           <p class="offer__body-content">
@@ -88,7 +98,7 @@
           Pianifica il tuo viaggio perfetto con le nostre Offerte Speciali e crea ricordi indimenticabili.
         </p>
       </header>
-      <a class="card__offer" href="#">
+      <a class="offer" href="#">
         <div class="offer__body">
           <h3 class="offer__body-title">Coppie</h3>
           <p class="offer__body-content">
@@ -97,7 +107,7 @@
           </p>
         </div>
       </a>
-      <a class="card__offer" href="#">
+      <a class="offer" href="#">
         <div class="offer__body">
           <h3 class="offer__body-title">Giovani</h3>
           <p class="offer__body-content">
@@ -108,7 +118,7 @@
           </p>
         </div>
       </a>
-      <a class="card__offer" href="#">
+      <a class="offer" href="#">
         <div class="offer__body">
           <h3 class="offer__body-title">Senior</h3>
           <p class="offer__body-content">
@@ -128,7 +138,7 @@
           Vivete insieme esperienze uniche e indimenticabili. Pianifica la tua avventura oggi!
         </p>
       </header>
-      <a class="card__offer" href="#">
+      <a class="offer" href="#">
         <div class="offer__body">
           <h3 class="offer__body-title">Famiglie</h3>
           <p class="offer__body-content">
@@ -138,7 +148,7 @@
           </p>
         </div>
       </a>
-      <a class="card__offer" href="#">
+      <a class="offer" href="#">
         <div class="offer__body">
           <h3 class="offer__body-title">Gruppi</h3>
           <p class="offer__body-content">
@@ -148,7 +158,7 @@
           </p>
         </div>
       </a>
-      <a class="card__offer" href="#">
+      <a class="offer" href="#">
         <div class="offer__body">
           <h3 class="offer__body-title">Scuole</h3>
           <p class="offer__body-content">
@@ -168,7 +178,7 @@
           La libertà di viaggiare è nelle tue mani. Acquista il tuo carnet oggi e inizia un'avventura senza confini!
         </p>
       </header>
-      <a class="card__offer" href="#">
+      <a class="offer" href="#">
         <div class="offer__body">
           <h3 class="offer__body-title">5 viaggi</h3>
           <p class="offer__body-content">
@@ -178,7 +188,7 @@
           </p>
         </div>
       </a>
-      <a class="card__offer" href="#">
+      <a class="offer" href="#">
         <div class="offer__body">
           <h3 class="offer__body-title">10 viaggi</h3>
           <p class="offer__body-content">
@@ -188,7 +198,7 @@
           </p>
         </div>
       </a>
-      <a class="card__offer" href="#">
+      <a class="offer" href="#">
         <div class="offer__body">
           <h3 class="offer__body-title">15 viaggi</h3>
           <p class="offer__body-content">
@@ -200,8 +210,45 @@
       </a>
     </section> 
   </main>
-  <footer>
-    <p>Societa' Viaggi - <span lang="en">All rights reserved.</span></p>
+  <footer class="container container--footer">
+    <h2 class="container__heading--footer txt2img">IBERU TRASPORTI</h2>
+    <div class="container__body--footer">
+      <div>
+        <a href="index.html" class="container__link" lang="en-US">Homepage</a>
+        <ul>
+          <li>
+            <a href="index.html/#index__search" class="container__link container__link--heading">Ricerca Biglietto</a>
+          </li>
+          <li>
+            <a href="index.html/#index__news" class="container__link container__link--heading">Notizie</a>
+          </li>
+          <li>
+            <a href="index.html/#index__offers" class="container__link container__link--heading">Offerte</a>
+          </li>
+        </ul>
+        <a href="about.html" class="container__link">Chi Siamo</a>
+      </div>
+      <div>
+        <a href="offers.html" class="container__link">Offerte</a>
+        <ul>
+          <li>
+            <a href="offers.html/#offers__super" class="container__link container__link--heading">Ricerca Biglietto</a>
+          </li>
+          <li>
+            <a href="offers.html/#offers__special" class="container__link container__link--heading">Notizie</a>
+          </li>
+          <li>
+            <a href="offers.html/#offers__family" class="container__link container__link--heading">Offerte</a>
+          </li>
+          <li>
+            <a href="offers.html/#offers__carnet" class="container__link container__link--heading">Offerte</a>
+          </li>
+        </ul>
+        <a href="subscriptions.html" class="container__link">Abbonamenti</a>
+        <a href="helps.html" class="container__link"><abbr title="Informazioni">Info</abbr></a>
+      </div>
+    </div>  
+    <p class="container__copyright">Societa' Viaggi - <span lang="en-US">All rights reserved.</span></p>
   </footer>
 </body>
 </html>
