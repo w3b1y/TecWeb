@@ -6,9 +6,10 @@
   <meta name="description" content="Scopri i vantaggi degli abbonamenti treni con offerte mensili e pacchetti viaggio personalizzati. Approfitta dei vantaggi esclusivi.">
   <meta name="author" content="Mang00o, Fabbricca, ElenaaaCh, Pax">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="shortcut icon" href="">
-  <link rel="stylesheet" href="/static/css/style.css">
-  <script defer src="/static/js/main.js"></script>
+  <link rel="shortcut icon" href="./static/img/logo.png">
+  <link rel="stylesheet" href="./static/css/style.css">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+  <script defer src="./static/js/main.js"></script>
   <title> Abbonamenti </title>
 </head>
 <body>
@@ -52,30 +53,91 @@
   <nav id="breadcrumb">
     <p>Ti trovi in: Abbonamenti</p>
   </nav>
-  <main>
-    <section class="card__subscription">
+  <main id="main" role="main" class="container container--background">
+    <h2 class="container__heading container__heading--main">ABBONAMENTI</h2>
+    <section class="subscription">
       <header class="subscription__header">
-        <h3 class="subscription__header-users">Studenti</h3>
-        <h4 class="subscription__header-title">Abbonamento studenti</h4>
-        <p class="subscription__header-intro">Scopri tutte gli abbonamenti ed i vantaggi che Iberu propone agli studenti!</p>
-        <p class="subscription__header-description">A differenza delle altre linee ferroviarie Iberu offre
+        <h3 class="subscription__user">Studenti</h3>
+        <div class="subscription__description">
+          <h4 class="description__title">Abbonamento studenti</h4>
+          <p class="description--reduced">Scopri tutte gli abbonamenti ed i vantaggi che Iberu propone agli over 65!</p>
+          <p class="description">A differenza delle altre linee ferroviarie Iberu offre
           delle tariffe flat per i percorsi permettendoti di viaggiare all'interno del territorio liberamente, senza quindi essere limitati ad una singola tratta. 
           Inoltre i nostri treni di ultima generazione assicurano un viaggio senza ritardi.</p>
+        </div>
       </header>
       <div class="subscription__body">
-        <div class="subscription__body-suboffer">
-          <h5 class="suboffer-title">Provinciali</h5>
-          <span class="suboffer-price">costo mensile <a href="#" class="price">$29.99</a></span>
-        </div>
-        <div class="subscription__body-suboffer">
-          <h5 class="suboffer-title">Regionali</h5>
-          <span class="suboffer-price">costo mensile <a href="#" class="price">$55.50</a></span>
-        </div>
-        <div class="subscription__body-suboffer">
-          <h5 class="suboffer-title">Nazionali</h5>
-          <span class="suboffer-price">costo mensile <a href="#" class="price">$95.50</a></span>
-        </div>
+        <h3 class="container__heading container__heading--left">Offerte</h3>
+        <a href="#" class="subscription__offer">
+          <h5 class="offer__title">Provinciali</h5>
+          <p class="offer__price">costo mensile: <span class="price submit">$29.99</span></p>
+        </a>
+        <a href="#" class="subscription__offer">
+          <h5 class="offer__title">Regionali</h5>
+          <p class="offer__price">costo mensile: <span class="price submit">$55.50</span></p>
+        </a>
+        <a href="#" class="subscription__offer">
+          <h5 class="offer__title">Nazionali</h5>
+          <p class="offer__price">costo mensile: <span class="price submit">$95.50</span></p>
+        </a>
       </div>
+      <button aria-label="Espandi la notizia" class="ri-arrow-down-s-line news__expand js-news__expand"></button>
+    </section>
+    <section class="subscription">
+      <header class="subscription__header">
+        <h3 class="subscription__user">Over 65</h3>
+        <div class="subscription__description">
+          <h4 class="description__title">Abbonamento over 65</h4>
+          <p class="description--reduced">Scopri tutte gli abbonamenti ed i vantaggi che Iberu propone agli over 65!</p>
+          <p class="description">A differenza delle altre linee ferroviarie Iberu offre
+          delle tariffe flat per i percorsi permettendoti di viaggiare all'interno del territorio liberamente, senza quindi essere limitati ad una singola tratta. 
+          Inoltre i nostri treni di ultima generazione assicurano un viaggio senza ritardi.</p>
+        </div>
+      </header>
+      <div class="subscription__body">
+        <h3 class="container__heading container__heading--left">Offerte</h3>
+        <a href="#" class="subscription__offer">
+          <h5 class="offer__title">Provinciali</h5>
+          <p class="offer__price">costo mensile: <span class="price submit">$29.99</span></p>
+        </a>
+        <a href="#" class="subscription__offer">
+          <h5 class="offer__title">Regionali</h5>
+          <p class="offer__price">costo mensile: <span class="price submit">$55.50</span></p>
+        </a>
+        <a href="#" class="subscription__offer">
+          <h5 class="offer__title">Nazionali</h5>
+          <p class="offer__price">costo mensile: <span class="price submit">$95.50</span></p>
+        </a>
+      </div>
+      <button aria-label="Espandi la notizia" class="ri-arrow-down-s-line news__expand js-news__expand"></button>
+    </section>
+    <section class="subscription">
+      <header class="subscription__header">
+        <h3 class="subscription__user">Studenti</h3>
+        <div class="subscription__description">
+          <h4 class="description__title">Abbonamento over 65</h4>
+          <p class="description--reduced">Scopri tutte gli abbonamenti ed i vantaggi che Iberu propone agli over 65!</p>
+          <p class="description">A differenza delle altre linee ferroviarie Iberu offre
+          delle tariffe flat per i percorsi permettendoti di viaggiare all'interno del territorio liberamente, senza quindi essere limitati ad una singola tratta. 
+          Inoltre i nostri treni di ultima generazione assicurano un viaggio senza ritardi.</p>
+        </div>
+      </header>
+      <div class="subscription__body">
+        <h3 class="container__heading container__heading--left">Offerte</h3>
+        <a href="#" class="subscription__offer">
+          <h5 class="offer__title">Provinciali</h5>
+          <p class="offer__price">costo mensile: <span class="price submit">$29.99</span></p>
+        </a>
+        <a href="#" class="subscription__offer">
+          <h5 class="offer__title">Regionali</h5>
+          <p class="offer__price">costo mensile: <span class="price submit">$55.50</span></p>
+        </a>
+        <a href="#" class="subscription__offer">
+          <h5 class="offer__title">Nazionali</h5>
+          <p class="offer__price">costo mensile: <span class="price submit">$95.50</span></p>
+        </a>
+      </div>
+      <button aria-label="Espandi la notizia" class="ri-arrow-down-s-line news__expand js-news__expand"></button>
     </section>
   </main>
   <footer class="container container--footer">
@@ -85,13 +147,13 @@
         <a href="index.html" class="container__link" lang="en-US">Homepage</a>
         <ul>
           <li>
-            <a href="index.html/#index__search" class="container__link container__link--heading">Ricerca Biglietto</a>
+            <a href="index.html#index__search" class="container__link container__link--heading">Ricerca Biglietto</a>
           </li>
           <li>
-            <a href="index.html/#index__news" class="container__link container__link--heading">Notizie</a>
+            <a href="index.html#index__news" class="container__link container__link--heading">Notizie</a>
           </li>
           <li>
-            <a href="index.html/#index__offers" class="container__link container__link--heading">Offerte</a>
+            <a href="index.html#index__offers" class="container__link container__link--heading">Offerte</a>
           </li>
         </ul>
         <a href="about.html" class="container__link">Chi Siamo</a>
@@ -100,16 +162,16 @@
         <a href="offers.html" class="container__link">Offerte</a>
         <ul>
           <li>
-            <a href="offers.html/#offers__super" class="container__link container__link--heading">Ricerca Biglietto</a>
+            <a href="offers.html#offers__super" class="container__link container__link--heading">Super offerte</a>
           </li>
           <li>
-            <a href="offers.html/#offers__special" class="container__link container__link--heading">Notizie</a>
+            <a href="offers.html#offers__special" class="container__link container__link--heading">Offerte speciali</a>
           </li>
           <li>
-            <a href="offers.html/#offers__family" class="container__link container__link--heading">Offerte</a>
+            <a href="offers.html#offers__family" class="container__link container__link--heading">Offerte per famiglie e gruppi</a>
           </li>
           <li>
-            <a href="offers.html/#offers__carnet" class="container__link container__link--heading">Offerte</a>
+            <a href="offers.html#offers__carnet" class="container__link container__link--heading">Carnet</a>
           </li>
         </ul>
         <a href="subscriptions.html" class="container__link">Abbonamenti</a>

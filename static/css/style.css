@@ -12,7 +12,7 @@
   /*========== Font ==========*/
   --body-font: 'Afacad', sans-serif;
   --xxl-font-size: 2rem;
-  --xl-font-size: 1.25rem;
+  --xl-font-size: 1.5rem;
   --l-font-size: 1rem;
   --m-font-size: .875rem;
   --s-font-size: .813rem;
@@ -35,6 +35,10 @@ header {
   background-color: var(--first-color);
 }
 
+main {
+  min-height: 100vh;
+}
+
 ul {
   list-style: none;
 }
@@ -55,12 +59,6 @@ input[type="number"]::-webkit-outer-spin-button {
 
 fieldset {
   border: none;
-}
-
-#submit {
-  font-weight: var(--font-bold);
-  color: var(--second-color);
-  background-color: var(--first-color);
 }
 
 
@@ -171,6 +169,17 @@ fieldset {
   background-size: 2rem 2rem;
 } /* se non si riusa txt2img può essere raccolto in logo */
 
+.submit {
+  margin: .1rem 0;
+  padding: 0 .5rem;
+  height: 2.2rem;
+  border: 3px solid var(--first-color);
+  border-radius: 5rem;
+  font-size: var(--l-font-size);
+  font-weight: var(--font-bold);
+  color: var(--second-color);
+  background-color: var(--first-color);
+}
 
 .container {
   padding: 1rem 1.5rem 2rem;
@@ -193,6 +202,10 @@ fieldset {
 
 .container__heading--main {
   font-size: var(--xxl-font-size);
+}
+.container__heading--left {
+  padding: 1.5rem;
+  text-align: start;
 }
 
 .heading__paragraph {
@@ -386,6 +399,12 @@ fieldset {
   background-color: rgba(163, 0, 0, 0.785);
   z-index: 1;
 }
+.offer__price {
+  display: block;
+  height: fit-content;
+  margin: auto 0 auto auto;
+  color: var(--third-color);
+}
 
 #offer__winter-days::before {
   background-image: url('../img/winter-days.jpg');
@@ -487,6 +506,64 @@ fieldset {
 
 /*==================== OFFERS ====================*/
 
+
+
+/*==================== SUBSCRIPTIONS ====================*/
+.subscription {
+  position: relative;
+  display: block;
+  margin: 1rem auto;
+  padding: .8rem .25rem 1.2rem;
+  border: 4px solid var(--first-color);
+  border-radius: 1.5rem;
+  background-color: var(--second-color);
+}
+.subscription__header {
+  display: flex;
+  background-color: var(--second-color);
+}
+.subscription__user {
+  flex: 1;
+  margin: auto 1rem auto auto;
+  font-size: var(--xl-font-size);
+  color: var(--first-color);
+}
+.description {
+  display: none;
+}
+.description__title {
+  font-size: var(--l-font-size);
+}
+
+.subscription__offer {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  margin: .2rem auto;
+  padding: .8rem .25rem 1.2rem;
+  border: 4px solid var(--first-color);
+  border-radius: 1.5rem;
+  text-decoration: none;
+}
+
+.subscription__expand {
+  background-color: transparent;
+  border: none;
+  color: var(--first-color);
+  font-weight: var(--font-bold);
+  font-size: var(--xxl-font-size);
+}
+
+.subscription__expand {
+  background-color: transparent;
+  border: none;
+  color: var(--first-color);
+  font-weight: var(--font-bold);
+  font-size: var(--xxl-font-size);
+}
+
+
+
 /*==================== MEDIA QUERIES ====================*/
 
 
@@ -557,9 +634,13 @@ fieldset {
 
   /*======================================== NEWS ========================================*/
   .news {
-    margin: 0 0 0.5rem;
+    margin: 0 auto 0.5rem;
+    max-width: min(100%, 40rem);
   }
 
+  .news__title {
+    font-size: var(--xl-font-size);
+  }
   .news__content {
     display: none;
     padding: 0 0 .5rem;
@@ -599,12 +680,48 @@ fieldset {
   .container__heading--about,
   .container__content--about {
     margin: 0 auto 0 45%;
-    width: 60%;
   }
   .container__heading--about-inverse,
   .container__content--about-inverse {
     margin: 0 45% 0 auto;
     width: 50%;
+  }
+
+  .about,
+  .about-inverse {
+    margin: 1rem 1.5rem;
+  }
+
+
+  /*==================== SUBSCRIPTIONS ====================*/
+  .subscription__header {
+    padding: 0 0 .5rem 0;
+    justify-content: space-between;
+  }
+  .subscription__user {
+    flex: 0.5;
+    margin: auto 1rem auto 0;
+    text-align: center;
+  }
+  .subscription__description {
+    flex: 2;
+    height: fit-content;
+    margin: auto;
+  }
+
+  .subscription__body {
+    display: none;
+  }
+  .subscription__expand {
+    position: absolute;
+    width: 100%;
+    height: fit-content;
+    bottom: 0;
+    right: 50%;
+    transform: translateX(50%);
+  }
+  .subscription__expand.rotate {
+    transform: translateX(50%) rotate(180deg) !important;
   }
 }
 
@@ -613,7 +730,7 @@ fieldset {
     --xxl-font-size: 5.5rem;
     --xl-font-size: 3.5rem;
     --l-font-size: 2.75rem;
-    --m-font-size: 1.5rem;
+    --m-font-size: 1.65rem;
     --s-font-size: 1.1rem;
     --xs-font-size: .813rem;
   }
@@ -700,8 +817,20 @@ fieldset {
     padding-left: 2.5rem;
   }
 
+  .submit {
+    margin: .3rem 0;
+    padding: 0 1rem;
+    height: 3.4rem;
+    font-size: var(--m-font-size);
+  }
+
   .container__heading--main {
     font-size: var(--xxl-font-size);
+  }
+
+  .container__heading--left {
+    margin: 0;
+    font-size: var(--m-font-size);
   }
 
   /*==================== HOME ====================*/
@@ -780,6 +909,9 @@ fieldset {
     transform: scale(1.1);
     transition: transform 0.3s ease-in-out;
   }
+  .offer__title {
+    font-size: var(--m-font-size);
+  }
 
   .offer:hover .offer__content {
     display: block;
@@ -788,6 +920,7 @@ fieldset {
   .offer__content {
     display: none;
   }
+  
 
 
   /*==================== ABOUT ====================*/
@@ -832,5 +965,28 @@ fieldset {
   .container__content--about-inverse {
     margin: 0 25% 0 auto;
     width: 60%;
+  }
+
+
+  /*==================== SUBSCRIPTIONS ====================*/
+  .subscription {
+    width: 65%;
+  }
+  .subscription__user {
+    flex: 0.75;
+  }
+  .subscription__description {
+    flex: 2;
+  }
+  .description {
+    display: block;
+  }
+  .description--reduced {
+    display: none;
+  }
+
+  .subscription__offer {
+    width: 94%;
+    margin: .2rem auto;
   }
 }
