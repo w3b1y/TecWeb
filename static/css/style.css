@@ -412,6 +412,38 @@ fieldset {
 #offer__christmas-gift::before {
   background-image: url('../img/christmas-present.jpg');
 }
+#offer__new-year::before {
+  background-image: url('../img/new-year.jpg');
+}
+#offer__love::before {
+  background-image: url('../img/love.jpg');
+}
+#offer__young::before {
+  background-image: url('../img/young.jpg');
+}
+#offer__old::before {
+  background-image: url('../img/old.jpg');
+}
+#offer__family::before {
+  background-image: url('../img/family.jpg');
+}
+#offer__group::before {
+  background-image: url('../img/group.jpg');
+}
+#offer__school::before {
+  background-image: url('../img/school.jpg');
+}
+#offer__five::before {
+  background-image: url('../img/five.jpg');
+}
+#offer__ten::before {
+  background-image: url('../img/ten.jpg');
+}
+#offer__fifteen::before {
+  background-image: url('../img/fifteen.jpg');
+}
+
+
 
 
 /*==================== ABOUT ====================*/
