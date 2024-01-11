@@ -56,87 +56,132 @@
   <main id="main" role="main" class="container container--background">
     <h2 class="container__heading container__heading--main">ABBONAMENTI</h2>
     <section class="subscription">
-      <header class="subscription__header">
-        <h3 class="subscription__user">Studenti</h3>
-        <div class="subscription__description">
-          <h4 class="description__title">Abbonamento studenti</h4>
-          <p class="description--reduced">Scopri tutte gli abbonamenti ed i vantaggi che Iberu propone agli over 65!</p>
-          <p class="description">A differenza delle altre linee ferroviarie Iberu offre
-          delle tariffe flat per i percorsi permettendoti di viaggiare all'interno del territorio liberamente, senza quindi essere limitati ad una singola tratta. 
-          Inoltre i nostri treni di ultima generazione assicurano un viaggio senza ritardi.</p>
-        </div>
+      <header id="subscription__student" class="subscription__header container--dynamic">
+        <h4 class="subscription__title dynamic-margin">Abbonamento studenti</h4>
+        <p class="subscription__description--reduced dynamic-margin">Scopri tutte gli abbonamenti ed i vantaggi che Iberu propone agli studenti</p>
+        <p class="subscription__description dynamic-margin">
+          Iberu crede nell'istruzione e nella formazione dei giovani, per questo offre degli abbonamenti speciali per gli studenti.
+          A differenza delle altre compagnie ferroviarie Iberu offre una tariffa flat per i percorsi permettendoti di viaggiare all'interno del territorio liberamente, senza quindi essere limitati ad una singola tratta.
+        </p>
       </header>
-      <div class="subscription__body">
-        <h3 class="container__heading container__heading--left">Offerte</h3>
-        <a href="#" class="subscription__offer">
-          <h5 class="offer__title">Provinciali</h5>
-          <p class="offer__price">costo mensile: <span class="price submit">$29.99</span></p>
-        </a>
-        <a href="#" class="subscription__offer">
-          <h5 class="offer__title">Regionali</h5>
-          <p class="offer__price">costo mensile: <span class="price submit">$55.50</span></p>
-        </a>
-        <a href="#" class="subscription__offer">
-          <h5 class="offer__title">Nazionali</h5>
-          <p class="offer__price">costo mensile: <span class="price submit">$95.50</span></p>
-        </a>
-      </div>
+      <ul class="subscription__body">
+        <li class="subscription__offer">
+          <a href="#">
+            <h5 class="offer__title">Provinciali</h5>
+            <p class="offer__description">
+              L'abbonamento provinciale per studenti copre tutte le tratte interne alla provincia
+            </p>
+            <p class="offer__description">costo mensile:</p>
+            <button class="price submit">$29.99</button>
+          </a>
+        </li>
+        <li class="subscription__offer">
+          <a href="#">
+            <h5 class="offer__title">Regionali</h5>
+            <p class="offer__description">
+              L'abbonamento regionale per studenti copre tutte le tratte interne alla regione
+            </p>
+            <p class="offer__description">costo mensile:</p>
+            <button class="price submit">$55.50</button>
+          </a>
+        </li>
+        <li class="subscription__offer">
+          <a href="#">
+            <h5 class="offer__title">Nazionali</h5>
+            <p class="offer__description">
+              L'abbonamento nazionale per studenti copre tutte le tratte interne alla nazionale
+            </p>
+            <p class="offer__description">costo mensile:</p>
+            <button class="price submit">$95.50</button>
+          </a>
+        </li>
+      </ul>
       <button aria-label="Espandi la notizia" class="ri-arrow-down-s-line news__expand js-news__expand"></button>
     </section>
     <section class="subscription">
-      <header class="subscription__header">
-        <h3 class="subscription__user">Over 65</h3>
-        <div class="subscription__description">
-          <h4 class="description__title">Abbonamento over 65</h4>
-          <p class="description--reduced">Scopri tutte gli abbonamenti ed i vantaggi che Iberu propone agli over 65!</p>
-          <p class="description">A differenza delle altre linee ferroviarie Iberu offre
-          delle tariffe flat per i percorsi permettendoti di viaggiare all'interno del territorio liberamente, senza quindi essere limitati ad una singola tratta. 
-          Inoltre i nostri treni di ultima generazione assicurano un viaggio senza ritardi.</p>
-        </div>
+      <header id="subscription__student" class="subscription__header container--dynamic">
+        <h4 class="subscription__title dynamic-margin">Abbonamento lavoratori</h4>
+        <p class="subscription__description--reduced dynamic-margin">Scopri tutte gli abbonamenti ed i vantaggi che Iberu offre ai lavoratori</p>
+        <p class="subscription__description dynamic-margin">
+          Iberu sostiene la mobilità e la comodità dei lavoratori, riconoscendo l'importanza della loro efficienza e benessere. 
+          Con l'abbonamento lavoratori di Iberu, potrai godere di vantaggi esclusivi progettati appositamente per le tue esigenze. Contrariamente alle consuete restrizioni, offriamo una formula tariffaria flessibile, consentendoti di percorrere liberamente il territorio senza vincoli di tratta. Investiamo nel tuo comfort e nella tua produttività, offrendoti la soluzione ideale per viaggiare senza pensieri. Scegli Iberu e vivi un'esperienza di viaggio su misura per te.
+        </p>
       </header>
-      <div class="subscription__body">
-        <h3 class="container__heading container__heading--left">Offerte</h3>
-        <a href="#" class="subscription__offer">
-          <h5 class="offer__title">Provinciali</h5>
-          <p class="offer__price">costo mensile: <span class="price submit">$29.99</span></p>
-        </a>
-        <a href="#" class="subscription__offer">
-          <h5 class="offer__title">Regionali</h5>
-          <p class="offer__price">costo mensile: <span class="price submit">$55.50</span></p>
-        </a>
-        <a href="#" class="subscription__offer">
-          <h5 class="offer__title">Nazionali</h5>
-          <p class="offer__price">costo mensile: <span class="price submit">$95.50</span></p>
-        </a>
-      </div>
+      <ul class="subscription__body">
+        <li class="subscription__offer">
+          <a href="#">
+            <h5 class="offer__title">100 km</h5>
+            <p class="offer__description">
+              L'abbonamento 100km per lavoratori permette di viaggiare liberamente fino ad un massimo di 100km al giorno
+            </p>
+            <p class="offer__description">costo mensile:</p>
+            <button class="price submit">$29.99</button>
+          </a>
+        </li>
+        <li class="subscription__offer">
+          <a href="#">
+            <h5 class="offer__title">200km</h5>
+            <p class="offer__description">
+              L'abbonamento 100km per lavoratori permette di viaggiare liberamente fino ad un massimo di 200km al giorno
+            </p>
+            <p class="offer__description">costo mensile:</p>
+            <button class="price submit">$55.50</button>
+          </a>
+        </li>
+        <li class="subscription__offer">
+          <a href="#">
+            <h5 class="offer__title">500km</h5>
+            <p class="offer__description">
+              L'abbonamento 100km per lavoratori permette di viaggiare liberamente fino ad un massimo di 500km al giorno
+            </p>
+            <p class="offer__description">costo mensile:</p>
+            <button class="price submit">$95.50</button>
+          </a>
+        </li>
+      </ul>
       <button aria-label="Espandi la notizia" class="ri-arrow-down-s-line news__expand js-news__expand"></button>
     </section>
     <section class="subscription">
-      <header class="subscription__header">
-        <h3 class="subscription__user">Studenti</h3>
-        <div class="subscription__description">
-          <h4 class="description__title">Abbonamento over 65</h4>
-          <p class="description--reduced">Scopri tutte gli abbonamenti ed i vantaggi che Iberu propone agli over 65!</p>
-          <p class="description">A differenza delle altre linee ferroviarie Iberu offre
-          delle tariffe flat per i percorsi permettendoti di viaggiare all'interno del territorio liberamente, senza quindi essere limitati ad una singola tratta. 
-          Inoltre i nostri treni di ultima generazione assicurano un viaggio senza ritardi.</p>
-        </div>
+      <header id="subscription__student" class="subscription__header container--dynamic">
+        <h4 class="subscription__title dynamic-margin">Abbonamento generico</h4>
+        <p class="subscription__description--reduced dynamic-margin">Scopri tutte gli abbonamenti offerti da Iberu</p>
+        <p class="subscription__description dynamic-margin">
+          Iberu si impegna a rendere il viaggio un'esperienza accessibile per tutti. 
+          Con i nostri abbonamenti, ti offriamo la flessibilità di esplorare il territorio senza vincoli specifici, adattandoci alle tue esigenze. La nostra ampia gamma di opzioni ti consente di personalizzare il tuo percorso in base alle tue preferenze, garantendo comodità e convenienza. Scegli Iberu per un viaggio senza complicazioni, dove la libertà di spostarti è nelle tue mani. Con tariffe competitive e un servizio di qualità, Iberu è la scelta ideale per chiunque desideri vivere un'esperienza di viaggio senza limiti.
+        </p>
       </header>
-      <div class="subscription__body">
-        <h3 class="container__heading container__heading--left">Offerte</h3>
-        <a href="#" class="subscription__offer">
-          <h5 class="offer__title">Provinciali</h5>
-          <p class="offer__price">costo mensile: <span class="price submit">$29.99</span></p>
-        </a>
-        <a href="#" class="subscription__offer">
-          <h5 class="offer__title">Regionali</h5>
-          <p class="offer__price">costo mensile: <span class="price submit">$55.50</span></p>
-        </a>
-        <a href="#" class="subscription__offer">
-          <h5 class="offer__title">Nazionali</h5>
-          <p class="offer__price">costo mensile: <span class="price submit">$95.50</span></p>
-        </a>
-      </div>
+      <ul class="subscription__body">
+        <li class="subscription__offer">
+          <a href="#">
+            <h5 class="offer__title">Base</h5>
+            <p class="offer__description">
+              L'abbonamento provinciale per studenti copre tutte le tratte interne alla provincia
+            </p>
+            <p class="offer__description">costo mensile:</p>
+            <button class="price submit">$29.99</button>
+          </a>
+        </li>
+        <li class="subscription__offer">
+          <a href="#">
+            <h5 class="offer__title">Viaggiatore</h5>
+            <p class="offer__description">
+              L'abbonamento regionale per studenti copre tutte le tratte interne alla regione
+            </p>
+            <p class="offer__description">costo mensile:</p>
+            <button class="price submit">$55.50</button>
+          </a>
+        </li>
+        <li class="subscription__offer">
+          <a href="#">
+            <h5 class="offer__title">Esploratore</h5>
+            <p class="offer__description">
+              L'abbonamento nazionale per studenti copre tutte le tratte interne alla nazionale
+            </p>
+            <p class="offer__description">costo mensile:</p>
+            <button class="price submit">$95.50</button>
+          </a>
+        </li>
+      </ul>
       <button aria-label="Espandi la notizia" class="ri-arrow-down-s-line news__expand js-news__expand"></button>
     </section>
   </main>
