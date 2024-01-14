@@ -382,7 +382,6 @@ fieldset {
   background-repeat: no-repeat;
   background-size: cover;
   border-radius: 1.5rem;
-  filter: blur(1px);
   z-index: 1;
 }
 .offer {
@@ -464,7 +463,7 @@ fieldset {
 .container--dynamic::before {
   left: 0;
   background-position: 25% center;
-  clip-path: polygon(0% 100%, 0% 0%, 70% 0%, 100% 100%);
+  clip-path: polygon(0% 100%, 0% 0%, 100% 0%, 70% 100%);
 }
 .container--dynamic-inverse::before {
   right: 0;
@@ -527,7 +526,7 @@ fieldset {
 /*==================== SUBSCRIPTIONS ====================*/
 .subscription__header::before {
   content: "";
-  background-color: #a30000;
+  background-color: var(--first-color);
 }
 
 .subscription {
@@ -587,169 +586,81 @@ fieldset {
   font-size: var(--xxl-font-size);
 }
 
+.student {
+  border: 4px solid #218946;
+}
 #subscription__student::before {
+  background-color: #218946;
   background-image: url('../img/student.png');
   background-size: 45%;
   background-position: 40%;
 }
 
+/*==================== HELP ====================*/
+.faq--list {
+  margin-bottom: 2.5rem;
+}
 
+.faq::before {
+  content: "";
+  background-color: #a30000;
+  background-position: 35%;
+  background-repeat: no-repeat;
+}
+.faq {
+  position: relative;
+  display: flex;
+  margin: 0.2rem auto;
+  border-radius: 1.5rem;
+  background-color: var(--second-color);
+}
+.faq__header {
+  width: 0;
+  text-indent: -999px;
+}
+
+.ticket::before {
+  background-color: #218946;
+  background-image: url("../img/ticket.png");
+}
+.ticket {
+  border: 4px solid #218946;
+}
+.wheelchair::before {
+  background-color: #298dc2;
+  background-image: url("../img/wheelchair.png");
+}
+.wheelchair {
+  border: 4px solid #298dc2;
+}
+.money::before {
+  background-color: #e4861b;
+  background-image: url("../img/money.png");
+}
+.money {
+  border: 4px solid #e4861b;
+}
+.offers__icon::before {
+  background-color: #842ba7;
+  background-image: url("../img/offers_icon.png");
+}
+.offers__icon {
+  border: 4px solid #842ba7;
+}
+
+.faq--question {
+  margin: .2rem auto 0;
+  padding: .8rem .25rem .5rem;
+  font-weight: var(--font-bold);
+}
+.faq--answer {
+  margin: 0 auto .2rem;
+  padding: 0 .25rem .8rem;
+}
 
 /*==================== MEDIA QUERIES ====================*/
 
 
-@media (max-width: 1024px) {
-
-  #submit {
-    width: 100%;
-    font-size:  var(--xl-font-size);
-  }
-
-  /*==================== NAVBAR ====================*/
-  .nav__menu {
-    position: fixed;
-    background-color: var(--second-color);
-    backdrop-filter: blur(32px);
-    -webkit-backdrop-filter: blur(32px);
-    top: 0;
-    right: -100%;
-    width: 100%;
-    height: 100%;
-    transition: right .3s;
-    z-index: 2;
-  }
-
-
-  #breadcrumb {
-    display: none;
-  }
-
-  /*==================== FOOTER ====================*/
-  .container__heading--footer {
-    width: 2rem;
-  }
-
-  /*==================== REUSABLE CSS VARIABLES ====================*/
-  .logo {
-    width: 2rem;
-  }
-  .txt2img {
-    text-indent: -999px;
-  }
-
-  /*==================== HOME ====================*/
-
-  /*======================================== SEARCH ========================================*/
-  .container__heading--search {
-    margin-top: 15%;
-    margin-bottom: 8%;
-  }
-  #swap {
-    width: 2.5rem;
-    height: 2.5rem;
-    font-size:  var(--xl-font-size);
-  }
-
-  #date {
-    width: calc(75% - 3px);
-  }
-  #seats {
-    width: calc(25% - 3px);
-  }
-
-  /*======================================== FLEET ========================================*/
-  .fleet {
-    font-size:  var(--xl-font-size);
-    font-weight: var(--font-bold);
-  }
-
-  /*======================================== NEWS ========================================*/
-  .news {
-    margin: 0 auto 0.5rem;
-    max-width: min(100%, 40rem);
-  }
-
-  .news__title {
-    font-size: var(--xl-font-size);
-  }
-  .news__content {
-    display: none;
-    padding: 0 0 .5rem;
-  }
-
-  .news__expand {
-    position: absolute;
-    width: 100%;
-    bottom: 0;
-    right: 50%;
-    transform: translateX(50%);
-  }
-  .news__expand.rotate {
-    transform: translateX(50%) rotate(180deg) !important;
-  }
-
-  /*======================================== OFFERS ========================================*/
-  .container__body--offers {
-    grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
-  }
-
-  .offer {
-    width: 16rem;
-    height: 20rem;
-  }
-  .offer__content {
-    display: none;
-  }
-
-  /*==================== ABOUT ====================*/
-  .container--dynamic::before,
-  .container--dynamic-inverse::before {
-    width: 35%;
-    background-size: max(30%, 5.5rem);
-  }
-
-  .dynamic-margin {
-    margin: 0 auto 0 45%;
-    width: 50%;
-  }
-  .dynamic-inverse-margin {
-    margin: 0 45% 0 auto;
-    width: 50%;
-  }
-
-  .about,
-  .about-inverse {
-    margin: 1rem 1.5rem;
-  }
-
-
-  /*==================== SUBSCRIPTIONS ====================*/
-  .subscription__header {
-    padding: 0 0 .5rem 0;
-    justify-content: space-between;
-  }
-  .subscription__user {
-    flex: 0.5;
-    margin: auto 1rem auto 0;
-    text-align: center;
-  }
-
-  .subscription__body {
-    display: none;
-    margin-top: 1rem;
-  }
-  .subscription__expand {
-    position: absolute;
-    width: 100%;
-    height: fit-content;
-    bottom: 0;
-    right: 50%;
-    transform: translateX(50%);
-  }
-  .subscription__expand.rotate {
-    transform: translateX(50%) rotate(180deg) !important;
-  }
-}
 
 @media (min-width: 1025px) {
   :root {
@@ -956,6 +867,11 @@ fieldset {
     width: 22%;
     background-size: 8rem;
   }
+  .dynamic--small::before,
+  .dynamic-inverse--small::before {
+    width: 10%;
+    background-size: max(20%, 4.5rem);
+  }
 
   #about__presentation::before {
     width: 45%;
@@ -983,12 +899,15 @@ fieldset {
     margin: 0 5% 1% 50%;
   }
 
-  .dynamic-margin {
+  .dynamic__heading-margin,
+  .dynamic__content-margin {
     margin: 0 auto 0 25%;
   }
-  .dynamic-inverse-margin {
+  .dynamic-inverse__heading-margin,
+  .dynamic-inverse__content-margin {
     margin: 0 25% 0 auto;
   }
+
   /*==================== SUBSCRIPTIONS ====================*/
   .subscription {
     width: 65%;
@@ -1009,5 +928,233 @@ fieldset {
     display: flex;
     flex-direction: column;
     margin: .2rem auto;
+  }
+
+  /*==================== HELP ====================*/
+  .faq::before {
+    background-size: min(50%, 5rem);
+  }
+  .faq {
+    width: 70%;
+  }
+  .faq--question {
+    font-size: var(--m-font-size);
+  }
+
+  .faq__body {
+    margin-left: 10%;
+  }
+}
+
+
+@media (max-width: 1024px) {
+
+  #submit {
+    width: 100%;
+    font-size:  var(--xl-font-size);
+  }
+
+  /*==================== NAVBAR ====================*/
+  .nav__menu {
+    position: fixed;
+    background-color: var(--second-color);
+    backdrop-filter: blur(32px);
+    -webkit-backdrop-filter: blur(32px);
+    top: 0;
+    right: -100%;
+    width: 100%;
+    height: 100%;
+    transition: right .3s;
+    z-index: 2;
+  }
+
+
+  #breadcrumb {
+    display: none;
+  }
+
+  /*==================== FOOTER ====================*/
+  .container__heading--footer {
+    width: 2rem;
+  }
+
+  /*==================== REUSABLE CSS VARIABLES ====================*/
+  .logo {
+    width: 2rem;
+  }
+  .txt2img {
+    text-indent: -999px;
+  }
+
+  /*==================== HOME ====================*/
+
+  /*======================================== SEARCH ========================================*/
+  .container__heading--search {
+    margin-top: 15%;
+    margin-bottom: 8%;
+  }
+  #swap {
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size:  var(--xl-font-size);
+  }
+
+  #date {
+    width: calc(75% - 3px);
+  }
+  #seats {
+    width: calc(25% - 3px);
+  }
+
+  /*======================================== FLEET ========================================*/
+  .fleet {
+    font-size:  var(--xl-font-size);
+    font-weight: var(--font-bold);
+  }
+
+  /*======================================== NEWS ========================================*/
+  .news {
+    margin: 0 auto 0.5rem;
+    max-width: min(100%, 40rem);
+  }
+
+  .news__title {
+    font-size: var(--xl-font-size);
+  }
+  .news__content {
+    display: none;
+    padding: 0 0 .5rem;
+  }
+
+  .news__expand {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    right: 50%;
+    transform: translateX(50%);
+  }
+  .news__expand.rotate {
+    transform: translateX(50%) rotate(180deg) !important;
+  }
+
+  /*======================================== OFFERS ========================================*/
+  .container__body--offers {
+    grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  }
+
+  .offer {
+    width: 16rem;
+    height: 20rem;
+  }
+  .offer__content {
+    display: none;
+  }
+
+  /*==================== ABOUT ====================*/
+  .container--dynamic::before,
+  .container--dynamic-inverse::before {
+    width: 35%;
+    background-size: max(30%, 5.5rem);
+  }
+  .dynamic--small::before,
+  .dynamic-inverse--small::before {
+    width: 25%;
+    background-size: max(20%, 4.5rem);
+  }
+
+  .dynamic__heading-margin,
+  .dynamic__content-margin {
+    margin: 0 auto 0 45%;
+    width: 50%;
+  }
+  .dynamic-inverse__heading-margin,
+  .dynamic-inverse__content-margin {
+    margin: 0 45% 0 auto;
+    width: 50%;
+  }
+
+  .about,
+  .about-inverse {
+    margin: 1rem 1.5rem;
+  }
+
+
+  /*==================== SUBSCRIPTIONS ====================*/
+  .subscription__header {
+    padding: 0 0 .5rem 0;
+    justify-content: space-between;
+  }
+  .subscription__user {
+    flex: 0.5;
+    margin: auto 1rem auto 0;
+    text-align: center;
+  }
+
+  .subscription__body {
+    display: none;
+    margin-top: 1rem;
+  }
+  .subscription__expand {
+    position: absolute;
+    width: 100%;
+    height: fit-content;
+    bottom: 0;
+    right: 50%;
+    transform: translateX(50%);
+  }
+  .subscription__expand.rotate {
+    transform: translateX(50%) rotate(180deg) !important;
+  }
+
+  /*==================== HELP ====================*/
+  .faq::before {
+    background-size: min(70%, 4rem);
+  }
+  .faq--question {
+    font-size: var(--xl-font-size);
+  }
+
+  .faq__body {
+    margin-left: 25%;
+    width: 100%;
+  }
+}
+
+
+@media (max-width: 500px) {
+  /*==================== ABOUT ====================*/
+  .container--dynamic::before, 
+  .container--dynamic-inverse::before {
+    width: 100%;
+    height: min(30%, 4.5rem);
+    background-size: max(12%, 5rem);
+  }
+  .container--dynamic-inverse::before {
+    top: 0;
+    right: 0;
+    background-position: 50% center;
+    clip-path: polygon(100% 100%, 100% 0%, 0% 0%, 0% 100%);
+  }
+  .container--dynamic::before {
+    left: 0;
+    top: 0;
+    background-position: 50% center;
+    clip-path: polygon(0% 100%, 0% 0%, 100% 0%, 100% 100%);
+  }
+  .dynamic__heading-margin,
+  .dynamic-inverse__heading-margin {
+    margin: max(15%, 4.5rem) 0 0 0;
+    width: 100%;
+  }
+  p.dynamic__content-margin,
+  p.dynamic-inverse__content-margin {
+    margin: .5rem 0 0 0;
+    padding: 0;
+    width: 100%;
+  }
+
+  /*==================== HELP ====================*/
+  .faq::before {
+    background-size: min(62%, 3.5rem);
   }
 }
