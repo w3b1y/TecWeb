@@ -7,8 +7,9 @@
   <meta name="author" content="Mang00o, Fabbricca, ElenaaaCh, Pax">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="shortcut icon" href="">
-  <link rel="stylesheet" href="/static/css/style.css">
-  <script defer src="/static/js/main.js"></script>
+  <link rel="stylesheet" href="./static/css/style.css">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+  <script defer src="./static/js/main.js"></script>
   <title> Viaggi </title>
 </head>
 <body>
@@ -23,7 +24,7 @@
             <a class="nav__link" href="#main">Salta la barra di navigazione</a>
           </li>
           <li class="nav__item js-nav__item">
-            <span class="nav__link" lang="en-US">Home</span>
+            <a class="nav__link" href="index.html" lang="en-US">Home</a>
           </li>
           <li class="nav__item js-nav__item">
             <a class="nav__link" href="about.html">Chi Siamo</a>
@@ -32,10 +33,10 @@
             <a class="nav__link" href="offers.html">Offerte</a>
           </li>
           <li class="nav__item js-nav__item">
-            <span class="nav__link">Abbonamenti</span>
+            <a class="nav__link" href="subscriptions.html">Abbonamenti</a>
           </li>
           <li class="nav__item js-nav__item">
-            <a class="nav__link" href="help.html">Help</span>
+            <a class="nav__link" href="help.html">Help</a>
           </li>
         </ul>
         
@@ -50,11 +51,40 @@
     </nav>
   </header>
   <nav id="breadcrumb">
-    <p>Ti trovi in: <a href="../templates/index.html" lang="en-US">Home</a> &gt;&gt; Biglietti</p>
+    <p>Ti trovi in: Biglietti</p>
   </nav>
   <!--in realtà si scriverà tutto con PHP-->
   <main>
-    <article class="card__ticket">
+    <!-- <section id="index__search" class="container container--search"> 
+      <form class="container__form--search">
+        <fieldset class="posrel">
+          <legend class="visually-hidden"><span lang="en-US">Fieldset</span> per inserimento stazioni</legend>
+          <label class="visually-hidden" for="from">Partenza</label>
+          <input class="container__input--search" type="text" name="from" id="from" placeholder="Partenza">
+          <label class="visually-hidden" for="to">Arrivo</label>
+          <input class="container__input--search" type="text" name="to" id="to" placeholder="Arrivo">
+          <button id="swap"><span class="visually-hidden">Inverti</span> <span class="ri-arrow-up-down-line"></span></button>
+        </fieldset>
+        <fieldset>
+          <legend class="visually-hidden"><span lang="en-US">Fieldset</span> per inserimento filtri di ricerca</legend>
+          <label class="visually-hidden" for="date">Data</label>
+          <input class="container__input--search" type="datetime-local" name="date" id="date">
+          <label class="visually-hidden" for="seats">Passeggeri (massimo 20 passeggeri)</label>
+          <input class="container__input--search" type="number" name="seats" id="seats" placeholder="1" min="1" max="20" value="1">
+          <label class="visually-hidden" for="submit">Cerca</label>
+          <input class="submit" type="submit" id="submit" value="Cerca">
+        </fieldset>
+      </form>
+    </section> -->
+
+
+
+
+
+
+
+
+    <!-- <article class="card__ticket">
       <header class="ticket__header">
         <dl class="ticket__header-details">
           <dt>Bassano</dt>
@@ -155,7 +185,7 @@
         <button></button>
         <a href="">$8.00</a>
       </div>
-    </article>
+    </article> -->
   </main>
   <footer class="container container--footer">
     <h2 class="container__heading--footer txt2img">IBERU TRASPORTI</h2>
