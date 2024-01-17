@@ -1,4 +1,3 @@
-/*DROP TABLE IF EXISTS user CASCADE;*/
 DROP TABLE IF EXISTS admin CASCADE;
 DROP TABLE IF EXISTS user_subscription CASCADE;
 DROP TABLE IF EXISTS subscription CASCADE;
@@ -10,24 +9,26 @@ DROP TABLE IF EXISTS station CASCADE;
 DROP TABLE IF EXISTS route_schedule CASCADE;
 DROP TABLE IF EXISTS train CASCADE;
 DROP TABLE IF EXISTS news CASCADE;
+DROP TABLE IF EXISTS offers CASCADE;
+DROP TABLE IF EXISTS user CASCADE;
 
 
 CREATE TABLE user(
   id INT PRIMARY KEY AUTO_INCREMENT,
-  first_name VARCHAR(48) NOT NULL,
-  last_name VARCHAR(48) NOT NULL,
-  email VARCHAR(128) NOT NULL,
-  password VARCHAR(255) NOT NULL,
+  first_name VARCHAR(40) NOT NULL,
+  last_name VARCHAR(40) NOT NULL,
+  email VARCHAR(40) NOT NULL,
+  password VARCHAR(50) NOT NULL,
   phone_number VARCHAR(12) NOT NULL
 );
 CREATE TABLE admin(
   id INT PRIMARY KEY AUTO_INCREMENT,
-  username VARCHAR(255) NOT NULL,
-  password VARCHAR(255) NOT NULL
+  username VARCHAR(30) NOT NULL,
+  password VARCHAR(50) NOT NULL
 );
 CREATE TABLE subscription(
   id INT PRIMARY KEY AUTO_INCREMENT,
-  name VARCHAR(64) NOT NULL,
+  name VARCHAR(40) NOT NULL,
   price DECIMAL(10,2) NOT NULL
 );
 CREATE TABLE user_subscription(
@@ -41,15 +42,15 @@ CREATE TABLE user_subscription(
 );
 CREATE TABLE station(
   id INT PRIMARY KEY AUTO_INCREMENT,
-  name VARCHAR(64) NOT NULL,
-  address VARCHAR(255) NOT NULL
+  name VARCHAR(40) NOT NULL,
+  address VARCHAR(40) NOT NULL
 );
 
 CREATE TABLE route(
   id INT PRIMARY KEY AUTO_INCREMENT,
   duration TIME NOT NULL,
   distance DECIMAL(10,2) NOT NULL,
-  name VARCHAR(64) NOT NULL
+  name VARCHAR(40) NOT NULL
 );
 CREATE TABLE route_category(
   id INT PRIMARY KEY AUTO_INCREMENT,
@@ -71,7 +72,7 @@ CREATE TABLE route_station(
 
 CREATE TABLE train(
   id INT PRIMARY KEY AUTO_INCREMENT,
-  name VARCHAR(64) NOT NULL,
+  name VARCHAR(40) NOT NULL,
   capacity INT NOT NULL
 );
 CREATE TABLE route_schedule(
@@ -93,14 +94,23 @@ CREATE TABLE ticket(
   FOREIGN KEY (route_schedule_id) REFERENCES route_schedule(id),
   FOREIGN KEY (station_id) REFERENCES station(id)
 );
+
 CREATE TABLE news(
   id INT PRIMARY KEY AUTO_INCREMENT,
-  title VARCHAR(128) NOT NULL,
-  starting_date DATE NOT NULL,
-  ending_date DATE NOT NULL,
-  description VARCHAR(1024) NOT NULL
+  title VARCHAR(40) NOT NULL,
+  content TEXT NOT NULL,
+  initial_date DATE NOT NULL,
+  final_date DATE NOT NULL
 );
 
+CREATE TABLE offers(
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  class VARCHAR (40) NOT NULL,
+  name VARCHAR(40) NOT NULL,
+  body TEXT NOT NULL,
+  more TEXT,
+  discount_code VARCHAR(30) NOT NULL
+);
 
 -- Users
 INSERT INTO user (first_name, last_name, email, password, phone_number) VALUES
@@ -177,3 +187,16 @@ INSERT INTO route_station (route_id, station_id, duration, distance, order_numbe
 (3, 3, '02:00:00', 200.25, 1),
 (3, 4, '01:30:00', 150.50, 2),
 (3, 5, '00:45:00', 50.75, 3);
+
+-- News
+INSERT INTO news(id, title, content, initial_date, final_date) VALUES
+(1, 'Soppressione tratta Padova - Bassano', ' La tratta Padova - Bassano sarà soppressa, causa lavori alla linea ferroviaria, a partire dal giorno 
+      #i fino al giorno #f. Ci scusiamo per il disagio.', '2024-04-12', '2024-04-16'),
+(2, 'Soppressione tratta Roma - Napoli', 'La tratta Roma - Napoli sarà soppressa, causa lavori alla linea ferroviaria, a partire dal giorno 
+      #i fino al giorno #f. Ci scusiamo per il disagio.', '2024-01-15', '2024-01-17');
+
+-- Offers
+INSERT INTO offers(class, name, body, more, discount_code) VALUES
+('-', 'christmas-gift', 'Con <span lang="en-US">Christmas Gifts</span> risparmi oltre il 20% nell acquisto di un nuovo abbonamento', 'Non lasciarti scappare questa offerta', 'CG20Y2023' ),
+('-', 'winter-days', 'Con i <span lang="en-US">Winter Days</span> oltre il 60% di sconto', 'Scopri di più', 'WD60Y2024' ),
+('super','-','Celebra il Natale con stile! Risparmia il 15% su tutte le prenotazioni.', ' Regalati una vacanza indimenticabile con noi!', '-' );
