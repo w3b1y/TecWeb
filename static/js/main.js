@@ -57,3 +57,29 @@ newsCard.forEach(card => {
     newsExpandButton.setAttribute('aria-label', 'Espandi la notizia');
   });
 });
+
+const overviewButton = document.querySelector('#overview');
+const overviewPage = document.querySelector('#page--overview');
+const subscriptionButton = document.querySelector('#subscription');
+const subscriptionPage = document.querySelector('#page--subscription');
+const userButton = document.querySelector('#user');
+const userPage = document.querySelector('#page--user');
+
+function showPage(button, page) {
+  overviewPage.classList.add('container--hide');
+  subscriptionPage.classList.add('container--hide');
+  userPage.classList.add('container--hide');
+
+  overviewButton.classList.remove('nav__button--current');
+  subscriptionButton.classList.remove('nav__button--current');
+  userButton.classList.remove('nav__button--current');
+
+  page.classList.remove('container--hide');
+  button.classList.add('nav__button--current');
+}
+
+if (overviewButton && subscriptionButton && userButton) {
+  overviewButton.addEventListener('click', () => showPage(overviewButton, overviewPage));
+  subscriptionButton.addEventListener('click', () => showPage(subscriptionButton, subscriptionPage));
+  userButton.addEventListener('click', () => showPage(userButton, userPage));
+}

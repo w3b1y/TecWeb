@@ -37,6 +37,7 @@ header {
 
 main {
   min-height: 100vh;
+  position: relative;
 }
 
 ul {
@@ -193,7 +194,11 @@ fieldset {
   background-image: url("../img/background.jpg");
   background-position: center; 
   background-repeat: repeat;
-} 
+}
+
+.container--hide {
+  display: none;
+}
 
 .container__heading {
   display: flex;
@@ -390,6 +395,10 @@ fieldset {
   margin: 0 auto .5rem;
   border-radius: 1.5rem;
 }
+.offer__title {
+  text-align: center;
+  font-size: var(--m-font-size);
+}
 .offer__body {
   position: absolute;
   width: 90%;
@@ -549,16 +558,20 @@ fieldset {
   font-size: var(--xl-font-size);
   color: var(--first-color);
 }
-.subscription__description {
-  display: none;
-}
-.subscription__title {
-  font-size: var(--l-font-size);
+
+.subscription__body {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+  row-gap: 0.2rem;
+  margin: 1.5rem auto .75rem;
 }
 
 .subscription__offer {
   position: relative;
   display: flex;
+  flex-direction: column;
+  width: 96%;
+  height: 100%;
   justify-content: space-between;
   margin: .2rem auto;
   padding: .8rem .25rem 1.2rem;
@@ -566,34 +579,19 @@ fieldset {
   border-radius: 1.5rem;
   text-decoration: none;
 }
-.subscription__offer a {
-  text-decoration: none;
-}
 
-.subscription__expand {
-  background-color: transparent;
-  border: none;
+.subscription__description--type {
   color: var(--first-color);
-  font-weight: var(--font-bold);
-  font-size: var(--xxl-font-size);
+  text-align: center;
 }
 
-.subscription__expand {
-  background-color: transparent;
-  border: none;
-  color: var(--first-color);
-  font-weight: var(--font-bold);
-  font-size: var(--xxl-font-size);
+.subscription__description--dates {
+  display: flex;
+  justify-content: space-between;
 }
 
-.student {
-  border: 4px solid #218946;
-}
 #subscription__student::before {
-  background-color: #218946;
   background-image: url('../img/student.png');
-  background-size: 45%;
-  background-position: 40%;
 }
 
 /*==================== HELP ====================*/
@@ -656,6 +654,25 @@ fieldset {
 .faq--answer {
   margin: 0 auto .2rem;
   padding: 0 .25rem .8rem;
+}
+
+
+/*==================== USER ====================*/
+#navbar--secondary {
+  display: block;
+  background: var(--first-color);
+}
+.nav__item--secondary,
+.nav__button {
+  width: 100%;
+  height: 60px;
+  border: none;
+  background-color: var(--first-color);
+  color: var(--second-color);
+}
+.nav__button--current {
+  color: var(--first-color);
+  background: var(--second-color);
 }
 
 /*==================== MEDIA QUERIES ====================*/
@@ -761,6 +778,10 @@ fieldset {
     font-size: var(--m-font-size);
   }
 
+  .container--user {
+    width: 85%;
+  }
+
   .container__heading--main {
     font-size: var(--xxl-font-size);
   }
@@ -842,16 +863,14 @@ fieldset {
     width: 18rem;
     height: 25rem;
   }
-  .offer:hover {
+  .offer:hover,
+  .offer:focus {
     transform: scale(1.1);
     transition: transform 0.3s ease-in-out;
   }
-  .offer__title {
-    text-align: center;
-    font-size: var(--m-font-size);
-  }
 
-  .offer:hover .offer__content {
+  .offer:hover .offer__content,
+  .offer:focus .offer__content {
     display: block;
   }
 
@@ -912,22 +931,19 @@ fieldset {
   .subscription {
     width: 65%;
   }
+  .subscription__title {
+    font-size: var(--l-font-size);
+  }
   .subscription__description{
     display: block;
   }
-  .subscription__description--reduced {
-    display: none;
+  .subscription__description--type {
+    font-size: var(--m-font-size);
   }
 
-  .subscription__body {
-    display: flex;
-    margin: 1.5rem auto .75rem;
-  }
-  .subscription__offer {
-    width: 28%;
-    display: flex;
-    flex-direction: column;
-    margin: .2rem auto;
+  #subscription__student::before {
+    background-size: 45%;
+    background-position: 40%;
   }
 
   /*==================== HELP ====================*/
@@ -943,6 +959,20 @@ fieldset {
 
   .faq__body {
     margin-left: 10%;
+  }
+
+  /*==================== USER ====================*/
+  .main--user {
+    display: flex;
+  }
+  #navbar--secondary {
+    width: 15%;
+  }
+  .term {
+    font-size: var(--s-font-size);
+  }
+  .icon {
+    display: none;
   }
 }
 
@@ -1046,6 +1076,9 @@ fieldset {
     width: 16rem;
     height: 20rem;
   }
+  .offer__title {
+    font-size: var(--xl-font-size);
+  }
   .offer__content {
     display: none;
   }
@@ -1090,20 +1123,33 @@ fieldset {
     text-align: center;
   }
 
+  .subscription__header {
+    padding: 0 0 .5rem 0;
+    justify-content: space-between;
+  }
+  .subscription__user {
+    flex: 0.5;
+    margin: auto 1rem auto 0;
+    text-align: center;
+  }
+  .subscription__title {
+    font-size: var(--xl-font-size);
+  }
+
   .subscription__body {
-    display: none;
-    margin-top: 1rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+    row-gap: 0.2rem;
+    margin: 1.5rem auto .75rem;
   }
-  .subscription__expand {
-    position: absolute;
-    width: 100%;
-    height: fit-content;
-    bottom: 0;
-    right: 50%;
-    transform: translateX(50%);
+
+  .subscription__description--type {
+    font-size: var(--xl-font-size);
   }
-  .subscription__expand.rotate {
-    transform: translateX(50%) rotate(180deg) !important;
+
+  #subscription__student::before {
+    background-size: 55%;
+    background-position: 40%;
   }
 
   /*==================== HELP ====================*/
@@ -1118,10 +1164,36 @@ fieldset {
     margin-left: 25%;
     width: 100%;
   }
+
+  /*==================== USER ====================*/
+  #navbar--secondary {
+    width: 100%;
+    height: 60px;
+    position: fixed;
+    bottom: 0;
+    z-index: 3;
+    background: var(--color-panel);
+  }
+  #navbar--secondary .nav__list--secondary {
+    display: flex;
+    flex-direction: row;
+  }
+  .term {
+    display: none;
+  }
+  .icon {
+    display: block;
+    font-size: var(--xl-font-size);
+  }
 }
 
 
 @media (max-width: 500px) {
+  /*==================== REUSABLE CSS VARIABLES ====================*/
+  .submit {
+    font-size: var(--xl-font-size);
+  }
+
   /*==================== ABOUT ====================*/
   .container--dynamic::before, 
   .container--dynamic-inverse::before {
@@ -1151,6 +1223,24 @@ fieldset {
     margin: .5rem 0 0 0;
     padding: 0;
     width: 100%;
+  }
+
+
+  /*==================== SUBSCRIPTIONS ====================*/
+  .subscription__title {
+    text-align: center;
+  }
+  .subscription__description {
+    padding: 0.2rem !important;
+  }
+
+  .offer__description {
+    margin: 0.1rem auto;
+  }
+
+  #subscription__student::before {
+    background-size: 18%;
+    background-position: 50%;
   }
 
   /*==================== HELP ====================*/
