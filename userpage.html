@@ -57,7 +57,7 @@
     <nav id="navbar--secondary">
       <ul class="nav__list--secondary">
         <li class="nav__item--secondary js-nav__item--secondary">
-          <button id="overview" class="nav__button nav__button--current"><span class="term" lang="en-US">Overview</span> <span class="ri-calendar-event-line icon"></s></button>
+          <button id="overview" class="nav__button nav__button--current"><span class="term" lang="en-US">Generale</span> <span class="ri-calendar-event-line icon"></s></button>
         </li>
         <li class="nav__item--secondary js-nav__item--secondary">
           <button id="subscription" class="nav__button"><span class="term">Storico</span> <span class="ri-history-line icon"></span></button>
@@ -68,7 +68,7 @@
       </ul>
     </nav>
     <div id="page--overview" class="container container--user">
-      <h2 class="container__heading container__heading--main">OVERVIEW</h2>
+      <h2 class="container__heading container__heading--main">GENERALE</h2>
       <section class="container">
         <h3 class="container__heading">Biglietti</h3>
       </section>
@@ -77,17 +77,77 @@
         <article class="subscription">
           <header class="subscription__header container--dynamic">
             <h4 class="subscription__title dynamic__heading-margin">Abbonamento generico</h4>
-            <p class="subscription__description subscription__description--type dynamic__content-margin">Viaggiatore</p>
+            <a href="./subscriptions.html#traveler" class="subscription__description subscription__description--type dynamic__content-margin">Viaggiatore</a>
             <p class="subscription__description subscription__description--dates dynamic__content-margin">
-              <time datetime="2024-02-14">14 Febbraio 2024</time>
-              <time datetime="2024-03-15">15 Marzo 2024</time>
+              <span>Data inizio:<time datetime="2024-02-14">14 Febbraio 2024</time></span>
+              <span>Data termine:<time datetime="2024-03-15">15 Marzo 2024</time></span>
             </p>
           </header>
         </article>
       </section>
     </div>
-    <div id="page--subscription" class="container container--hide"></div>
-    <div id="page--user" class="container container--hide"></div>
+    <div id="page--subscription" class="container container--user container--hide">
+      <h2 class="container__heading container__heading--main">STORICO ACQUISTI</h2>
+      <table class="table">
+        <caption class="table__caption">Tabella acquisiti ultimi 6 mesi</caption>
+        <thead class="table__header">
+          <tr class="table__row">
+            <th class="table__head">Data</th>
+            <th class="table__head">Tipologia</th>
+            <th class="table__head">Tratta</th>
+            <th class="table__head">Prezzo</th>
+          </tr>
+        </thead>
+        <tbody class="table__body">
+          <tr class="table__row">
+            <td class="table__data" data-cell="Data"><time datetime="19-01-2024 13:27:03">13 Gennaio 2024 17:00:27</time></td>
+            <td class="table__data" data-cell="Tipologia">Biglietto</td>
+            <td class="table__data" data-cell="Tratta">Bassano-Padova</td>
+            <td class="table__data" data-cell="Prezzo">$3.55</td>
+          </tr>
+          <tr class="table__row">
+            <td class="table__data" data-cell="Data"><time datetime="19-01-2024 08:15:58">19 Gennaio 2024 08:15:58</time></td>
+            <td class="table__data" data-cell="Tipologia">Biglietto</td>
+            <td class="table__data" data-cell="Tratta">Firenze-Roma</td>
+            <td class="table__data" data-cell="Prezzo">$8.75</td>
+          </tr>
+          <tr class="table__row">
+            <td class="table__data" data-cell="Data"><time datetime="19-01-2024 13:27:03">20 Gennaio 2024 13:27:03</time></td>
+            <td class="table__data" data-cell="Tipologia">Biglietto</td>
+            <td class="table__data" data-cell="Tratta">Roma-Firenze</td>
+            <td class="table__data" data-cell="Prezzo">$8.75</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div id="page--user" class="container container--user container--hide">
+      <h2 class="container__heading container__heading--main">PROFILO</h2>
+      <section class="container">
+        <form action="userpage.php" method="post">
+          <fieldset class="container__fieldset--user">
+            <legend>Informazioni personali</legend>
+            <label class="container__label" for="name">Nome</label>
+            <input class="container__input--search" type="text" name="name" id="name" value="Mario" required>
+            <label class="container__label" for="surname">Cognome</label>
+            <input class="container__input--search" type="text" name="surname" id="surname" value="Rossi" required>
+            <label class="container__label" for="email">Email</label>
+            <input class="container__input--search" type="email" name="email" id="email" value="mario.rossi@gmail.com">
+            <label class="container__label" for="birthday">Data di nascita</label>
+            <input class="container__input--search" type="date" name="birthday" id="birthday" value="1997-03-15">
+          </fieldset>
+          <fieldset class="container__fieldset--user">
+            <legend>Cambio Password</legend>
+            <label class="container__label" for="old_passwor">Vecchia password</label>
+            <input class="container__input--search" type="password" name="old_password" id="old_password" required>
+            <label class="container__label" for="new_password">Nuova password</label>
+            <input class="container__input--search" type="password" name="new_password" id="new_password" required>
+            <label class="container__label" for="rnew_password">Ripeti password</label>
+            <input class="container__input--search" type="password" name="rnew_password" id="rnew_password" required>
+          </fieldset>
+          <input class="submit" type="submit" value="Conferma">
+        </form>
+      </section>
+    </div>
   </main>
 </body>
 </html>
