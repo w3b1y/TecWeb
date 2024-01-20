@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="keywords" content="Biglietti treni, Acquisto, Tariffe viaggio, Prenotazioni treni">
-  <meta name="description" content="Esplora le tariffe e le offerte speciali per i biglietti treni. Prenota il tuo viaggio con comodità e convenienza su Iberu Trasporti">
+  <meta name="description" content="">
   <meta name="author" content="Mang00o, Fabbricca, ElenaaaCh, Pax">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="shortcut icon" href="">
-  <link rel="stylesheet" href="/static/css/style.css">
+  <link rel="stylesheet" href="./static/css/style.css">
   <script defer src="/static/js/main.js"></script>
-  <title> Viaggi </title>
+  <title> Ricerca Biglietto </title>
 </head>
 <body>
   <header>
@@ -23,7 +23,7 @@
             <a class="nav__link" href="#main">Salta la barra di navigazione</a>
           </li>
           <li class="nav__item js-nav__item">
-            <span class="nav__link" lang="en-US">Home</span>
+            <a class="nav__link" href="index.html" lang="en-US">Home</a>
           </li>
           <li class="nav__item js-nav__item">
             <a class="nav__link" href="about.html">Chi Siamo</a>
@@ -32,10 +32,10 @@
             <a class="nav__link" href="offers.html">Offerte</a>
           </li>
           <li class="nav__item js-nav__item">
-            <span class="nav__link">Abbonamenti</span>
+            <a class="nav__link" href="subscriptions.html">Abbonamenti</a>
           </li>
           <li class="nav__item js-nav__item">
-            <a class="nav__link" href="help.html">Help</span>
+            <a class="nav__link" href="help.html">Help</a>
           </li>
         </ul>
         
@@ -50,112 +50,52 @@
     </nav>
   </header>
   <nav id="breadcrumb">
-    <p>Ti trovi in: <a href="../templates/index.html" lang="en-US">Home</a> &gt;&gt; Biglietti</p>
+    <p>Ti trovi in: Ricerca Biglietto</p>
   </nav>
-  <!--in realtà si scriverà tutto con PHP-->
-  <main>
-    <article class="card__ticket">
-      <header class="ticket__header">
-        <dl class="ticket__header-details">
-          <dt>Bassano</dt>
-          <dd>10:47</dd>
-          <dt class="details__line">durata</dt>
-          <dd>57 <abbr title="minuti">min</abbr></dd>
-          <dt>Padova</dt>
-          <dd>11:44</dd>
+  <main id="main" role="main" class="container container--background">
+    <h2 class="container__heading container__heading--main">Ricerca Biglietto</h2>
+    <section class="subscription">
+      <div>
+        <dl>
+          <dt>Padova</dt><dd>10:00</dd>
+          <dt>Durata</dt><dd>30 minuti</dd>
+          <dt>Venezia</dt><dd>10:30</dd>
         </dl>
-      </header>
-      <div class="ticket__body">
-        <dl class="ticket__body-details">
-          <dt>Bassano</dt>
-          <dd>10:47</dd>
-          <dt class="details__line">durata</dt>
-          <dd>12 <abbr title="minuti">min</abbr></dd>
-          <dt>Cittadella</dt>
-          <dd>10:59</dd>
-          <dt class="details__line">durata</dt>
-          <dd>31 <abbr title="minuti">min</abbr></dd>
-          <dt>Vigodarzere</dt>
-          <dd>11:30</dd>
-          <dt class="details__line">durata</dt>
-          <dd>14 <abbr title="minuti">min</abbr></dd>
-          <dt>Padova</dt>
-          <dd>11:44</dd>
-        </dl>
-        <div>
-          <p>Durata tratta: 57 <abbr title="minuti">min</abbr></p>
-          <ul>
-            <li>Identificativo treno: rv4576</li>
-          </ul>
-          <fieldset>
-            <legend>Scegli la classe:</legend>
-            <label for="business" lang="en">Business</label>
-            <input type="radio" name="business" id="business__class">
-            <label for="ecoomy" lang="en">Economy</label>
-            <input type="radio" name="economy" id="economy__class" placeholder="economy" checked>
-          </fieldset>
-        </div>
       </div>
       <div>
-        <p>Diretto</p>
-        <button></button>
-        <a href="">$7.50</a>
+        <p>Durata tratta: 30 minuti</p>
+        <button>Maggiorni informazioni</button>
+        <a href="#">$8.00</a>
       </div>
-    </article>
-
-    <article class="card__ticket">
-      <header class="ticket__header">
-        <dl class="ticket__header-details">
-          <dt>Bassano</dt>
-          <dd>10:47</dd>
-          <dt class="details__line">durata</dt>
-          <dd>1 <abbr title="ora">h</abbr> e 4 <abbr title="minuti">min</abbr></dd>
+    </section>
+    <section class="subscription">
+      <div>
+        <dl>
           <dt>Padova</dt>
-          <dd>11:44</dd>
+          <dd>10:00</dd>
+          <dt>Durata</dt>
+          <dd>30 minuti</dd>
+          <dt>Venezia</dt>
+          <dd>10:30</dd>
         </dl>
-      </header>
-      <div class="ticket__body">
-        <dl class="ticket__body-details">
-          <dt>Bassano</dt>
-          <dd>11:14</dd>
-          <dt class="details__line">durata</dt>
-          <dd>12 <abbr title="minuti">min</abbr></dd>
-          <dt>Cittadella</dt>
-          <dd>11:26</dd>
-          <dt class="details__line transfer">cambio</dt>
-          <dd>7 <abbr title="minuti">min</abbr></dd>
-          <dt>Cittadella</dt>
-          <dd>11:33</dd>
-          <dt class="details__line">durata</dt>
-          <dd>15 <abbr title="minuti">min</abbr></dd>
-          <dt>Castelfranco Veneto</dt>
-          <dd>11:48</dd>
-          <dt class="details__line">durata</dt>
-          <dd>30 <abbr title="minuti">min</abbr></dd>
-          <dt>Padova</dt>
-          <dd>12:18</dd>
-        </dl>
-        <div>
-          <p>Durata tratta: 1 <abbr title="ora">h</abbr> e 4 <abbr title="minuti">min</abbr></p>
-          <ul>
-            <li>Identificativo treno: rv4576</li>
-            <li>Identificativo treno: rv1355</li>
-          </ul>
-          <fieldset>
-            <legend>Scegli la classe:</legend>
-            <label for="business" lang="en">Business</label>
-            <input type="radio" name="business" id="business__class">
-            <label for="ecoomy" lang="en">Economy</label>
-            <input type="radio" name="economy" id="economy__class" placeholder="economy" checked>
-          </fieldset>
-        </div>
       </div>
       <div>
-        <p>1 cambio</p>
-        <button></button>
-        <a href="">$8.00</a>
+        <p>Tipologia tratta: Diretto</p>
+        <dl>
+          <dt>Identificativo treno: </dt>
+          <dd>rv0000</dd>
+        </dl>
+        <dl>
+          <dt>Classi treno: </dt>
+          <dd>seconda classe</dd>
+          <dd>carrozza silenzio</dd>
+        </dl>
       </div>
-    </article>
+      <div>
+        <span><button>Riduci</button></span>
+        <span><a href="#">$8.00</a></span>
+      </div>
+    </section>
   </main>
   <footer class="container container--footer">
     <h2 class="container__heading--footer txt2img">IBERU TRASPORTI</h2>
