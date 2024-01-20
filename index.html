@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="./static/css/style.css">
   <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
   <script defer src="./static/js/main.js"></script>
-  <title> Homepage </title>
+  <title>Home</title>
 </head>
 <body>
   <header>
@@ -30,6 +30,9 @@
             <a class="nav__link" href="about.html">Chi Siamo</a>
           </li>
           <li class="nav__item js-nav__item">
+            <a class="nav__link" href="comunications.html">Comunicazioni</a>
+          </li>
+          <li class="nav__item js-nav__item">
             <a class="nav__link" href="offers.html">Offerte</a>
           </li>
           <li class="nav__item js-nav__item">
@@ -39,7 +42,6 @@
             <a class="nav__link" href="help.html" lang="en-US">Help</a>
           </li>
         </ul>
-        
         <div class="nav__close js-nav__close">
           <span class="ri-close-line"></span>
         </div>
@@ -56,7 +58,7 @@
   <main id="main" role="main">
     <section id="index__search" class="container container--search">
       <h2 class="container__heading container__heading--search container__heading--main">VIAGGIA CON IBERU</h2>
-      <form class="container__form--search">
+      <form class="container__form--search" action="ricerca.php" method="post">
         <fieldset class="posrel">
           <legend class="visually-hidden"><span lang="en-US">Fieldset</span> per inserimento stazioni</legend>
           <label class="visually-hidden" for="from">Partenza</label>
@@ -89,63 +91,19 @@
     </section>
     <section id="index__news" class="container container--background">
       <h2 class="container__heading">COMUNICAZIONI</h2>
-      <article class="news js-news">
-        <time class="news__date" datetime="2024-04-12">
-          <span class="news__day">12</span>
-          <span class="news__month">Aprile 2024</span>
-        </time>
-        <div class="news__body">
-          <h3 class="news__title">Soppressione tratta Padova - Bassano</h3>
-          <p class="news__content js-news__content">
-            La tratta Padova - Bassano sarà soppressa, causa lavori alla linea ferroviaria, a partire dal giorno 
-            <time datetime="2024-04-12">12 Aprile 2024</time> fino al giorno 
-            <time datetime="2024-04-26">26 Aprile 2024</time>.
-            Ci scusiamo per il disagio.
-          </p>
-        </div>
-        <button aria-label="Espandi la notizia" class="ri-arrow-down-s-line news__expand js-news__expand"></button>
-      </article>
-      <article class="news js-news">
-        <time class="news__date" datetime="2024-04-14">
-          <span class="news__day">14</span>
-          <span class="news__month">Aprile 2024</span>
-        </time>
-        <div class="news__body">
-          <h3 class="news__title">Soppressione tratta Roma - Napoli</h3>
-          <p class="news__content js-news__content">
-            La tratta Roma - Napoli sarà soppressa, causa lavori alla linea ferroviaria, a partire dal giorno 
-            <time datetime="2024-04-14">14 Aprile 2024</time> fino al giorno 
-            <time datetime="2024-04-16">16 Aprile 2024</time>.
-            Ci scusiamo per il disagio.
-          </p>
-        </div>
-        <button aria-label="Espandi la notizia" class="ri-arrow-down-s-line news__expand js-news__expand"></button>
-      </article>
-      <footer class="container__footer">
+       
+      <comunicazioni/>
+      
+       <footer class="container__footer">
         <a href="offers.html">Visualizza tutte le comunicazioni</a>
       </footer>
     </section>
     <section id="index__offers" class="container container--background">
       <h2 class="container__heading">OFFERTE</h2>
       <div class="container__body--offers">
-        <a id="offer__christmas-gift" class="offer" href="#">
-          <div class="offer__body">
-            <h3 class="offer__title">Con i <span lang="en-US">Christmas Gifts</span> risparmi oltre il 20% nell'acquisto di un nuovo abbonamento</h3>
-            <p class="offer__content">Non lasciarti scappare quest'offerta</p>
-          </div>
-        </a>
-        <a id="offer__winter-days" class="offer" href="#">
-          <div class="offer__body">
-            <h3 class="offer__title">Con i <span lang="en-US">Winter Days</span> oltre il 60% di sconto</h3>
-            <p class="offer__content">Scopri di più</p>
-          </div>
-        </a>
-        <a id="offer__christmas-gift" class="offer" href="#">
-          <div class="offer__body">
-            <h3 class="offer__title">Con i <span lang="en-US">Christmas Gifts</span> risparmi oltre il 20% nell'acquisto di un nuovo abbonamento</h3>
-            <p class="offer__content">Non lasciarti scappare quest'offerta</p>
-          </div>
-        </a>
+        
+        <offerte/>
+
       </div>
       <footer class="container__footer">
         <a href="offers.html">Visualizza tutte le offerte</a>
