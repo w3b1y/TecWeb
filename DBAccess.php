@@ -36,6 +36,21 @@ class DBAccess{
             return $result;
         }
     }
+    
+    public function checkStazione($stazione){
+        $query = "SELECT name FROM station
+                WHERE (name = \"$stazione\")";
+        $qResult = mysqli_query($this->connection, $query) or die("query fallita".mysqli_error($this->connection));
+
+        if(mysqli_num_rows($qResult) == 1){
+            $result = mysqli_fetch_assoc($qResult);
+            $qResult->free();
+            return $result;
+        }
+        else{
+            return null;
+        }
+    }
 
     public function closeConnection(){
         mysqli_close($this -> connection);

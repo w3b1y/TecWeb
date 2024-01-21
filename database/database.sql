@@ -106,10 +106,11 @@ CREATE TABLE news(
 CREATE TABLE offers(
   id INT PRIMARY KEY AUTO_INCREMENT,
   class VARCHAR (40) NOT NULL,
-  name VARCHAR(40) NOT NULL,
-  body TEXT NOT NULL,
-  more TEXT,
-  discount_code VARCHAR(30) NOT NULL
+  nome VARCHAR(40) NOT NULL,
+  title TEXT NOT NULL,
+  content TEXT,
+  discount_code VARCHAR(30) NOT NULL,
+  final_date DATE NOT NULL
 );
 
 -- Users
@@ -136,14 +137,25 @@ INSERT INTO route (duration, distance, name) VALUES
 
 -- Stations
 INSERT INTO station (name, address) VALUES
-('Station A', '123 Main St'),
-('Station B', '456 Elm St'),
-('Station C', '789 Oak St'),
-('Station D', '101 Pine St'),
-('Station E', '202 Maple St'),
-('Station F', '303 Cedar St'),
-('Station G', '404 Birch St'),
-('Station H', '505 Walnut St');
+('Roma', 'Via Giovanni Giolitti, 40, 00185 Roma RM'),
+('Milano', 'Via della Moscova, 13, 20121 Milano MI'),
+('Napoli', 'Via Toledo, 156, 80132 Napoli NA'),
+('Torino', 'Via Po, 14, 10123 Torino TO'),
+('Palermo', 'Via Vittorio Emanuele, 351, 90134 Palermo PA'),
+('Genova', 'Piazza Raffaele De Ferrari, 1, 16123 Genova GE'),
+('Bologna', 'Piazza Medaglie d''Oro, 2, 40124 Bologna BO'),
+('Firenze', 'Piazzale della Stazione, 50122 Firenze FI'),
+('Ancona', 'Corso Stamira, 10, 60123 Ancona AN'),
+('Cagliari', 'Via Sassari, 7A, 09123 Cagliari CA'),
+('Bari', 'Piazza Aldo Moro, 70123 Bari BA'),
+('Catanzaro', 'Via T. Campanella, 56, 88100 Catanzaro CZ'),
+('Trieste', 'Piazza della Libertà, 11, 34135 Trieste TS'),
+('Potenza', 'Via Pretoria, 46, 85100 Potenza PZ'),
+('Campobasso', 'Via San Giorgio, 21, 86100 Campobasso CB'),
+('Aosta', 'Piazza Chanoux, 9, 11100 Aosta AO'),
+('Perugia', 'Corso Vannucci, 97, 06121 Perugia PG'),
+('Aquila', 'Piazzale della Stazione, 67100 L''Aquila AQ');
+
 
 -- Trains
 INSERT INTO train (name, capacity) VALUES
@@ -193,10 +205,29 @@ INSERT INTO news(id, title, content, initial_date, final_date) VALUES
 (1, 'Soppressione tratta Padova - Bassano', ' La tratta Padova - Bassano sarà soppressa, causa lavori alla linea ferroviaria, a partire dal giorno 
       #i fino al giorno #f. Ci scusiamo per il disagio.', '2024-04-12', '2024-04-16'),
 (2, 'Soppressione tratta Roma - Napoli', 'La tratta Roma - Napoli sarà soppressa, causa lavori alla linea ferroviaria, a partire dal giorno 
-      #i fino al giorno #f. Ci scusiamo per il disagio.', '2024-01-15', '2024-01-17');
+      #i fino al giorno #f. Ci scusiamo per il disagio.', '2024-01-15', '2024-01-17'),
+(3, 'Soppressione tratta Milano - Torino', 'La tratta Milano - Torino sarà soppressa, causa lavori alla linea ferroviaria, a partire dal giorno #i fino al giorno #f. Ci scusiamo per il disagio.', '2024-04-12', '2024-04-16'),
+(4, 'Soppressione tratta Roma - Milano', 'La tratta Roma - Milano sarà soppressa, causa lavori alla linea ferroviaria, a partire dal giorno #i fino al giorno #f. Ci scusiamo per il disagio.', '2024-01-15', '2024-01-17'),
+(5, 'Sospensione temporanea servizio Firenze - Napoli', 'Il servizio ferroviario tra Firenze e Napoli sarà temporaneamente sospeso per lavori sulla linea. La sospensione avrà luogo dal giorno #i al giorno #f. Ci scusiamo per l''inconveniente.', '2024-03-05', '2024-03-10'),
+(6, 'Nuova tratta diretta Bologna - Venezia', 'Siamo lieti di annunciare l''apertura di una nuova tratta diretta tra Bologna e Venezia, che inizierà a operare dal giorno #i. Migliorerà la connettività tra le due importanti città italiane.', '2024-02-20', NULL),
+(7, 'Modifiche orari servizio Genova - Palermo', 'Si avvisano gli utenti che ci saranno modifiche agli orari del servizio ferroviario tra Genova e Palermo a partire dal giorno #i per ottimizzare la gestione delle corse. Si prega di verificare gli orari aggiornati.', '2024-05-01', '2024-05-05'),
+(8, 'Sciopero del Personale: Sospensione temporanea di treni sulla tratta Napoli - Bari', 'A causa di uno sciopero del personale ferroviario, alcuni treni sulla tratta Napoli - Bari saranno sospesi a partire dal giorno #i fino al giorno #f. Gli utenti sono invitati a pianificare i propri viaggi di conseguenza.', '2024-03-20', '2024-03-22'),
+(9, 'Caduta di Alberi: Interruzione del servizio sulla tratta Genova - Milano', 'A causa della caduta di alberi sulla linea ferroviaria, il servizio tra Genova e Milano è temporaneamente interrotto. I tecnici sono al lavoro per ripristinare la normale operatività. Si prevede che la situazione sarà risolta entro il giorno #f.', '2024-04-05', '2024-04-06'),
+(10, 'Forti Ritardi: Attesa prolungata su diverse tratte ferroviarie', 'A causa di problemi tecnici sulla rete ferroviaria, si verificano ritardi significativi su diverse tratte, inclusi percorsi tra Milano, Roma e Firenze. I viaggiatori sono invitati a consultare gli annunci in stazione per informazioni aggiornate.', '2024-02-10', '2024-02-11'),
+(11, 'Incidente Ferroviario: Interruzione del servizio sulla tratta Torino - Venezia', 'A seguito di un incidente ferroviario sulla tratta Torino - Venezia, il servizio è temporaneamente interrotto. I passeggeri sono invitati a considerare alternative di viaggio. Le autorità stanno indagando sull''incidente.', '2024-05-15', NULL),
+(12, 'Miglioramenti Infrastrutturali: Nuovi treni veloci sulla tratta Roma - Firenze', 'Siamo lieti di annunciare l''introduzione di nuovi treni veloci sulla tratta Roma - Firenze. I viaggiatori beneficeranno di tempi di percorrenza più brevi e servizi migliorati. Il nuovo servizio entrerà in funzione a partire dal giorno #i.', '2024-03-01', NULL);
+
 
 -- Offers
-INSERT INTO offers(class, name, body, more, discount_code) VALUES
-('-', 'christmas-gift', 'Con <span lang="en-US">Christmas Gifts</span> risparmi oltre il 20% nell acquisto di un nuovo abbonamento', 'Non lasciarti scappare questa offerta', 'CG20Y2023' ),
-('-', 'winter-days', 'Con i <span lang="en-US">Winter Days</span> oltre il 60% di sconto', 'Scopri di più', 'WD60Y2024' ),
-('super','-','Celebra il Natale con stile! Risparmia il 15% su tutte le prenotazioni.', ' Regalati una vacanza indimenticabile con noi!', '-' );
+INSERT INTO offers(class, nome, title, content, discount_code, final_date) VALUES
+('super', 'christmas-gift', 'Celebra il Natale con stile! Risparmia il 15% su tutte le prenotazioni.', 'Regalati una vacanza indimenticabile con noi!', 'ABC1234', '2023-12-25'),
+('super', 'new-year', 'Dai il benvenuto al nuovo anno con un''offerta speciale!', 'Prenota entro il 27 dicembre 2023 e risparmia il 20% su tutte le destinazioni. Inizia il 2024 con una vacanza da sogno!', 'DEF5678', '2024-12-27'),
+('special', 'love', 'Vivi momenti romantici con le nostre Offerte di Coppia! Sconto del 5%', 'Prenota per il tuo anniversario o una fuga romantica entro il 14 febbraio e regalati un viaggio indimenticabile con la tua dolce metà!', 'GHI9012', '2024-02-14'),
+('special', 'young', 'Esplora il mondo con le nostre Offerte Speciali per i Giovani!', 'Sconto imperdibile del 10%, riservato ai viaggiatori under 25. Dai il via alla tua prossima avventura con servizi esclusivi e risparmia mentre crei ricordi indimenticabili!', 'JKL3456', '2024-06-01'),
+('special', 'old', 'Esplora il mondo con le nostre Offerte Speciali per i Senior!', 'Sconto speciale del 15%, dedicato ai viaggiatori sopra i 60 anni. Approfitta dei vantaggi e riscopri il lato meraviglioso del viaggio.', 'MNO7890', '2024-12-31'),
+('groups', 'family', 'Offerta Famiglia: un''avventura insieme!', 'Pacchetto per due genitori e due bambini sotto i 10 anni con sconto speciale del 15%. Perfetto per creare ricordi indimenticabili per tutta la famiglia!', 'PQR1234', '2024-05-31'),
+('groups', 'group', 'Offerta Gruppi: più si è, più si risparmia!', 'Prenota per un gruppo di oltre 8 persone e approfitta di uno sconto esclusivo del 20%. Rendete il vostro viaggio un''esperienza straordinaria!', 'STU5678', '2024-12-31'),
+('groups', 'school', 'Offerta Scolastica: Un''esperienza educativa straordinaria!', 'Prenota ora per la tua classe, con due professori e oltre 20 alunni, e ricevi uno sconto esclusivo del 30%. Viaggiate e imparate insieme a tariffe speciali!', 'VWX9012', '2024-06-10'),
+('carnet', 'five', 'Esplora senza limiti con il nostro Carnet da 5 Viaggi! Acquista ora e risparmia 5%.', 'Viaggia quando vuoi, come vuoi, con tariffe bloccate e servizi esclusivi. Un''offerta imperdibile per gli amanti dell''avventura!', 'YZA2345', '2024-12-31'),
+('carnet', 'ten', 'Esplora senza limiti con il nostro Carnet da 10 Viaggi! Acquista ora e risparmia 12%.', 'Viaggia quando vuoi, come vuoi, con tariffe bloccate e servizi esclusivi. Un''offerta imperdibile per gli amanti dell''avventura!', 'BCD6789', '2024-12-31'),
+('carnet', 'fifteen', 'Esplora senza limiti con il nostro Carnet da 15 Viaggi! Acquista ora e risparmia 20%.', 'Viaggia quando vuoi, come vuoi, con tariffe bloccate e servizi esclusivi. Un''offerta imperdibile per gli amanti dell''avventura!', 'EFG0123', '2024-12-31');
