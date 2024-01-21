@@ -49,7 +49,7 @@ if($avvisi != ""){
 }
 $fileHTML = str_replace("<avvisi/>", $avvisi, $fileHTML);
 
-$comunicazioni= $connessione->getData("news where initial_date>= CURDATE() order by initial_date limit 3");
+$comunicazioni= $connessione->getData("news where final_date>= CURDATE() order by final_date limit 3");
 $newsList = '';
 $mesi = array('01' => 'Gennaio', '02' => 'Febbraio', '03' => 'Marzo',
     '04' => 'Aprile', '05' => 'Maggio', '06' => 'Giugno',
@@ -91,7 +91,7 @@ else{
 }
 $fileHTML = str_replace("<comunicazioni/>", $newsList, $fileHTML);
 
-$offerte = $connessione->getData("offers where final_date>CURDATE() and class='super' or class='special' order by final_date");
+$offerte = $connessione->getData("offers where final_date>CURDATE() and class='super' or class='special' order by final_date limit 2");
 $connessione->closeConnection();
 
 $offerteList = '';
