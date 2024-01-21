@@ -83,3 +83,33 @@ if (overviewButton && subscriptionButton && userButton) {
   subscriptionButton.addEventListener('click', () => showPage(subscriptionButton, subscriptionPage));
   userButton.addEventListener('click', () => showPage(userButton, userPage));
 }
+
+
+const tickets = document.querySelectorAll('.js-ticket');
+if (tickets) {
+  tickets.forEach(ticket => {
+    const ticketExpandButton = ticket.querySelector('.js-news__expand');
+    const ticketBody = ticket.querySelector('.js-ticket__body');
+    ticketExpandButton.addEventListener('click', () => {
+      ticketBody.classList.toggle('ticket__body--reduced');
+      ticketExpandButton.classList.toggle('rotate');
+      ticketExpandButton.classList.contains('rotate') ? 
+      ticketExpandButton.setAttribute('aria-label', 'Riduci il biglietto') : 
+      ticketExpandButton.setAttribute('aria-label', 'Espandi il biglietto');
+    });
+
+    const firstClass = ticket.querySelector('.js-first__class');
+    const secondClass = ticket.querySelector('.js-second__class');
+    const priceButton = ticket.querySelector('.js-submit');
+    firstClass.addEventListener('click', () => {
+      firstClass.classList.add('ticket__class--selected');
+      secondClass.classList.remove('ticket__class--selected');
+      priceButton.innerHTML = `€${priceButton.dataset.firstclass}`
+    });
+    secondClass.addEventListener('click', () => {
+      secondClass.classList.add('ticket__class--selected');
+      firstClass.classList.remove('ticket__class--selected');
+      priceButton.innerHTML = `€${priceButton.dataset.secondclass}`
+    });
+  });
+}
