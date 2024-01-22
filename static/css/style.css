@@ -817,6 +817,35 @@ tr:nth-of-type(2n) {
   color: var(--second-color);
 }
 
+/*========================= BUY =========================*/
+.half_width{
+  width: 50%;
+  margin: auto;
+}
+
+.buy_form{
+  position: relative;
+  display: block;
+  margin: 1rem auto;
+  border: 4px solid var(--first-color);
+  border-radius: 1.5rem;
+  background-color: var(--second-color);
+  overflow: hidden;
+  
+}
+
+.buyForm_row{
+  padding: 15px;
+}
+
+.left_padding_increase{
+  padding-left: 5rem;
+}
+
+.medium_font {
+  font-size: var(--m-font-size);
+}
+
 /*==================== MEDIA QUERIES ====================*/
 @media (min-width: 1025px) {
   :root {
