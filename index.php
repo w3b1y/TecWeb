@@ -15,13 +15,16 @@ $avvisi="";
 if(isset($_POST['submit'])){
     $stazionePartenza = clearInput($_POST['from']);
     $stazioneArrivo = clearInput($_POST['to']);
+    $dataOra = clearInput($_POST['date']);
+    $dataOggi = date('Y-m-d H:i');
+    $nPasseggeri = intval($_POST['seats']);
 
-    if(!empty($stazionePartenza) && !empty($stazioneArrivo)){
+    if(!empty($stazionePartenza) && !empty($stazioneArrivo) && $dataOra>$dataOggi && $nPasseggeri>=1){
         $partenza = $connessione->checkStazione($stazionePartenza);
         $arrivo = $connessione->checkStazione($stazioneArrivo);
 
         if($partenza!=null && $arrivo!=null){
-            $_SESSION['ricerca'] = array('from' => $stazionePartenza, 'to' => $stazioneArrivo);
+            $_SESSION['ricerca'] = array('from' => $stazionePartenza, 'to' => $stazioneArrivo, 'date' => $dataOra, 'seats' => $nPasseggeri);
             $connessione->closeConnection();
             header("Location: tickets.php");
             exit;
@@ -42,10 +45,17 @@ if(isset($_POST['submit'])){
     if(empty($stazioneArrivo)){
         $avvisi .="<li>Immettere una stazione di arrivo</li>";
     }
+    if($dataOra<$dataOggi){
+        $avvisi .= "<li>La data e l'ora devono essere maggiori o uguali a quelli attuali</li>";
+    }
+    if ($nPasseggeri < 1) {
+        $avvisi .= "<li>Inserire un numero di passeggeri maggiore o uguale a 1</li>";
+    }
 }
 
+
 if($avvisi != ""){
-    $avvisi = "<div class ='error'><ul class='flex_column no_gap'>" . $avvisi . "</ul> </div>";//DA SISTEMARE
+    $avvisi = "<ul>" . $avvisi . "</ul>";//DA SISTEMARE
 }
 $fileHTML = str_replace("<avvisi/>", $avvisi, $fileHTML);
 
