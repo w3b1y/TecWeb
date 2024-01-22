@@ -30,6 +30,9 @@
             <a class="nav__link" href="about.html">Chi Siamo</a>
           </li>
           <li class="nav__item js-nav__item">
+            <a class="nav__link" href="comunications.html">Comunicazioni</a>
+          </li>
+          <li class="nav__item js-nav__item">
             <a class="nav__link" href="offers.html">Offerte</a>
           </li>
           <li class="nav__item js-nav__item">
@@ -71,6 +74,54 @@
       <h2 class="container__heading container__heading--main">GENERALE</h2>
       <section class="container">
         <h3 class="container__heading">Biglietti</h3>
+        <div class="container--tickets">
+          <article class="ticket js-ticket">
+            <dl class="ticket__route--horizontal">
+              <dt class="route__term--horizontal">Padova</dt>
+              <dd class="route__data--horizontal"><time datetime="10:00">10:00</time></dd>
+              <dt class="route__term--horizontal route__term--line">Durata</dt>
+              <dd class="route__data--horizontal route__data--line">30 minuti</dd>
+              <dt class="route__term--horizontal">Venezia</dt>
+              <dd class="route__data--horizontal"><time datetime="10:30">10:30</time></dd>
+            </dl>
+            <div class="ticket__body js-ticket__body ticket__body--reduced">
+              <dl class="ticket__route--vertical">
+                  <dt class="route__term--vertical">Padova</dt>
+                  <dd class="route__data--vertical"><time datetime="10:00">10:00</time></dd>
+                  <dt class="route__term--vertical vline">Durata</dt>
+                  <dd class="route__data--vertical">30 <abbr title="minuti"><abbr title="minuti">min</abbr></abbr></dd>
+                  <dt class="route__term--vertical">Venezia</dt>
+                  <dd class="route__data--vertical"><time datetime="10:30">10:30</time></dd>
+                  <dt class="route__term--vertical vline">Durata</dt>
+                  <dd class="route__data--vertical">30 <abbr title="minuti">min</abbr></dd>
+                  <dt class="route__term--vertical">Venezia</dt>
+                  <dd class="route__data--vertical"><time datetime="10:30">10:30</time></dd>
+                  <dt class="route__term--vertical vline">Durata</dt>
+                  <dd class="route__data--vertical">30 <abbr title="minuti">min</abbr></dd>
+                  <dt class="route__term--vertical">Venezia</dt>
+                  <dd class="route__data--vertical"><time datetime="10:30">10:30</time></dd>
+                  <dt class="route__term--vertical vline">Durata</dt>
+                  <dd class="route__data--vertical">30 <abbr title="minuti">min</abbr></dd>
+                  <dt class="route__term--vertical">Venezia</dt>
+                  <dd class="route__data--vertical"><time datetime="10:30">10:30</time></dd>
+                  <dt class="route__term--vertical vline">Durata</dt>
+                  <dd class="route__data--vertical">30 <abbr title="minuti">min</abbr></dd>
+                  <dt class="route__term--vertical">Venezia</dt>
+                  <dd class="route__data--vertical"><time datetime="10:30">10:30</time></dd>
+              </dl>
+              <div class="ticket__description">
+                <p class="ticket__content">Data: <time datetime="">15 Febbraio 2024 16:37</time></p>
+                <p class="ticket__content">Tipologia tratta: Diretto</p>
+                <p class="ticket__content">Identificativo treno: rv0000</p>
+                <p class="ticket__class js-first__class ticket__class--selected">Prima classe</p>
+              </div>
+            </div>
+            <div>
+              <button aria-label="Espandi la notizia" class="ri-arrow-down-s-line news__expand js-news__expand"></button>
+              <button class="submit submit--ticket js-submit" data-firstClass="8.50" data-secondClass="7.50">€8.50</button>
+            </div>
+          </article>
+        </div>
       </section>
       <section class="container">
         <h3 class="container__heading">Abbonamenti</h3>
@@ -92,10 +143,10 @@
         <caption class="table__caption">Tabella acquisiti ultimi 6 mesi</caption>
         <thead class="table__header">
           <tr class="table__row">
-            <th class="table__head">Data</th>
-            <th class="table__head">Tipologia</th>
-            <th class="table__head">Tratta</th>
-            <th class="table__head">Prezzo</th>
+            <th scope="col" class="table__head">Data</th>
+            <th scope="col" class="table__head">Tipologia</th>
+            <th scope="col" class="table__head">Tratta</th>
+            <th scope="col" class="table__head">Prezzo</th>
           </tr>
         </thead>
         <tbody class="table__body">
