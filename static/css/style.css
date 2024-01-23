@@ -147,10 +147,13 @@ tr:nth-of-type(2n) {
   color: var(--second-color);
 }
 .container__heading--footer {
-  width: fit-content;
+  width: 12rem;
   height: 2rem;
   color: var(--second-color);
   background-image: url("../img/logo.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  text-indent: -999px;
 }
 
 .container__body--footer {
@@ -183,16 +186,15 @@ tr:nth-of-type(2n) {
   display: flex;
   margin: auto 0;
   font-size: var(--m-font-size);
-  width: fit-content;
+  width: 12rem;
   height: fit-content;
   background-image: url("../img/logo.png");
   color: var(--second-color);
-}
-.txt2img {
+  text-indent: -999px;
   background-position: left;
   background-repeat: no-repeat;
-  background-size: 2rem 2rem;
-} /* se non si riusa txt2img può essere raccolto in logo */
+  background-size: contain;
+}
 
 .submit {
   margin: .1rem 0;
@@ -205,6 +207,7 @@ tr:nth-of-type(2n) {
   color: var(--second-color);
   background-color: var(--first-color);
   float: right;
+  cursor: pointer;
 }
 .price {
   display: block;
@@ -726,6 +729,7 @@ tr:nth-of-type(2n) {
   display: flex;
   height: fit-content;
   width: 95%;
+  max-width: 28rem;
   margin: 1rem auto;
   flex-direction: column;
   border: 4px solid var(--first-color);
@@ -753,7 +757,7 @@ tr:nth-of-type(2n) {
   font-weight: var(--font-bold);
 }
 .route__term--line {
-  flex: 1 0 calc(50% - 20px);
+  flex: 1 0 calc(58% - 20px);
   text-indent: -9999px;
 }
 .route__term--line::after {
@@ -811,6 +815,7 @@ tr:nth-of-type(2n) {
   background-color: transparent;
   color: var(--first-color);
   border-radius: .3rem;
+  cursor: pointer;
 }
 .ticket__class--selected {
   background-color: var(--first-color);
@@ -986,6 +991,7 @@ tr:nth-of-type(2n) {
     width: 4rem;
     height: 4rem;
     font-size:  var(--l-font-size);
+    cursor: pointer;
   }
 
   #date {
@@ -1198,20 +1204,10 @@ tr:nth-of-type(2n) {
   }
 
   /*==================== FOOTER ====================*/
-  .container__heading--footer {
-    width: 2rem;
-  }
 
   /*==================== REUSABLE CSS VARIABLES ====================*/
   .show-menu {
     right: 0;
-  }
-
-  .logo {
-    width: 2rem;
-  }
-  .txt2img {
-    text-indent: -999px;
   }
 
   /*==================== HOME ====================*/
