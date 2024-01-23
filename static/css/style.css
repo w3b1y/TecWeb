@@ -147,10 +147,13 @@ tr:nth-of-type(2n) {
   color: var(--second-color);
 }
 .container__heading--footer {
-  width: fit-content;
+  width: 12rem;
   height: 2rem;
   color: var(--second-color);
   background-image: url("../img/logo.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  text-indent: -999px;
 }
 
 .container__body--footer {
@@ -183,16 +186,15 @@ tr:nth-of-type(2n) {
   display: flex;
   margin: auto 0;
   font-size: var(--m-font-size);
-  width: fit-content;
+  width: 12rem;
   height: fit-content;
   background-image: url("../img/logo.png");
   color: var(--second-color);
-}
-.txt2img {
+  text-indent: -999px;
   background-position: left;
   background-repeat: no-repeat;
-  background-size: 2rem 2rem;
-} /* se non si riusa txt2img può essere raccolto in logo */
+  background-size: contain;
+}
 
 .submit {
   margin: .1rem 0;
@@ -1173,20 +1175,10 @@ tr:nth-of-type(2n) {
   }
 
   /*==================== FOOTER ====================*/
-  .container__heading--footer {
-    width: 2rem;
-  }
 
   /*==================== REUSABLE CSS VARIABLES ====================*/
   .show-menu {
     right: 0;
-  }
-
-  .logo {
-    width: 2rem;
-  }
-  .txt2img {
-    text-indent: -999px;
   }
 
   /*==================== HOME ====================*/
