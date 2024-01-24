@@ -866,14 +866,15 @@ tr:nth-of-type(2n) {
 }
 
 /*========================= BUY =========================*/
-.flex_container{
+.container__body--buy {
   display: flex;
 }
 
-.flex_section{
-  flex: 1;
-  padding: 20px;
-  margin: 10px;
+.ticket--recap {
+  width: 50%;
+}
+.form--buy {
+  width: 50%;
 }
 
 /*==================== MEDIA QUERIES ====================*/
@@ -1456,6 +1457,16 @@ tr:nth-of-type(2n) {
 
   .submit--ticket {
     margin: .7rem;
+  }
+
+  /*========================= BUY =========================*/
+  .container__body--buy {
+    flex-direction: column;
+  }
+
+  .ticket--recap,
+  .form--buy {
+    width: 100%;
   }
 }
 
