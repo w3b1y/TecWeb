@@ -65,7 +65,7 @@ const subscriptionPage = document.querySelector('#page--subscription');
 const userButton = document.querySelector('#user');
 const userPage = document.querySelector('#page--user');
 
-function showPage(button, page) {
+function showPageUser(button, page) {
   overviewPage.classList.add('container--hide');
   subscriptionPage.classList.add('container--hide');
   userPage.classList.add('container--hide');
@@ -76,12 +76,46 @@ function showPage(button, page) {
 
   page.classList.remove('container--hide');
   button.classList.add('nav__button--current');
+  localStorage.setItem('userPage', button.id);
 }
 
 if (overviewButton && subscriptionButton && userButton) {
-  overviewButton.addEventListener('click', () => showPage(overviewButton, overviewPage));
-  subscriptionButton.addEventListener('click', () => showPage(subscriptionButton, subscriptionPage));
-  userButton.addEventListener('click', () => showPage(userButton, userPage));
+  overviewButton.addEventListener('click', () => showPageUser(overviewButton, overviewPage));
+  subscriptionButton.addEventListener('click', () => showPageUser(subscriptionButton, subscriptionPage));
+  userButton.addEventListener('click', () => showPageUser(userButton, userPage));
+}
+
+const addNewsButton = document.querySelector('#addNews');
+const addNewsPage = document.querySelector('#page--addNews');
+const addOfferButton = document.querySelector('#addOffer');
+const addOfferPage = document.querySelector('#page--addOffer');
+
+function showPageAdmin(button, page) {
+  addNewsPage.classList.add('container--hide');
+  addOfferPage.classList.add('container--hide');
+
+  addNewsButton.classList.remove('nav__button--current');
+  addOfferButton.classList.remove('nav__button--current');
+
+  page.classList.remove('container--hide');
+  button.classList.add('nav__button--current');
+  localStorage.setItem('adminPage', button.id);
+}
+
+if (addNewsButton && addOfferButton) {
+  addNewsButton.addEventListener('click', () => showPageAdmin(addNewsButton, addNewsPage));
+  addOfferButton.addEventListener('click', () => showPageAdmin(addOfferButton, addOfferPage));
+}
+
+window.onload = () => {
+  if (window.location.href.includes('adminpage') && localStorage.getItem('adminPage')) {
+    let page = localStorage.getItem('adminPage');
+    document.querySelector(`#${page}`).click();
+  }
+  else if (window.location.href.includes('userpage') && localStorage.getItem('userPage')) {
+    let page = localStorage.getItem('userPage');
+    document.querySelector(`#${page}`).click();
+  }
 }
 
 

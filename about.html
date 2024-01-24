@@ -23,8 +23,8 @@
     <nav id="navbar" role="navigation">
       <div class="nav__menu js-nav__menu">
         <ul class="nav__list">
-          <li class="nav__item js-nav__item visually-hidden">
-            <a class="nav__link" href="#main">Salta la barra di navigazione</a>
+          <li class="nav__item js-nav__item">
+            <a class="nav__link visually-hidden" href="#main">Salta la barra di navigazione</a>
           </li>
           <li class="nav__item js-nav__item">
             <a class="nav__link" href="index.html" lang="en-US">Home</a>
@@ -57,7 +57,7 @@
     </nav>
   </header>
   <nav id="breadcrumb">
-    <p>Ti trovi in: Chi Siamo</p>
+    <p class="breadcrumb__nav">Ti trovi in: <a href="index.php" lang="en-US">Home</a> &gt;&gt; Chi Siamo</p>
   </nav>
   <main id="main" role="main" class="container--background">
     <section id="about__presentation" class="container container--dynamic">
@@ -83,41 +83,44 @@
     </section>
   </main>
   <footer class="container container--footer">
-    <h2 class="container__heading--footer txt2img">IBERU TRASPORTI</h2>
+    <h2 class="container__heading--footer">IBERU TRASPORTI</h2>
     <div class="container__body--footer">
-      <div>
-        <a href="index.html" class="container__link" lang="en-US">Homepage</a>
+      <div class="container__list">
+        <a href="index.php" class="container__link" lang="en-US">Homepage</a>
         <ul>
           <li>
-            <a href="index.html#index__search" class="container__link container__link--heading">Ricerca Biglietto</a>
+            <a href="index.php#index__search" class="container__link container__link--heading">Ricerca Biglietto</a>
           </li>
           <li>
-            <a href="index.html#index__news" class="container__link container__link--heading">Notizie</a>
+            <a href="index.php#index__news" class="container__link container__link--heading">Notizie</a>
           </li>
           <li>
-            <a href="index.html#index__offers" class="container__link container__link--heading">Offerte</a>
+            <a href="index.php#index__offers" class="container__link container__link--heading">Offerte</a>
           </li>
         </ul>
-        <a href="about.html" class="container__link">Chi Siamo</a>
+        <span class="container__link">Chi Siamo</span>
       </div>
-      <div>
-        <a href="offers.html" class="container__link">Offerte</a>
+      <div class="container__list">
+        <a href="comunications.php" class="container__link">Comunicazioni</a>
+        <a href="offers.php" class="container__link">Offerte</a>
         <ul>
           <li>
-            <a href="offers.html#offers__super" class="container__link container__link--heading">Super offerte</a>
+            <a href="offers.php#offers__super" class="container__link container__link--heading">Super offerte</a>
           </li>
           <li>
-            <a href="offers.html#offers__special" class="container__link container__link--heading">Offerte speciali</a>
+            <a href="offers.php#offers__special" class="container__link container__link--heading">Offerte speciali</a>
           </li>
           <li>
-            <a href="offers.html#offers__family" class="container__link container__link--heading">Offerte per famiglie e gruppi</a>
+            <a href="offers.php#offers__family" class="container__link container__link--heading">Offerte per famiglie e gruppi</a>
           </li>
           <li>
-            <a href="offers.html#offers__carnet" class="container__link container__link--heading">Carnet</a>
+            <a href="offers.php#offers__carnet" class="container__link container__link--heading">Carnet</a>
           </li>
         </ul>
+      </div>
+      <div class="container__list">
         <a href="subscriptions.html" class="container__link">Abbonamenti</a>
-        <a href="helps.html" class="container__link"><abbr title="Informazioni">Help</abbr></a>
+        <a href="helps.html" class="container__link" lang="en-US">Help</a>
       </div>
     </div>  
     <p class="container__copyright">Societa' Viaggi - <span lang="en-US">All rights reserved.</span></p>

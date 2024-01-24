@@ -20,8 +20,8 @@
     <nav id="navbar" role="navigation">
       <div class="nav__menu js-nav__menu">
         <ul class="nav__list">
-          <li class="nav__item js-nav__item visually-hidden">
-            <a class="nav__link" href="#main">Salta la barra di navigazione</a>
+          <li class="nav__item js-nav__item">
+            <a class="nav__link visually-hidden" href="#main">Salta la barra di navigazione</a>
           </li>
           <li class="nav__item js-nav__item">
             <span class="nav__link" lang="en-US">Home</span>
@@ -53,7 +53,7 @@
     </nav>
   </header>
   <nav id="breadcrumb">
-    <p>Ti trovi in: <span lang="en-US">Home</span></p>
+    <p class="breadcrumb__nav">Ti trovi in: <span lang="en-US">Home</span></p>
   </nav>
   <main id="main" role="main">
     <section id="index__search" class="container container--search">
@@ -96,7 +96,7 @@
       
       <comunicazioni/>
       
-       <footer class="container__footer">
+      <footer class="container__footer">
         <a href="comunications.php">Visualizza tutte le comunicazioni</a>
       </footer>
     </section>
@@ -115,22 +115,23 @@
   <footer class="container container--footer">
     <h2 class="container__heading--footer">IBERU TRASPORTI</h2>
     <div class="container__body--footer">
-      <div>
-        <a href="index.php" class="container__link" lang="en-US">Homepage</a>
+      <div class="container__list">
+        <span class="container__link" lang="en-US">Homepage</span>
         <ul>
           <li>
-            <a href="index.php#index__search" class="container__link container__link--heading">Ricerca Biglietto</a>
+            <a href="#index__search" class="container__link container__link--heading">Ricerca Biglietto</a>
           </li>
           <li>
-            <a href="index.php#index__news" class="container__link container__link--heading">Notizie</a>
+            <a href="#index__news" class="container__link container__link--heading">Notizie</a>
           </li>
           <li>
-            <a href="index.php#index__offers" class="container__link container__link--heading">Offerte</a>
+            <a href="#index__offers" class="container__link container__link--heading">Offerte</a>
           </li>
         </ul>
         <a href="about.html" class="container__link">Chi Siamo</a>
       </div>
-      <div>
+      <div class="container__list">
+        <a href="comunications.php" class="container__link">Comunicazioni</a>
         <a href="offers.php" class="container__link">Offerte</a>
         <ul>
           <li>
@@ -146,6 +147,8 @@
             <a href="offers.php#offers__carnet" class="container__link container__link--heading">Carnet</a>
           </li>
         </ul>
+      </div>
+      <div class="container__list">
         <a href="subscriptions.html" class="container__link">Abbonamenti</a>
         <a href="help.html" class="container__link" lang="en-US">Help</a>
       </div>
