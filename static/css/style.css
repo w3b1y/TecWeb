@@ -757,7 +757,7 @@ tr:nth-of-type(2n) {
 }
 .label--image {
   display: block;
-  margin: .25rem 0;
+  margin: .25rem .5rem .25rem .25rem;
 }
 .label__image {
   width: 100%;
