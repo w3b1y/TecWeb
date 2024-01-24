@@ -58,36 +58,51 @@
   </nav>
     <main id="main" role="main" class="container container--background">
     <h2 class="container__heading container__heading--main">ACQUISTO</h2>
-    <div class="half_width container--dynamic">
-        <form class="buy_form">
-            <div class="buyForm_row">
-                <label for="nome" class="medium_font">Nome:</label>
-                <input type="text" id="nome" name="nome" required>
-            
-                <label for="cognome"  class="medium_font left_padding_increase">Cognome:</label>
-                <input type="text" id="cognome" name="cognome" required>
+    <div class="flex_container">
+      <section class=" flex_section container">
+        <h3 class="container__heading">Il tuo Biglietto</h3>
+        <div class="container--tickets">
+          <article class="ticket">
+            <dl class="ticket__route--horizontal">
+              <dt class="route__term--horizontal">Padova</dt>
+              <dd class="route__data--horizontal"><time datetime="10:00">10:00</time></dd>
+              <dt class="route__term--horizontal route__term--line">Durata</dt>
+              <dd class="route__data--horizontal route__data--line">30 minuti</dd>
+              <dt class="route__term--horizontal">Venezia</dt>
+              <dd class="route__data--horizontal"><time datetime="10:30">10:30</time></dd>
+            </dl>
+            <div class="container ticket__description">
+              <p class="ticket__content">Data: <time datetime="">15 Febbraio 2024 16:37</time></p>
+              <p class="ticket__content">Tipologia tratta: Diretto</p>
+              <p class="ticket__content">Identificativo treno: rv0000</p>
+              <p class="ticket__class js-first__class ticket__class--selected">Prima classe</p>
             </div>
-            <div class="buyForm_row">
-                <label for="email" class="medium_font">Email:</label>
-                <input type="email" id="email" name="email" required>
-            </div>
-            <div class="buyForm_row">
-                <label for="numero_carta" class="medium_font">Numero della Carta:</label>
-                <input type="text" id="numero_carta" name="numero_carta" required>
-            </div>
-            <div class="buyForm_row">
-                <label for="cvv" class="medium_font">CVV della Carta:</label>
-                <input type="text" id="cvv" name="cvv" required>
-            </div>
-            <div class="buyForm_row">
-                <label for="scadenza_carta" class="medium_font">Scadenza della Carta:</label>
-                <input type="text" id="scadenza_carta" name="scadenza_carta" placeholder="MM/AA" required>
-            </div>
-            <div class="buyForm_row">
-                <button type="submit" class="submit">Acquista</button>
-            </div>
-        </form>
-    </div>
+          </article>
+        </div>
+      </section> 
+      <section class=" flex_section container">
+        <h3 class="container__heading">I tuoi dati</h3>
+        <div class="container--tickets">
+          <form action="userpage.php" method="post" class="container__fieldset--user">
+            <label class="container__label" for="name">Nome</label>
+              <input class="container__input--search" type="text" name="name" id="name" placeholder="Mario" required>
+              <label class="container__label" for="surname">Cognome</label>
+              <input class="container__input--search" type="text" name="surname" id="surname" placeholder="Rossi" required>
+              <label class="container__label" for="email">Email</label>
+              <input class="container__input--search" type="email" name="email" id="email" placeholder="mario.rossi@gmail.com">
+              <label class="container__label" for="birthday">Data di nascita</label>
+              <input class="container__input--search" type="date" name="birthday" id="birthday">
+              <label class="container__label" for="numero_carta">Numero della Carta:</label>
+              <input class="container__input--search" type="text" id="numero_carta" name="numero_carta" placeholder="0000-0000-0000-0000" required>
+              <label for="cvv" class="container__label">CVV della Carta:</label>
+              <input class="container__input--search" type="text" id="cvv" name="cvv" placeholder="000" required>
+              <label for="scadenza_carta" class="container__label">Scadenza della Carta:</label>
+              <input class="container__input--search" type="text" id="scadenza_carta" name="scadenza_carta" placeholder="MM/AA" required>
+              <button type="submit" class="submit">Acquista</button>
+          </form>
+        </div>
+      </section> 
+    </div> 
   </main>
   <footer class="container container--footer">
     <h2 class="container__heading--footer">IBERU TRASPORTI</h2>

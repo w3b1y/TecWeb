@@ -865,6 +865,17 @@ tr:nth-of-type(2n) {
   color: var(--second-color);
 }
 
+/*========================= BUY =========================*/
+.flex_container{
+  display: flex;
+}
+
+.flex_section{
+  flex: 1;
+  padding: 20px;
+  margin: 10px;
+}
+
 /*==================== MEDIA QUERIES ====================*/
 @media (min-width: 1025px) {
   :root {
