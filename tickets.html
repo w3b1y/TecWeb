@@ -20,8 +20,8 @@
     <nav id="navbar" role="navigation">
       <div class="nav__menu js-nav__menu">
         <ul class="nav__list">
-          <li class="nav__item js-nav__item visually-hidden">
-            <a class="nav__link" href="#main">Salta la barra di navigazione</a>
+          <li class="nav__item js-nav__item">
+            <a class="nav__link visually-hidden" href="#main">Salta la barra di navigazione</a>
           </li>
           <li class="nav__item js-nav__item">
             <a class="nav__link" href="index.php" lang="en-US">Home</a>
@@ -54,13 +54,13 @@
     </nav>
   </header>
   <nav id="breadcrumb">
-    <p>Ti trovi in: Biglietti</p>
+    <p class="breadcrumb__nav">Ti trovi in: <a href="index.php" lang="en-US">Home</a> &gt;&gt; Biglietti</p>
   </nav>
   <main id="main" role="main" class="container--background">
     <h2 class="container__heading container__heading--main">RISULTATI RICERCA</h2>
     <h3 class="container__heading">Padova - Venezia</h3>
     <div class="container--tickets">
-      <article class="ticket js-ticket">
+      <article id="1" class="ticket js-ticket">
         <dl class="ticket__route--horizontal">
           <dt class="route__term--horizontal">Padova</dt>
           <dd class="route__data--horizontal"><time datetime="10:00">10:00</time></dd>
@@ -69,6 +69,7 @@
           <dt class="route__term--horizontal">Venezia</dt>
           <dd class="route__data--horizontal"><time datetime="10:30">10:30</time></dd>
         </dl>
+        <a href="#2" class="visually-hidden">Prossimo biglietto</a>
         <div class="ticket__body js-ticket__body ticket__body--reduced">
           <dl class="ticket__route--vertical">
               <dt class="route__term--vertical">Padova</dt>
@@ -99,7 +100,7 @@
           <button class="submit submit--ticket js-submit" data-firstClass="8.50" data-secondClass="7.50">€8.50</button>
         </div>
       </article>
-      <article class="ticket js-ticket">
+      <article id="2" class="ticket js-ticket">
         <dl class="ticket__route--horizontal">
           <dt class="route__term--horizontal">Padova</dt>
           <dd class="route__data--horizontal"><time datetime="10:00">10:00</time></dd>
@@ -108,6 +109,7 @@
           <dt class="route__term--horizontal">Venezia</dt>
           <dd class="route__data--horizontal"><time datetime="10:30">10:30</time></dd>
         </dl>
+        <a href="#3" class="visually-hidden">Prossimo biglietto</a>
         <div class="ticket__body js-ticket__body ticket__body--reduced">
           <dl class="ticket__route--vertical">
               <dt class="route__term--vertical">Padova</dt>
@@ -146,7 +148,7 @@
           <button class="submit submit--ticket js-submit" data-firstClass="8.50" data-secondClass="7.50">€8.50</button>
         </div>
       </article>
-      <article class="ticket js-ticket">
+      <article id="3" class="ticket js-ticket">
         <dl class="ticket__route--horizontal">
           <dt class="route__term--horizontal">Padova</dt>
           <dd class="route__data--horizontal"><time datetime="10:00">10:00</time></dd>
@@ -155,6 +157,7 @@
           <dt class="route__term--horizontal">Venezia</dt>
           <dd class="route__data--horizontal"><time datetime="10:30">10:30</time></dd>
         </dl>
+        <a href="#4" class="visually-hidden">Prossimo biglietto</a>
         <div class="ticket__body js-ticket__body ticket__body--reduced">
           <dl class="ticket__route--vertical">
               <dt class="route__term--vertical">Padova</dt>
@@ -189,7 +192,7 @@
           <button class="submit submit--ticket js-submit" data-firstClass="8.50" data-secondClass="7.50">€8.50</button>
         </div>
       </article>
-      <article class="ticket js-ticket">
+      <article id="4" class="ticket js-ticket">
         <dl class="ticket__route--horizontal">
           <dt class="route__term--horizontal">Padova</dt>
           <dd class="route__data--horizontal"><time datetime="10:00">10:00</time></dd>
@@ -198,6 +201,7 @@
           <dt class="route__term--horizontal">Venezia</dt>
           <dd class="route__data--horizontal"><time datetime="10:30">10:30</time></dd>
         </dl>
+        <a href="#1" class="visually-hidden">Prossimo biglietto</a>
         <div class="ticket__body js-ticket__body ticket__body--reduced">
           <dl class="ticket__route--vertical">
               <dt class="route__term--vertical">Padova</dt>
@@ -233,7 +237,7 @@
   <footer class="container container--footer">
     <h2 class="container__heading--footer">IBERU TRASPORTI</h2>
     <div class="container__body--footer">
-      <div>
+      <div class="container__list">
         <a href="index.php" class="container__link" lang="en-US">Homepage</a>
         <ul>
           <li>
@@ -248,7 +252,8 @@
         </ul>
         <a href="about.html" class="container__link">Chi Siamo</a>
       </div>
-      <div>
+      <div class="container__list">
+        <a href="comunications.php" class="container__link">Comunicazioni</a>
         <a href="offers.php" class="container__link">Offerte</a>
         <ul>
           <li>
@@ -264,8 +269,10 @@
             <a href="offers.php#offers__carnet" class="container__link container__link--heading">Carnet</a>
           </li>
         </ul>
+      </div>
+      <div class="container__list">
         <a href="subscriptions.html" class="container__link">Abbonamenti</a>
-        <a href="help.html" class="container__link" lang="en-US">Help</a>
+        <a href="helps.html" class="container__link" lang="en-US">Help</a>
       </div>
     </div>  
     <p class="container__copyright">Societa' Viaggi - <span lang="en-US">All rights reserved.</span></p>

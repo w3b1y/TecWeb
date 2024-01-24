@@ -20,8 +20,8 @@
     <nav id="navbar" role="navigation">
       <div class="nav__menu js-nav__menu">
         <ul class="nav__list">
-          <li class="nav__item js-nav__item visually-hidden">
-            <a class="nav__link" href="#main">Salta la barra di navigazione</a>
+          <li class="nav__item js-nav__item">
+            <a class="nav__link visually-hidden" href="#main">Salta la barra di navigazione</a>
           </li>
           <li class="nav__item js-nav__item">
             <a class="nav__link" href="index.php" lang="en-US">Home</a>
@@ -54,7 +54,7 @@
     </nav>
   </header>
   <nav id="breadcrumb">
-    <p>Ti trovi in: <span lang="en-US">Help</span></p>
+    <p class="breadcrumb__nav">Ti trovi in: <a href="index.php" lang="en-US">Home</a> &gt;&gt; <span lang="en-US">Help</span></p>
   </nav>
   <main id="main" role="main" class="container container--background">
     <h2 class="container__heading container__heading--main">FAQ</h2>
@@ -70,24 +70,24 @@
           <p class="faq--answer">Per richiedere un rimborso è necessario in primo luogo che Iberu sia responsabile del danno arrecato, in tal caso ci scusiamo e ti preghiamo di contattare il nostro servizio clienti via email all'indirizzo <a href="mailto:assistenza@iberutrasporti.it">assistenza@iberutrasporti.it</a>.</p>
         </div>
       </li>
-      <li id="2" class="faq js-faq container--dynamic dynamic--small ticket__icon">
-        <div class="faq__header">
-          <h4>Biglietto</h4>
-          <a href="#3" class="visually-hidden">Salta FAQ</a>
-        </div>
-        <div class="faq__body dynamic__heading-margin">
-          <p class="faq--question">A chi posso rivolgermi se smarrisco un oggetto sul treno?</p>
-          <p class="faq--answer">Nel caso di oggetti smarriti dai clienti, vengono applicate le norme del Codice Civile (art. 927 e seguenti) che prevedono la consegna degli oggetti rinvenuti all'apposito ufficio del comune in cui è stato ritrovato l'oggetto.</p>
-        </div>
-      </li>
-      <li id="3" class="faq js-faq container--dynamic dynamic--small wheelchair__icon">
+      <li id="2" class="faq js-faq container--dynamic dynamic--small wheelchair__icon">
         <div class="faq__header">
           <h4>Persone con disabilità</h4>
-          <a href="#4" class="visually-hidden">Salta FAQ</a>
+          <a href="#3" class="visually-hidden">Salta FAQ</a>
         </div>
         <div class="faq__body dynamic__heading-margin">
           <p class="faq--question">Come posso richiedere assistenza per passeggeri con disabilità?</p>
           <p class="faq--answer">Per richiedere assistenza per passeggeri con disabilità, ti preghiamo di contattare il nostro servizio clienti via email all'indirizzo <a href="mailto:assistenza@iberutrasporti.it">assistenza@iberutrasporti.it</a>.</p>
+        </div>
+      </li>
+      <li id="3" class="faq js-faq container--dynamic dynamic--small ticket__icon">
+        <div class="faq__header">
+          <h4>Biglietto</h4>
+          <a href="#4" class="visually-hidden">Salta FAQ</a>
+        </div>
+        <div class="faq__body dynamic__heading-margin">
+          <p class="faq--question">A chi posso rivolgermi se smarrisco un oggetto sul treno?</p>
+          <p class="faq--answer">Nel caso di oggetti smarriti dai clienti, vengono applicate le norme del Codice Civile (art. 927 e seguenti) che prevedono la consegna degli oggetti rinvenuti all'apposito ufficio del comune in cui è stato ritrovato l'oggetto.</p>
         </div>
       </li>
       <li id="4" class="faq js-faq container--dynamic dynamic--small ticket__icon">
@@ -191,7 +191,7 @@
   <footer class="container container--footer">
     <h2 class="container__heading--footer">IBERU TRASPORTI</h2>
     <div class="container__body--footer">
-      <div>
+      <div class="container__list">
         <a href="index.php" class="container__link" lang="en-US">Homepage</a>
         <ul>
           <li>
@@ -206,7 +206,8 @@
         </ul>
         <a href="about.html" class="container__link">Chi Siamo</a>
       </div>
-      <div>
+      <div class="container__list">
+        <a href="comunications.php" class="container__link">Comunicazioni</a>
         <a href="offers.php" class="container__link">Offerte</a>
         <ul>
           <li>
@@ -222,8 +223,10 @@
             <a href="offers.php#offers__carnet" class="container__link container__link--heading">Carnet</a>
           </li>
         </ul>
+      </div>
+      <div class="container__list">
         <a href="subscriptions.html" class="container__link">Abbonamenti</a>
-        <a href="help.html" class="container__link" lang="en-US">Help</a>
+        <span class="container__link" lang="en-US">Help</span>
       </div>
     </div>  
     <p class="container__copyright">Societa' Viaggi - <span lang="en-US">All rights reserved.</span></p>

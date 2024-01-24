@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="keywords" content="Iberu Trasporti, Trasporto ferroviario, Ferrovie, Pagina amministratore">
+  <meta name="description" content="Iberu Trasporti pagina amministratore.">
+  <meta name="author" content="Mang00o, Fabbricca, ElenaaaCh, Pax">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="./static/img/icon.png">
+  <link rel="stylesheet" href="./static/css/style.css">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+  <script defer src="./static/js/main.js"></script>
+  <title> Pagina Amministratore </title>
+</head>
+<body>
+  <header>
+    <h1 class="logo">
+      IBERU TRASPORTI
+    </h1>
+    <nav id="navbar" role="navigation">
+      <div class="nav__menu js-nav__menu">
+        <ul class="nav__list">
+          <li class="nav__item js-nav__item">
+            <a class="nav__link visually-hidden" href="#main">Salta la barra di navigazione</a>
+          </li>
+          <li class="nav__item js-nav__item">
+            <a class="nav__link" href="index.php" lang="en-US">Home</a>
+          </li>
+          <li class="nav__item js-nav__item">
+            <a class="nav__link" href="about.html">Chi Siamo</a>
+          </li>
+          <li class="nav__item js-nav__item">
+            <a class="nav__link" href="comunications.html">Comunicazioni</a>
+          </li>
+          <li class="nav__item js-nav__item">
+            <a class="nav__link" href="offers.html">Offerte</a>
+          </li>
+          <li class="nav__item js-nav__item">
+            <a class="nav__link" href="subscriptions.html">Abbonamenti</a>
+          </li>
+          <li class="nav__item js-nav__item">
+            <a class="nav__link" href="help.html" lang="en-US">Help</a>
+          </li>
+        </ul>
+        
+        <div class="nav__close js-nav__close">
+          <span class="ri-close-line"></span>
+        </div>
+      </div>
+      
+      <div class="nav__toggle js-nav__toggle">
+        <span class="ri-menu-line"></span>
+      </div>
+    </nav>
+  </header>
+  <nav id="breadcrumb">
+    <p class="breadcrumb__nav">Ti trovi in: <a href="index.php" lang="en-US">Home</a> &gt;&gt; Pagina Amministratore </p>
+  </nav>
+  <main id="main" role="main" class="main--user">
+    <nav id="navbar--secondary">
+      <ul class="nav__list--secondary">
+        <li class="nav__item--secondary js-nav__item--secondary">
+          <button id="addNews" class="nav__button nav__button--current"><span class="term" lang="en-US">Aggiungi notizia</span> <span class="ri-calendar-event-line icon"></s></button>
+        </li>
+        <li class="nav__item--secondary js-nav__item--secondary">
+          <button id="addOffer" class="nav__button"><span class="term">Aggiungi offerta</span> <span class="ri-history-line icon"></span></button>
+        </li>
+      </ul>
+    </nav>
+    <div id="page--addNews" class="container container--user">
+      <h2 class="container__heading container__heading--main">NOTIZIE</h2>
+      <section class="container">
+        <h3 class="container__heading">Aggiungi una nuova notizia</h3>
+        <form action="addNews.php" method="post" class="container__fieldset--user">
+          <label class="container__label" for="date__start">Data iniziale</label>
+          <input class="container__input--search" type="date" name="date__start" id="date__start" required>
+          <label class="container__label" for="date__end">Data finale</label>
+          <input class="container__input--search" type="date" name="date__end" id="date__end" required>
+          <label class="container__label" for="news__title">Titolo</label>
+          <input class="container__input--search" type="text" name="news__title" id="news__title" required>
+          <label class="container__label" for="news__content">Contenuto</label>
+          <textarea name="news__content" id="news__content" cols="30" rows="10" required></textarea>
+          <input class="submit" type="submit" value="Conferma" name="submit">
+        </form>
+      </section>
+      <section class="container">
+        <h3 class="container__heading">Elimina una notizia esistente</h3>
+        <form action="deleteNews.php" class="container__fieldset--user">
+          <label class="container__label" for="delete__news">Elimina</label>
+          <select id="delete__news" class="container__input--search">
+            <option value="1">Notizia 1</option>
+          </select>
+          <input class="submit" type="submit" value="Elimina" name="submit">
+        </form>
+      </section>
+    </div>
+    <div id="page--addOffer" class="container container--user container--hide">
+      <h2 class="container__heading container__heading--main">OFFERTE</h2>
+      <section class="container">
+        <h3 class="container__heading">Aggiungi una nuova offerta</h3>
+        <form action="addOffer.php" method="post" class="container__fieldset--user">
+          <label class="container__label" for="offer__title">Titolo</label>
+            <input class="container__input--search" type="text" name="offer__title" id="offer__title" required>
+            <label class="container__label" for="offer__content">Contenuto</label>
+            <textarea name="offer__title" id="offer__title" cols="30" rows="3" required></textarea>
+            <label class="container__label" for="offer__category">Categoria</label>
+            <select id="offer__category" class="container__input--search">
+              <option value="1">Offerte super</option>
+              <option value="2">Offerte speciali</option>
+              <option value="3">Offerte gruppi</option>
+              <option value="4">Offerte Carnet</option>
+            </select>
+          <label class="container__label" for="offer__background">Sfondo</label>
+          <fieldset id="offer__background" class="fieldset--image">
+            <input type="radio" id="1" name="image" value="offer--winter-days">
+            <label class="label--image" for="1">
+              <img class="label__image" src="./static/img/winter-days.jpg" alt="">
+            </label>
+            <input type="radio" id="2" name="image" value="offer--christmas-gift">
+            <label class="label--image" for="2">
+              <img class="label__image" src="./static/img/christmas-gift.jpg" alt="">
+            </label>
+            <input type="radio" id="3" name="image" value="offer--new-year">
+            <label class="label--image" for="3">
+              <img class="label__image" src="./static/img/new-year.jpg" alt="">
+            </label>
+            <input type="radio" id="4" name="image" value="offer--love">
+            <label class="label--image" for="4">
+              <img class="label__image" src="./static/img/love.jpg" alt="">
+            </label>
+            <input type="radio" id="5" name="image" value="offer--young">
+            <label class="label--image" for="5">
+              <img class="label__image" src="./static/img/young.jpg" alt="">
+            </label>
+            <input type="radio" id="6" name="image" value="offer--old">
+            <label class="label--image" for="6">
+              <img class="label__image" src="./static/img/old.jpg" alt="">
+            </label>
+            <input type="radio" id="7" name="image" value="offer--family">
+            <label class="label--image" for="7">
+              <img class="label__image" src="./static/img/family.jpg" alt="">
+            </label>
+            <input type="radio" id="8" name="image" value="offer--group">
+            <label class="label--image" for="8">
+              <img class="label__image" src="./static/img/group.jpg" alt="">
+            </label>
+            <input type="radio" id="9" name="image" value="offer--school">
+            <label class="label--image" for="9">
+              <img class="label__image" src="./static/img/school.jpg" alt="">
+            </label>
+            <input type="radio" id="10" name="image" value="offer--five">
+            <label class="label--image" for="10">
+              <img class="label__image" src="./static/img/five.jpg" alt="">
+            </label>
+            <input type="radio" id="11" name="image" value="offer--ten">
+            <label class="label--image" for="11">
+              <img class="label__image" src="./static/img/ten.jpg" alt="">
+            </label>
+            <input type="radio" id="12" name="image" value="offer--fifteen">
+            <label class="label--image" for="12">
+              <img class="label__image" src="./static/img/fifteen.jpg" alt="">
+            </label>
+          </fieldset>
+          <input class="submit" type="submit" value="Conferma" name="submit">
+        </form>
+      </section>
+      <section class="container">
+        <h3 class="container__heading">Elimina un'offerta esistente</h3>
+        <form action="deleteOffer.php" class="container__fieldset--user">
+          <label class="container__label" for="delete__offer">Elimina</label>
+          <select id="delete__offer" class="container__input--search">
+            <option value="1">Offerta 1</option>
+          </select>
+          <input class="submit" type="submit" value="Elimina" name="submit">
+        </form>
+      </section>
+    </div>
+  </main>
+</body>
+</html>
