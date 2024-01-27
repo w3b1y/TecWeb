@@ -30,10 +30,10 @@
             <a class="nav__link" href="about.html">Chi Siamo</a>
           </li>
           <li class="nav__item js-nav__item">
-            <a class="nav__link" href="comunications.html">Comunicazioni</a>
+            <a class="nav__link" href="comunications.php">Comunicazioni</a>
           </li>
           <li class="nav__item js-nav__item">
-            <a class="nav__link" href="offers.html">Offerte</a>
+            <a class="nav__link" href="offers.php">Offerte</a>
           </li>
           <li class="nav__item js-nav__item">
             <a class="nav__link" href="subscriptions.html">Abbonamenti</a>
@@ -71,26 +71,27 @@
       <h2 class="container__heading container__heading--main">NOTIZIE</h2>
       <section class="container">
         <h3 class="container__heading">Aggiungi una nuova notizia</h3>
-        <form action="addNews.php" method="post" class="container__fieldset--user">
+        <form action="" method="post" class="container__fieldset--user">
+          <avvisi/>
           <label class="container__label" for="date__start">Data iniziale</label>
-          <input class="container__input--search" type="date" name="date__start" id="date__start" required>
+          <input class="container__input--search" type="date" name="date_start" id="date__start">
           <label class="container__label" for="date__end">Data finale</label>
-          <input class="container__input--search" type="date" name="date__end" id="date__end" required>
+          <input class="container__input--search" type="date" name="date_end" id="date__end">
           <label class="container__label" for="news__title">Titolo</label>
-          <input class="container__input--search" type="text" name="news__title" id="news__title" required>
+          <input class="container__input--search" type="text" name="news_title" id="news__title">
           <label class="container__label" for="news__content">Contenuto</label>
-          <textarea name="news__content" id="news__content" cols="30" rows="10" required></textarea>
-          <input class="submit" type="submit" value="Conferma" name="submit">
+          <textarea name="news_content" id="news__content" cols="30" rows="10"></textarea>
+          <input class="submit" type="submit" value="Conferma" name="insert_news">
         </form>
       </section>
       <section class="container">
         <h3 class="container__heading">Elimina una notizia esistente</h3>
-        <form action="deleteNews.php" class="container__fieldset--user">
+        <form action="" class="container__fieldset--user">
           <label class="container__label" for="delete__news">Elimina</label>
-          <select id="delete__news" class="container__input--search">
-            <option value="1">Notizia 1</option>
+          <select id="selected__news" name="selected_news" class="container__input--search">
+            <news/>
           </select>
-          <input class="submit" type="submit" value="Elimina" name="submit">
+          <input class="submit" type="submit" value="Elimina" name="delete_news">
         </form>
       </section>
     </div>
@@ -98,17 +99,17 @@
       <h2 class="container__heading container__heading--main">OFFERTE</h2>
       <section class="container">
         <h3 class="container__heading">Aggiungi una nuova offerta</h3>
-        <form action="addOffer.php" method="post" class="container__fieldset--user">
+        <form action="" method="post" class="container__fieldset--user">
           <label class="container__label" for="offer__title">Titolo</label>
-            <input class="container__input--search" type="text" name="offer__title" id="offer__title" required>
+            <input class="container__input--search" type="text" name="offer_title" id="offer__title" required>
             <label class="container__label" for="offer__content">Contenuto</label>
-            <textarea name="offer__content" id="offer__content" cols="30" rows="3" required></textarea>
+            <textarea name="offer_content" id="offer__content" cols="30" rows="3" required></textarea>
             <label class="container__label" for="offer__category">Categoria</label>
-            <select id="offer__category" class="container__input--search">
-              <option value="1">Offerte super</option>
-              <option value="2">Offerte speciali</option>
-              <option value="3">Offerte gruppi</option>
-              <option value="4">Offerte Carnet</option>
+            <select id="offer__category" class="container__input--search" name="offer_class">
+              <option value="super">Offerte super</option>
+              <option value="special">Offerte speciali</option>
+              <option value="student">Offerte studenti</option>
+              <option value="group">Offerte gruppi</option>
             </select>
           <p class="container__label">Sfondo</p>
           <fieldset id="offer__background" class="fieldset--image">
@@ -161,17 +162,17 @@
               <img class="label__image" src="./static/img/fifteen.jpg" alt="">
             </label>
           </fieldset>
-          <input class="submit" type="submit" value="Conferma" name="submit">
+          <input class="submit" type="submit" value="Conferma" name="insert_offers">
         </form>
       </section>
       <section class="container">
         <h3 class="container__heading">Elimina un'offerta esistente</h3>
         <form action="deleteOffer.php" class="container__fieldset--user">
           <label class="container__label" for="delete__offer">Elimina</label>
-          <select id="delete__offer" class="container__input--search">
-            <option value="1">Offerta 1</option>
+          <select id="selected__offer" name="selected_offer" class="container__input--search">
+            <offerte/>
           </select>
-          <input class="submit" type="submit" value="Elimina" name="submit">
+          <input class="submit" type="submit" value="Elimina" name="delete_offer">
         </form>
       </section>
     </div>
