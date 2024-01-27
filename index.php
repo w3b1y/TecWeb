@@ -21,6 +21,13 @@ $date = '<label class="visually-hidden" for="date">Data</label>
             <input class="container__input--search" type="datetime-local" name="date" id="date">';
 $passengers = '<label class="visually-hidden" for="seats">Passeggeri (massimo 35 passeggeri)</label>
                 <input class="container__input--search" type="number" name="seats" id="seats" placeholder="1" min="1" max="35" value="1">';
+$discount="";
+
+if (isset($_GET['discount_code'])) {     // Access the values of the parameters     
+    $discount = $_GET['discount_code'];         // Output the values     
+    //echo "Parameter 1: " . $param1 . "<br>";     
+}
+else {     echo "One or more parameters are missing."; }
 
 if(isset($_POST['submit'])){
     $stazionePartenza = clearInput($_POST['from']);
@@ -35,7 +42,7 @@ if(isset($_POST['submit'])){
         $arrivo = $connessione->checkStazione($stazioneArrivo);
 
         if($partenza!=null && $arrivo!=null){
-            $_SESSION['ricerca'] = array('from' => $stazionePartenza, 'to' => $stazioneArrivo, 'date' => $dataOra, 'seats' => $nPasseggeri);
+            $_SESSION['ricerca'] = array('from' => $stazionePartenza, 'to' => $stazioneArrivo, 'date' => $dataOra, 'seats' => $nPasseggeri, 'discount_code' => $discount);
             $connessione->closeConnection();
             header("Location: tickets.php");
             exit;
@@ -100,7 +107,7 @@ $mesi = array('01' => 'Gennaio', '02' => 'Febbraio', '03' => 'Marzo',
 
 if($comunicazioni != null){
     foreach($comunicazioni as $comunicazione){
-        
+                
         $init_date = strtotime($comunicazione['initial_date']);
         $end_date = strtotime($comunicazione['final_date']);
         $giorno = date('d', $init_date);

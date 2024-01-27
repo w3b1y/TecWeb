@@ -11,19 +11,20 @@ $connessione->openDBConnection();
 
 $offerte_super = $connessione->getData("offers where class='super' and final_date>CURDATE()");
 $offerte_special =  $connessione->getData("offers where class='special' and final_date>CURDATE()");
+$offerte_studenti = $connessione->getData("offers where class='student' and final_date>CURDATE()");
 $offerte_gruppi =  $connessione->getData("offers where class='groups' and final_date>CURDATE()");
-$offerte_carnet =  $connessione->getData("offers where class='carnet' and final_date>CURDATE()");
+
 
 $connessione->closeConnection();
 
 $offerte_superList = '';
 $offerte_specialList = '';
+$offerte_studentList = '';
 $offerte_gruppiList = '';
-$offerte_carnetList = '';
 
 if ($offerte_super != null) {
     foreach ($offerte_super as $offerta) {
-        $offerte_superList .= '<a class="offer offer--'. $offerta['nome'] . '" data-code="'. $offerta['discount_code'] .'" href="#">
+        $offerte_superList .= '<a class="offer offer--'. $offerta['nome'] . '" href="./index.php?discount_code=VWX9012">
                             <div class="offer__body">
                                 <h3 class="offer__title">'.$offerta['title'].'</h3>
                                 <p class="offer__content">'.$offerta['content'].'</p>
@@ -41,6 +42,16 @@ if ($offerte_special != null) {
                         </a>';
     }  
 }
+if ($offerte_studenti != null) {
+    foreach ($offerte_studenti as $offerta) {
+        $offerte_studentList .= '<a class="offer offer--'. $offerta['nome'] . '" href="#">
+                            <div class="offer__body">
+                                <h3 class="offer__title">'.$offerta['title'].'</h3>
+                                <p class="offer__content">'.$offerta['content'].'</p>
+                            </div>
+                        </a>';
+    }  
+}
 if ($offerte_gruppi != null) {
     foreach ($offerte_gruppi as $offerta) {
         $offerte_gruppiList .= '<a class="offer offer--'. $offerta['nome'] . '" data-code="'. $offerta['discount_code'] .'" href="#">
@@ -51,20 +62,10 @@ if ($offerte_gruppi != null) {
                         </a>';
     }  
 }
-if ($offerte_carnet != null) {
-    foreach ($offerte_carnet as $offerta) {
-        $offerte_carnetList .= '<a class="offer offer--'. $offerta['nome'] . '" data-code="'. $offerta['discount_code'] .'" href="#">
-                            <div class="offer__body">
-                                <h3 class="offer__title">'.$offerta['title'].'</h3>
-                                <p class="offer__content">'.$offerta['content'].'</p>
-                            </div>
-                        </a>';
-    }  
-}
 $fileHTML = str_replace("<offerte_super/>", $offerte_superList, $fileHTML);
 $fileHTML = str_replace("<offerte_speciali/>", $offerte_specialList, $fileHTML);
+$fileHTML = str_replace("<offerte_studenti/>", $offerte_studentList, $fileHTML);
 $fileHTML = str_replace("<offerte_gruppi/>", $offerte_gruppiList, $fileHTML);
-$fileHTML = str_replace("<offerte_carnet/>", $offerte_carnetList, $fileHTML);
 
 echo $fileHTML;
 ?>
