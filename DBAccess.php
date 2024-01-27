@@ -36,6 +36,28 @@ class DBAccess{
             return $result;
         }
     }
+
+    public function getDataArray(string $query){
+        $qResult = mysqli_query($this->connection, $query) or die("Query fallita: " . mysqli_error($this->connection));
+    
+        if(mysqli_num_rows($qResult) == 0){
+            return null;
+        }
+        else{
+            $result = array();
+            while($riga = mysqli_fetch_assoc($qResult)){
+                // Se c'è solo una colonna, restituisce direttamente il valore anziché l'array
+                if (count($riga) == 1) {
+                    $result[] = reset($riga);
+                } else {
+                    $result[] = $riga;
+                }
+            }
+            return $result;
+            $qResult->free();
+        }
+    }
+       
     
     public function checkStazione($stazione){
         $query = "SELECT name FROM station
