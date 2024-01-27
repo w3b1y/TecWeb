@@ -344,6 +344,7 @@ tr:nth-of-type(2n) {
 }
 
 .container__input--search {
+  max-width: 100%;
   margin: .1rem 0;
   padding: 0 .5rem;
   height: 2.2rem;
@@ -1214,7 +1215,7 @@ tr:nth-of-type(2n) {
 
   /*==================== ADMIN ====================*/
   .fieldset--image {
-    grid-template-columns: 2% 31% 2% 31% 2% 31%;
+    grid-template-columns: 2% 23% 2% 23% 2% 23% 2% 23%;
   }
 
   /*==================== TICKET ====================*/

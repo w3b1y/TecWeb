@@ -100,17 +100,25 @@
       <section class="container">
         <h3 class="container__heading">Aggiungi una nuova offerta</h3>
         <form action="" method="post" class="container__fieldset--user">
+          <label class="container__label" for="offer__category">Categoria</label>
+          <select id="offer__category" class="container__input--search" name="offer_class">
+            <option value="super">Offerte super</option>
+            <option value="special">Offerte speciali</option>
+            <option value="student">Offerte studenti</option>
+            <option value="group">Offerte gruppi</option>
+          </select>
           <label class="container__label" for="offer__title">Titolo</label>
-            <input class="container__input--search" type="text" name="offer_title" id="offer__title" required>
-            <label class="container__label" for="offer__content">Contenuto</label>
-            <textarea name="offer_content" id="offer__content" cols="30" rows="3" required></textarea>
-            <label class="container__label" for="offer__category">Categoria</label>
-            <select id="offer__category" class="container__input--search" name="offer_class">
-              <option value="super">Offerte super</option>
-              <option value="special">Offerte speciali</option>
-              <option value="student">Offerte studenti</option>
-              <option value="group">Offerte gruppi</option>
-            </select>
+          <input class="container__input--search" type="text" name="offer_title" id="offer__title" required>
+          <label class="container__label" for="offer__content">Contenuto</label>
+          <textarea name="offer_content" id="offer__content" cols="30" rows="3" required></textarea>
+          <label class="container__label" for="discount_code">Codice sconto</label>
+          <input class="container__input--search" type="text" name="discount_code" id="discount_code" required>
+          <label class="container__label" for="discount_percentage">Percentuale sconto</label>
+          <input class="container__input--search" type="number" name="discount_percentage" id="discount_percentage" required>
+          <label class="container__label" for="offer__end">Data finale</label>
+          <input class="container__input--search" type="date" name="offer__end" id="offer__end">
+          <label class="container__label" for="tickets">Persone</label>
+          <input class="container__input--search" type="number" name="tickets" id="tickets" required>
           <p class="container__label">Sfondo</p>
           <fieldset id="offer__background" class="fieldset--image">
             <input type="radio" id="1" name="image" value="offer--winter-days">
