@@ -58,27 +58,7 @@
   <main id="main" role="main">
     <section id="index__search" class="container container--search">
       <h2 class="container__heading container__heading--search container__heading--main">VIAGGIA CON IBERU</h2>
-      <form class="container__form--search" action="" method="post">
-        <fieldset class="posrel">
-          <legend class="visually-hidden"><span lang="en-US">Fieldset</span> per inserimento stazioni</legend>
-          <label class="visually-hidden" for="from">Partenza</label>
-          <input class="container__input--search" type="text" name="from" id="from" placeholder="Partenza">
-          <label class="visually-hidden" for="to">Arrivo</label>
-          <input class="container__input--search" type="text" name="to" id="to" placeholder="Arrivo">
-          <button id="swap"><span class="visually-hidden">Inverti</span> <span class="ri-arrow-up-down-line"></span></button>
-        </fieldset>
-        <fieldset>
-          <legend class="visually-hidden"><span lang="en-US">Fieldset</span> per inserimento filtri di ricerca</legend>
-          <label class="visually-hidden" for="date">Data</label>
-          <input class="container__input--search" type="datetime-local" name="date" id="date">
-          <label class="visually-hidden" for="seats">Passeggeri (massimo 20 passeggeri)</label>
-          <input class="container__input--search" type="number" name="seats" id="seats" placeholder="1" min="1" max="20" value="1">
-          <label class="visually-hidden" for="submit">Cerca</label>
-          <input class="submit" type="submit" id="submit" value="Cerca" name="submit">
-          <avvisi/>
-
-        </fieldset>
-      </form>
+      <search/>
     </section>
     <section class="container--inverse">
       <h2 class="container__heading container__heading--inverse">LA NOSTRA FLOTTA</h2>

@@ -307,6 +307,16 @@ tr:nth-of-type(2n) {
   background-color: rgb(163, 0, 0, 0.1);
 }
 
+.form__error {
+  width: fit-content;
+  margin: .2rem auto;
+  padding: .5rem;
+  background-color: var(--first-color);
+  color: var(--second-color);
+  border: 3px solid var(--second-color);
+  border-radius: 1.5rem;
+}
+
 /*==================== HOME ====================*/
 
 /*======================================== SEARCH ========================================*/
@@ -355,6 +365,10 @@ tr:nth-of-type(2n) {
   border: 2px solid var(--first-color);
   background-color: var(--first-color);
   color: var(--second-color);
+}
+
+#date {
+  cursor: pointer;
 }
 
 #seats {
@@ -1033,6 +1047,9 @@ tr:nth-of-type(2n) {
     cursor: pointer;
   }
 
+  #discount {
+    width: calc(40% - 3px);
+  }
   #date {
     width: calc(40% - 3px);
   }
@@ -1268,8 +1285,9 @@ tr:nth-of-type(2n) {
     font-size:  var(--xl-font-size);
   }
 
+  #discount,
   #date {
-    width: calc(75% - 3px);
+    width: calc(37.5% - 3px);
   }
   #seats {
     width: calc(25% - 3px);
@@ -1494,6 +1512,19 @@ tr:nth-of-type(2n) {
 
   .submit {
     font-size: var(--xl-font-size);
+  }
+
+  /*==================== HOME ====================*/
+
+  /*======================================== SEARCH ========================================*/
+  #discount {
+    width: 100%;
+  }
+  #date {
+    width: calc(60% - 3px);
+  }
+  #seats {
+    width: calc(40% - 3px);
   }
 
   /*==================== ABOUT ====================*/

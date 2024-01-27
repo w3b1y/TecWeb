@@ -21,15 +21,52 @@ const linkAction = () => {
 navLink.forEach(l => l.addEventListener('click', linkAction));
 
 
-const searchBar = document.querySelector('#swap');
-if (searchBar) {
-  searchBar.addEventListener('click', (e) => {
+const searchForm = document.querySelector('.js-container__form--search');
+const searchSwap = document.querySelector('#swap');
+const searchFrom = document.querySelector('#from');
+const searchTo = document.querySelector('#to');
+if (searchSwap && searchFrom && searchTo) {
+  searchSwap.addEventListener('click', (e) => {
     e.preventDefault();
     let fromValue = document.querySelector('#from').value;
     let toValue = document.querySelector('#to').value;
     if (fromValue && toValue) {
       document.querySelector('#from').value = toValue;
       document.querySelector('#to').value = fromValue;
+    }
+  });
+
+  searchFrom.addEventListener('focus', (e) => {
+    e.preventDefault();
+    if(searchForm.querySelector('#departure_station_error')) searchForm.querySelector('#departure_station_error').remove();
+    else if(searchForm.querySelector('#departure_station_empty')) searchForm.querySelector('#departure_station_empty').remove();
+  });
+  searchFrom.addEventListener('blur', (e) => {
+    e.preventDefault();
+    if (searchFrom.value == undefined || searchFrom.value == '') 
+      searchForm.insertAdjacentHTML('afterbegin', '<p id="departure_station_error" class="form__error">Inserisci la stazione di partenza</p>');
+  });
+  searchFrom.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      searchTo.focus();
+    }
+  });
+
+  searchTo.addEventListener('focus', (e) => {
+    e.preventDefault();
+    if(searchForm.querySelector('#arrival_station_error')) searchForm.querySelector('#arrival_station_error').remove();
+    else if(searchForm.querySelector('#arrival_station_empty')) searchForm.querySelector('#arrival_station_empty').remove();
+  });
+  searchTo.addEventListener('blur', (e) => {
+    e.preventDefault();
+    if (searchFrom.value == undefined || searchFrom.value == '') 
+      searchForm.insertAdjacentHTML('afterbegin', '<p id="arrival_station_error" class="form__error">Inserisci la stazione di arrivo</p>');
+  });
+  searchTo.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      searchSwap.focus();
     }
   });
 }
@@ -39,8 +76,8 @@ if (searchSeats) {
   searchSeats.addEventListener('input', (e) => {
     e.preventDefault();
     let value = parseInt(searchSeats.value, 10);
-    if (isNaN(value) || value < 1 || value > 20) {
-      searchSeats.value = Math.min(20, Math.max(1, value));
+    if (isNaN(value) || value < 1 || value > 35) {
+      searchSeats.value = Math.min(35, Math.max(1, value));
     }
   });
 }

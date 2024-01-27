@@ -23,7 +23,7 @@ $offerte_carnetList = '';
 
 if ($offerte_super != null) {
     foreach ($offerte_super as $offerta) {
-        $offerte_superList .= '<a class="offer offer--'. $offerta['nome'] . '" href="#">
+        $offerte_superList .= '<a class="offer offer--'. $offerta['nome'] . '" data-code="'. $offerta['discount_code'] .'" href="#">
                             <div class="offer__body">
                                 <h3 class="offer__title">'.$offerta['title'].'</h3>
                                 <p class="offer__content">'.$offerta['content'].'</p>
@@ -33,7 +33,7 @@ if ($offerte_super != null) {
 }
 if ($offerte_special != null) {
     foreach ($offerte_special as $offerta) {
-        $offerte_specialList .= '<a class="offer offer--'. $offerta['nome'] . '" href="#">
+        $offerte_specialList .= '<a class="offer offer--'. $offerta['nome'] . '" data-code="'. $offerta['discount_code'] .'" href="#">
                             <div class="offer__body">
                                 <h3 class="offer__title">'.$offerta['title'].'</h3>
                                 <p class="offer__content">'.$offerta['content'].'</p>
@@ -43,7 +43,7 @@ if ($offerte_special != null) {
 }
 if ($offerte_gruppi != null) {
     foreach ($offerte_gruppi as $offerta) {
-        $offerte_gruppiList .= '<a class="offer offer--'. $offerta['nome'] . '" href="#">
+        $offerte_gruppiList .= '<a class="offer offer--'. $offerta['nome'] . '" data-code="'. $offerta['discount_code'] .'" href="#">
                             <div class="offer__body">
                                 <h3 class="offer__title">'.$offerta['title'].'</h3>
                                 <p class="offer__content">'.$offerta['content'].'</p>
@@ -53,7 +53,7 @@ if ($offerte_gruppi != null) {
 }
 if ($offerte_carnet != null) {
     foreach ($offerte_carnet as $offerta) {
-        $offerte_carnetList .= '<a class="offer offer--'. $offerta['nome'] . '" href="#">
+        $offerte_carnetList .= '<a class="offer offer--'. $offerta['nome'] . '" data-code="'. $offerta['discount_code'] .'" href="#">
                             <div class="offer__body">
                                 <h3 class="offer__title">'.$offerta['title'].'</h3>
                                 <p class="offer__content">'.$offerta['content'].'</p>

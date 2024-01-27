@@ -2,9 +2,9 @@
 namespace DB;
 class DBAccess{
     private const HOST_B = "localhost";
-    private const DATABASE_NAME = "iberu";
-    private const USERNAME = "root";
-    private const PASSWORD = "";
+    private const DATABASE_NAME = "iberu_transportation";
+    private const USERNAME = "iberu_transportation";
+    private const PASSWORD = "iberu_transportation";
     private $connection;
 
     public function openDBConnection(){
@@ -36,6 +36,64 @@ class DBAccess{
             return $result;
         }
     }
+
+    /* public function getDataArray(string $Sname, string $Tname){
+        $query= "SELECT $Sname FROM $Tname";
+        $qResult = mysqli_query($this->connection, $query) or die("Query fallita: " . mysqli_error($this->connection));
+
+        if(mysqli_num_rows($qResult) == 0){
+            return null;
+        }
+        else{
+            $result = array();
+            while($riga = mysqli_fetch_assoc($qResult)){
+                array_push($result, $riga);
+            }
+            $qResult->free();
+            return $result;
+        }
+    } */
+
+    public function getDataArray(string $query){
+        $qResult = mysqli_query($this->connection, $query) or die("Query fallita: " . mysqli_error($this->connection));
+    
+        if(mysqli_num_rows($qResult) == 0){
+            return null;
+        }
+        else{
+            $result = array();
+            while($riga = mysqli_fetch_assoc($qResult)){
+                // Se c'è solo una colonna, restituisci direttamente il valore anziché un array
+                if (count($riga) == 1) {
+                    $result[] = reset($riga);
+                } else {
+                    $result[] = $riga;
+                }
+            }
+            return $result;
+        }
+    }
+    
+
+    public function getDataData(string $Sname, string $Tname){
+        $query= "SELECT $Sname FROM $Tname";
+        //echo "$query <br>";
+        $qResult = mysqli_query($this->connection, $query) or die("query fallita".mysqli_error($this->connection));
+        //echo $qResult;
+        
+        if(mysqli_num_rows($qResult)==0){
+            return null;
+        }
+        else{
+            $result = array();
+            while($riga = mysqli_fetch_assoc($qResult)){
+                array_push($result, $riga);
+            }
+            $qResult->free();
+            return $result;
+        }
+    }
+    
     
     public function checkStazione($stazione){
         $query = "SELECT name FROM station

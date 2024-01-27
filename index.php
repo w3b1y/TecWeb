@@ -11,6 +11,16 @@ use DB\DBAccess;
 $connessione = new DBAccess();
 $connessione->openDBConnection();
 $avvisi="";
+$departure_station = '<label class="visually-hidden" for="from">Partenza</label>
+                        <input class="container__input--search" type="text" name="from" id="from" placeholder="Partenza">';
+$arrival_station = '<label class="visually-hidden" for="to">Arrivo</label>
+                    <input class="container__input--search" type="text" name="to" id="to" placeholder="Arrivo">';
+$discount_code = '<label class="visually-hidden" for="discount">Codice Sconto</label>
+                    <input class="container__input--search" type="text" name="discount_code" id="discount" placeholder="Codice sconto">';
+$date = '<label class="visually-hidden" for="date">Data</label>
+            <input class="container__input--search" type="datetime-local" name="date" id="date">';
+$passengers = '<label class="visually-hidden" for="seats">Passeggeri (massimo 35 passeggeri)</label>
+                <input class="container__input--search" type="number" name="seats" id="seats" placeholder="1" min="1" max="35" value="1">';
 
 if(isset($_POST['submit'])){
     $stazionePartenza = clearInput($_POST['from']);
@@ -18,6 +28,7 @@ if(isset($_POST['submit'])){
     $dataOra = clearInput($_POST['date']);
     $dataOggi = date('Y-m-d H:i');
     $nPasseggeri = intval($_POST['seats']);
+    $discount_code = isset($_POST['discount_code']) ? clearInput($_POST['discount_code']) : null;
 
     if(!empty($stazionePartenza) && !empty($stazioneArrivo) && $dataOra>$dataOggi && $nPasseggeri>=1){
         $partenza = $connessione->checkStazione($stazionePartenza);
@@ -31,32 +42,52 @@ if(isset($_POST['submit'])){
         }
         else{
             if($partenza==null){
-                $avvisi .="<li>Immettere una stazione di partenza corretta</li>";
+                $avvisi .='<p class="form__error" id="departure_station_error">Inserisci la stazione di partenza corretta</p>';
             }
             if($arrivo==null){
-                $avvisi .="<li>Immettere una stazione di arrivo corretta</li>";
+                $avvisi .='<p class="form__error" id="arrival_station_error">Inserisci la stazione di arrivo corretta</p>';
             }
                         
         }
     }
-    if(empty($stazionePartenza)){
-        $avvisi .="<li>Immettere una stazione di partenza</li>";
-    }
-    if(empty($stazioneArrivo)){
-        $avvisi .="<li>Immettere una stazione di arrivo</li>";
-    }
-    if($dataOra<$dataOggi){
-        $avvisi .= "<li>La data e l'ora devono essere maggiori o uguali a quelli attuali</li>";
-    }
-    if ($nPasseggeri < 1) {
-        $avvisi .= "<li>Inserire un numero di passeggeri maggiore o uguale a 1</li>";
-    }
+    empty($stazionePartenza) ? 
+        $avvisi .='<p class="form__error" id="departure_station_empty">Inserisci la stazione di partenza</p>' : 
+        $departure_station = '<label class="visually-hidden" for="from">Partenza</label>
+                                <input class="container__input--search" type="text" name="from" id="from" placeholder="Partenza" value="'.$stazionePartenza.'">';
+    empty($stazioneArrivo) ? 
+        $avvisi .='<p class="form__error" id="arrival_station_empty">Inserisci la stazione di arrivo</p>' : 
+        $arrival_station = '<label class="visually-hidden" for="to">Arrivo</label>
+                            <input class="container__input--search" type="text" name="to" id="to" placeholder="Arrivo" value="'.$stazioneArrivo.'">';
+    if(!empty($discount_code)) 
+        $discount_code = '<label class="visually-hidden" for="discount">Codice Sconto</label>
+                            <input class="container__input--search" type="text" name="discount_code" id="discount" placeholder="Codice sconto" 
+                            value='.$discount_code.'">';
+    ($dataOra < $dataOggi) ? 
+        $avvisi .= '<p class="form__error" id="datetime_error">La data e l&#39;ora devono essere maggiori o uguali a quelli attuali</p>' : 
+        $date = '<label class="visually-hidden" for="date">Data e ora</label>
+                  <input class="container__input--search" type="datetime-local" name="date" id="date" value="'.$dataOra.'">';
+    ($nPasseggeri < 1 || $nPasseggeri > 35) ? 
+        $avvisi .= '<p class="form__error" id="passengers_error">Inserire un numero di passeggeri compreso tra 1 e 35</p>' : 
+        $passengers = '<label class="visually-hidden" for="seats">Numero passeggeri</label>
+                  <input class="container__input--search" type="number" name="seats" id="seats" value="'.$nPasseggeri.'">';
 }
 
+$form = '<form class="container__form--search js-container__form--search" action="" method="post">
+        <avvisi/>
+        <fieldset class="posrel">
+        <legend class="visually-hidden"><span lang="en-US">Fieldset</span> per inserimento stazioni</legend>
+        '.$departure_station.$arrival_station.'
+        <button id="swap"><span class="visually-hidden">Inverti</span> <span class="ri-arrow-up-down-line"></span></button>
+        </fieldset>
+        <fieldset>
+        <legend class="visually-hidden"><span lang="en-US">Fieldset</span> per inserimento filtri di ricerca</legend>
+        '.$discount_code.$date.$passengers.'
+        <label class="visually-hidden" for="submit">Cerca</label>
+        <input class="submit" type="submit" id="submit" value="Cerca" name="submit">
+        </fieldset>
+        </form>';
 
-if($avvisi != ""){
-    $avvisi = "<ul>" . $avvisi . "</ul>";//DA SISTEMARE
-}
+$fileHTML = str_replace("<search/>", $form, $fileHTML);
 $fileHTML = str_replace("<avvisi/>", $avvisi, $fileHTML);
 
 $comunicazioni= $connessione->getData("news where final_date>= CURDATE() order by final_date limit 3");

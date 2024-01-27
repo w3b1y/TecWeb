@@ -60,7 +60,7 @@
     <nav id="navbar--secondary">
       <ul class="nav__list--secondary">
         <li class="nav__item--secondary js-nav__item--secondary">
-          <button id="addNews" class="nav__button nav__button--current"><span class="term" lang="en-US">Aggiungi notizia</span> <span class="ri-calendar-event-line icon"></s></button>
+          <button id="addNews" class="nav__button nav__button--current"><span class="term" lang="en-US">Aggiungi notizia</span> <span class="ri-calendar-event-line icon"></span></button>
         </li>
         <li class="nav__item--secondary js-nav__item--secondary">
           <button id="addOffer" class="nav__button"><span class="term">Aggiungi offerta</span> <span class="ri-history-line icon"></span></button>
@@ -102,7 +102,7 @@
           <label class="container__label" for="offer__title">Titolo</label>
             <input class="container__input--search" type="text" name="offer__title" id="offer__title" required>
             <label class="container__label" for="offer__content">Contenuto</label>
-            <textarea name="offer__title" id="offer__title" cols="30" rows="3" required></textarea>
+            <textarea name="offer__content" id="offer__content" cols="30" rows="3" required></textarea>
             <label class="container__label" for="offer__category">Categoria</label>
             <select id="offer__category" class="container__input--search">
               <option value="1">Offerte super</option>
@@ -110,7 +110,7 @@
               <option value="3">Offerte gruppi</option>
               <option value="4">Offerte Carnet</option>
             </select>
-          <label class="container__label" for="offer__background">Sfondo</label>
+          <p class="container__label">Sfondo</p>
           <fieldset id="offer__background" class="fieldset--image">
             <input type="radio" id="1" name="image" value="offer--winter-days">
             <label class="label--image" for="1">

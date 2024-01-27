@@ -2,11 +2,10 @@ DROP TABLE IF EXISTS admin CASCADE;
 DROP TABLE IF EXISTS user_subscription CASCADE;
 DROP TABLE IF EXISTS subscription CASCADE;
 DROP TABLE IF EXISTS ticket CASCADE;
-DROP TABLE IF EXISTS route CASCADE;
-DROP TABLE IF EXISTS route_category CASCADE;
 DROP TABLE IF EXISTS route_station CASCADE;
-DROP TABLE IF EXISTS station CASCADE;
 DROP TABLE IF EXISTS route_schedule CASCADE;
+DROP TABLE IF EXISTS route CASCADE;
+DROP TABLE IF EXISTS station CASCADE;
 DROP TABLE IF EXISTS train CASCADE;
 DROP TABLE IF EXISTS news CASCADE;
 DROP TABLE IF EXISTS offers CASCADE;
@@ -41,9 +40,8 @@ CREATE TABLE user_subscription(
   FOREIGN KEY (subscription_id) REFERENCES subscription(id)
 );
 CREATE TABLE station(
-  id INT PRIMARY KEY AUTO_INCREMENT,
-  name VARCHAR(40) NOT NULL,
-  address VARCHAR(40) NOT NULL
+  name VARCHAR(40) PRIMARY KEY,
+  address VARCHAR(100) NOT NULL
 );
 
 CREATE TABLE route(
@@ -52,22 +50,15 @@ CREATE TABLE route(
   distance DECIMAL(10,2) NOT NULL,
   name VARCHAR(40) NOT NULL
 );
-CREATE TABLE route_category(
-  id INT PRIMARY KEY AUTO_INCREMENT,
-  route_id INT NOT NULL,
-  subscription_id INT NOT NULL,
-  FOREIGN KEY (route_id) REFERENCES route(id),
-  FOREIGN KEY (subscription_id) REFERENCES subscription(id)
-);
 CREATE TABLE route_station(
   id INT PRIMARY KEY AUTO_INCREMENT,
   route_id INT NOT NULL,
-  station_id INT NOT NULL,
+  station_id VARCHAR(40) NOT NULL,
   duration TIME NOT NULL,
-  distance DECIMAL(10,2) NOT NULL,
+  price DECIMAL(10,2) NOT NULL,
   order_number INT NOT NULL,
   FOREIGN KEY (route_id) REFERENCES route(id),
-  FOREIGN KEY (station_id) REFERENCES station(id)
+  FOREIGN KEY (station_id) REFERENCES station(name)
 );
 
 CREATE TABLE train(
@@ -87,17 +78,15 @@ CREATE TABLE ticket(
   id INT PRIMARY KEY AUTO_INCREMENT,
   user_id INT NOT NULL,
   route_schedule_id INT NOT NULL,
-  station_id INT NOT NULL,
   seat_number INT NOT NULL,
   price DECIMAL(10,2) NOT NULL,
   FOREIGN KEY (user_id) REFERENCES user(id),
-  FOREIGN KEY (route_schedule_id) REFERENCES route_schedule(id),
-  FOREIGN KEY (station_id) REFERENCES station(id)
+  FOREIGN KEY (route_schedule_id) REFERENCES route_schedule(id)
 );
 
 CREATE TABLE news(
   id INT PRIMARY KEY AUTO_INCREMENT,
-  title VARCHAR(40) NOT NULL,
+  title VARCHAR(100) NOT NULL,
   content TEXT NOT NULL,
   initial_date DATE NOT NULL,
   final_date DATE NOT NULL
@@ -107,7 +96,7 @@ CREATE TABLE offers(
   id INT PRIMARY KEY AUTO_INCREMENT,
   class VARCHAR (40) NOT NULL,
   nome VARCHAR(40) NOT NULL,
-  title TEXT NOT NULL,
+  title VARCHAR(100) NOT NULL,
   content TEXT,
   discount_code VARCHAR(30) NOT NULL,
   final_date DATE NOT NULL
@@ -168,37 +157,25 @@ INSERT INTO user_subscription (user_id, subscription_id, start_date, end_date) V
 (1, 1, '2024-01-01', '2024-01-31'),
 (2, 2, '2024-02-15', '2024-03-15');
 
--- Route Categories
-INSERT INTO route_category (route_id, subscription_id) VALUES
-(1, 1),
-(1, 2),
-(2, 2),
-(1, 3),
-(2, 3),
-(3, 3);
-
 -- Route Schedules
 INSERT INTO route_schedule (route_id, train_id, departure_time) VALUES
 (1, 1, '08:00:00'),
+(1, 2, '09:00:00'),
+(1, 2, '18:00:00'),
 (2, 2, '10:30:00'),
 (3, 3, '12:45:00');
 
 -- Tickets
-INSERT INTO ticket (user_id, route_schedule_id, station_id, seat_number, price) VALUES
-(1, 1, 1, 10, 25.00),
-(2, 2, 2, 5, 30.00);
+INSERT INTO ticket (user_id, route_schedule_id, seat_number, price) VALUES
+(1, 1, 10, 25.00),
+(2, 2, 5, 30.00);
 
 -- Route Stations
-INSERT INTO route_station (route_id, station_id, duration, distance, order_number) VALUES
-(1, 1, '01:30:00', 100.25, 1),
-(1, 2, '02:00:00', 200.25, 2),
-(1, 3, '00:45:00', 50.75, 3),
-(2, 2, '01:15:00', 150.50, 1),
-(2, 1, '01:30:00', 100.25, 2),
-(2, 4, '00:45:00', 50.75, 3),
-(3, 3, '02:00:00', 200.25, 1),
-(3, 4, '01:30:00', 150.50, 2),
-(3, 5, '00:45:00', 50.75, 3);
+INSERT INTO route_station (route_id, station_id, duration, price, order_number) VALUES
+(1, 'Napoli', '00:00', 75, 1),
+(1, 'Roma', '02:00:00', 58, 2),
+(1, 'Bologna', '02:55:00', 40, 3),
+(1, 'Milano', '04:15:00', 0, 4);
 
 -- News
 INSERT INTO news(id, title, content, initial_date, final_date) VALUES
@@ -209,13 +186,13 @@ INSERT INTO news(id, title, content, initial_date, final_date) VALUES
 (3, 'Soppressione tratta Milano - Torino', 'La tratta Milano - Torino sarà soppressa, causa lavori alla linea ferroviaria, a partire dal giorno #i fino al giorno #f. Ci scusiamo per il disagio.', '2024-04-12', '2024-04-16'),
 (4, 'Soppressione tratta Roma - Milano', 'La tratta Roma - Milano sarà soppressa, causa lavori alla linea ferroviaria, a partire dal giorno #i fino al giorno #f. Ci scusiamo per il disagio.', '2024-01-15', '2024-01-17'),
 (5, 'Sospensione temporanea servizio Firenze - Napoli', 'Il servizio ferroviario tra Firenze e Napoli sarà temporaneamente sospeso per lavori sulla linea. La sospensione avrà luogo dal giorno #i al giorno #f. Ci scusiamo per l''inconveniente.', '2024-03-05', '2024-03-10'),
-(6, 'Nuova tratta diretta Bologna - Venezia', 'Siamo lieti di annunciare l''apertura di una nuova tratta diretta tra Bologna e Venezia, che inizierà a operare dal giorno #i. Migliorerà la connettività tra le due importanti città italiane.', '2024-02-20', NULL),
+(6, 'Nuova tratta diretta Bologna - Venezia', 'Siamo lieti di annunciare l''apertura di una nuova tratta diretta tra Bologna e Venezia, che inizierà a operare dal giorno #i. Migliorerà la connettività tra le due importanti città italiane.', '2024-02-20', '2024-03-10'),
 (7, 'Modifiche orari servizio Genova - Palermo', 'Si avvisano gli utenti che ci saranno modifiche agli orari del servizio ferroviario tra Genova e Palermo a partire dal giorno #i per ottimizzare la gestione delle corse. Si prega di verificare gli orari aggiornati.', '2024-05-01', '2024-05-05'),
 (8, 'Sciopero del Personale: Sospensione temporanea di treni sulla tratta Napoli - Bari', 'A causa di uno sciopero del personale ferroviario, alcuni treni sulla tratta Napoli - Bari saranno sospesi a partire dal giorno #i fino al giorno #f. Gli utenti sono invitati a pianificare i propri viaggi di conseguenza.', '2024-03-20', '2024-03-22'),
 (9, 'Caduta di Alberi: Interruzione del servizio sulla tratta Genova - Milano', 'A causa della caduta di alberi sulla linea ferroviaria, il servizio tra Genova e Milano è temporaneamente interrotto. I tecnici sono al lavoro per ripristinare la normale operatività. Si prevede che la situazione sarà risolta entro il giorno #f.', '2024-04-05', '2024-04-06'),
 (10, 'Forti Ritardi: Attesa prolungata su diverse tratte ferroviarie', 'A causa di problemi tecnici sulla rete ferroviaria, si verificano ritardi significativi su diverse tratte, inclusi percorsi tra Milano, Roma e Firenze. I viaggiatori sono invitati a consultare gli annunci in stazione per informazioni aggiornate.', '2024-02-10', '2024-02-11'),
-(11, 'Incidente Ferroviario: Interruzione del servizio sulla tratta Torino - Venezia', 'A seguito di un incidente ferroviario sulla tratta Torino - Venezia, il servizio è temporaneamente interrotto. I passeggeri sono invitati a considerare alternative di viaggio. Le autorità stanno indagando sull''incidente.', '2024-05-15', NULL),
-(12, 'Miglioramenti Infrastrutturali: Nuovi treni veloci sulla tratta Roma - Firenze', 'Siamo lieti di annunciare l''introduzione di nuovi treni veloci sulla tratta Roma - Firenze. I viaggiatori beneficeranno di tempi di percorrenza più brevi e servizi migliorati. Il nuovo servizio entrerà in funzione a partire dal giorno #i.', '2024-03-01', NULL);
+(11, 'Incidente Ferroviario: Interruzione del servizio sulla tratta Torino - Venezia', 'A seguito di un incidente ferroviario sulla tratta Torino - Venezia, il servizio è temporaneamente interrotto. I passeggeri sono invitati a considerare alternative di viaggio. Le autorità stanno indagando sull''incidente.', '2024-05-15', '2024-06-10'),
+(12, 'Miglioramenti Infrastrutturali: Nuovi treni veloci sulla tratta Roma - Firenze', 'Siamo lieti di annunciare l''introduzione di nuovi treni veloci sulla tratta Roma - Firenze. I viaggiatori beneficeranno di tempi di percorrenza più brevi e servizi migliorati. Il nuovo servizio entrerà in funzione a partire dal giorno #i.', '2024-03-01', '2024-03-10');
 
 
 -- Offers
