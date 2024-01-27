@@ -23,11 +23,6 @@ $passengers = '<label class="visually-hidden" for="seats">Passeggeri (massimo 35
                 <input class="container__input--search" type="number" name="seats" id="seats" placeholder="1" min="1" max="35" value="1">';
 $discount="";
 
-if (isset($_GET['discount_code'])) {     // Access the values of the parameters     
-    $discount = $_GET['discount_code'];         // Output the values     
-    //echo "Parameter 1: " . $param1 . "<br>";     
-}
-else {     echo "One or more parameters are missing."; }
 
 if(isset($_POST['submit'])){
     $stazionePartenza = clearInput($_POST['from']);
@@ -35,7 +30,7 @@ if(isset($_POST['submit'])){
     $dataOra = clearInput($_POST['date']);
     $dataOggi = date('Y-m-d H:i');
     $nPasseggeri = intval($_POST['seats']);
-    $discount_code = isset($_POST['discount_code']) ? clearInput($_POST['discount_code']) : null;
+    $discount = isset($_POST['discount_code']) ? clearInput($_POST['discount_code']) : null;
 
     if(!empty($stazionePartenza) && !empty($stazioneArrivo) && $dataOra>$dataOggi && $nPasseggeri>=1){
         $partenza = $connessione->checkStazione($stazionePartenza);
@@ -65,11 +60,7 @@ if(isset($_POST['submit'])){
         $avvisi .='<p class="form__error" id="arrival_station_empty">Inserisci la stazione di arrivo</p>' : 
         $arrival_station = '<label class="visually-hidden" for="to">Arrivo</label>
                             <input class="container__input--search" type="text" name="to" id="to" placeholder="Arrivo" value="'.$stazioneArrivo.'">';
-    if(!empty($discount_code)) 
-        $discount_code = '<label class="visually-hidden" for="discount">Codice Sconto</label>
-                            <input class="container__input--search" type="text" name="discount_code" id="discount" placeholder="Codice sconto" 
-                            value='.$discount_code.'">';
-    ($dataOra < $dataOggi) ? 
+    $dataOra < $dataOggi ? 
         $avvisi .= '<p class="form__error" id="datetime_error">La data e l&#39;ora devono essere maggiori o uguali a quelli attuali</p>' : 
         $date = '<label class="visually-hidden" for="date">Data e ora</label>
                   <input class="container__input--search" type="datetime-local" name="date" id="date" value="'.$dataOra.'">';
@@ -77,8 +68,14 @@ if(isset($_POST['submit'])){
         $avvisi .= '<p class="form__error" id="passengers_error">Inserire un numero di passeggeri compreso tra 1 e 35</p>' : 
         $passengers = '<label class="visually-hidden" for="seats">Numero passeggeri</label>
                   <input class="container__input--search" type="number" name="seats" id="seats" value="'.$nPasseggeri.'">';
+    if(!empty($discount)) 
+        $discount_code = '<label class="visually-hidden" for="discount">Codice Sconto</label>
+                            <input class="container__input--search" type="text" name="discount_code" id="discount" placeholder="Codice sconto" 
+                            value='.$discount.'">';
+    
 }
 
+echo $discount;
 $form = '<form class="container__form--search js-container__form--search" action="" method="post">
         <avvisi/>
         <fieldset class="posrel">

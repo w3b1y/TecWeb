@@ -60,7 +60,7 @@ if (searchSwap && searchFrom && searchTo) {
   });
   searchTo.addEventListener('blur', (e) => {
     e.preventDefault();
-    if (searchFrom.value == undefined || searchFrom.value == '') 
+    if (searchTo.value == undefined || searchTo.value == '') 
       searchForm.insertAdjacentHTML('afterbegin', '<p id="arrival_station_error" class="form__error">Inserisci la stazione di arrivo</p>');
   });
   searchTo.addEventListener('keypress', (e) => {
