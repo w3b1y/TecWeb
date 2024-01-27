@@ -107,18 +107,20 @@
             <option value="student">Offerte studenti</option>
             <option value="group">Offerte gruppi</option>
           </select>
+          <label class="container__label" for="offer__name">Nome</label>
+          <input class="container__input--search" type="text" name="offer_name" id="offer__name">
           <label class="container__label" for="offer__title">Titolo</label>
-          <input class="container__input--search" type="text" name="offer_title" id="offer__title" required>
+          <input class="container__input--search" type="text" name="offer_title" id="offer__title">
           <label class="container__label" for="offer__content">Contenuto</label>
-          <textarea name="offer_content" id="offer__content" cols="30" rows="3" required></textarea>
+          <textarea name="offer_content" id="offer__content" cols="30" rows="3" ></textarea>
           <label class="container__label" for="discount_code">Codice sconto</label>
-          <input class="container__input--search" type="text" name="discount_code" id="discount_code" required>
+          <input class="container__input--search" type="text" name="discount_code" id="discount_code">
           <label class="container__label" for="discount_percentage">Percentuale sconto</label>
-          <input class="container__input--search" type="number" name="discount_percentage" id="discount_percentage" required>
+          <input class="container__input--search" type="number" name="discount_percentage" id="discount_percentage">
           <label class="container__label" for="offer__end">Data finale</label>
-          <input class="container__input--search" type="date" name="offer__end" id="offer__end">
-          <label class="container__label" for="tickets">Persone</label>
-          <input class="container__input--search" type="number" name="tickets" id="tickets" required>
+          <input class="container__input--search" type="date" name="offer_end" id="offer__end">
+          <label class="container__label" for="tickets">Minimo persone (non obbligatorio)</label>
+          <input class="container__input--search" type="number" name="minimun" id="tickets">
           <p class="container__label">Sfondo</p>
           <fieldset id="offer__background" class="fieldset--image">
             <input type="radio" id="1" name="image" value="offer--winter-days">
