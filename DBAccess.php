@@ -57,12 +57,11 @@ class DBAccess{
             $qResult->free();
         }
     }
-       
     
     public function checkStazione($stazione){
         $query = "SELECT name FROM station
                 WHERE (name = \"$stazione\")";
-        $qResult = mysqli_query($this->connection, $query) or die("query fallita".mysqli_error($this->connection));
+        $qResult = mysqli_query($this->connection, $query) or die("Errore nel controllo della stazione $stazione".mysqli_error($this->connection));
 
         if(mysqli_num_rows($qResult) == 1){
             $result = mysqli_fetch_assoc($qResult);
@@ -72,6 +71,56 @@ class DBAccess{
         else{
             return null;
         }
+    }
+
+    public function addComunication($data_i, $data_f, $titolo, $contenuto){
+        $query = "INSERT INTO news VALUES (NULL, \"$titolo\", \"$contenuto\", \"$data_i\", \"$data_f\")";
+        mysqli_query($this->connection, $query) or die("Errore nell'inserimento dell'offerta $titolo".mysqli_error($this->connection));
+    }
+
+    public function viewComunication(){
+        $query= "SELECT id, title FROM news";
+        $qResult = mysqli_query($this->connection, $query) or die("Errore ricerca notizie".mysqli_error($this->connection));
+
+        if(mysqli_num_rows($qResult)==0){
+            return null;
+        }
+        else{
+            $result = array();
+            while($riga = mysqli_fetch_assoc($qResult)){
+                array_push($result, $riga);
+            }
+            $qResult->free();
+            return $result;
+        }}
+
+    public function deleteComunication($id){
+        $query = "DELETE FROM news WHERE id=\"$id\"";
+        mysqli_query($this->connection, $query) or die("Errore nell'eliminazione della comunicazione".mysqli_error($this->connection));
+        //return null;
+    }
+
+    public function viewOffers(){
+        $query= "SELECT id, class, nome, title FROM offers";
+        $qResult = mysqli_query($this->connection, $query) or die("Errore ricerca offerte".mysqli_error($this->connection));
+
+        if(mysqli_num_rows($qResult)==0){
+            return null;
+        }
+        else{
+            $result = array();
+            while($riga = mysqli_fetch_assoc($qResult)){
+                array_push($result, $riga);
+            }
+            $qResult->free();
+            return $result;
+        }
+    }
+
+    public function deleteOffer($id){
+        $query = "DELETE FROM offers WHERE id=\"$id\"";
+        mysqli_query($this->connection, $query) or die("Errore nell'eliminazione dell'offerta'".mysqli_error($this->connection));
+        //return null;
     }
 
     public function closeConnection(){
