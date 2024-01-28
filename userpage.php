@@ -19,30 +19,34 @@ $user = 1;
 
 
 if (isset($_POST['submit'])) {
-  $name = $_POST['name'];
-  $surname = $_POST['surname'];
-  $email = $_POST['email'];
+  $name = clearInput($_POST['name']);
+  $surname = clearInput($_POST['surname']);
+  $email = clearInput($_POST['email']);
   $birthday = $_POST['birthday'];
-  $old_password = $_POST['old_password'];
-  $new_password = $_POST['new_password'];
-  $rnew_password = $_POST['rnew_password'];
+  $old_password = clearInput($_POST['old_password']);
+  $new_password = clearInput($_POST['new_password']);
+  $rnew_password = clearInput($_POST['rnew_password']);
+  $error = null;
 
   $user_info = $connessione->getDataArray("select * from user where id = '$user'")[0];
-  if (isset($_POST['name']) && preg_match("/^[a-zA-Z\s]+$/", $_POST['name']) && $_POST['name'] != $user['name']) 
-    $connessione->addData("update user set first_name = '$name' where id = '$user'");
-  if (isset($_POST['surname']) && preg_match("/^[a-zA-Z\s]+$/", $_POST['surname']) && $_POST['surname'] != $user['surname'])
+  (!empty($name) && preg_match("/^[a-zA-Z\s]+$/", $name) && $name != $user_info['first_name']) ?
+    $connessione->addData("update user set first_name = '$name' where id = '$user'") :
+    $error .= '<p class="form__error" id="name_error">Inserisci un nome corretto</p>';
+  if (!empty($surname) && preg_match("/^[a-zA-Z\s]+$/", $surname) && $surname != $user_info['last_name'])
     $connessione->addData("update user set last_name = '$surname' where id = '$user'");
-  if (isset($_POST['email']) && preg_match("/^(?!.*\.\.)[a-zA-Z0-9]+([._]*[a-zA-Z0-9])*@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/", $_POST['email']) &&
-            $_POST['email'] != $user['email'])
+  if (!empty($email) && preg_match("/^(?!.*\.\.)[a-zA-Z0-9]+([._]*[a-zA-Z0-9])*@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/", $email) &&
+            $email != $user_info['email'])
     $connessione->addData("update user set email = '$email' where id = '$user'");
-  if (isset($_POST['birthday']) && $_POST['birthday'] != $user['birthday'])
+  if (!empty($birthday) && $birthday != $user_info['birthday'])
     $connessione->addData("update user set birthday = '$birthday' where id = '$user'");
-  if (isset($_POST['old_password']) && isset($_POST['new_password']) && isset($_POST['rnew_password']) &&
-            $_POST['new_password'] == $_POST['rnew_password'] && $_POST['old_password'] == $user['password'] && $_POST['old_password'] == $_POST['new_password'])
+  if (!empty($old_password) && !empty($new_password) && !empty($rnew_password) &&
+      $new_password == $rnew_password && $old_password == $user_info['password'] && $old_password != $new_password)
     $connessione->addData("update user set password = '$new_password' where id = '$user'");
   
-  header("Location: ".$_SERVER['PHP_SELF']);
-  exit();
+  if ($error == null) {
+    header("Location: ".$_SERVER['PHP_SELF']);
+    exit();
+  } 
 }
 
 
@@ -78,7 +82,6 @@ else {
                 <div class="container ticket__description">
                   <p class="ticket__content">Data: <time datetime="'.$departure_time_station->format('d/m/y H:i').'">'
                   .$departure_time_station->format('d/m/Y H:i').'</time></p>
-                  <p class="ticket__content">Tipologia tratta: Diretto</p>
                   <p class="ticket__content">Identificativo treno: '.$train_id[0].'</p>
                   <p class="ticket__class js-first__class ticket__class--selected">'.($vt['category'] == 1 ? "Prima classe" : "Seconda classe" ).'</p>
                 </div>
