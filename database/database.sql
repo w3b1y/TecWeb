@@ -1,11 +1,9 @@
 DROP TABLE IF EXISTS offers CASCADE;
 DROP TABLE IF EXISTS news CASCADE;
 DROP TABLE IF EXISTS ticket CASCADE;
-DROP TABLE IF EXISTS route_station CASCADE;
 DROP TABLE IF EXISTS route_schedule CASCADE;
-DROP TABLE IF EXISTS route CASCADE;
-DROP TABLE IF EXISTS station CASCADE;
 DROP TABLE IF EXISTS train CASCADE;
+DROP TABLE IF EXISTS route_station CASCADE;
 DROP TABLE IF EXISTS route CASCADE;
 DROP TABLE IF EXISTS station CASCADE;
 DROP TABLE IF EXISTS user_subscription CASCADE;
@@ -109,6 +107,7 @@ CREATE TABLE offers(
   discount_code VARCHAR(30) NOT NULL,
   final_date DATE NOT NULL,
   discount INT NOT NULL,
+  img VARCHAR(30) NOT NULL,
   people_number INT
 );
 
@@ -214,13 +213,13 @@ INSERT INTO news(id, title, content, initial_date, final_date) VALUES
 
 
 -- Offers
-INSERT INTO offers(class, nome, title, content, discount_code, final_date, discount, people_number) VALUES
-('super', 'christmas-gift', 'Celebra il Natale con stile! Risparmia il 15% su tutte le prenotazioni.', 'Regalati una vacanza indimenticabile con noi!', 'ABC1234', '2023-12-25', 15, NULL),
-('super', 'new-year', 'Dai il benvenuto al nuovo anno con un''offerta speciale!', 'Prenota entro il 27 dicembre 2023 e risparmia il 20% su tutte le destinazioni. Inizia il 2024 con una vacanza da sogno!', 'DEF5678', '2024-12-27', 20, NULL),
-('special', 'love', 'Vivi momenti romantici con le nostre Offerte di Coppia! Sconto del 5%', 'Prenota per il tuo anniversario o una fuga romantica entro il 14 febbraio e regalati un viaggio indimenticabile con la tua dolce metà!', 'GHI9012', '2024-02-14', 5, NULL),
-('special', 'young', 'Esplora il mondo con le nostre Offerte Speciali per i Giovani!', 'Sconto imperdibile del 10%, riservato ai viaggiatori under 25. Dai il via alla tua prossima avventura con servizi esclusivi e risparmia mentre crei ricordi indimenticabili!', 'JKL3456', '2024-06-01', 10, NULL),
-('special', 'old', 'Esplora il mondo con le nostre Offerte Speciali per i Senior!', 'Sconto speciale del 15%, dedicato ai viaggiatori sopra i 60 anni. Approfitta dei vantaggi e riscopri il lato meraviglioso del viaggio.', 'MNO7890', '2024-12-31', 15, NULL),
-('groups', 'family', 'Offerta Famiglia: un''avventura insieme!', 'Pacchetto per due genitori e due bambini sotto i 10 anni con sconto speciale del 15%. Perfetto per creare ricordi indimenticabili per tutta la famiglia!', 'PQR1234', '2024-05-31', 15, 4),
-('groups', 'group', 'Offerta Gruppi: più si è, più si risparmia!', 'Prenota per un gruppo di oltre 8 persone e approfitta di uno sconto esclusivo del 20%. Rendete il vostro viaggio un''esperienza straordinaria!', 'STU5678', '2024-12-31', 20, 8),
-('groups', 'school', 'Offerta Scolastica: Un''esperienza educativa straordinaria!', 'Prenota ora per la tua classe, con due professori e oltre 20 alunni, e ricevi uno sconto esclusivo del 30%. Viaggiate e imparate insieme a tariffe speciali!', 'VWX9012', '2024-06-10', 30, 22);
+INSERT INTO offers(class, nome, title, content, discount_code, final_date, discount, img, people_number) VALUES
+('super', 'christmas-gift', 'Celebra il Natale con stile! Risparmia il 15% su tutte le prenotazioni.', 'Regalati una vacanza indimenticabile con noi!', 'ABC1234', '2023-12-25', 15, 'offer--love', NULL),
+('super', 'new-year', 'Dai il benvenuto al nuovo anno con un''offerta speciale!', 'Prenota entro il 27 dicembre 2023 e risparmia il 20% su tutte le destinazioni. Inizia il 2024 con una vacanza da sogno!', 'DEF5678', '2024-12-27', 20, 'offer--love', NULL),
+('special', 'love', 'Vivi momenti romantici con le nostre Offerte di Coppia! Sconto del 5%', 'Prenota per il tuo anniversario o una fuga romantica entro il 14 febbraio e regalati un viaggio indimenticabile con la tua dolce metà!', 'GHI9012', '2024-02-14', 5, 'offer--love', NULL),
+('special', 'young', 'Esplora il mondo con le nostre Offerte Speciali per i Giovani!', 'Sconto imperdibile del 10%, riservato ai viaggiatori under 25. Dai il via alla tua prossima avventura con servizi esclusivi e risparmia mentre crei ricordi indimenticabili!', 'JKL3456', '2024-06-01', 10, 'offer--love', NULL),
+('special', 'old', 'Esplora il mondo con le nostre Offerte Speciali per i Senior!', 'Sconto speciale del 15%, dedicato ai viaggiatori sopra i 60 anni. Approfitta dei vantaggi e riscopri il lato meraviglioso del viaggio.', 'MNO7890', '2024-12-31', 15, 'offer--love', NULL),
+('group', 'family', 'Offerta Famiglia: un''avventura insieme!', 'Pacchetto per due genitori e due bambini sotto i 10 anni con sconto speciale del 15%. Perfetto per creare ricordi indimenticabili per tutta la famiglia!', 'PQR1234', '2024-05-31', 15, 'offer--love', 4),
+('group', 'group', 'Offerta Gruppi: più si è, più si risparmia!', 'Prenota per un gruppo di oltre 8 persone e approfitta di uno sconto esclusivo del 20%. Rendete il vostro viaggio un''esperienza straordinaria!', 'STU5678', '2024-12-31', 20, 'offer--love', 8),
+('group', 'school', 'Offerta Scolastica: Un''esperienza educativa straordinaria!', 'Prenota ora per la tua classe, con due professori e oltre 20 alunni, e ricevi uno sconto esclusivo del 30%. Viaggiate e imparate insieme a tariffe speciali!', 'VWX9012', '2024-06-10', 30, 'offer--love', 22);
 -- aggiungere class student
