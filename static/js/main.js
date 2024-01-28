@@ -109,6 +109,19 @@ const subscriptionButton = document.querySelector('#subscription');
 const subscriptionPage = document.querySelector('#page--subscription');
 const userButton = document.querySelector('#user');
 const userPage = document.querySelector('#page--user');
+const logOutButton = document.querySelector('#logout');
+
+if (logOutButton) {
+  logOutButton.addEventListener('click', () => {
+    localStorage.removeItem('userPage');
+    localStorage.removeItem('adminPage');
+    const currentUrl = window.location.href;
+    const baseUrl = currentUrl.split('/').slice(0, -1).join('/');
+
+    window.location.href = baseUrl + '/logout.php';
+  });
+
+}
 
 function showPageUser(button, page) {
   overviewPage.classList.add('container--hide');

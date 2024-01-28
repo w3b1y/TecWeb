@@ -10,6 +10,10 @@ use DB\DBAccess;
 $connessione = new DBAccess();
 $connessione->openDBConnection();
 
+isset($_SESSION['user']) ? 
+    $fileHTML = str_replace("<navbar/>", '<a class="nav__link" href="userpage.php" lang="en-US">Account</a>', $fileHTML) : 
+    $fileHTML = str_replace("<navbar/>", '<a class="nav__link" href="login.php">Area Riservata</a>', $fileHTML);
+
 $offerte_super = $connessione->getData("offers where class='super' and final_date>CURDATE()");
 $offerte_special =  $connessione->getData("offers where class='special' and final_date>CURDATE()");
 $offerte_studenti = $connessione->getData("offers where class='student' and final_date>CURDATE()");

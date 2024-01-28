@@ -10,6 +10,10 @@ use DB\DBAccess;
 $connessione = new DBAccess();
 $connessione->openDBConnection();
 
+isset($_SESSION['user']) ? 
+    $fileHTML = str_replace("<navbar/>", '<a class="nav__link" href="userpage.php" lang="en-US">Account</a>', $fileHTML) : 
+    $fileHTML = str_replace("<navbar/>", '<a class="nav__link" href="login.php">Area Riservata</a>', $fileHTML);
+
 $comunicazioni= $connessione->getData("news where initial_date>= CURDATE() order by initial_date ");
 $newsList = '';
 $mesi = array('01' => 'Gennaio', '02' => 'Febbraio', '03' => 'Marzo',

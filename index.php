@@ -10,6 +10,11 @@ use DB\DBAccess;
 
 $connection = new DBAccess();
 $connection->openDBConnection();
+
+isset($_SESSION['user']) ? 
+    $fileHTML = str_replace("<navbar/>", '<a class="nav__link" href="userpage.php" lang="en-US">Account</a>', $fileHTML) : 
+    $fileHTML = str_replace("<navbar/>", '<a class="nav__link" href="login.php">Area Riservata</a>', $fileHTML);
+
 $warnings="";
 $departure_station = "";
 $arrival_station = "";

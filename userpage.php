@@ -10,12 +10,16 @@ use DB\DBAccess;
 $connessione = new DBAccess();
 $connessione->openDBConnection();
 
-if (isset($_SESSION['user'])) {
-  header('Location: login.php');
+isset($_SESSION['user']) ? 
+    $fileHTML = str_replace("<navbar/>", '<span class="nav__link" lang="en-US">Account</span>', $fileHTML) : 
+    $fileHTML = str_replace("<navbar/>", '<a class="nav__link" href="login.php">Area Riservata</a>', $fileHTML);
+
+if (!isset($_SESSION['user'])) {
+  header('Location: login.html');
   exit();
 }
 
-$user = 1;
+$user = $_SESSION['user'];
 
 
 if (isset($_POST['submit'])) {

@@ -769,6 +769,7 @@ tr:nth-of-type(2n) {
   margin-bottom: 1.5rem;
   padding: 0.25rem;
   color: var(--first-color);
+  background-color: var(--second-color);
 }
 .container__label {
   text-align: left;
@@ -1038,6 +1039,12 @@ tr:nth-of-type(2n) {
   .container__heading--left {
     margin: 0;
     font-size: var(--m-font-size);
+  }
+
+  /*==================== LOGIN ====================*/
+  #form--login {
+    width: 70%;
+    margin: auto;
   }
 
   /*==================== HOME ====================*/

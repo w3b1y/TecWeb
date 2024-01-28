@@ -11,6 +11,10 @@ use DB\DBAccess;
 $connessione = new DBAccess();
 $connessione->openDBConnection();
 
+isset($_SESSION['user']) ? 
+    $fileHTML = str_replace("<navbar/>", '<a class="nav__link" lang="en-US">Account</a>', $fileHTML) : 
+    $fileHTML = str_replace("<navbar/>", '<a class="nav__link" href="login.php">Area Riservata</a>', $fileHTML);
+
 if(isset($_SESSION['ricerca'])){
 
     $stazionePartenza = $_SESSION['ricerca']['from'];
