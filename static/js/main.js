@@ -25,6 +25,7 @@ const searchForm = document.querySelector('.js-container__form--search');
 const searchSwap = document.querySelector('#swap');
 const searchFrom = document.querySelector('#from');
 const searchTo = document.querySelector('#to');
+const searchDate = document.querySelector('#date');
 if (searchSwap && searchFrom && searchTo) {
   searchSwap.addEventListener('click', (e) => {
     e.preventDefault();
@@ -68,6 +69,13 @@ if (searchSwap && searchFrom && searchTo) {
       e.preventDefault();
       searchSwap.focus();
     }
+  });
+
+  searchDate.addEventListener('blur', () => {
+    if (new Date(searchDate.value) > new Date() && searchForm.querySelector('#datetime_error')) 
+      searchForm.querySelector('#datetime_error').remove();
+    else if (new Date(searchDate.value) <= new Date() && !searchForm.querySelector('#datetime_error'))
+      searchForm.insertAdjacentHTML('afterbegin', '<p id="datetime_error" class="form__error">La data e l&#39;ora devono essere maggiori o uguali a quelli attuali</p>');
   });
 }
 
