@@ -134,6 +134,11 @@ class DBAccess{
         //return null;
     }
 
+    public function addUser($nome, $cognome, $email, $data_nascita, $np){
+        $query = "INSERT INTO user VALUES (NULL, \"$nome\", \"$cognome\", \"$email\", \"$np\", \"$data_nascita\")";
+        mysqli_query($this->connection, $query) or die("Errore nella registrazione dell'utente $nome $cognome ".mysqli_error($this->connection));
+    }
+
     public function closeConnection(){
         mysqli_close($this -> connection);
     }
