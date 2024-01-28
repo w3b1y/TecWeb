@@ -28,8 +28,9 @@ if(isset($_POST['new_user'])){
     $data_nascita = $_POST['birthday'];
     $np = clearInput($_POST['new_password']);
     $rnp = clearInput($_POST['rnew_password']);
+    $dataOggi = date('Y-m-d');
 
-    if(!empty($nome) && !empty($cognome) && !empty($email) && !empty($data_nascita) && !empty($np) && !empty($rnp) && $np==$rnp){
+    if(!empty($nome) && !empty($cognome) && !empty($email) && !empty($data_nascita) && $data_nascita<$dataOggi && !empty($np) && !empty($rnp) && $np==$rnp){
         $connessione->addUser($nome, $cognome, $email, $data_nascita, $np);
         $ins='<p class="form__error" id="registrazione_avvenuta">Registrazione avvenuta con successo</p>';
         $fileHTML = str_replace("<registrazione_avvenuta/>", $ins, $fileHTML);
@@ -52,6 +53,9 @@ if(isset($_POST['new_user'])){
         if(empty($data_nascita)){
             $avvisi .='<p class="form__error" id="birthday_empty">Inserire data di nascita</p>';
         } 
+        if($data_nascita>=$dataOggi){
+            $avvisi .='<p class="form__error" id="birthday_empty">Errore: la data di nascita deve essere inferiore alla data odierna</p>';
+        }
         if(empty($np)){
             $avvisi_p .='<p class="form__error" id="birthday_empty">Inserire una password</p>';
         }
