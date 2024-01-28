@@ -161,6 +161,7 @@ if (tickets) {
   tickets.forEach(ticket => {
     const ticketExpandButton = ticket.querySelector('.js-news__expand');
     const ticketBody = ticket.querySelector('.js-ticket__body');
+    const submitButton = ticket.querySelector('.js-submit');
     ticketExpandButton.addEventListener('click', () => {
       ticketBody.classList.toggle('ticket__body--reduced');
       ticketExpandButton.classList.toggle('rotate');
@@ -181,6 +182,25 @@ if (tickets) {
       secondClass.classList.add('ticket__class--selected');
       firstClass.classList.remove('ticket__class--selected');
       priceButton.innerHTML = `€${priceButton.dataset.secondclass}`
+    });
+    submitButton.addEventListener('click', () => {
+      const form = document.createElement('form');
+      form.method = 'post';
+      form.action = './buy.php';
+      const createHiddenInput = (name, value) => {
+        const input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = name;
+        input.value = value;
+        return input;
+      };
+      form.appendChild(createHiddenInput('route', submitButton.dataset.route));
+      form.appendChild(createHiddenInput('schedule', submitButton.dataset.schedule));
+      form.appendChild(createHiddenInput('date', submitButton.dataset.date));
+      form.appendChild(createHiddenInput('departure', submitButton.dataset.departure));
+      form.appendChild(createHiddenInput('arrival', submitButton.dataset.arrival));
+      ticket.appendChild(form);
+      form.submit();
     });
   });
 }

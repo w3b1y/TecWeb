@@ -37,6 +37,12 @@ class DBAccess{
         }
     }
 
+    public function addData(string $query){
+        $qResult = mysqli_query($this->connection, $query) or die("query fallita".mysqli_error($this->connection));
+        mysqli_query($this->connection, $query) or die("Errore nell'inserimento della notizia $titolo ".mysqli_error($this->connection));
+        return;
+    }
+
     public function getDataArray(string $query){
         $qResult = mysqli_query($this->connection, $query) or die("Query fallita: " . mysqli_error($this->connection));
     

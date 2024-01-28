@@ -231,6 +231,14 @@ fieldset {
   font-size: var(--m-font-size);
 }
 
+.container__message {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  background-color: transparent;
+  margin-bottom: 1rem;
+}
+
 .container__footer {
   text-align: center;
   margin-top: 1rem;
@@ -396,6 +404,12 @@ tr:nth-of-type(2n) {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-bottom: 1rem;
+}
+
+.fleet__total,
+.fleet__train {
+  font-size: var(--m-font-size);
 }
 
 .fleet__total {
@@ -926,6 +940,10 @@ tr:nth-of-type(2n) {
     margin: .5rem 0 1rem 0;
   }
 
+  .container__message {
+    font-size: var(--m-font-size);
+  }
+
   .container__footer {
     font-size: var(--m-font-size);
   }
@@ -1001,9 +1019,11 @@ tr:nth-of-type(2n) {
   }
 
   .submit {
+    display: block;
+    text-decoration: none;
     margin: .3rem 0 .3rem auto;
     padding: 0 1rem;
-    height: 3.4rem;
+    height: fit-content;
     font-size: var(--m-font-size);
   }
 
