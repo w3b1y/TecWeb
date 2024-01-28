@@ -53,13 +53,12 @@ if(isset($_POST['insert_news'])){
         if(empty($titolo)){
             $avvisi .='<p class="form__error" id="title_empty">Inserisci un titolo</p>';
         }      
-        $fileHTML = str_replace("&lt;data_i/>", $data_i, $fileHTML);
-        $fileHTML = str_replace("&lt;data_f/>", $data_f, $fileHTML);
-        $fileHTML = str_replace("&lt;titolo/>", $titolo, $fileHTML);
-        $fileHTML = str_replace("<contenuto/>", $contenuto, $fileHTML);
-
     }
 }
+$fileHTML = str_replace("&lt;data_i/>", $data_i, $fileHTML);
+$fileHTML = str_replace("&lt;data_f/>", $data_f, $fileHTML);
+$fileHTML = str_replace("&lt;titolo/>", $titolo, $fileHTML);
+$fileHTML = str_replace("<contenuto/>", $contenuto, $fileHTML);
 $fileHTML = str_replace("<avvisi/>", $avvisi, $fileHTML);
 
 if(isset($_GET['delete_news'])){
@@ -182,6 +181,7 @@ else{
     $offerteList = "<p>Nessuna offerta presente</p>";
 }
 $fileHTML = str_replace("<offerte/>", $offerteList, $fileHTML);
+$connessione->closeConnection();
 
 echo $fileHTML;
 ?>
