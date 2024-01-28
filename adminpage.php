@@ -29,7 +29,12 @@ if(isset($_POST['insert_news'])){
 
     if(!empty($data_i) && !empty($data_f) && !empty($titolo) && !empty($contenuto) && $data_f>=$data_i){
         $connessione->addComunication($data_i,$data_f,$titolo,$contenuto);
-        //feed-back
+        $ins='<p class="form__error" id="inserimento_news">Inserimento notizia avvenuto con successo</p>';
+        $fileHTML = str_replace("<operazione_avvenuta_news/>", $ins, $fileHTML);
+        $data_i = '';
+        $data_f = '';
+        $titolo = '';
+        $contenuto = '';
     }
     else{
         if(empty($data_i)){
@@ -56,6 +61,8 @@ $fileHTML = str_replace("<avvisi/>", $avvisi, $fileHTML);
 if(isset($_GET['delete_news'])){
     $elimina=$_GET['selected_news'];
     $connessione->deleteComunication($elimina);
+    $del='<p class="form__error" id="eliminazione_new">Eliminazione notizia avvenuta con successo</p>';
+    $fileHTML = str_replace("<operazione_avvenuta_news/>", $del, $fileHTML);
 }
 
 $comunicazioni= $connessione->viewComunication();
@@ -100,6 +107,17 @@ if(isset($_POST['insert_offer'])){
     if(!empty($classe) && !empty($nome) && !empty($titolo) && !empty($contenuto) && !empty($codice_sconto) && !empty($percentuale) && !empty($data_fine) && !empty($img)){
         if(($classe!="group") || ($classe=="group" && !empty($minimo) && $minimo>=3)){
             $connessione->addOffer($classe, $nome, $titolo, $contenuto, $codice_sconto, $percentuale, $data_fine, $minimo, $img);
+            $ins='<p class="form__error" id="inserimento_offerta">Inserimento offerta avvenuto con successo</p>';
+            $fileHTML = str_replace("<operazione_avvenuta_offer/>", $ins, $fileHTML);
+            $classe = '';
+            $nome = '';
+            $titolo = '';
+            $contenuto = '';
+            $codice_sconto = '';
+            $percentuale = '';
+            $data_fine = '';
+            $minimo = '';
+            $img = '';
         }
     }
     else{
@@ -130,22 +148,23 @@ if(isset($_POST['insert_offer'])){
         if($classe=="group" && empty($minimo) && $minimo<3){
             $avvisi_offer .='<p class="form__error" id="group_error">Inserisci un numero di persone superiore o uguale a 3</p>';
         }
-
-        $fileHTML = str_replace("&lt;classe/>", $classe, $fileHTML);
-        $fileHTML = str_replace("&lt;nome/>", $nome, $fileHTML);
-        $fileHTML = str_replace("&lt;titolo/>", $titolo, $fileHTML);
-        $fileHTML = str_replace("<contenuto/>", $contenuto, $fileHTML);
-        $fileHTML = str_replace("&lt;codice_sconto/>", $codice_sconto, $fileHTML);
-        $fileHTML = str_replace("&lt;percentuale/>", $percentuale, $fileHTML);
-        $fileHTML = str_replace("&lt;data_fine/>", $data_fine, $fileHTML);
-        $fileHTML = str_replace("&lt;minimo/>", $minimo, $fileHTML);
     }
 }
+$fileHTML = str_replace("&lt;classe/>", $classe, $fileHTML);
+$fileHTML = str_replace("&lt;nome/>", $nome, $fileHTML);
+$fileHTML = str_replace("&lt;titolo/>", $titolo, $fileHTML);
+$fileHTML = str_replace("<contenuto/>", $contenuto, $fileHTML);
+$fileHTML = str_replace("&lt;codice_sconto/>", $codice_sconto, $fileHTML);
+$fileHTML = str_replace("&lt;percentuale/>", $percentuale, $fileHTML);
+$fileHTML = str_replace("&lt;data_fine/>", $data_fine, $fileHTML);
+$fileHTML = str_replace("&lt;minimo/>", $minimo, $fileHTML);
 $fileHTML = str_replace("<avvisi_offer/>", $avvisi_offer, $fileHTML);
 
 if(isset($_GET['delete_offer'])){
     $elimina=$_GET['selected_offer'];
     $connessione->deleteOffer($elimina);
+    $del='<p class="form__error" id="eliminazione_offerta">Eliminazione offerta avvenuta con successo</p>';
+    $fileHTML = str_replace("<operazione_avvenuta_offer/>", $del, $fileHTML);
 }
 
 $offerte= $connessione->viewOffers();
