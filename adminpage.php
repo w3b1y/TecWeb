@@ -10,9 +10,9 @@ use DB\DBAccess;
 
 $connessione = new DBAccess();
 $connessione->openDBConnection();
-$avvisi='';
 
 //PAGINA COMUNICAZIONI
+$avvisi='';
 
 //variabili per il form
 $data_i = '';
@@ -42,7 +42,7 @@ if(isset($_POST['insert_news'])){
             $avvisi .= '<p class="form__error" id="datetime_error">La data finale deve essere maggiore o uguale alla data iniziale</p>';
         }
         if(empty($titolo)){
-            $avvisi .='<p class="form__error" id="initial_date_empty">Inserisci un titolo</p>';
+            $avvisi .='<p class="form__error" id="title_empty">Inserisci un titolo</p>';
         }      
         $fileHTML = str_replace("&lt;data_i/>", $data_i, $fileHTML);
         $fileHTML = str_replace("&lt;data_f/>", $data_f, $fileHTML);
@@ -72,6 +72,7 @@ $fileHTML = str_replace("<news/>", $newsList, $fileHTML);
 
 
 //PAGINA OFFERTE
+$avvisi_offer='';
 
 //variabili per il form
 $classe = '';
@@ -84,7 +85,7 @@ $data_fine = '';
 $minimo = '';
 $img = '';
 
-//al click di insert_submit
+//al click di insert_offert
 if(isset($_POST['insert_offer'])){
     $classe = $_POST['offer_class'];
     $nome = clearInput($_POST['offer_name']);
@@ -102,10 +103,45 @@ if(isset($_POST['insert_offer'])){
         }
     }
     else{
-         echo "errore";
+        if(empty($classe)){
+            $avvisi_offer .='<p class="form__error" id="class_error">Seleziona una categoria</p>';
+        }
+        if(empty($nome)){
+            $avvisi_offer .='<p class="form__error" id="name_error">Inserisci un nome</p>';
+        }
+        if(empty($titolo)){
+            $avvisi_offer .='<p class="form__error" id="title_error">Inserisci un titolo</p>';
+        }
+        if(empty($contenuto)){
+            $avvisi_offer .='<p class="form__error" id="content_error">Inserisci una descrizione </p>';
+        }
+        if(empty($codice_sconto)){
+            $avvisi_offer .='<p class="form__error" id="cod_error">Inserisci un codice sconto</p>';
+        }
+        if(empty($percentuale)){
+            $avvisi_offer .='<p class="form__error" id="perc_error">Inserisci una percentuale numerica di sconto</p>';
+        }
+        if(empty($data_fine)){
+            $avvisi_offer .='<p class="form__error" id="final_date_error">Inserisci la data fine offerta</p>';
+        }
+        if(empty($img)){
+            $avvisi_offer .='<p class="form__error" id="img_error">Seleziona una immagine</p>';
+        }
+        if($classe=="group" && empty($minimo) && $minimo<3){
+            $avvisi_offer .='<p class="form__error" id="group_error">Inserisci un numero di persone superiore o uguale a 3</p>';
+        }
+
+        $fileHTML = str_replace("&lt;classe/>", $classe, $fileHTML);
+        $fileHTML = str_replace("&lt;nome/>", $nome, $fileHTML);
+        $fileHTML = str_replace("&lt;titolo/>", $titolo, $fileHTML);
+        $fileHTML = str_replace("<contenuto/>", $contenuto, $fileHTML);
+        $fileHTML = str_replace("&lt;codice_sconto/>", $codice_sconto, $fileHTML);
+        $fileHTML = str_replace("&lt;percentuale/>", $percentuale, $fileHTML);
+        $fileHTML = str_replace("&lt;data_fine/>", $data_fine, $fileHTML);
+        $fileHTML = str_replace("&lt;minimo/>", $minimo, $fileHTML);
     }
 }
-$fileHTML = str_replace("<avvisi/>", $avvisi, $fileHTML);
+$fileHTML = str_replace("<avvisi_offer/>", $avvisi_offer, $fileHTML);
 
 if(isset($_GET['delete_offer'])){
     $elimina=$_GET['selected_offer'];
