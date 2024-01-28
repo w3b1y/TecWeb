@@ -20,7 +20,7 @@ CREATE TABLE user(
   last_name VARCHAR(40) NOT NULL,
   email VARCHAR(40) NOT NULL,
   password VARCHAR(50) NOT NULL,
-  phone_number VARCHAR(12) NOT NULL
+  birthday DATE NOT NULL
 );
 CREATE TABLE admin(
   id INT PRIMARY KEY AUTO_INCREMENT,
@@ -29,7 +29,10 @@ CREATE TABLE admin(
 );
 CREATE TABLE subscription(
   id INT PRIMARY KEY AUTO_INCREMENT,
+  category VARCHAR(40) NOT NULL,
+  icon_id VARCHAR(40) NOT NULL,
   name VARCHAR(40) NOT NULL,
+  link VARCHAR(40) NOT NULL,
   price DECIMAL(10,2) NOT NULL
 );
 CREATE TABLE user_subscription(
@@ -43,7 +46,7 @@ CREATE TABLE user_subscription(
 );
 CREATE TABLE station(
   name VARCHAR(40) PRIMARY KEY  NOT NULL,
-  address VARCHAR(40) NOT NULL
+  address VARCHAR(100) NOT NULL
 );
 
 CREATE TABLE route(
@@ -79,11 +82,14 @@ CREATE TABLE ticket(
   id INT PRIMARY KEY AUTO_INCREMENT,
   user_id INT NOT NULL,
   route_schedule_id INT NOT NULL,
-  station_id VARCHAR(40) NOT NULL,
-  seat_number INT NOT NULL,
+  departure_station_id VARCHAR(40) NOT NULL,
+  arrival_station_id VARCHAR(40) NOT NULL,
+  departure_time DATETIME NOT NULL,
+  category INT NOT NULL,
   FOREIGN KEY (user_id) REFERENCES user(id),
   FOREIGN KEY (route_schedule_id) REFERENCES route_schedule(id),
-  FOREIGN KEY (station_id) REFERENCES station(name)
+  FOREIGN KEY (departure_station_id) REFERENCES station(name),
+  FOREIGN KEY (arrival_station_id) REFERENCES station(name)
 );
 
 CREATE TABLE news(
@@ -107,9 +113,9 @@ CREATE TABLE offers(
 );
 
 -- Users
-INSERT INTO user (first_name, last_name, email, password, phone_number) VALUES
-('John', 'Doe', 'john.doe@example.com', 'password123', '123-456-7890'),
-('Jane', 'Smith', 'jane.smith@example.com', 'securepass', '987-654-3210');
+INSERT INTO user (first_name, last_name, email, password, birthday) VALUES
+('John', 'Doe', 'john.doe@example.com', 'password123', '2001-02-15'),
+('Jane', 'Smith', 'jane.smith@example.com', 'securepass', '2004-04-15');
 
 -- Admins
 INSERT INTO admin (username, password) VALUES
@@ -117,10 +123,16 @@ INSERT INTO admin (username, password) VALUES
 ('admin2', 'admin123');
 
 -- Subscriptions
-INSERT INTO subscription (name, price) VALUES
-('Basic', 9.99),
-('Premium', 19.99),
-('Gold', 29.99);
+INSERT INTO subscription (category, icon_id, name, link, price) VALUES
+('Studente', 'subscription__student', 'Provinciali', 'province', 29.99),
+('Studente', 'subscription__student', 'Regionali', 'region', 55.50),
+('Studente', 'subscription__student', 'Nazionali', 'nation', 95.50),
+('Lavoratore', 'subscription__worker', '100km', '100km', 29.99),
+('Lavoratore', 'subscription__worker', '200km', '200km', 55.50),
+('Lavoratore', 'subscription__worker', '500km', '500km', 95.50),
+('Generico', 'subscription__generic', 'Base', 'base', 29.99),
+('Generico', 'subscription__generic', 'Viaggiatore', 'traveler', 55.50),
+('Generico', 'subscription__generic', 'Esploratore', 'explorer', 95.50);
 
 -- Routes
 INSERT INTO route (duration, name) VALUES
@@ -158,6 +170,7 @@ INSERT INTO train (name, capacity) VALUES
 
 -- User Subscriptions
 INSERT INTO user_subscription (user_id, subscription_id, start_date, end_date) VALUES
+(1, 1, '2023-12-01', '2024-01-01'),
 (1, 1, '2024-01-01', '2024-01-31'),
 (2, 2, '2024-02-15', '2024-03-15');
 
@@ -170,9 +183,11 @@ INSERT INTO route_schedule (route_id, train_id, departure_time) VALUES
 (3, 3, '12:45:00');
 
 -- Tickets
-INSERT INTO ticket (user_id, route_schedule_id, station_id, seat_number) VALUES
-(1, 1, 'Roma', 10),
-(2, 2, 'Milano', 5);
+INSERT INTO ticket (user_id, route_schedule_id, departure_station_id, arrival_station_id, departure_time, category) VALUES
+(1, 1, 'Roma', 'Milano', '2024-01-15', 1),
+(1, 1, 'Bologna', 'Milano', '2024-01-16', 1),
+(1, 1, 'Roma', 'Milano', '2024-02-15', 1),
+(2, 2, 'Roma', 'Milano', '2024-03-15', 1);
 
 -- Route Stations
 INSERT INTO route_station (route_id, station_id, duration, price, order_number) VALUES

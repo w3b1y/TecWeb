@@ -6,4 +6,8 @@ function clearInput($value){
         return $value;
     }
 
+function getDateInterval(string $timeInterval) {
+    list($hours, $minutes, $seconds) = explode(':', $timeInterval);
+    return new DateInterval("PT{$hours}H{$minutes}M");
+}
 ?>

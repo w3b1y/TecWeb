@@ -280,6 +280,7 @@ fieldset {
 .table {
   width: 100%;
   border-collapse: collapse;
+  margin-bottom: 2.5rem;
 }
 .table__caption {
   font-weight: var(--font-bold);

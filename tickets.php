@@ -1,6 +1,7 @@
 <?php
 session_start();
 
+require_once "funzioni.php";
 require_once "DBAccess.php"; 
 
 $fileHTML = file_get_contents("tickets.html");
@@ -10,12 +11,6 @@ use DB\DBAccess;
 $connessione = new DBAccess();
 $connessione->openDBConnection();
 
-function getDateInterval(string $timeInterval) {
-    list($hours, $minutes, $seconds) = explode(':', $timeInterval);
-    return new DateInterval("PT{$hours}H{$minutes}M");
-    //return new DateInterval("PT{$hours}H{$minutes}M{$seconds}S");
-}
-
 if(isset($_SESSION['ricerca'])){
 
     $stazionePartenza = $_SESSION['ricerca']['from'];
@@ -23,8 +18,8 @@ if(isset($_SESSION['ricerca'])){
     $dataOra = $_SESSION['ricerca']['date'];
     $nPasseggeri = $_SESSION['ricerca']['seats'];
     $discount_code = isset($_SESSION['ricerca']['discount_code']) ? $_SESSION['ricerca']['discount_code'] : 0;
-    $qResult_discord = $connessione->getDataArray("select offers.discount_code from offers where offers.discount_code='$discount_code' and offers.final_date >= curdate()");
-    $discount_code = empty($qResult_discord) ? 0 : $qResult_discord[0];
+    $qResult_discount = $connessione->getDataArray("select offers.discount_code from offers where offers.discount_code='$discount_code' and offers.final_date >= curdate()");
+    $discount_code = empty($qResult_discount) ? 0 : $qResult_discount[0];
 
     $route = '<h3 class="container__heading">'.$stazionePartenza.' - '.$stazioneArrivo.'</h3>';
     $fileHTML = str_replace("<tratta/>", $route, $fileHTML);
@@ -35,6 +30,13 @@ if(isset($_SESSION['ricerca'])){
         where start.station_id='$stazionePartenza' and end.station_id='$stazioneArrivo' and start.route_id=end.route_id");
 
     $ticket = "";
+
+    if (empty($qResult_route)) {
+        $fileHTML = str_replace("<biglietti/>", "<p class=\"container__heading\">Attualmente Iberu Trasporti non offre la tratta da lei cercata,
+         ci scusiamo per il disagio</p>", $fileHTML);
+        echo $fileHTML;
+        exit();
+    }
 
     $counter = 0;
     $total_routes = count($qResult_route);
@@ -51,6 +53,12 @@ if(isset($_SESSION['ricerca'])){
             where start.station_id = '$stazionePartenza' and end.station_id = '$stazioneArrivo'");
         $qResult_departure = $connessione->getDataArray("select route_schedule.departure_time from route_schedule where route_schedule.route_id=$ris 
             and route_schedule.departure_time >= '".$departure_time_route->format('H:i')."'");
+
+        if (empty($qResult_departure)) {
+            $fileHTML = str_replace("<biglietti/>", "<p class=\"container__heading\">Nessun biglietto disponibile, prego cambiare la data</p>", $fileHTML);
+            echo $fileHTML;
+            exit();
+        }
 
         $total_departures = count($qResult_departure);
         $counter_departures = 0;
