@@ -71,16 +71,16 @@
       <h2 class="container__heading container__heading--main">NOTIZIE</h2>
       <section class="container">
         <h3 class="container__heading">Aggiungi una nuova notizia</h3>
-        <form action="" method="post" class="container__fieldset--user">
+        <form action="adminpage.php" method="post" class="container__fieldset--user">
           <avvisi/>
           <label class="container__label" for="date__start">Data iniziale</label>
-          <input class="container__input--search" type="date" name="date_start" id="date__start">
+          <input class="container__input--search" type="date" name="date_start" id="date__start" value="&lt;data_i/>">
           <label class="container__label" for="date__end">Data finale</label>
-          <input class="container__input--search" type="date" name="date_end" id="date__end">
+          <input class="container__input--search" type="date" name="date_end" id="date__end" value="&lt;data_f/>">
           <label class="container__label" for="news__title">Titolo</label>
-          <input class="container__input--search" type="text" name="news_title" id="news__title">
+          <input class="container__input--search" type="text" name="news_title" id="news__title" value="&lt;titolo/>">
           <label class="container__label" for="news__content">Contenuto</label>
-          <textarea name="news_content" id="news__content" cols="30" rows="10"></textarea>
+          <textarea name="news_content" id="news__content" cols="30" rows="10" ><contenuto/></textarea>
           <input class="submit" type="submit" value="Conferma" name="insert_news">
         </form>
       </section>
@@ -100,27 +100,28 @@
       <section class="container">
         <h3 class="container__heading">Aggiungi una nuova offerta</h3>
         <form action="" method="post" class="container__fieldset--user">
+          <avvisi_offer/>
           <label class="container__label" for="offer__category">Categoria</label>
-          <select id="offer__category" class="container__input--search" name="offer_class">
+          <select id="offer__category" class="container__input--search" name="offer_class" value="&lt;classe/>">
             <option value="super">Offerte super</option>
             <option value="special">Offerte speciali</option>
             <option value="student">Offerte studenti</option>
             <option value="group">Offerte gruppi</option>
           </select>
           <label class="container__label" for="offer__name">Nome</label>
-          <input class="container__input--search" type="text" name="offer_name" id="offer__name">
+          <input class="container__input--search" type="text" name="offer_name" id="offer__name" value="&lt;nome/>">
           <label class="container__label" for="offer__title">Titolo</label>
-          <input class="container__input--search" type="text" name="offer_title" id="offer__title">
+          <input class="container__input--search" type="text" name="offer_title" id="offer__title" value="&lt;titolo/>">
           <label class="container__label" for="offer__content">Contenuto</label>
-          <textarea name="offer_content" id="offer__content" cols="30" rows="3" ></textarea>
+          <textarea name="offer_content" id="offer__content" cols="30" rows="3" ><contenuto/></textarea>
           <label class="container__label" for="discount_code">Codice sconto</label>
-          <input class="container__input--search" type="text" name="discount_code" id="discount_code">
+          <input class="container__input--search" type="text" name="discount_code" id="discount_code" value="&lt;codice_sconto/>">
           <label class="container__label" for="discount_percentage">Percentuale sconto</label>
-          <input class="container__input--search" type="number" name="discount_percentage" id="discount_percentage">
+          <input class="container__input--search" type="number" name="discount_percentage" id="discount_percentage" value="&lt;percentuale/>">
           <label class="container__label" for="offer__end">Data finale</label>
-          <input class="container__input--search" type="date" name="offer_end" id="offer__end">
+          <input class="container__input--search" type="date" name="offer_end" id="offer__end" value="&lt;data_fine/>">
           <label class="container__label" for="tickets">Minimo persone (non obbligatorio)</label>
-          <input class="container__input--search" type="number" name="minimun" id="tickets">
+          <input class="container__input--search" type="number" name="minimun" id="tickets" value="&lt;minimo/>">
           <p class="container__label">Sfondo</p>
           <fieldset id="offer__background" class="fieldset--image">
             <input type="radio" id="1" name="image" value="offer--winter-days">
@@ -172,12 +173,12 @@
               <img class="label__image" src="./static/img/fifteen.jpg" alt="">
             </label>
           </fieldset>
-          <input class="submit" type="submit" value="Conferma" name="insert_offers">
+          <input class="submit" type="submit" value="Conferma" name="insert_offer">
         </form>
       </section>
       <section class="container">
         <h3 class="container__heading">Elimina un'offerta esistente</h3>
-        <form action="deleteOffer.php" class="container__fieldset--user">
+        <form action="" class="container__fieldset--user">
           <label class="container__label" for="delete__offer">Elimina</label>
           <select id="selected__offer" name="selected_offer" class="container__input--search">
             <offerte/>
