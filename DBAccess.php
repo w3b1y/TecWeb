@@ -107,8 +107,7 @@ class DBAccess{
     }
 
     public function addOffer($classe, $nome, $titolo, $contenuto, $codice_sconto, $percentuale, $data_fine, $minimo, $img){
-        $query = "INSERT INTO offers VALUES (NULL, \"$classe\", \"$nome\", \"$titolo\", \"$contenuto\", \"$codice_sconto\", \"$percentuale\", \"$data_fine\", \"$minimo\", \"$img\")";
-        echo $query;
+        $query = "INSERT INTO offers VALUES (NULL, \"$classe\", \"$nome\", \"$titolo\", \"$contenuto\", \"$codice_sconto\", \"$data_fine\", \"$percentuale\", \"$img\", \"$minimo\")";
         mysqli_query($this->connection, $query) or die("Errore nell'inserimento dell'offerta $titolo ".mysqli_error($this->connection));
     }
 

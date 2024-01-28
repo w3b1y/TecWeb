@@ -71,16 +71,16 @@
       <h2 class="container__heading container__heading--main">NOTIZIE</h2>
       <section class="container">
         <h3 class="container__heading">Aggiungi una nuova notizia</h3>
-        <form action="" method="post" class="container__fieldset--user">
+        <form action="adminpage.php" method="post" class="container__fieldset--user">
           <avvisi/>
           <label class="container__label" for="date__start">Data iniziale</label>
-          <input class="container__input--search" type="date" name="date_start" id="date__start">
+          <input class="container__input--search" type="date" name="date_start" id="date__start" value="&lt;data_i/>">
           <label class="container__label" for="date__end">Data finale</label>
-          <input class="container__input--search" type="date" name="date_end" id="date__end">
+          <input class="container__input--search" type="date" name="date_end" id="date__end" value="&lt;data_f/>">
           <label class="container__label" for="news__title">Titolo</label>
-          <input class="container__input--search" type="text" name="news_title" id="news__title">
+          <input class="container__input--search" type="text" name="news_title" id="news__title" value="&lt;titolo/>">
           <label class="container__label" for="news__content">Contenuto</label>
-          <textarea name="news_content" id="news__content" cols="30" rows="10"></textarea>
+          <textarea name="news_content" id="news__content" cols="30" rows="10" ><contenuto/></textarea>
           <input class="submit" type="submit" value="Conferma" name="insert_news">
         </form>
       </section>
@@ -172,12 +172,12 @@
               <img class="label__image" src="./static/img/fifteen.jpg" alt="">
             </label>
           </fieldset>
-          <input class="submit" type="submit" value="Conferma" name="insert_offers">
+          <input class="submit" type="submit" value="Conferma" name="insert_offer">
         </form>
       </section>
       <section class="container">
         <h3 class="container__heading">Elimina un'offerta esistente</h3>
-        <form action="deleteOffer.php" class="container__fieldset--user">
+        <form action="" class="container__fieldset--user">
           <label class="container__label" for="delete__offer">Elimina</label>
           <select id="selected__offer" name="selected_offer" class="container__input--search">
             <offerte/>
