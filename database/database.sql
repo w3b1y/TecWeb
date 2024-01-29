@@ -78,7 +78,7 @@ CREATE TABLE route_schedule(
 );
 CREATE TABLE ticket(
   id INT PRIMARY KEY AUTO_INCREMENT,
-  user_id INT NOT NULL,
+  user_id INT,
   route_schedule_id INT NOT NULL,
   departure_station_id VARCHAR(40) NOT NULL,
   arrival_station_id VARCHAR(40) NOT NULL,

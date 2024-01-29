@@ -78,25 +78,54 @@
     </nav>
     <div id="page--overview" class="container container--user">
       <h2 class="container__heading container__heading--main">GENERALE</h2>
-      <section class="container">
-        <h3 class="container__heading">Biglietti validi</h3>
-        <div class="container--tickets">
-          <tickets/>
-        </div>
-      </section>
-      <section class="container">
-        <h3 class="container__heading">Abbonamenti attivi</h3>
-        <subscription/>
-      </section>
+      <h3 class="container__heading">Biglietti validi</h3>
+      <div class="container--tickets">
+        <tickets/>
+      </div>
     </div>
     <div id="page--subscription" class="container container--user container--hide">
       <h2 class="container__heading container__heading--main">STORICO ACQUISTI</h2>
-      <usertable/>
+      <message/>
+      <table class="table">
+        <caption class="table__caption">Tabella biglietti acquistati</caption>
+        <thead class="table__header">
+          <tr class="table__row">
+            <th scope="col" class="table__head">Data</th>
+            <th scope="col" class="table__head">Tratta</th>
+            <th scope="col" class="table__head">Prezzo</th>
+          </tr>
+        </thead>
+        <tbody class="table__body">
+          <trow/>
+        </tbody>
+      </table>
     </div>
     <div id="page--user" class="container container--user container--hide">
       <h2 class="container__heading container__heading--main">PROFILO</h2>
       <section class="container">
-        <userform/>
+        <form action="userpage.php" method="post">
+          <fieldset class="container__fieldset--user">
+            <legend>Informazioni personali</legend>
+            <label class="container__label" for="name">Nome</label>
+            <input class="container__input--search" type="text" name="name" id="name" value="<first_name/>">
+            <label class="container__label" for="surname">Cognome</label>
+            <input class="container__input--search" type="text" name="surname" id="surname" value="<last_name/>">
+            <label class="container__label" for="email">Email</label>
+            <input class="container__input--search" type="email" name="email" id="email" value="<email/>">
+            <label class="container__label" for="birthday">Data di nascita</label>
+            <input class="container__input--search" type="date" name="birthday" id="birthday" value="<birthday/>">
+          </fieldset>
+          <fieldset class="container__fieldset--user">
+            <legend>Cambio Password</legend>
+            <label class="container__label" for="old_passwor">Vecchia password</label>
+            <input class="container__input--search" type="password" name="old_password" id="old_password">
+            <label class="container__label" for="new_password">Nuova password</label>
+            <input class="container__input--search" type="password" name="new_password" id="new_password">
+            <label class="container__label" for="rnew_password">Ripeti password</label>
+            <input class="container__input--search" type="password" name="rnew_password" id="rnew_password">
+          </fieldset>
+          <input class="submit" type="submit" value="Conferma" name="submit">
+        </form>
       </section>
     </div>
   </main>

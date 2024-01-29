@@ -116,7 +116,7 @@ if(isset($_POST['insert_offer'])){
     if(!empty($classe) && !empty($nome) && !empty($titolo) && !empty($contenuto) && !empty($codice_sconto) && !empty($percentuale) && !empty($data_fine) && !empty($img)){
         if(($classe!="group") || ($classe=="group" && !empty($minimo) && $minimo>=3)){
             $connessione->addOffer($classe, $nome, $titolo, $contenuto, $codice_sconto, $percentuale, $data_fine, $minimo, $img);
-            $ins='<p class="form__error" id="inserimento_offerta">Inserimento offerta avvenuto con successo</p>';
+            $ins='<p class="message" id="inserimento_offerta">Inserimento offerta avvenuto con successo</p>';
             $fileHTML = str_replace("<operazione_avvenuta_offer/>", $ins, $fileHTML);
             $classe = '';
             $nome = '';

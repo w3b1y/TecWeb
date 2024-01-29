@@ -328,3 +328,95 @@ if (registerForm) {
     else if (rpassword.value == password.value && pwdFieldset.querySelector('#different_password_error')) pwdFieldset.querySelector('#different_password_error').remove();
   });
 }
+
+
+
+
+////////////////////////////////////  BUY  ////////////////////////////////////
+const buyForm = document.querySelector('.js-buy__form');
+if (buyForm) {
+  const name = buyForm.querySelector('#name');
+  const surname = buyForm.querySelector('#surname');
+  const email = buyForm.querySelector('#email');
+  const birthday = buyForm.querySelector('#birthday');
+  const cardNumberInput = document.querySelector('#numero_carta');
+  const cvv = buyForm.querySelector('#cvv');
+  const date = buyForm.querySelector('#scadenza_carta');
+  const emailRegex = /^(?!.*\.\.)[a-zA-Z0-9]+([._]*[a-zA-Z0-9])*@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+  name.addEventListener('blur', () => {
+    if (!name.value && !buyForm.querySelector('#name_error')) 
+    buyForm.insertAdjacentHTML('afterbegin', '<p id="name_error" class="form__error">Inserisci il tuo nome</p>');
+    else if (name.value && buyForm.querySelector('#name_error')) buyForm.querySelector('#name_error').remove();
+  });
+  surname.addEventListener('blur', () => {
+    if (!surname.value && !buyForm.querySelector('#surname_error'))
+      buyForm.insertAdjacentHTML('afterbegin', '<p id="surname_error" class="form__error">Inserisci il tuo cognome</p>');
+    else if (surname.value && buyForm.querySelector('#surname_error')) buyForm.querySelector('#surname_error').remove();
+  });
+  email.addEventListener('blur', () => {
+    if (!emailRegex.test(email.value) && !buyForm.querySelector('#email_error')) 
+    buyForm.insertAdjacentHTML('afterbegin', '<p id="email_error" class="form__error">Inserisci un indirizzo email valido</p>');
+    else if (emailRegex.test(email.value) && buyForm.querySelector('#email_error')) buyForm.querySelector('#email_error').remove();
+  });
+  birthday.addEventListener('blur', () => {
+    if (new Date(birthday.value) >= new Date() && !buyForm.querySelector('#birthday_error')) 
+      buyForm.insertAdjacentHTML('afterbegin', '<p id="birthday_error" class="form__error">La data di nascita deve essere minore o uguale a quella attuale</p>');
+    else if (new Date(birthday.value) < new Date() && buyForm.querySelector('#birthday_error')) buyForm.querySelector('#birthday_error').remove();
+  });
+
+
+
+  const cvvRegex = /^[0-9]{3}$/;
+  cvv.addEventListener('blur', () => {
+    if (!cvvRegex.test(cvv.value) && !buyForm.querySelector('#cvv_error')) 
+      buyForm.insertAdjacentHTML('afterbegin', '<p id="cvv_error" class="form__error">Inserisci un codice CVV valido</p>');
+    else if (cvvRegex.test(cvv.value) && buyForm.querySelector('#cvv_error')) buyForm.querySelector('#cvv_error').remove();
+  });
+  cvv.addEventListener('input', () => {
+    if (cvv.value.length > 3) cvv.value = cvv.value.slice(0, 3);
+  });
+
+
+
+
+  date.addEventListener('blur', validateDate);
+  date.addEventListener('input', () => {
+    if (date.value.length > 5) date.value = date.value.slice(0, 5);
+    const value = date.value.replace(/\D/g, '');
+    date.value = value.slice(0, 2) + (value.length >= 2 ? '/' + value.slice(2, 4) : '');
+  });
+
+  function validateDate() {
+    const dateRegex = /^(0[1-9]|1[0-2])\/\d{2}$/;
+    const [month, year] = date.split('/');
+    const currentYear = new Date().getFullYear().toString().slice(-2);
+    const currentMonth = (new Date().getMonth() + 1).toString().padStart(2, '0');
+    if (!dateRegex.test(date) && (year < currentYear || (year === currentYear && month < currentMonth)) && !buyForm.querySelector('#card_date__error'))
+      buyForm.insertAdjacentHTML('afterbegin', '<p id="card_date__error" class="form__error">Data non valida<p>');
+    else if (dateRegex.test(date) && !(year < currentYear || (year === currentYear && month < currentMonth)) && buyForm.querySelector('#card_date__error'))
+      buyForm.querySelector('#card_date__error').remove();
+
+    return true;
+  }
+
+
+
+  cardNumberInput.addEventListener('blur', validateCard);
+  cardNumberInput.addEventListener('input', (e) => {
+    if (isNaN(e.data)) cardNumberInput.value = cardNumberInput.value.slice(0, -1);
+    if (cardNumberInput.value.length > 19) cardNumberInput.value = cardNumberInput.value.slice(0, 19);
+    cardNumberInput.value = formatCardNumber(cardNumberInput.value);
+  });
+  function validateCard() {
+    const cardNumber = cardNumberInput.value.replace(/\s/g, '');
+    const cardRegex = /^[0-9]{16}$/;
+    if (!cardRegex.test(cardNumber) && !isValidLuhn(cardNumber) && !buyForm.querySelector('#card__error'))
+      buyForm.insertAdjacentHTML('afterbegin', '<p id="card__error" class="form__error">Numero di carta non valido<p>');
+    else if (cardRegex.test(cardNumber) && buyForm.querySelector('#card__error'))
+      buyForm.querySelector('#card__error').remove();
+  }
+  function formatCardNumber(cardNumber) {
+    return cardNumber.replace(/(\d{4})(?=\d)/g, '$1 ');
+  }
+}

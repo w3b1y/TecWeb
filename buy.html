@@ -61,6 +61,7 @@
   </nav>
     <main id="main" role="main" class="container container--background">
     <h2 class="container__heading container__heading--main">ACQUISTO</h2>
+    <message/>
     <div class="container__body--buy">
       <section class="ticket--recap">
         <h3 class="container__heading">Il tuo Biglietto</h3>
@@ -76,30 +77,29 @@
           <div class="container ticket__description">
             <p class="ticket__content">Data: <time datetime="<departure_datetime/>"><departure_datetime/></time></p>
             <p class="ticket__content">Identificativo treno: <train/></p>
-            <p class="ticket__class js-first__class ticket__class--selected"><class/></p>
+            <p class="ticket__class--selected"><class/></p>
           </div>
         </article>
       </section> 
       <section class="form--buy">
         <h3 class="container__heading">I tuoi dati</h3>
-        <form action="userpage.php" method="post" class="container__fieldset--user">
+        <form action="buy.php" method="post" class="container__fieldset--user js-buy__form">
+          <warnings/>
           <label class="container__label" for="name">Nome</label>
-            <input class="container__input--search" type="text" name="name" id="name" placeholder="Mario" required>
-            <label class="container__label" for="surname">Cognome</label>
-            <input class="container__input--search" type="text" name="surname" id="surname" placeholder="Rossi" required>
-            <label class="container__label" for="email">Email</label>
-            <input class="container__input--search" type="email" name="email" id="email" placeholder="mario.rossi@gmail.com">
-            <label class="container__label" for="birthday">Data di nascita</label>
-            <input class="container__input--search" type="date" name="birthday" id="birthday">
-            <label class="container__label" for="numero_carta">Numero della Carta:</label>
-            <input class="container__input--search" type="text" id="numero_carta" name="numero_carta" placeholder="0000-0000-0000-0000" required>
-            <label for="cvv" class="container__label">CVV della Carta:</label>
-            <input class="container__input--search" type="text" id="cvv" name="cvv" placeholder="000" required>
-            <label for="scadenza_carta" class="container__label">Scadenza della Carta:</label>
-            <input class="container__input--search" type="text" id="scadenza_carta" name="scadenza_carta" placeholder="MM/AA" required>
-            <label class="container__label" for="coupon">Coupon</label>
-            <input class="container__input--search" type="text" name="coupon" id="coupon">
-            <button type="submit" class="submit">€<price/></button>
+          <input class="container__input--search" type="text" name="name" id="name" placeholder="Mario" value="<first_name/>">
+          <label class="container__label" for="surname">Cognome</label>
+          <input class="container__input--search" type="text" name="surname" id="surname" placeholder="Rossi" value="<last_name/>">
+          <label class="container__label" for="email">Email</label>
+          <input class="container__input--search" type="email" name="email" id="email" placeholder="mario.rossi@gmail.com" value="<email/>">
+          <label class="container__label" for="birthday">Data di nascita</label>
+          <input class="container__input--search" type="date" name="birthday" id="birthday" value="<birthday/>">
+          <label class="container__label" for="numero_carta">Numero della Carta:</label>
+          <input class="container__input--search" type="text" id="numero_carta" name="numero_carta" placeholder="0000 0000 0000 0000" value="<card/>">
+          <label for="cvv" class="container__label">CVV della Carta:</label>
+          <input class="container__input--search" type="number" id="cvv" name="cvv" placeholder="000" value="<cvv/>">
+          <label for="scadenza_carta" class="container__label">Scadenza della Carta:</label>
+          <input class="container__input--search" type="text" id="scadenza_carta" name="scadenza_carta" placeholder="MM/AA" value="<expiration_date/>">
+          <input type="submit" class="submit" name="submit" value="€<price/>">
         </form>
       </section> 
     </div>
