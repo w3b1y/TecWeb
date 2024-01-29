@@ -55,7 +55,6 @@ if (isset($_POST['submit'])) {
 }
 
 
-
 $ticket = "";
 $valid_ticket = $connessione->getDataArray("select * from ticket where user_id = '$user' and departure_time >= curdate() order by departure_time asc");
 if (empty($valid_ticket)) {
@@ -68,6 +67,7 @@ else {
     $qResult_duration = $connessione->getDataArray("select timediff(end.duration, start.duration) as time_difference
               from route_station as start join route_station as end on start.route_id = end.route_id
               where start.station_id = '$departure_station' and end.station_id = '$arrival_station'");
+    $qResult_d = new Datetime($qResult_duration[0]);
     $departure_time_station = (new DateTime($vt['departure_time']));
     $arrival_time_station = clone $departure_time_station;
     $arrival_time_station->add(getDateInterval($qResult_duration[0]));
@@ -79,7 +79,7 @@ else {
                   <dd class="route__data--horizontal"><time datetime="'.$departure_time_station->format('H:i').'">'
                   .$departure_time_station->format('H:i').'</time></dd>
                   <dt class="route__term--horizontal route__term--line">Durata</dt>
-                  <dd class="route__data--horizontal route__data--line">'.$qResult_duration[0].'</dd>
+                  <dd class="route__data--horizontal route__data--line">'.date2txt($qResult_d).'</dd>
                   <dt class="route__term--horizontal">'.$arrival_station.'</dt>
                   <dd class="route__data--horizontal"><time datetime="'.$arrival_time_station->format('H:i').'">'
                   .$arrival_time_station->format('H:i').'</time></dd>
@@ -109,8 +109,10 @@ else {
     $qResult_price = $connessione->getDataArray("select start.price - end.price from route_station as start join route_station as end on 
               start.route_id = end.route_id where start.station_id = '".$it['departure_station_id']."' 
               and end.station_id = '".$it['arrival_station_id']."' and start.route_id = '".$qResult_route[0]."'");
+    $part=new DateTime($it['departure_time']);
+  
     $trow .= '<tr class="table__row">
-                <td class="table__data" data-cell="Data"><time datetime="'.$it['departure_time'].'">'.str_replace('-', '/', $it['departure_time']).'</time></td>
+                <td class="table__data" data-cell="Data"><time datetime="'.$it['departure_time'].'">'.$part->format('d/m/Y H:m').'</time></td>
                 <td class="table__data" data-cell="Tratta">'.$it['departure_station_id'].' - '.$it['arrival_station_id'].'</td>
                 <td class="table__data" data-cell="Prezzo">€'.$qResult_price[0].'</td>
               </tr>';
