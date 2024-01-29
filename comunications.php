@@ -10,9 +10,9 @@ use DB\DBAccess;
 $connessione = new DBAccess();
 $connessione->openDBConnection();
 
-isset($_SESSION['user']) ? 
-    $fileHTML = str_replace("<navbar/>", '<a class="nav__link" href="userpage.php" lang="en-US">Account</a>', $fileHTML) : 
-    $fileHTML = str_replace("<navbar/>", '<a class="nav__link" href="login.php">Area Riservata</a>', $fileHTML);
+if (!isset($_SESSION['user']) && !isset($_SESSION['admin'])) $fileHTML = str_replace("<navbar/>", '<a href="./login.php" class="nav__link">Area Riservata</a>', $fileHTML);
+if (isset($_SESSION['user'])) $fileHTML = str_replace("<navbar/>", '<a class="nav__link" href="userpage.php" lang="en-US">Account</a>', $fileHTML);
+if (isset($_SESSION['admin'])) $fileHTML = str_replace("<navbar/>", '<a class="nav__link" href="adminpage.php" lang="en-US">Account</a>', $fileHTML);
 
 $comunicazioni= $connessione->getData("news where initial_date>= CURDATE() order by initial_date ");
 $newsList = '';

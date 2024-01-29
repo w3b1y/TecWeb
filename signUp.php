@@ -11,6 +11,12 @@ use DB\DBAccess;
 $connessione = new DBAccess();
 $connessione->openDBConnection();
 
+if (!isset($_SESSION['user']) && !isset($_SESSION['admin'])) $fileHTML = str_replace("<navbar/>", '<a href="./login.php" class="nav__link">Area Riservata</a>', $fileHTML);
+if (isset($_SESSION['user']) || isset($_SESSION['admin'])) {
+    header("Location: index.php");
+    exit();
+}
+
 $avvisi='';
 $avvisi_p='';
 
@@ -42,28 +48,28 @@ if(isset($_POST['new_user'])){
     }
     else{
         if(empty($nome)){
-            $avvisi .='<p class="form__error" id="name_empty">Inserire nome</p>';
+            $avvisi .='<p class="form__error" id="name_error">Inserire nome</p>';
         } 
         if(empty($cognome)){
-            $avvisi .='<p class="form__error" id="surname_empty">Inserire cognome</p>';
+            $avvisi .='<p class="form__error" id="surname_error">Inserire cognome</p>';
         } 
         if(empty($email)){
-            $avvisi .= '<p class="form__error" id="email_empty">Inserire mail</p>';
+            $avvisi .= '<p class="form__error" id="email_error">Inserire mail</p>';
         }
         if(empty($data_nascita)){
-            $avvisi .='<p class="form__error" id="birthday_empty">Inserire data di nascita</p>';
+            $avvisi .='<p class="form__error" id="birthday_error">Inserire data di nascita</p>';
         } 
         if($data_nascita>=$dataOggi){
-            $avvisi .='<p class="form__error" id="birthday_empty">Errore: la data di nascita deve essere inferiore alla data odierna</p>';
+            $avvisi .='<p class="form__error" id="birthday_error">Errore: la data di nascita deve essere inferiore alla data odierna</p>';
         }
         if(empty($np)){
-            $avvisi_p .='<p class="form__error" id="birthday_empty">Inserire una password</p>';
+            $avvisi_p .='<p class="form__error" id="password_error">Inserire una password</p>';
         }
         if(empty($rnp)){
-            $avvisi_p .='<p class="form__error" id="birthday_empty">Reinserire la password</p>';
+            $avvisi_p .='<p class="form__error" id="rpassword_error">Reinserire la password</p>';
         }     
         if($np!=$rnp){
-            $avvisi_p .='<p class="form__error" id="birthday_empty">Le password non corrispondono</p>';
+            $avvisi_p .='<p class="form__error" id="different_password_error">Le password non corrispondono</p>';
         } 
     }
 }

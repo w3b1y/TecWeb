@@ -11,9 +11,17 @@ use DB\DBAccess;
 $connessione = new DBAccess();
 $connessione->openDBConnection();
 
-isset($_SESSION['user']) ? 
-    $fileHTML = str_replace("<navbar/>", '<a class="nav__link" lang="en-US">Account</a>', $fileHTML) : 
-    $fileHTML = str_replace("<navbar/>", '<a class="nav__link" href="login.php">Area Riservata</a>', $fileHTML);
+if (!isset($_SESSION['user']) && !isset($_SESSION['admin'])) $fileHTML = str_replace("<navbar/>", '<a href="./login.php" class="nav__link">Area Riservata</a>', $fileHTML);
+if (isset($_SESSION['user'])) $fileHTML = str_replace("<navbar/>", '<a class="nav__link" href="userpage.php" lang="en-US">Account</a>', $fileHTML);
+if (isset($_SESSION['admin'])) $fileHTML = str_replace("<navbar/>", '<a class="nav__link" href="adminpage.php" lang="en-US">Account</a>', $fileHTML);
+
+if (isset($_POST['schedule'])) {
+    $_SESSION['ricerca']['schedule'] = $_POST['schedule'];
+    $_SESSION['ricerca']['class'] = $_POST['class'];
+    $_SESSION['ricerca']['price'] = $_POST['price'];
+    $_SESSION['ricerca']['departure_time'] = $_POST['departure_time'];
+    $_SESSION['ricerca']['arrival_time'] = $_POST['arrival_time'];
+}
 
 if(isset($_SESSION['ricerca'])){
 
@@ -101,13 +109,13 @@ if(isset($_SESSION['ricerca'])){
             $ticket .= '<article id="'.$counter.'" class="ticket js-ticket">
                         <dl class="ticket__route--horizontal">
                         <dt class="route__term--horizontal">'.$stazionePartenza.'</dt>
-                        <dd class="route__data--horizontal"><time datetime="'.
+                        <dd class="route__data--horizontal"><time class="js-departure_time" datetime="'.
                         $departure_time_station->format('H:i').'">'.$departure_time_station->format('H:i').'</time></dd>
                         <dt class="route__term--horizontal route__term--line">Durata</dt>
                         <dd class="route__data--horizontal route__data--line"><time datetime="'.
                         $qResult_duration[0].'">'.$qResult_duration[0].'</time></dd>
                         <dt class="route__term--horizontal">'.$stazioneArrivo.'</dt>
-                        <dd class="route__data--horizontal"><time datetime="'.
+                        <dd class="route__data--horizontal"><time class="js-arrival_time" datetime="'.
                         $arrive_time_station->format('H:i').'">'.$arrive_time_station->format('H:i').'</time></dd>
                         </dl>
                         <a href="#'.(($counter_departures==$total_departures - 1 && $counter_routes==$total_routes - 1) ? 0 : ($counter + 1)).
@@ -126,8 +134,7 @@ if(isset($_SESSION['ricerca'])){
                         </div>
                         <div>
                         <button aria-label="Espandi la notizia" class="ri-arrow-down-s-line news__expand js-news__expand"></button>
-                        <button data-route="'.$ris.'" data-schedule="'.$dt['id'].'" data-date="'.$dateTime->format("d/m/y").'"
-                        data-departure="'.$stazionePartenza.'" data-arrival="'.$stazioneArrivo.'"
+                        <button data-schedule="'.$dt['id'].'" data-class="1"
                         class="submit submit--ticket js-submit" data-firstClass="'.$qResult_price[0].'" data-secondClass="'
                         .number_format($qResult_price[0] * 0.8, 2).'">€'.$qResult_price[0].'</button>
                         </div>

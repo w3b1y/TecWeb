@@ -78,6 +78,21 @@ class DBAccess{
             return null;
         }
     }
+
+    public function checkLoginAdmin(string $email, string $password) {
+        $query = "SELECT email, password FROM admin
+                WHERE (email = \"$email\" AND password = \"$password\")";
+        $qResult = mysqli_query($this->connection, $query) or die("Errore nel controllo del login".mysqli_error($this->connection));
+
+        if(mysqli_num_rows($qResult) == 1){
+            $result = mysqli_fetch_assoc($qResult);
+            $qResult->free();
+            return $result;
+        }
+        else{
+            return null;
+        }
+    }
     
     public function checkStazione($stazione){
         $query = "SELECT name FROM station
@@ -148,11 +163,6 @@ class DBAccess{
         $query = "DELETE FROM offers WHERE id=\"$id\"";
         mysqli_query($this->connection, $query) or die("Errore nell'eliminazione dell'offerta' ".mysqli_error($this->connection));
         //return null;
-    }
-
-    public function addUser($nome, $cognome, $email, $data_nascita, $np){
-        $query = "INSERT INTO user VALUES (NULL, \"$nome\", \"$cognome\", \"$email\", \"$np\", \"$data_nascita\")";
-        mysqli_query($this->connection, $query) or die("Errore nella registrazione dell'utente $nome $cognome ".mysqli_error($this->connection));
     }
 
     public function closeConnection(){

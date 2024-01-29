@@ -1,3 +1,4 @@
+////////////////////////////////////  NAVBAR  ////////////////////////////////////
 const navMenu = document.querySelector('.js-nav__menu'),
       navToggle = document.querySelector('.js-nav__toggle'),
       navClose = document.querySelector('.js-nav__close'),
@@ -21,12 +22,17 @@ const linkAction = () => {
 navLink.forEach(l => l.addEventListener('click', linkAction));
 
 
+
+////////////////////////////////////  HOME  ////////////////////////////////////
+const url = new URL(window.location.href);
 const searchForm = document.querySelector('.js-container__form--search');
 const searchSwap = document.querySelector('#swap');
 const searchFrom = document.querySelector('#from');
 const searchTo = document.querySelector('#to');
+const searchDiscount = document.querySelector('#discount');
 const searchDate = document.querySelector('#date');
-if (searchSwap && searchFrom && searchTo) {
+const searchSeats = document.querySelector('#seats');
+if (searchForm) {
   searchSwap.addEventListener('click', (e) => {
     e.preventDefault();
     let fromValue = document.querySelector('#from').value;
@@ -77,10 +83,11 @@ if (searchSwap && searchFrom && searchTo) {
     else if (new Date(searchDate.value) <= new Date() && !searchForm.querySelector('#datetime_error'))
       searchForm.insertAdjacentHTML('afterbegin', '<p id="datetime_error" class="form__error">La data e l&#39;ora devono essere maggiori o uguali a quelli attuali</p>');
   });
-}
 
-const searchSeats = document.querySelector('#seats');
-if (searchSeats) {
+
+  if (url.searchParams.get("discount_code")) searchDiscount.value = url.searchParams.get("discount_code");
+  if (url.searchParams.get("min_people")) searchSeats.value = url.searchParams.get("min_people");
+
   searchSeats.addEventListener('input', (e) => {
     e.preventDefault();
     let value = parseInt(searchSeats.value, 10);
@@ -90,6 +97,9 @@ if (searchSeats) {
   });
 }
 
+
+
+////////////////////////////////////  NEWS  ////////////////////////////////////
 const newsCard = document.querySelectorAll('.js-news');
 newsCard.forEach(card => {
   let newsExpandButton = card.querySelector('.js-news__expand');
@@ -103,6 +113,81 @@ newsCard.forEach(card => {
   });
 });
 
+
+
+////////////////////////////////////  TICKETS  ////////////////////////////////////
+const tickets = document.querySelectorAll('.js-ticket');
+if (tickets) {
+  tickets.forEach(ticket => {
+    const ticketExpandButton = ticket.querySelector('.js-news__expand');
+    const ticketBody = ticket.querySelector('.js-ticket__body');
+    const submitButton = ticket.querySelector('.js-submit');
+    ticketExpandButton.addEventListener('click', () => {
+      ticketBody.classList.toggle('ticket__body--reduced');
+      ticketExpandButton.classList.toggle('rotate');
+      ticketExpandButton.classList.contains('rotate') ? 
+      ticketExpandButton.setAttribute('aria-label', 'Riduci il biglietto') : 
+      ticketExpandButton.setAttribute('aria-label', 'Espandi il biglietto');
+    });
+
+    const firstClass = ticket.querySelector('.js-first__class');
+    const secondClass = ticket.querySelector('.js-second__class');
+    const priceButton = ticket.querySelector('.js-submit');
+    firstClass.addEventListener('click', () => {
+      firstClass.classList.add('ticket__class--selected');
+      secondClass.classList.remove('ticket__class--selected');
+      priceButton.innerHTML = `€${priceButton.dataset.firstclass}`
+      priceButton.dataset.class = 1;
+    });
+    secondClass.addEventListener('click', () => {
+      secondClass.classList.add('ticket__class--selected');
+      firstClass.classList.remove('ticket__class--selected');
+      priceButton.innerHTML = `€${priceButton.dataset.secondclass}`
+      priceButton.dataset.class = 2;
+    });
+    submitButton.addEventListener('click', () => {
+      const params = new URLSearchParams();
+      params.append('schedule', submitButton.dataset.schedule);
+      params.append('class', submitButton.dataset.class);
+      params.append('price', submitButton.dataset.class == 1 ? priceButton.dataset.firstclass : priceButton.dataset.secondclass);
+      params.append('departure_time', ticket.querySelector('.js-departure_time').innerHTML);
+      params.append('arrival_time', ticket.querySelector('.js-arrival_time').innerHTML);
+
+      fetch(window.location.href, {
+          method: 'POST',
+          body: params
+      })
+      .then(response => {
+        if (response.ok) {
+          window.location.href = './buy.php';
+        } else {
+            throw new Error('Network response was not ok.');
+        }
+      });
+      /* const form = document.createElement('form');
+      form.method = 'post';
+      form.action = './buy.php';
+      const createHiddenInput = (name, value) => {
+        const input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = name;
+        input.value = value;
+        return input;
+      };
+      form.appendChild(createHiddenInput('route', submitButton.dataset.route));
+      form.appendChild(createHiddenInput('schedule', submitButton.dataset.schedule));
+      form.appendChild(createHiddenInput('date', submitButton.dataset.date));
+      form.appendChild(createHiddenInput('departure', submitButton.dataset.departure));
+      form.appendChild(createHiddenInput('arrival', submitButton.dataset.arrival));
+      ticket.appendChild(form);
+      form.submit(); */
+    });
+  });
+}
+
+
+
+////////////////////////////////////  USERPAGE & ADMINPAGE  ////////////////////////////////////
 const overviewButton = document.querySelector('#overview');
 const overviewPage = document.querySelector('#page--overview');
 const subscriptionButton = document.querySelector('#subscription');
@@ -120,7 +205,6 @@ if (logOutButton) {
 
     window.location.href = baseUrl + '/logout.php';
   });
-
 }
 
 function showPageUser(button, page) {
@@ -177,51 +261,83 @@ window.onload = () => {
 }
 
 
-const tickets = document.querySelectorAll('.js-ticket');
-if (tickets) {
-  tickets.forEach(ticket => {
-    const ticketExpandButton = ticket.querySelector('.js-news__expand');
-    const ticketBody = ticket.querySelector('.js-ticket__body');
-    const submitButton = ticket.querySelector('.js-submit');
-    ticketExpandButton.addEventListener('click', () => {
-      ticketBody.classList.toggle('ticket__body--reduced');
-      ticketExpandButton.classList.toggle('rotate');
-      ticketExpandButton.classList.contains('rotate') ? 
-      ticketExpandButton.setAttribute('aria-label', 'Riduci il biglietto') : 
-      ticketExpandButton.setAttribute('aria-label', 'Espandi il biglietto');
-    });
+////////////////////////////////////  LOGIN  ////////////////////////////////////
+const loginForm = document.querySelector('.js-login__form');
+if (loginForm) {
+  const email = loginForm.querySelector('#email');
+  const password = loginForm.querySelector('#new_password');
+  const emailRegex = /^(?!.*\.\.)[a-zA-Z0-9]+([._]*[a-zA-Z0-9])*@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  email.addEventListener('blur', (e) => {
+    e.preventDefault();
+    if (!emailRegex.test(email.value) && !loginForm.querySelector('#email_error')) 
+      loginForm.insertAdjacentHTML('afterbegin', '<p id="email_error" class="form__error">Inserisci un indirizzo email valido</p>');
+    else if (emailRegex.test(email.value) && loginForm.querySelector('#email_error')) loginForm.querySelector('#email_error').remove();
+  });
+  email.addEventListener('focus', (e) => {
+    e.preventDefault();
+    if (password.value && loginForm.querySelector('#login_error')) loginForm.querySelector('#login_error').remove();
+  });
+  password.addEventListener('blur', (e) => {
+    e.preventDefault();
+    if (password.value.length < 8 && !loginForm.querySelector('#password_error')) 
+      loginForm.insertAdjacentHTML('afterbegin', '<p id="password_error" class="form__error">La password deve essere lunga almeno 8 caratteri</p>');
+    else if (password.value.length >= 8 && loginForm.querySelector('#password_error')) loginForm.querySelector('#password_error').remove();
+  });
+  password.addEventListener('focus', (e) => {
+    e.preventDefault();
+    if (email.value && loginForm.querySelector('#login_error')) loginForm.querySelector('#login_error').remove();
+  });
+}
 
-    const firstClass = ticket.querySelector('.js-first__class');
-    const secondClass = ticket.querySelector('.js-second__class');
-    const priceButton = ticket.querySelector('.js-submit');
-    firstClass.addEventListener('click', () => {
-      firstClass.classList.add('ticket__class--selected');
-      secondClass.classList.remove('ticket__class--selected');
-      priceButton.innerHTML = `€${priceButton.dataset.firstclass}`
-    });
-    secondClass.addEventListener('click', () => {
-      secondClass.classList.add('ticket__class--selected');
-      firstClass.classList.remove('ticket__class--selected');
-      priceButton.innerHTML = `€${priceButton.dataset.secondclass}`
-    });
-    submitButton.addEventListener('click', () => {
-      const form = document.createElement('form');
-      form.method = 'post';
-      form.action = './buy.php';
-      const createHiddenInput = (name, value) => {
-        const input = document.createElement('input');
-        input.type = 'hidden';
-        input.name = name;
-        input.value = value;
-        return input;
-      };
-      form.appendChild(createHiddenInput('route', submitButton.dataset.route));
-      form.appendChild(createHiddenInput('schedule', submitButton.dataset.schedule));
-      form.appendChild(createHiddenInput('date', submitButton.dataset.date));
-      form.appendChild(createHiddenInput('departure', submitButton.dataset.departure));
-      form.appendChild(createHiddenInput('arrival', submitButton.dataset.arrival));
-      ticket.appendChild(form);
-      form.submit();
-    });
+
+////////////////////////////////////  REGISTER  ////////////////////////////////////
+const registerForm = document.querySelector('.js-register__form');
+if (registerForm) {
+  const pInfoFieldset = registerForm.querySelector('.js-register__form--pinfo');
+  const pwdFieldset = registerForm.querySelector('.js-register__form--pwd');
+  const name = registerForm.querySelector('#name');
+  const surname = registerForm.querySelector('#surname');
+  const email = registerForm.querySelector('#email');
+  const birthday = registerForm.querySelector('#birthday');
+  const password = registerForm.querySelector('#new_password');
+  const rpassword = registerForm.querySelector('#rnew_password');
+  const emailRegex = /^(?!.*\.\.)[a-zA-Z0-9]+([._]*[a-zA-Z0-9])*@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  name.addEventListener('blur', () => {
+    if (!name.value && !pInfoFieldset.querySelector('#name_error')) 
+    pInfoFieldset.insertAdjacentHTML('afterbegin', '<p id="name_error" class="form__error">Inserisci il tuo nome</p>');
+    else if (name.value && pInfoFieldset.querySelector('#name_error')) pInfoFieldset.querySelector('#name_error').remove();
+  });
+  surname.addEventListener('blur', () => {
+    if (!surname.value && !pInfoFieldset.querySelector('#surname_error'))
+      pInfoFieldset.insertAdjacentHTML('afterbegin', '<p id="surname_error" class="form__error">Inserisci il tuo cognome</p>');
+    else if (surname.value && pInfoFieldset.querySelector('#surname_error')) pInfoFieldset.querySelector('#surname_error').remove();
+  });
+  email.addEventListener('blur', () => {
+    if (!emailRegex.test(email.value) && !pInfoFieldset.querySelector('#email_error')) 
+    pInfoFieldset.insertAdjacentHTML('afterbegin', '<p id="email_error" class="form__error">Inserisci un indirizzo email valido</p>');
+    else if (emailRegex.test(email.value) && pInfoFieldset.querySelector('#email_error')) pInfoFieldset.querySelector('#email_error').remove();
+  });
+  birthday.addEventListener('blur', () => {
+    if (new Date(birthday.value) >= new Date() && !pInfoFieldset.querySelector('#birthday_error')) 
+      pInfoFieldset.insertAdjacentHTML('afterbegin', '<p id="birthday_error" class="form__error">La data di nascita deve essere minore o uguale a quella attuale</p>');
+    else if (new Date(birthday.value) < new Date() && pInfoFieldset.querySelector('#birthday_error')) pInfoFieldset.querySelector('#birthday_error').remove();
+  });
+  password.addEventListener('blur', () => {
+    if (password.value.length < 8 && !pwdFieldset.querySelector('#password_error')) 
+      pwdFieldset.insertAdjacentHTML('afterbegin', '<p id="password_error" class="form__error">La password deve essere lunga almeno 8 caratteri</p>');
+    else if (password.value.length >= 8 && pwdFieldset.querySelector('#password_error')) pwdFieldset.querySelector('#password_error').remove();
+
+    if (rpassword.value != password.value && rpassword.value && !pwdFieldset.querySelector('#different_password_error')) 
+      pwdFieldset.insertAdjacentHTML('afterbegin', '<p id="different_password_error" class="form__error">Le password inserite sono differenti</p>');
+    else if (rpassword.value == password.value && pwdFieldset.querySelector('#different_password_error')) pwdFieldset.querySelector('#different_password_error').remove();
+  });
+  rpassword.addEventListener('blur', () => {
+    if (rpassword.value.length < 8 && !pwdFieldset.querySelector('#rpassword_error')) 
+      pwdFieldset.insertAdjacentHTML('afterbegin', '<p id="rpassword_error" class="form__error">La password deve essere lunga almeno 8 caratteri</p>');
+    else if (rpassword.value.length >= 8 && pwdFieldset.querySelector('#rpassword_error')) pwdFieldset.querySelector('#rpassword_error').remove();
+
+    if (rpassword.value != password.value && !pwdFieldset.querySelector('#different_password_error')) 
+      pwdFieldset.insertAdjacentHTML('afterbegin', '<p id="different_password_error" class="form__error">Le password inserite sono differenti</p>');
+    else if (rpassword.value == password.value && pwdFieldset.querySelector('#different_password_error')) pwdFieldset.querySelector('#different_password_error').remove();
   });
 }
