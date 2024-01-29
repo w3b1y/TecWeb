@@ -1047,6 +1047,10 @@ tr:nth-of-type(2n) {
     width: 70%;
     margin: auto;
   }
+  #form--register {
+    width: 80%;
+    margin: 5rem auto;
+  }
 
   /*==================== HOME ====================*/
   .ri-arrow-up-down-line {

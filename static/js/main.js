@@ -87,6 +87,10 @@ if (searchForm) {
 
   if (url.searchParams.get("discount_code")) searchDiscount.value = url.searchParams.get("discount_code");
   if (url.searchParams.get("min_people")) searchSeats.value = url.searchParams.get("min_people");
+  searchDiscount.addEventListener('focus', (e) => {
+    e.preventDefault();
+    if(searchForm.querySelector('#discount_error')) searchForm.querySelector('#discount_error').remove();
+  });
 
   searchSeats.addEventListener('input', (e) => {
     e.preventDefault();
@@ -164,23 +168,6 @@ if (tickets) {
             throw new Error('Network response was not ok.');
         }
       });
-      /* const form = document.createElement('form');
-      form.method = 'post';
-      form.action = './buy.php';
-      const createHiddenInput = (name, value) => {
-        const input = document.createElement('input');
-        input.type = 'hidden';
-        input.name = name;
-        input.value = value;
-        return input;
-      };
-      form.appendChild(createHiddenInput('route', submitButton.dataset.route));
-      form.appendChild(createHiddenInput('schedule', submitButton.dataset.schedule));
-      form.appendChild(createHiddenInput('date', submitButton.dataset.date));
-      form.appendChild(createHiddenInput('departure', submitButton.dataset.departure));
-      form.appendChild(createHiddenInput('arrival', submitButton.dataset.arrival));
-      ticket.appendChild(form);
-      form.submit(); */
     });
   });
 }
