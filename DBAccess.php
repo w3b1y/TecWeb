@@ -20,6 +20,36 @@ class DBAccess{
         }
     }
 
+    public function checkLogin(string $email, string $password) {
+        $query = "SELECT email, password FROM user
+                WHERE (email = "$email" AND password = "$password")";
+        $qResult = mysqli_query($this->connection, $query) or die("Errore nel controllo del login".mysqli_error($this->connection));
+
+        if(mysqli_num_rows($qResult) == 1){
+            $result = mysqli_fetch_assoc($qResult);
+            $qResult->free();
+            return $result;
+        }
+        else{
+            return null;
+        }
+    }
+
+    public function checkLoginAdmin(string $email, string $password) {
+        $query = "SELECT email, password FROM admin
+                WHERE (email = "$email" AND password = "$password")";
+        $qResult = mysqli_query($this->connection, $query) or die("Errore nel controllo del login".mysqli_error($this->connection));
+
+        if(mysqli_num_rows($qResult) == 1){
+            $result = mysqli_fetch_assoc($qResult);
+            $qResult->free();
+            return $result;
+        }
+        else{
+            return null;
+        }
+    }
+
     public function getData(string $Tname){
         $query= "SELECT * FROM $Tname";
         $qResult = mysqli_query($this->connection, $query) or die("query fallita".mysqli_error($this->connection));
