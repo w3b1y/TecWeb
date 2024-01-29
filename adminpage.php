@@ -99,42 +99,35 @@ $codice_sconto = '';
 $percentuale = '';
 $data_fine = '';
 $minimo = '';
-$img = '';
 
 //al click di insert_offert
 if(isset($_POST['insert_offer'])){
     $classe = $_POST['offer_class'];
-    $nome = clearInput($_POST['offer_name']);
+    $nome = $_POST['offer_name'];
     $titolo = clearInput($_POST['offer_title']);
     $contenuto = $_POST['offer_content'];
     $codice_sconto = clearInput($_POST['discount_code']);
     $percentuale = $_POST['discount_percentage'];
     $data_fine = $_POST['offer_end'];
     $minimo = $_POST['minimun'];
-    $img = clearInput($_POST['image']);
 
-    if(!empty($classe) && !empty($nome) && !empty($titolo) && !empty($contenuto) && !empty($codice_sconto) && !empty($percentuale) && !empty($data_fine) && !empty($img)){
+    if(!empty($classe) && !empty($nome) && !empty($titolo) && !empty($contenuto) && !empty($codice_sconto) && !empty($percentuale) && !empty($data_fine)){
         if(($classe!="group") || ($classe=="group" && !empty($minimo) && $minimo>=3)){
-            $connessione->addOffer($classe, $nome, $titolo, $contenuto, $codice_sconto, $percentuale, $data_fine, $minimo, $img);
+            $connessione->addOffer($classe, $nome, $titolo, $contenuto, $codice_sconto, $percentuale, $data_fine, $minimo);
             $ins='<p class="form__error" id="inserimento_offerta">Inserimento offerta avvenuto con successo</p>';
             $fileHTML = str_replace("<operazione_avvenuta_offer/>", $ins, $fileHTML);
             $classe = '';
-            $nome = '';
             $titolo = '';
             $contenuto = '';
             $codice_sconto = '';
             $percentuale = '';
             $data_fine = '';
             $minimo = '';
-            $img = '';
         }
     }
     else{
         if(empty($classe)){
             $avvisi_offer .='<p class="form__error" id="class_error">Seleziona una categoria</p>';
-        }
-        if(empty($nome)){
-            $avvisi_offer .='<p class="form__error" id="name_error">Inserisci un nome</p>';
         }
         if(empty($titolo)){
             $avvisi_offer .='<p class="form__error" id="title_error">Inserisci un titolo</p>';
@@ -151,7 +144,7 @@ if(isset($_POST['insert_offer'])){
         if(empty($data_fine)){
             $avvisi_offer .='<p class="form__error" id="final_date_error">Inserisci la data fine offerta</p>';
         }
-        if(empty($img)){
+        if(empty($nome)){
             $avvisi_offer .='<p class="form__error" id="img_error">Seleziona una immagine</p>';
         }
         if($classe=="group" && empty($minimo) && $minimo<3){
@@ -160,7 +153,6 @@ if(isset($_POST['insert_offer'])){
     }
 }
 $fileHTML = str_replace("&lt;classe/>", $classe, $fileHTML);
-$fileHTML = str_replace("&lt;nome/>", $nome, $fileHTML);
 $fileHTML = str_replace("&lt;titolo/>", $titolo, $fileHTML);
 $fileHTML = str_replace("<contenuto/>", $contenuto, $fileHTML);
 $fileHTML = str_replace("&lt;codice_sconto/>", $codice_sconto, $fileHTML);
@@ -180,7 +172,7 @@ $offerte= $connessione->viewOffers();
 $offerteList = '';
 if($offerte != null){
     foreach($offerte as $offerta){       
-        $offerteList .='<option value="'.$offerta['id'].'">'. $offerta['class'].' - '.$offerta['nome'].' - '.$offerta['title'].'</option>';
+        $offerteList .='<option value="'.$offerta['id'].'">'. $offerta['class'].' - '.$offerta['title'].'</option>';
     }
 }
 else{
