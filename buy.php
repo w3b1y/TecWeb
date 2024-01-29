@@ -21,6 +21,7 @@ if (isset($_SESSION['admin'])) $fileHTML = str_replace("<navbar/>", '<a class="n
 $qResult_duration = $connessione->getDataArray("select timediff(end.duration, start.duration) as time_difference
               from route_station as start join route_station as end on start.route_id = end.route_id
               where start.station_id = '".$_SESSION['ricerca']['from']."' and end.station_id = '".$_SESSION['ricerca']['to']."'");
+$qResult_train = $connessione->getDataArray("select train_id from route_schedule where id = '".$_SESSION['ricerca']['route_schedule']."'");
 
 $fileHTML = str_replace("<warnings/>", $warnings, $fileHTML);
 $fileHTML = str_replace("<departure_station/>", $_SESSION['ricerca']['from'], $fileHTML);

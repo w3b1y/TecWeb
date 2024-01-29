@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="keywords" content="Biglietti treni, Acquisto, Tariffe viaggio, Prenotazioni treni">
+  <meta name="description" content="Esplora le tariffe e le offerte speciali per i biglietti treni. Prenota il tuo viaggio con comodità e convenienza su Iberu Trasporti">
+  <meta name="author" content="Mang00o, Fabbricca, ElenaaaCh, Pax">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="./static/img/icon.png">
+  <link rel="stylesheet" href="./static/css/style.css">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+  <script defer src="./static/js/main.js"></script>
+  <title> Accedi </title>
+</head>
+<body>
+  <header>
+    <h1 class="logo">
+      IBERU TRASPORTI
+    </h1>
+    <nav id="navbar" role="navigation">
+      <div class="nav__menu js-nav__menu">
+        <ul class="nav__list">
+          <li class="nav__item js-nav__item">
+            <a class="nav__link visually-hidden" href="#main">Salta la barra di navigazione</a>
+          </li>
+          <li class="nav__item js-nav__item">
+            <a class="nav__link" href="index.php" lang="en-US">Home</a>
+          </li>
+          <li class="nav__item js-nav__item">
+            <a class="nav__link" href="about.php">Chi Siamo</a>
+          </li>
+          <li class="nav__item js-nav__item">
+            <a class="nav__link" href="comunications.php">Comunicazioni</a>
+          </li>
+          <li class="nav__item js-nav__item">
+            <a class="nav__link" href="offers.php">Offerte</a>
+          </li>
+          <li class="nav__item js-nav__item">
+            <a class="nav__link" href="subscriptions.php">Abbonamenti</a>
+          </li>
+          <li class="nav__item js-nav__item">
+            <a class="nav__link" href="help.php">Help</a>
+          </li>
+          <li class="nav__item js-nav__item">
+            <navbar/>
+          </li>
+        </ul>
+        
+        <div class="nav__close js-nav__close">
+          <span class="ri-close-line"></span>
+        </div>
+      </div>
+      
+      <div class="nav__toggle js-nav__toggle">
+        <span class="ri-menu-line"></span>
+      </div>
+    </nav>
+  </header>
+  <nav id="breadcrumb">
+    <p class="breadcrumb__nav">Ti trovi in: Accedi</p>
+  </nav>
+  <main id="main" role="main" class="container--background">
+    <h2 class="container__heading container__heading--main">Accedi</h2>
+    <form action="login.php" method="post" id="form--login" class="container__fieldset--user js-login__form">
+      <warnings/>
+      <label class="container__label" for="email">Email</label>
+      <input class="container__input--search" type="text" name="email" id="email" value="<email/>">
+      <label class="container__label" for="new_password">Password</label>
+      <input class="container__input--search" type="password" name="new_password" id="new_password">
+      <button type="submit" class="submit" name="submit">Accedi</button> 
+    </form>
+    <p class="register">Non sei ancora registrato? <a href="signUp.php">Registrati</a></p>
+  </main>
+  <footer class="container container--footer">
+    <h2 class="container__heading--footer">IBERU TRASPORTI</h2>
+    <div class="container__body--footer">
+      <div class="container__list">
+        <a href="index.php" class="container__link" lang="en-US">Homepage</a>
+        <ul>
+          <li>
+            <a href="index.php#index__search" class="container__link container__link--heading">Ricerca Biglietto</a>
+          </li>
+          <li>
+            <a href="index.php#index__news" class="container__link container__link--heading">Notizie</a>
+          </li>
+          <li>
+            <a href="index.php#index__offers" class="container__link container__link--heading">Offerte</a>
+          </li>
+        </ul>
+        <a href="about.php" class="container__link">Chi Siamo</a>
+      </div>
+      <div class="container__list">
+        <a href="comunications.php" class="container__link">Comunicazioni</a>
+        <a href="offers.php" class="container__link">Offerte</a>
+        <ul>
+          <li>
+            <a href="offers.php#offers__super" class="container__link container__link--heading">Super offerte</a>
+          </li>
+          <li>
+            <a href="offers.php#offers__special" class="container__link container__link--heading">Offerte speciali</a>
+          </li>
+          <li>
+            <a href="offers.php#offers__family" class="container__link container__link--heading">Offerte per famiglie e gruppi</a>
+          </li>
+          <li>
+            <a href="offers.php#offers__carnet" class="container__link container__link--heading">Carnet</a>
+          </li>
+        </ul>
+      </div>
+      <div class="container__list">
+        <a href="subscriptions.php" class="container__link">Abbonamenti</a>
+        <a href="helps.php" class="container__link" lang="en-US">Help</a>
+      </div>
+    </div>  
+    <p class="container__copyright">Societa' Viaggi - <span lang="en-US">All rights reserved.</span></p>
+  </footer>
+</body>
+</html>
