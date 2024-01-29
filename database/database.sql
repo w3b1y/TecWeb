@@ -94,19 +94,25 @@ CREATE TABLE offers(
 
 -- Users
 INSERT INTO user (first_name, last_name, email, password, birthday) VALUES
+('user', 'user', 'user@user.com', 'user', '2001-02-15'),
 ('John', 'Doe', 'john.doe@example.com', 'password123', '2001-02-15'),
-('Jane', 'Smith', 'jane.smith@example.com', 'securepass', '2004-04-15');
+('Jane', 'Smith', 'jane.smith@example.com', 'securepass', '2004-04-15'),
+('Alice', 'Johnson', 'alice.johnson@example.com', 'passalice123', '1995-07-21'),
+('Bob', 'Miller', 'bob.miller@example.com', 'bobpass456', '1988-11-30'),
+('Eva', 'Clark', 'eva.clark@example.com', 'evapassword789', '1992-04-05'),
+('David', 'Taylor', 'david.taylor@example.com', 'davidpass321', '1985-09-15'),
+('Sophia', 'Roberts', 'sophia.roberts@example.com', 'sophiapass777', '1998-02-20'),
+('Michael', 'White', 'michael.white@example.com', 'mikepass111', '1982-06-12'),
+('Olivia', 'Anderson', 'olivia.anderson@example.com', 'oliviapass222', '1990-08-25'),
+('Henry', 'Brown', 'henry.brown@example.com', 'henrypass999', '1987-03-08'),
+('Emma', 'Garcia', 'emma.garcia@example.com', 'emmapass444', '1993-12-01'),
+('Liam', 'Smith', 'liam.smith@example.com', 'liampass555', '1996-10-18');
 
 -- Admins
 INSERT INTO admin (email, password) VALUES
+('admin@admin.com', 'admin'),
 ('admin1@iberu.com', 'adminpass'),
 ('admin2@iberu.com', 'admin123');
-
--- Routes
-INSERT INTO route (duration, name) VALUES
-('03:30:00', 'Roma-Milano'),
-('02:45:00', 'Venezia-Torino'),
-('04:00:00', 'Bari-Napoli');
 
 -- Stations
 INSERT INTO station (name, address) VALUES
@@ -129,35 +135,138 @@ INSERT INTO station (name, address) VALUES
 ('Perugia', 'Corso Vannucci, 97, 06121 Perugia PG'),
 ('Aquila', 'Piazzale della Stazione, 67100 L''Aquila AQ');
 
-
--- Trains
-INSERT INTO train (name, capacity) VALUES
-('Express Train', 200),
-('Local Train', 150),
-('Regional Train', 250);
-
--- Route Schedules
-INSERT INTO route_schedule (route_id, train_id, departure_time) VALUES
-(1, 1, '08:00:00'),
-(1, 2, '09:00:00'),
-(1, 2, '18:00:00'),
-(2, 2, '10:30:00'),
-(3, 3, '12:45:00');
-
--- Tickets
-INSERT INTO ticket (user_id, route_schedule_id, departure_station_id, arrival_station_id, departure_time, category) VALUES
-(1, 1, 'Roma', 'Milano', '2024-01-15', 1),
-(1, 1, 'Bologna', 'Milano', '2024-01-16', 1),
-(1, 1, 'Roma', 'Milano', '2024-02-15', 1),
-(2, 2, 'Roma', 'Milano', '2024-03-15', 1);
+-- Routes
+INSERT INTO route (duration, name) VALUES
+('03:30:00', 'Roma-Milano'),
+('03:30:00', 'Milano-Roma'),
+('02:45:00', 'Napoli-Torino'),
+('02:45:00', 'Torino-Napoli'),
+('04:15:00', 'Palermo-Genova'),
+('04:15:00', 'Genova-Palermo'),
+('01:30:00', 'Bologna-Firenze'),
+('01:30:00', 'Firenze-Bologna'),
+('02:00:00', 'Ancona-Cagliari'),
+('02:00:00', 'Cagliari-Ancona');
 
 -- Route Stations
 INSERT INTO route_station (route_id, station_id, duration, price, order_number) VALUES
 (1, 'Roma', '00:00:00', 30, 1),
 (1, 'Firenze', '02:00:00', 22, 2),
 (1, 'Bologna', '03:30:00', 15, 3),
-(1, 'Milano', '05:00:00', 0, 4);
+(1, 'Milano', '05:00:00', 0, 4),
+  (2, 'Milano', '00:00:00', 30, 1),
+  (2, 'Bologna', '01:30:00', 15, 2),
+  (2, 'Firenze', '03:30:00', 22, 3),
+  (2, 'Roma', '05:00:00', 0, 4),
+(3, 'Napoli', '00:00:00', 30, 1),
+(3, 'Roma', '02:00:00', 25, 2),
+(3, 'Firenze', '04:30:00', 20, 3),
+(3, 'Bologna', '06:30:00', 15, 4),
+(3, 'Milano', '08:30:00', 10, 5),
+(3, 'Torino', '10:30:00', 0, 6),
+  (4, 'Torino', '00:00:00', 30, 1),
+  (4, 'Milano', '02:00:00', 25, 2),
+  (4, 'Bologna', '04:00:00', 20, 3),
+  (4, 'Firenze', '06:00:00', 15, 4),
+  (4, 'Roma', '08:30:00', 10, 5),
+  (4, 'Napoli', '10:30:00', 0, 6),
+(5, 'Palermo', '00:00:00', 30, 1),
+(5, 'Catanzaro', '02:00:00', 25, 2),
+(5, 'Bari', '04:30:00', 20, 3),
+(5, 'Cagliari', '06:30:00', 15, 4),
+(5, 'Ancona', '08:30:00', 10, 5),
+(5, 'Genova', '10:30:00', 0, 6),
+  (6, 'Genova', '00:00:00', 30, 1),
+  (6, 'Ancona', '02:00:00', 25, 2),
+  (6, 'Cagliari', '04:00:00', 20, 3),
+  (6, 'Bari', '06:00:00', 15, 4),
+  (6, 'Catanzaro', '08:30:00', 10, 5),
+  (6, 'Palermo', '10:30:00', 0, 6),
+(7, 'Bologna', '00:00:00', 8, 1),
+(7, 'Firenze', '01:30:00', 0, 2),
+  (8, 'Firenze', '00:00:00', 30, 1),
+  (8, 'Bologna', '01:30:00', 8, 2),
+(9, 'Ancona', '00:00:00', 30, 1),
+(9, 'Bologna', '01:30:00', 25, 2),
+(9, 'Roma', '03:30:00', 15, 3),
+(9, 'Cagliari', '05:30:00', 0, 4),
+  (10, 'Cagliari', '00:00:00', 30, 1),
+  (10, 'Roma', '01:30:00', 25, 2),
+  (10, 'Bologna', '03:30:00', 15, 3),
+  (10, 'Ancona', '05:30:00', 0, 4);
 
+-- Trains
+INSERT INTO train (name, capacity) VALUES
+('Fulmine Argento', 200),
+('Stellare Express', 200),
+('Locomotiva Sognante', 150),
+('Veloce Nebuloso', 150),
+('Turbo Cosmico', 250),
+('Arcobaleno Volante', 250),
+('Astronave Velocissima', 180),
+('Incanto Ferroviario', 180),
+('Velocità Celeste', 220),
+('Eclissi Ferroviaria', 190);
+
+-- Route Schedules
+INSERT INTO route_schedule (route_id, train_id, departure_time) VALUES
+(1, 1, '08:00:00'),
+(1, 2, '09:00:00'),
+(1, 2, '12:00:00'),
+(1, 3, '14:30:00'),
+(1, 4, '17:00:00'),
+  (2, 5, '09:30:00'),
+  (2, 6, '11:00:00'),
+  (2, 7, '14:00:00'),
+  (2, 8, '16:30:00'),
+  (2, 9, '18:00:00'),
+(3, 1, '10:30:00'),
+(3, 2, '13:00:00'),
+(3, 3, '15:30:00'),
+(3, 4, '18:00:00'),
+(3, 5, '20:00:00'),
+  (4, 9, '09:45:00'),
+  (4, 10, '11:30:00'),
+  (4, 1, '14:00:00'),
+  (4, 2, '17:30:00'),
+  (4, 3, '20:00:00'),
+(5, 3, '08:30:00'),
+(5, 4, '10:00:00'),
+(5, 5, '13:00:00'),
+(5, 6, '15:30:00'),
+(5, 7, '18:00:00'),
+  (6, 8, '09:15:00'),
+  (6, 9, '11:30:00'),
+  (6, 10, '14:00:00'),
+  (6, 1, '16:30:00'),
+  (6, 2, '19:00:00'),
+(7, 5, '08:45:00'),
+(7, 6, '10:30:00'),
+(7, 7, '13:00:00'),
+(7, 8, '15:30:00'),
+(7, 9, '17:45:00'),
+  (8, 10, '09:00:00'),
+  (8, 1, '11:00:00'),
+  (8, 2, '14:00:00'),
+  (8, 3, '16:30:00'),
+  (8, 4, '19:00:00'),
+(9, 5, '10:00:00'),
+(9, 6, '12:30:00'),
+(9, 7, '15:00:00'),
+(9, 8, '17:30:00'),
+(9, 9, '20:00:00'),
+  (10, 10, '11:00:00'),
+  (10, 1, '13:30:00'),
+  (10, 2, '16:00:00'),
+  (10, 3, '18:30:00'),
+  (10, 4, '21:00:00');
+
+-- Tickets
+INSERT INTO ticket(user_id, route_schedule_id, departure_station_id, arrival_station_id, departure_time, category) VALUES
+(1, 1, 'Roma', 'Milano', '2024-01-15', 1),
+(1, 1, 'Bologna', 'Milano', '2024-01-16', 1),
+(1, 1, 'Roma', 'Milano', '2024-02-15', 1),
+(2, 2, 'Roma', 'Milano', '2024-03-15', 1);
 
 -- News
 INSERT INTO news(id, title, content, initial_date, final_date) VALUES
@@ -173,7 +282,6 @@ INSERT INTO news(id, title, content, initial_date, final_date) VALUES
 (9, 'Caduta di Alberi: Interruzione del servizio sulla tratta Genova - Milano', 'A causa della caduta di alberi sulla linea ferroviaria, il servizio tra Genova e Milano è temporaneamente interrotto. I tecnici sono al lavoro per ripristinare la normale operatività. Si prevede che la situazione sarà risolta entro il giorno #f.', '2024-04-05', '2024-04-06'),
 (10, 'Forti Ritardi: Attesa prolungata su diverse tratte ferroviarie', 'A causa di problemi tecnici sulla rete ferroviaria, si verificano ritardi significativi su diverse tratte, inclusi percorsi tra Milano, Roma e Firenze. I viaggiatori sono invitati a consultare gli annunci in stazione per informazioni aggiornate.', '2024-02-10', '2024-02-11'),
 (11, 'Incidente Ferroviario: Interruzione del servizio sulla tratta Torino - Venezia', 'A seguito di un incidente ferroviario sulla tratta Torino - Venezia, il servizio è temporaneamente interrotto. I passeggeri sono invitati a considerare alternative di viaggio. Le autorità stanno indagando sull''incidente.', '2024-05-15', '2024-05-17');
-
 
 -- Offers
 INSERT INTO offers(class, nome, title, content, discount_code, final_date, discount, people_number) VALUES
