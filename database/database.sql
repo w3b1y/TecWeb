@@ -6,8 +6,6 @@ DROP TABLE IF EXISTS train CASCADE;
 DROP TABLE IF EXISTS route_station CASCADE;
 DROP TABLE IF EXISTS route CASCADE;
 DROP TABLE IF EXISTS station CASCADE;
-DROP TABLE IF EXISTS user_subscription CASCADE;
-DROP TABLE IF EXISTS subscription CASCADE;
 DROP TABLE IF EXISTS admin CASCADE;
 DROP TABLE IF EXISTS user CASCADE;
 
@@ -25,23 +23,7 @@ CREATE TABLE admin(
   email VARCHAR(40) NOT NULL,
   password VARCHAR(50) NOT NULL
 );
-CREATE TABLE subscription(
-  id INT PRIMARY KEY AUTO_INCREMENT,
-  category VARCHAR(40) NOT NULL,
-  icon_id VARCHAR(40) NOT NULL,
-  name VARCHAR(40) NOT NULL,
-  link VARCHAR(40) NOT NULL,
-  price DECIMAL(10,2) NOT NULL
-);
-CREATE TABLE user_subscription(
-  id INT PRIMARY KEY AUTO_INCREMENT,
-  user_id INT NOT NULL,
-  subscription_id INT NOT NULL,
-  start_date DATE NOT NULL,
-  end_date DATE NOT NULL,
-  FOREIGN KEY (user_id) REFERENCES user(id),
-  FOREIGN KEY (subscription_id) REFERENCES subscription(id)
-);
+
 CREATE TABLE station(
   name VARCHAR(40) PRIMARY KEY  NOT NULL,
   address VARCHAR(100) NOT NULL
@@ -120,18 +102,6 @@ INSERT INTO admin (email, password) VALUES
 ('admin1@iberu.com', 'adminpass'),
 ('admin2@iberu.com', 'admin123');
 
--- Subscriptions
-INSERT INTO subscription (category, icon_id, name, link, price) VALUES
-('Studente', 'subscription__student', 'Provinciali', 'province', 29.99),
-('Studente', 'subscription__student', 'Regionali', 'region', 55.50),
-('Studente', 'subscription__student', 'Nazionali', 'nation', 95.50),
-('Lavoratore', 'subscription__worker', '100km', '100km', 29.99),
-('Lavoratore', 'subscription__worker', '200km', '200km', 55.50),
-('Lavoratore', 'subscription__worker', '500km', '500km', 95.50),
-('Generico', 'subscription__generic', 'Base', 'base', 29.99),
-('Generico', 'subscription__generic', 'Viaggiatore', 'traveler', 55.50),
-('Generico', 'subscription__generic', 'Esploratore', 'explorer', 95.50);
-
 -- Routes
 INSERT INTO route (duration, name) VALUES
 ('03:30:00', 'Roma-Milano'),
@@ -165,12 +135,6 @@ INSERT INTO train (name, capacity) VALUES
 ('Express Train', 200),
 ('Local Train', 150),
 ('Regional Train', 250);
-
--- User Subscriptions
-INSERT INTO user_subscription (user_id, subscription_id, start_date, end_date) VALUES
-(1, 1, '2023-12-01', '2024-01-01'),
-(1, 1, '2024-01-01', '2024-01-31'),
-(2, 2, '2024-02-15', '2024-03-15');
 
 -- Route Schedules
 INSERT INTO route_schedule (route_id, train_id, departure_time) VALUES

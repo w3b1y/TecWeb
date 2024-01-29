@@ -56,7 +56,6 @@ if (isset($_POST['submit'])) {
 }
 
 
-
 $ticket = "";
 $valid_ticket = $connessione->getDataArray("select * from ticket where user_id = '$user' and departure_time >= curdate() order by departure_time asc");
 if (empty($valid_ticket)) {
@@ -69,6 +68,7 @@ else {
     $qResult_duration = $connessione->getDataArray("select timediff(end.duration, start.duration) as time_difference
               from route_station as start join route_station as end on start.route_id = end.route_id
               where start.station_id = '$departure_station' and end.station_id = '$arrival_station'");
+    $qResult_d = new Datetime($qResult_duration[0]);
     $departure_time_station = (new DateTime($vt['departure_time']));
     $arrival_time_station = clone $departure_time_station;
     $arrival_time_station->add(getDateInterval($qResult_duration[0]));
@@ -80,7 +80,7 @@ else {
                   <dd class="route__data--horizontal"><time datetime="'.$departure_time_station->format('H:i').'">'
                   .$departure_time_station->format('H:i').'</time></dd>
                   <dt class="route__term--horizontal route__term--line">Durata</dt>
-                  <dd class="route__data--horizontal route__data--line">'.$qResult_duration[0].'</dd>
+                  <dd class="route__data--horizontal route__data--line">'.date2txt($qResult_d).'</dd>
                   <dt class="route__term--horizontal">'.$arrival_station.'</dt>
                   <dd class="route__data--horizontal"><time datetime="'.$arrival_time_station->format('H:i').'">'
                   .$arrival_time_station->format('H:i').'</time></dd>
@@ -97,35 +97,9 @@ else {
 $fileHTML = str_replace("<tickets/>", $ticket, $fileHTML);
 
 
-
-$subscription = "";
-$valid_subscription = $connessione->getDataArray("select * from user_subscription where user_id = '$user' and end_date >= curdate() order by end_date asc");
-if (empty($valid_subscription)) {
-  $subscription = '<p class="container__message">Attualmente non hai abbonamenti attivi disponibili</p>';
-}
-else {
-  foreach ($valid_subscription as $vs) {
-    $sub = $connessione->getDataArray("select * from subscription where id = $vs[subscription_id]");
-    $subscription .= '<article class="subscription">
-            <header id="'.$sub[0]['icon_id'].'" class="subscription__header container--dynamic">
-              <h4 class="subscription__title dynamic__heading-margin">Abbonamento '.$sub[0]['category'].'</h4>
-              <a href="./subscriptions.html#'.$sub[0]['link'].'" class="subscription__description subscription__description--type dynamic__content-margin">'.$sub[0]['name'].'</a>
-              <p class="subscription__description subscription__description--dates dynamic__content-margin">
-                <span>Data inizio:<time datetime="'.$vs['start_date'].'">'.$vs['start_date'].'</time></span>
-                <span>Data termine:<time datetime="'.$vs['end_date'].'">'.$vs['end_date'].'</time></span>
-              </p>
-            </header>
-          </article>';
-  }
-}
-$fileHTML = str_replace("<subscription/>", $subscription, $fileHTML);
-
-
-
 $table = "";
 $invalid_ticket = $connessione->getDataArray("select * from ticket where user_id = '$user' order by departure_time asc");
-$invalid_subscription = $connessione->getDataArray("select * from user_subscription where user_id = '$user' order by end_date asc");
-if (empty($invalid_ticket) && empty($invalid_subscription)) {
+if (empty($invalid_ticket)) {
   $table = '<p class="container__message">Scegli Iberu per il tuo prossimo viaggio e immergiti in un&#39;avventura unica: il biglietto per un&#39;esperienza senza eguali ed è solo un click di distanza!</p>';
   $fileHTML = str_replace("<usertable/>", $table, $fileHTML);
 }
@@ -136,8 +110,10 @@ if (!empty($invalid_ticket)) {
     $qResult_price = $connessione->getDataArray("select start.price - end.price from route_station as start join route_station as end on 
               start.route_id = end.route_id where start.station_id = '".$it['departure_station_id']."' 
               and end.station_id = '".$it['arrival_station_id']."' and start.route_id = '".$qResult_route[0]."'");
+    $part=new DateTime($it['departure_time']);
+  
     $trow .= '<tr class="table__row">
-                <td class="table__data" data-cell="Data"><time datetime="'.$it['departure_time'].'">'.str_replace('-', '/', $it['departure_time']).'</time></td>
+                <td class="table__data" data-cell="Data"><time datetime="'.$it['departure_time'].'">'.$part->format('d/m/Y H:m').'</time></td>
                 <td class="table__data" data-cell="Tratta">'.$it['departure_station_id'].' - '.$it['arrival_station_id'].'</td>
                 <td class="table__data" data-cell="Prezzo">€'.$qResult_price[0].'</td>
               </tr>';
@@ -147,33 +123,6 @@ if (!empty($invalid_ticket)) {
               <thead class="table__header">
                 <tr class="table__row">
                   <th scope="col" class="table__head">Data</th>
-                  <th scope="col" class="table__head">Tratta</th>
-                  <th scope="col" class="table__head">Prezzo</th>
-                </tr>
-              </thead>
-              <tbody class="table__body">
-                '.$trow.'
-              </tbody>
-              </table>';
-}
-if (!empty($invalid_subscription)) {
-  $trow = "";
-  foreach ($invalid_subscription as $is) {
-    $sub = $connessione->getDataArray("select * from subscription where id = $is[subscription_id]");
-    $trow .= '<tr class="table__row">
-                  <td class="table__data" data-cell="Data"><time datetime="'.$is['start_date'].'">'.str_replace('-', '/', $is['start_date']).'</time> - 
-                  <time datetime="'.$is['end_date'].'">'.str_replace('-', '/', $is['end_date']).'</time></td>
-                  <td class="table__data" data-cell="Categoria">'.$sub[0]['category'].'</td>
-                  <td class="table__data" data-cell="Tratta">'.$sub[0]['name'].'</td>
-                  <td class="table__data" data-cell="Prezzo">€'.$sub[0]['price'].'</td>
-                </tr>';
-  }
-  $table .= '<table class="table">
-              <caption class="table__caption">Tabella abbonamenti acquistati</caption>
-              <thead class="table__header">
-                <tr class="table__row">
-                  <th scope="col" class="table__head">Data</th>
-                  <th scope="col" class="table__head">Categoria</th>
                   <th scope="col" class="table__head">Tratta</th>
                   <th scope="col" class="table__head">Prezzo</th>
                 </tr>
