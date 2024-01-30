@@ -60,7 +60,7 @@
     <nav id="navbar--secondary">
       <ul class="nav__list--secondary">
         <li class="nav__item--secondary js-nav__item--secondary">
-          <button id="overview" class="nav__button nav__button--current"><span class="term" lang="en-US">Generale</span> <span class="ri-calendar-event-line icon"></s></button>
+          <button id="overview" class="nav__button nav__button--current"><span class="term" lang="en-US">Generale</span> <span class="ri-calendar-event-line icon"></span></button>
         </li>
         <li class="nav__item--secondary js-nav__item--secondary">
           <button id="subscription" class="nav__button"><span class="term">Storico</span> <span class="ri-history-line icon"></span></button>
@@ -73,14 +73,14 @@
         </li>
       </ul>
     </nav>
-    <div id="page--overview" class="container container--user">
+    <section id="page--overview" class="container container--user">
       <h2 class="container__heading container__heading--main">GENERALE</h2>
       <h3 class="container__heading">Biglietti validi</h3>
       <div class="container--tickets">
         <tickets/>
       </div>
-    </div>
-    <div id="page--subscription" class="container container--user container--hide">
+    </section>
+    <section id="page--subscription" class="container container--user container--hide">
       <h2 class="container__heading container__heading--main">STORICO ACQUISTI</h2>
       <message/>
       <table class="table">
@@ -96,35 +96,33 @@
           <trow/>
         </tbody>
       </table>
-    </div>
-    <div id="page--user" class="container container--user container--hide">
+    </section>
+    <section id="page--user" class="container container--user container--hide">
       <h2 class="container__heading container__heading--main">PROFILO</h2>
-      <section class="container">
-        <form id="form--user-data" action="userpage.php" method="post">
-          <fieldset class="container__fieldset--user js-register__form--pinfo">
-            <legend>Informazioni personali</legend>
-            <label class="container__label" for="name">Nome</label>
-            <input class="container__input--search" type="text" name="name" id="name" value="<first_name/>">
-            <label class="container__label" for="surname">Cognome</label>
-            <input class="container__input--search" type="text" name="surname" id="surname" value="<last_name/>">
-            <label class="container__label" for="email">Email</label>
-            <input class="container__input--search" type="email" name="email" id="email" value="<email/>">
-            <label class="container__label" for="birthday">Data di nascita</label>
-            <input class="container__input--search" type="date" name="birthday" id="birthday" value="<birthday/>">
-          </fieldset>
-          <fieldset class="container__fieldset--user js-register__form--pwd">
-            <legend>Cambio Password</legend>
-            <label class="container__label" for="old_passwor">Vecchia password</label>
-            <input class="container__input--search" type="password" name="old_password" id="old_password">
-            <label class="container__label" for="new_password">Nuova password</label>
-            <input class="container__input--search" type="password" name="new_password" id="new_password">
-            <label class="container__label" for="rnew_password">Ripeti password</label>
-            <input class="container__input--search" type="password" name="rnew_password" id="rnew_password">
-          </fieldset>
-          <input class="submit" type="submit" value="Conferma" name="submit">
-        </form>
-      </section>
-    </div>
+      <form id="form--user-data" action="userpage.php" method="post">
+        <fieldset class="container__fieldset--user js-register__form--pinfo">
+          <legend>Informazioni personali</legend>
+          <label class="container__label" for="name">Nome</label>
+          <input class="container__input--search" type="text" name="name" id="name" value="<first_name/>">
+          <label class="container__label" for="surname">Cognome</label>
+          <input class="container__input--search" type="text" name="surname" id="surname" value="<last_name/>">
+          <label class="container__label" for="email">Email</label>
+          <input class="container__input--search" type="email" name="email" id="email" value="<email/>">
+          <label class="container__label" for="birthday">Data di nascita</label>
+          <input class="container__input--search" type="date" name="birthday" id="birthday" value="<birthday/>">
+        </fieldset>
+        <fieldset class="container__fieldset--user js-register__form--pwd">
+          <legend>Cambio Password</legend>
+          <label class="container__label" for="old_password">Vecchia password</label>
+          <input class="container__input--search" type="password" name="old_password" id="old_password">
+          <label class="container__label" for="new_password">Nuova password</label>
+          <input class="container__input--search" type="password" name="new_password" id="new_password">
+          <label class="container__label" for="rnew_password">Ripeti password</label>
+          <input class="container__input--search" type="password" name="rnew_password" id="rnew_password">
+        </fieldset>
+        <input class="submit" type="submit" value="Conferma" name="submit">
+      </form>
+    </section>
   </main>
 </body>
 </html>

@@ -123,7 +123,7 @@ if(isset($_SESSION['ricerca'])){
             array_splice($departure_array, $pos, 0, $departure_time_station->format('d/m/y H:i'));
             
             
-            $ticket = '<article id="<ticket_id/>" class="ticket js-ticket">
+            $ticket = '<div id="<ticket_id/>" class="ticket js-ticket">
                         <dl class="ticket__route--horizontal">
                         <dt class="route__term--horizontal">'.$stazionePartenza.'</dt>
                         <dd class="route__data--horizontal"><time class="js-departure_time" datetime="'.
@@ -155,7 +155,7 @@ if(isset($_SESSION['ricerca'])){
                         class="submit submit--ticket js-submit" data-firstClass="'.$qResult_price[0].'" data-secondClass="'
                         .number_format($qResult_price[0] * 0.8, 2).'">€'.$qResult_price[0].'</button>
                         </div>
-                    </article>';
+                    </div>';
             array_splice($ticket_array, $pos, 0, $ticket);
             $counter++;
             $counter_departures++;

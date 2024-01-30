@@ -35,11 +35,11 @@ if($comunicazioni != null){
         $f_init_date = date('d/m/Y', $init_date);
         $f_final_date= date('d/m/Y', $end_date);
 
-        $content = str_replace('#i', '<time datetime='.$init_date.'>'.$f_init_date.'</time>', $comunicazione['content']);
-        $content = str_replace('#f', '<time datetime='.$end_date.'>'.$f_final_date.'</time>', $content);
+        $content = str_replace('#i', '<time datetime='.date('Y-m-d', $init_date).'>'.$f_init_date.'</time>', $comunicazione['content']);
+        $content = str_replace('#f', '<time datetime='.date('Y-m-d', $end_date).'>'.$f_final_date.'</time>', $content);
 
         $newsList .='<article class="news js-news">
-        .<time class="news__date" datetime="'.$comunicazione['initial_date'].'">
+        .<time class="news__date" datetime="'.date('Y-m-d', $init_date).'">
           <span class="news__day">'.$giorno.'</span>
           <span class="news__month">'.$nomeMese.' '.$anno.'</span></time>
         <div class="news__body">
