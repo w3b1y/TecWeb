@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="./static/css/style.css">
   <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
   <script defer src="./static/js/main.js"></script>
-  <title> Pagina Amministratore </title>
+  <title>Pagina Amministratore</title>
 </head>
 <body>
   <header>
@@ -90,9 +90,9 @@
       </section>
       <section class="container">
         <h3 class="container__heading">Elimina una notizia esistente</h3>
-        <form action="" class="container__fieldset--user">
+        <form action="adminpage.php" class="container__fieldset--user">
           <label class="container__label" for="delete__news">Elimina</label>
-          <select id="selected__news" name="selected_news" class="container__input--search">
+          <select id="delete__news" name="selected_news" class="container__input--search">
             <news/>
           </select>
           <input class="submit" type="submit" value="Elimina" name="delete_news">
@@ -104,10 +104,10 @@
       <section class="container">
         <operazione_avvenuta_offer/>
         <h3 class="container__heading">Aggiungi una nuova offerta</h3>
-        <form action="" method="post" class="container__fieldset--user">
+        <form action="adminpage.php" method="post" class="container__fieldset--user">
           <avvisi_offer/>
           <label class="container__label" for="offer__category">Categoria</label>
-          <select id="offer__category" class="container__input--search" name="offer_class" value="&lt;classe/>">
+          <select id="offer__category" class="container__input--search" name="offer_class">
             <option value="super">Offerte super</option>
             <option value="special">Offerte speciali</option>
             <option value="student">Offerte studenti</option>
@@ -181,9 +181,9 @@
       </section>
       <section class="container">
         <h3 class="container__heading">Elimina un'offerta esistente</h3>
-        <form action="" class="container__fieldset--user">
+        <form action="adminpage.php" class="container__fieldset--user">
           <label class="container__label" for="delete__offer">Elimina</label>
-          <select id="selected__offer" name="selected_offer" class="container__input--search">
+          <select id="delete__offer" name="selected_offer" class="container__input--search">
             <offerte/>
           </select>
           <input class="submit" type="submit" value="Elimina" name="delete_offer">

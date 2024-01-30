@@ -29,6 +29,7 @@ $data_i = '';
 $data_f = '';
 $titolo = '';
 $contenuto = '';
+$ins = '';
 
 //al click di insert_submit
 if(isset($_POST['insert_news'])){
@@ -61,6 +62,7 @@ if(isset($_POST['insert_news'])){
         }      
     }
 }
+$fileHTML = str_replace("<operazione_avvenuta_news/>", $ins, $fileHTML);
 $fileHTML = str_replace("&lt;data_i/>", $data_i, $fileHTML);
 $fileHTML = str_replace("&lt;data_f/>", $data_f, $fileHTML);
 $fileHTML = str_replace("&lt;titolo/>", $titolo, $fileHTML);
@@ -114,8 +116,7 @@ if(isset($_POST['insert_offer'])){
     if(!empty($classe) && !empty($nome) && !empty($titolo) && !empty($contenuto) && !empty($codice_sconto) && !empty($percentuale) && !empty($data_fine)){
         if(($classe!="group") || ($classe=="group" && !empty($minimo) && $minimo>=3)){
             $connessione->addOffer($classe, $nome, $titolo, $contenuto, $codice_sconto, $percentuale, $data_fine, $minimo);
-            $ins='<p class="form__error" id="inserimento_offerta">Inserimento offerta avvenuto con successo</p>';
-            $fileHTML = str_replace("<operazione_avvenuta_offer/>", $ins, $fileHTML);
+            $ins ='<p class="form__error" id="inserimento_offerta">Inserimento offerta avvenuto con successo</p>';
             $classe = '';
             $titolo = '';
             $contenuto = '';
@@ -152,7 +153,7 @@ if(isset($_POST['insert_offer'])){
         }
     }
 }
-$fileHTML = str_replace("&lt;classe/>", $classe, $fileHTML);
+$fileHTML = str_replace("<operazione_avvenuta_offer/>", $ins, $fileHTML);
 $fileHTML = str_replace("&lt;titolo/>", $titolo, $fileHTML);
 $fileHTML = str_replace("<contenuto/>", $contenuto, $fileHTML);
 $fileHTML = str_replace("&lt;codice_sconto/>", $codice_sconto, $fileHTML);

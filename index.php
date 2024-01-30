@@ -81,8 +81,8 @@ $fileHTML = str_replace("<discount_code/>", $discount_code, $fileHTML);
 if (isset($_SESSION['message'])) {
     $message = $_SESSION['message'];
     unset($_SESSION['message']);
-    $fileHTML = str_replace("<message/>", $message, $fileHTML);
 }
+$fileHTML = str_replace("<message/>", $message, $fileHTML);
 
 $comunicazioni= $connection->getData("news where final_date>= CURDATE() order by final_date limit 3");
 $newsList = '';
@@ -105,8 +105,8 @@ if($comunicazioni != null){
         $f_init_date = date('d/m/Y', $init_date);
         $f_final_date= date('d/m/Y', $end_date);
 
-        $content = str_replace('#i', '<time datetime='.$init_date.'>'.$f_init_date.'</time>', $comunicazione['content']);
-        $content = str_replace('#f', '<time datetime='.$end_date.'>'.$f_final_date.'</time>', $content);
+        $content = str_replace('#i', '<time datetime='.date('Y-m-d', $init_date).'>'.$f_init_date.'</time>', $comunicazione['content']);
+        $content = str_replace('#f', '<time datetime='.date('Y-m-d', $end_date).'>'.$f_final_date.'</time>', $content);
 
         $newsList .='<article class="news js-news">
         .<time class="news__date" datetime="'.$comunicazione['initial_date'].'">

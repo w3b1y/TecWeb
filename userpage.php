@@ -73,7 +73,7 @@ else {
     $arrival_time_station->add(getDateInterval($qResult_duration[0]));
   
     $train_id = $connessione->getDataArray("select route_schedule.train_id from route_schedule where route_schedule.id=$vt[route_schedule_id]");
-    $ticket .= '<article class="ticket">
+    $ticket .= '<div class="ticket">
                 <dl class="ticket__route--horizontal">
                   <dt class="route__term--horizontal">'.$departure_station.'</dt>
                   <dd class="route__data--horizontal"><time datetime="'.$departure_time_station->format('H:i').'">'
@@ -85,12 +85,12 @@ else {
                   .$arrival_time_station->format('H:i').'</time></dd>
                 </dl>
                 <div class="container ticket__description">
-                  <p class="ticket__content">Data: <time datetime="'.$departure_time_station->format('d/m/y H:i').'">'
+                  <p class="ticket__content">Data: <time datetime="'.$departure_time_station->format('Y-m-d H:i').'">'
                   .$departure_time_station->format('d/m/Y H:i').'</time></p>
                   <p class="ticket__content">Identificativo treno: '.$train_id[0].'</p>
                   <p class="ticket__class js-first__class ticket__class--selected">'.($vt['category'] == 1 ? "Prima classe" : "Seconda classe" ).'</p>
                 </div>
-                </article>';
+                </div>';
   }
 }
 $fileHTML = str_replace("<tickets/>", $ticket, $fileHTML);

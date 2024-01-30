@@ -89,6 +89,7 @@ $fileHTML = str_replace("<duration/>", $qResult_duration[0], $fileHTML);
 $fileHTML = str_replace("<departure_station_time/>", $_SESSION['ricerca']['departure_time'], $fileHTML);
 $fileHTML = str_replace("<arrival_station_time/>", $_SESSION['ricerca']['arrival_time'], $fileHTML);
 $fileHTML = str_replace("<departure_datetime/>", $departure_date->format("d/m/Y")." ".$_SESSION['ricerca']['departure_time'], $fileHTML);
+$fileHTML = str_replace("<departure_d/>", $departure_date->format("Y-m-d")." ".$_SESSION['ricerca']['departure_time'], $fileHTML);
 $fileHTML = str_replace("<total_seats/>", $_SESSION['ricerca']['seats'], $fileHTML);
 $fileHTML = str_replace("<train/>", $qResult_train[0], $fileHTML);
 $fileHTML = str_replace("<class/>", ($_SESSION['ricerca']['class'] == 1 ? "Prima classe" : "Seconda classe"), $fileHTML);

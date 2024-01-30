@@ -94,7 +94,7 @@ CREATE TABLE offers(
 
 -- Users
 INSERT INTO user (first_name, last_name, email, password, birthday) VALUES
-('user', 'user', 'user@user.com', 'user', '2001-02-15'),
+('user', 'user', 'user@user.com', 'useruser', '2001-02-15'),
 ('John', 'Doe', 'john.doe@example.com', 'password123', '2001-02-15'),
 ('Jane', 'Smith', 'jane.smith@example.com', 'securepass', '2004-04-15'),
 ('Alice', 'Johnson', 'alice.johnson@example.com', 'passalice123', '1995-07-21'),
