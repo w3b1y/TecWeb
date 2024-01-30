@@ -133,20 +133,23 @@ INSERT INTO station (name, address) VALUES
 ('Campobasso', 'Via San Giorgio, 21, 86100 Campobasso CB'),
 ('Aosta', 'Piazza Chanoux, 9, 11100 Aosta AO'),
 ('Perugia', 'Corso Vannucci, 97, 06121 Perugia PG'),
-('Aquila', 'Piazzale della Stazione, 67100 L''Aquila AQ');
+('Aquila', 'Piazzale della Stazione, 67100 L''Aquila AQ'),
+('Venezia', 'Stazione di Venezia Santa Lucia, 30100 Venezia VE');
 
 -- Routes
 INSERT INTO route (duration, name) VALUES
-('03:30:00', 'Roma-Milano'),
-('03:30:00', 'Milano-Roma'),
-('02:45:00', 'Napoli-Torino'),
-('02:45:00', 'Torino-Napoli'),
-('04:15:00', 'Palermo-Genova'),
-('04:15:00', 'Genova-Palermo'),
+('05:00:00', 'Roma-Milano'),
+('05:00:00', 'Milano-Roma'),
+('08:30:00', 'Napoli-Torino'),
+('08:30:00', 'Torino-Napoli'),
+('10:45:00', 'Palermo-Genova'),
+('10:45:00', 'Genova-Palermo'),
 ('01:30:00', 'Bologna-Firenze'),
 ('01:30:00', 'Firenze-Bologna'),
-('02:00:00', 'Ancona-Cagliari'),
-('02:00:00', 'Cagliari-Ancona');
+('05:30:00', 'Ancona-Cagliari'),
+('05:30:00', 'Cagliari-Ancona'),
+('03:00:00', 'Venezia-Milano'),
+('03:00:00', 'Milano-Venezia');
 
 -- Route Stations
 INSERT INTO route_station (route_id, station_id, duration, price, order_number) VALUES
@@ -193,7 +196,11 @@ INSERT INTO route_station (route_id, station_id, duration, price, order_number) 
 (10, 'Cagliari', '00:00:00', 30, 1),
 (10, 'Roma', '01:30:00', 25, 2),
 (10, 'Bologna', '03:30:00', 15, 3),
-(10, 'Ancona', '05:30:00', 0, 4);
+(10, 'Ancona', '05:30:00', 0, 4),
+(11, 'Venezia', '00:00:00', 35, 1),
+(11, 'Milano', '03:00:00', 0, 2),
+(12, 'Venezia', '00:00:00', 35, 1),
+(12, 'Milano', '03:00:00', 0, 2);
 
 -- Trains
 INSERT INTO train (name, capacity) VALUES
@@ -259,7 +266,12 @@ INSERT INTO route_schedule (route_id, train_id, departure_time) VALUES
 (10, 1, '13:30:00'),
 (10, 2, '16:00:00'),
 (10, 3, '18:30:00'),
-(10, 4, '21:00:00');
+(10, 4, '21:00:00'),
+(11, 5, '09:30:00'),
+(11, 7, '15:30:00'),
+(11, 8, '18:30:00'),
+(12, 1, '13:30:00'),
+(12, 2, '16:00:00');
 
 -- Tickets
 INSERT INTO ticket(user_id, route_schedule_id, departure_station_id, arrival_station_id, departure_time, category) VALUES
@@ -279,18 +291,21 @@ INSERT INTO news(id, title, content, initial_date, final_date) VALUES
 (6, 'Nuova tratta diretta Bologna - Venezia', 'Siamo lieti di annunciare l''apertura di una nuova tratta diretta tra Bologna e Venezia, che inizierà a operare dal giorno #i. Migliorerà la connettività tra le due importanti città italiane.', '2024-02-20', '2024-02-28'),
 (7, 'Modifiche orari servizio Genova - Palermo', 'Si avvisano gli utenti che ci saranno modifiche agli orari del servizio ferroviario tra Genova e Palermo a partire dal giorno #i per ottimizzare la gestione delle corse. Si prega di verificare gli orari aggiornati.', '2024-05-01', '2024-05-05'),
 (8, 'Sciopero del Personale: Sospensione temporanea di treni sulla tratta Napoli - Bari', 'A causa di uno sciopero del personale ferroviario, alcuni treni sulla tratta Napoli - Bari saranno sospesi a partire dal giorno #i fino al giorno #f. Gli utenti sono invitati a pianificare i propri viaggi di conseguenza.', '2024-03-20', '2024-03-22'),
-(9, 'Caduta di Alberi: Interruzione del servizio sulla tratta Genova - Milano', 'A causa della caduta di alberi sulla linea ferroviaria, il servizio tra Genova e Milano è temporaneamente interrotto. I tecnici sono al lavoro per ripristinare la normale operatività. Si prevede che la situazione sarà risolta entro il giorno #f.', '2024-04-05', '2024-04-06'),
-(10, 'Forti Ritardi: Attesa prolungata su diverse tratte ferroviarie', 'A causa di problemi tecnici sulla rete ferroviaria, si verificano ritardi significativi su diverse tratte, inclusi percorsi tra Milano, Roma e Firenze. I viaggiatori sono invitati a consultare gli annunci in stazione per informazioni aggiornate.', '2024-02-10', '2024-02-11'),
-(11, 'Incidente Ferroviario: Interruzione del servizio sulla tratta Torino - Venezia', 'A seguito di un incidente ferroviario sulla tratta Torino - Venezia, il servizio è temporaneamente interrotto. I passeggeri sono invitati a considerare alternative di viaggio. Le autorità stanno indagando sull''incidente.', '2024-05-15', '2024-05-17');
+(9, 'Caduta di Alberi: Interruzione del servizio sulla tratta Genova - Milano', 'A causa della caduta di alberi sulla linea ferroviaria, il servizio tra Genova e Milano è temporaneamente interrotto. I tecnici sono al lavoro per ripristinare la normale operatività. Si prevede che la situazione sarà risolta entro il giorno #f.', '2024-02-05', '2024-02-06'),
+(10, 'Forti Ritardi: Attesa prolungata su diverse tratte ferroviarie', 'A causa di problemi tecnici sulla rete ferroviaria, si verificano ritardi significativi su diverse tratte, inclusi percorsi tra Milano, Roma e Firenze. I viaggiatori sono invitati a consultare gli annunci in stazione per informazioni aggiornate.', '2024-02-09', '2024-02-11'),
+(11, 'Incidente Ferroviario: Interruzione del servizio sulla tratta Torino - Venezia', 'A seguito di un incidente ferroviario sulla tratta Torino - Venezia, il servizio è temporaneamente interrotto. I passeggeri sono invitati a considerare alternative di viaggio. Le autorità stanno indagando sull''incidente.', '2024-02-04', '2024-02-15');
 
 -- Offers
 INSERT INTO offers(class, nome, title, content, discount_code, final_date, discount, people_number) VALUES
-('super', 'christmas-gift', 'Celebra il Natale con stile! Risparmia il 15% su tutte le prenotazioni.', 'Regalati una vacanza indimenticabile con noi!', 'ABC1234', '2023-12-25', 15, NULL),
-('super', 'new-year', 'Dai il benvenuto al nuovo anno con un''offerta speciale!', 'Prenota entro il 27 dicembre 2023 e risparmia il 20% su tutte le destinazioni. Inizia il 2024 con una vacanza da sogno!', 'DEF5678', '2024-12-27', 20, NULL),
-('special', 'love', 'Vivi momenti romantici con le nostre Offerte di Coppia! Sconto del 5%', 'Prenota per il tuo anniversario o una fuga romantica entro il 14 febbraio e regalati un viaggio indimenticabile con la tua dolce metà!', 'GHI9012', '2024-02-14', 5, NULL),
-('special', 'young', 'Esplora il mondo con le nostre Offerte Speciali per i Giovani!', 'Sconto imperdibile del 10%, riservato ai viaggiatori under 25. Dai il via alla tua prossima avventura con servizi esclusivi e risparmia mentre crei ricordi indimenticabili!', 'JKL3456', '2024-06-01', 10, NULL),
-('special', 'old', 'Esplora il mondo con le nostre Offerte Speciali per i Senior!', 'Sconto speciale del 15%, dedicato ai viaggiatori sopra i 60 anni. Approfitta dei vantaggi e riscopri il lato meraviglioso del viaggio.', 'MNO7890', '2024-12-31', 15, NULL),
-('group', 'family', 'Offerta Famiglia: un''avventura insieme!', 'Pacchetto per due genitori e due bambini sotto i 10 anni con sconto speciale del 15%. Perfetto per creare ricordi indimenticabili per tutta la famiglia!', 'PQR1234', '2024-05-31', 15, 4),
-('group', 'group', 'Offerta Gruppi: più si è, più si risparmia!', 'Prenota per un gruppo di oltre 8 persone e approfitta di uno sconto esclusivo del 20%. Rendete il vostro viaggio un''esperienza straordinaria!', 'STU5678', '2024-12-31', 20, 8),
-('group', 'school', 'Offerta Scolastica: Un''esperienza educativa straordinaria!', 'Prenota ora per la tua classe, con due professori e oltre 20 alunni, e ricevi uno sconto esclusivo del 30%. Viaggiate e imparate insieme a tariffe speciali!', 'VWX9012', '2024-06-10', 30, 22);
--- aggiungere class student
+('super', 'christmas-gift', 'Celebra il Natale con stile! Risparmia il 15% su tutte le prenotazioni.', 'Regalati una vacanza indimenticabile con noi! CODICE SCONTO: ABC1234', 'ABC1234', '2023-12-25', 15, NULL),
+('super', 'new-year', 'Festeggia il tuo compleanno con un''offerta speciale!', 'Prenota entro la tua data di compleanno e risparmia il 20% su tutte le destinazioni. Goditi una vacanza unica per celebrare il tuo giorno speciale! CODICE SCONTO: DEF5678', 'DEF5678', '2024-12-31', 20, NULL),
+('super', 'ten', 'Scopri l''estate con la nostra Offerta Super Speciale!', 'Prenota ora e risparmia il 25% sulle tue vacanze estive. Approfitta di questa opportunità per vivere un''estate indimenticabile! CODICE SCONTO: EFG1234', 'EFG1234', '2024-08-31', 25, NULL),
+('special', 'love', 'Vivi momenti romantici con le nostre Offerte di Coppia! Sconto del 5%', 'Prenota per il tuo anniversario o una fuga romantica entro il 14 febbraio e regalati un viaggio indimenticabile con la tua dolce metà! CODICE SCONTO: GHI9012', 'GHI9012', '2024-02-14', 5, NULL),
+('special', 'young', 'Esplora il mondo con le nostre Offerte Speciali per i Giovani!', 'Sconto imperdibile del 10%, riservato ai viaggiatori under 25. Dai il via alla tua prossima avventura con servizi esclusivi e risparmia mentre crei ricordi indimenticabili! CODICE SCONTO: JKL3456', 'JKL3456', '2024-06-01', 10, NULL),
+('special', 'old', 'Esplora il mondo con le nostre Offerte Speciali per i Senior!', 'Sconto speciale del 15%, dedicato ai viaggiatori sopra i 60 anni. Approfitta dei vantaggi e riscopri il lato meraviglioso del viaggio. CODICE SCONTO: MNO7890', 'MNO7890', '2024-12-31', 15, NULL),
+('group', 'family', 'Offerta Famiglia: un''avventura insieme!', 'Pacchetto per due genitori e due bambini sotto i 10 anni con sconto speciale del 15%. Perfetto per creare ricordi indimenticabili per tutta la famiglia! CODICE SCONTO: PQR1234', 'PQR1234', '2024-05-31', 15, 4),
+('group', 'group', 'Offerta Gruppi: più si è, più si risparmia!', 'Prenota per un gruppo di oltre 8 persone e approfitta di uno sconto esclusivo del 20%. Rendete il vostro viaggio un''esperienza straordinaria! CODICE SCONTO: STU5678', 'STU5678', '2024-12-31', 20, 8),
+('student', 'school', 'Offerta Scolastica: Un''esperienza educativa straordinaria!', 'Prenota ora per la tua classe, con due professori e oltre 20 alunni, e ricevi uno sconto esclusivo del 30%. Viaggiate e imparate insieme a tariffe speciali! CODICE SCONTO: VWX9012', 'VWX9012', '2024-06-10', 30, 22),
+('student', 'five', 'Offerta Studenti: Esplora il mondo a prezzi incredibili!', 'Sconto speciale del 15% per gli studenti universitari. Dai il via alle tue avventure mentre risparmi! CODICE SCONTO: YZA1234', 'YZA1234', '2024-06-30', 15, NULL),
+('student', 'fifteen', 'Offerta Studenti: Scopri la bellezza del viaggio con uno sconto del 10%!', 'Prenota ora e risparmia mentre esplori le meraviglie italiane. La tua prossima avventura ti aspetta! CODICE SCONTO: BCD5678', 'BCD5678', '2024-06-30', 10, NULL);
+
