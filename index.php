@@ -21,6 +21,7 @@ $arrival_station = "";
 $discount_code = "";
 $datetime = "";
 $passengers = "";
+$message = "";
 
 
 if (isset($_POST['submit'])) handleFormSubmission();
@@ -77,6 +78,11 @@ $fileHTML = str_replace("<departure_time/>", $datetime, $fileHTML);
 $fileHTML = str_replace("<total_seats/>", $passengers, $fileHTML);
 $fileHTML = str_replace("<discount_code/>", $discount_code, $fileHTML);
 
+if (isset($_SESSION['message'])) {
+    $message = $_SESSION['message'];
+    unset($_SESSION['message']);
+    $fileHTML = str_replace("<message/>", $message, $fileHTML);
+}
 
 $comunicazioni= $connection->getData("news where final_date>= CURDATE() order by final_date limit 3");
 $newsList = '';
@@ -120,13 +126,14 @@ else{
 }
 $fileHTML = str_replace("<comunicazioni/>", $newsList, $fileHTML);
 
-$offerte = $connection->getData("offers where final_date>CURDATE() and class='super' or class='special' order by final_date limit 2");
+$offerte = $connection->getData("offers where final_date>CURDATE() and class='super' or class='special' order by final_date limit 3");
 $connection->closeConnection();
 
 $offerteList = '';
 if ($offerte != null) {
     foreach ($offerte as $offerta) {
-        $offerteList .= '<a id="offer offer--' . $offerta['nome'] . '" class="offer" href="#">
+        $offerteList .= '<a class="offer offer--' . $offerta['nome'] . '" href="./index.php?discount_code='.$offerta['discount_code'].
+        ($offerta['people_number'] != null ? ("&min_people=".$offerta['people_number']) : ("")).'">
                             <div class="offer__body">
                                 <h3 class="offer__title">'.$offerta['title'].'</h3>
                                 <p class="offer__content">'.$offerta['content'].'</p>
@@ -135,6 +142,5 @@ if ($offerte != null) {
     }   
 }
 $fileHTML = str_replace("<offerte/>", $offerteList, $fileHTML);
-
 echo $fileHTML;
 ?>

@@ -100,8 +100,8 @@
     <div id="page--user" class="container container--user container--hide">
       <h2 class="container__heading container__heading--main">PROFILO</h2>
       <section class="container">
-        <form action="userpage.php" method="post">
-          <fieldset class="container__fieldset--user">
+        <form id="form--user-data" action="userpage.php" method="post">
+          <fieldset class="container__fieldset--user js-register__form--pinfo">
             <legend>Informazioni personali</legend>
             <label class="container__label" for="name">Nome</label>
             <input class="container__input--search" type="text" name="name" id="name" value="<first_name/>">
@@ -112,7 +112,7 @@
             <label class="container__label" for="birthday">Data di nascita</label>
             <input class="container__input--search" type="date" name="birthday" id="birthday" value="<birthday/>">
           </fieldset>
-          <fieldset class="container__fieldset--user">
+          <fieldset class="container__fieldset--user js-register__form--pwd">
             <legend>Cambio Password</legend>
             <label class="container__label" for="old_passwor">Vecchia password</label>
             <input class="container__input--search" type="password" name="old_password" id="old_password">

@@ -18,7 +18,6 @@ $birthday = "";
 $card = "";
 $cvv = "";
 $expiration_date = "";
-$message = "";
 
 
 if (isset($_POST['submit'])) {
@@ -45,20 +44,20 @@ if (isset($_POST['submit'])) {
     $warnings .= '<p class="form__error" id="card_date_error">Inserisci una scadenza corretta</p>';
 
   if ($warnings == "") {
-    $connessione->addData("insert into ticket (".(isset($_SESSION['user']) ? "user_id, " : "")." route_schedule_id, departure_station_id, arrival_station_id, departure_time, category)
+    for($i = 0; $i < $_SESSION['ricerca']['seats']; $i++) {
+      $connessione->addData("insert into ticket (".(isset($_SESSION['user']) ? "user_id, " : "")." route_schedule_id, departure_station_id, arrival_station_id, departure_time, category)
                             values (".(isset($_SESSION['user']) ? $_SESSION['user'].", " : "").$_SESSION['ricerca']['schedule'].", '".$_SESSION['ricerca']['from']."', '"
                             .$_SESSION['ricerca']['to']."', '".(new DateTime($_SESSION['ricerca']['date']))->format('Y/m/d')." ".$_SESSION['ricerca']['departure_time']."', '"
                             .$_SESSION['ricerca']['class']."')");
-    isset($_SESSION['user']) ? 
-    $message = "<p class=\"message\">Grazie per aver acquistato il biglietto su Iberu Trasporti. Puoi trovare il tuo biglietto nella sezione 'Generale' del tuo account. A breve verrai reindirizzato alla homepage</p>" : 
-    $message = "<p class=\"message\">Grazie per aver acquistato il biglietto su Iberu Trasporti. Il biglietto è stato spedito alla mail ".$email.". A breve verrai reindirizzato alla homepage</p>";
-    $fileHTML = str_replace("<message/>", $message, $fileHTML);
-    sleep(5);
+    }
+    $_SESSION['message'] = isset($_SESSION['user']) ? 
+    "<p class=\"message js-success-message\">Grazie per aver acquistato il biglietto su Iberu Trasporti. Puoi trovare il tuo biglietto nella sezione 'Generale' del tuo account.</p>" : 
+    "<p class=\"message js-success-message\">Grazie per aver acquistato il biglietto su Iberu Trasporti. Il biglietto è stato spedito alla tua mail personale.</p>";;
+    unset($_SESSION['ricerca']);
     header('Location: index.php');
     exit();
   }
 }
-$fileHTML = str_replace("<message/>", $message, $fileHTML);
 $fileHTML = str_replace("<warnings/>", $warnings, $fileHTML);
 
 
@@ -75,10 +74,13 @@ if (isset($_SESSION['user'])) {
   $birthday = $user_info['birthday'];
 }
 
+$qResult_route = $connessione->getDataArray("select route_id from route_schedule where id = '".$_SESSION['ricerca']['schedule']."'");
 $qResult_duration = $connessione->getDataArray("select timediff(end.duration, start.duration) as time_difference
-              from route_station as start join route_station as end on start.route_id = end.route_id
-              where start.station_id = '".$_SESSION['ricerca']['from']."' and end.station_id = '".$_SESSION['ricerca']['to']."'");
+              from route_station as start join route_station as end on start.route_id = end.route_id and start.route_id="
+              .$qResult_route[0]." where start.station_id = '".$_SESSION['ricerca']['from']."' and end.station_id = 
+              '".$_SESSION['ricerca']['to']."'");
 $qResult_train = $connessione->getDataArray("select train_id from route_schedule where id = '".$_SESSION['ricerca']['schedule']."'");
+$qResult_train = $connessione->getDataArray("select train.name from train where train.id=$qResult_train[0]");
 
 $fileHTML = str_replace("<warnings/>", $warnings, $fileHTML);
 $fileHTML = str_replace("<departure_station/>", $_SESSION['ricerca']['from'], $fileHTML);
@@ -91,6 +93,7 @@ $fileHTML = str_replace("<total_seats/>", $_SESSION['ricerca']['seats'], $fileHT
 $fileHTML = str_replace("<train/>", $qResult_train[0], $fileHTML);
 $fileHTML = str_replace("<class/>", ($_SESSION['ricerca']['class'] == 1 ? "Prima classe" : "Seconda classe"), $fileHTML);
 $fileHTML = str_replace("<price/>", $_SESSION['ricerca']['price'], $fileHTML);
+$fileHTML = str_replace("<seats/>", $_SESSION['ricerca']['seats'], $fileHTML);
 
 $fileHTML = str_replace("<first_name/>", $name, $fileHTML);
 $fileHTML = str_replace("<last_name/>", $surname, $fileHTML);

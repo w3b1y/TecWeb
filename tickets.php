@@ -92,7 +92,7 @@ if(isset($_SESSION['ricerca'])){
             $arrive_time_station->add(getDateInterval($qResult_duration[0]));
             $train_id = $connessione->getDataArray("select route_schedule.train_id from route_schedule where route_schedule.route_id=$ris 
                 and route_schedule.departure_time = '".$dt['departure_time']."'");
-
+            $train_id = $connessione->getDataArray("select train.name from train where train.id=$train_id[0]");
             $ladder = "";
             $route_stations = $connessione->getDataArray("select * from route_station where route_station.route_id=$ris");
             $total_stations = count($route_stations);
@@ -171,7 +171,8 @@ if(isset($_SESSION['ricerca'])){
     $tickets = implode($ticket_array);
 
 } else {
-    echo "Dati non disponibili.";
+    header("Location: ./index.php");
+    exit();
 }
 $fileHTML = str_replace("<biglietti/>", $tickets, $fileHTML);
 echo $fileHTML;

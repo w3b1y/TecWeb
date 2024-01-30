@@ -25,6 +25,7 @@ navLink.forEach(l => l.addEventListener('click', linkAction));
 
 ////////////////////////////////////  HOME  ////////////////////////////////////
 const url = new URL(window.location.href);
+const successMessage = document.querySelector('.js-success-message');
 const searchForm = document.querySelector('.js-container__form--search');
 const searchSwap = document.querySelector('#swap');
 const searchFrom = document.querySelector('#from');
@@ -32,6 +33,13 @@ const searchTo = document.querySelector('#to');
 const searchDiscount = document.querySelector('#discount');
 const searchDate = document.querySelector('#date');
 const searchSeats = document.querySelector('#seats');
+if (successMessage) {
+  setTimeout(function() {
+    if (successMessage && successMessage.parentNode) {
+      successMessage.parentNode.removeChild(successMessage);
+    }
+  }, 5000);
+}
 if (searchForm) {
   searchSwap.addEventListener('click', (e) => {
     e.preventDefault();
@@ -212,6 +220,70 @@ if (overviewButton && subscriptionButton && userButton) {
   overviewButton.addEventListener('click', () => showPageUser(overviewButton, overviewPage));
   subscriptionButton.addEventListener('click', () => showPageUser(subscriptionButton, subscriptionPage));
   userButton.addEventListener('click', () => showPageUser(userButton, userPage));
+
+  const userForm = document.querySelector('#form--user-data');
+  const pInfoFieldset = userForm.querySelector('.js-register__form--pinfo');
+  const pwdFieldset = userForm.querySelector('.js-register__form--pwd');
+  const name = userForm.querySelector('#name');
+  const surname = userForm.querySelector('#surname');
+  const email = userForm.querySelector('#email');
+  const birthday = userForm.querySelector('#birthday');
+  const opassword = userForm.querySelector('#old_password');
+  const password = userForm.querySelector('#new_password');
+  const rpassword = userForm.querySelector('#rnew_password');
+  const emailRegex = /^(?!.*\.\.)[a-zA-Z0-9]+([._]*[a-zA-Z0-9])*@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  name.addEventListener('blur', () => {
+    if (!name.value && !pInfoFieldset.querySelector('#name_error')) 
+    pInfoFieldset.insertAdjacentHTML('afterbegin', '<p id="name_error" class="form__error">Inserisci il tuo nome</p>');
+    else if (name.value && pInfoFieldset.querySelector('#name_error')) pInfoFieldset.querySelector('#name_error').remove();
+  });
+  surname.addEventListener('blur', () => {
+    if (!surname.value && !pInfoFieldset.querySelector('#surname_error'))
+      pInfoFieldset.insertAdjacentHTML('afterbegin', '<p id="surname_error" class="form__error">Inserisci il tuo cognome</p>');
+    else if (surname.value && pInfoFieldset.querySelector('#surname_error')) pInfoFieldset.querySelector('#surname_error').remove();
+  });
+  email.addEventListener('blur', () => {
+    if (!emailRegex.test(email.value) && !pInfoFieldset.querySelector('#email_error')) 
+    pInfoFieldset.insertAdjacentHTML('afterbegin', '<p id="email_error" class="form__error">Inserisci un indirizzo email valido</p>');
+    else if (emailRegex.test(email.value) && pInfoFieldset.querySelector('#email_error')) pInfoFieldset.querySelector('#email_error').remove();
+  });
+  birthday.addEventListener('blur', () => {
+    if (new Date(birthday.value) >= new Date() && !pInfoFieldset.querySelector('#birthday_error')) 
+      pInfoFieldset.insertAdjacentHTML('afterbegin', '<p id="birthday_error" class="form__error">La data di nascita deve essere minore o uguale a quella attuale</p>');
+    else if (new Date(birthday.value) < new Date() && pInfoFieldset.querySelector('#birthday_error')) pInfoFieldset.querySelector('#birthday_error').remove();
+  });
+  opassword.addEventListener('focus', () => {
+    if (pwdFieldset.querySelector('#different_password_error')) pwdFieldset.querySelector('#different_password_error').remove();
+  });
+  opassword.addEventListener('blur', () => {
+    if (password.value.length < 8 && !pwdFieldset.querySelector('#password_len_error')) 
+      pwdFieldset.insertAdjacentHTML('afterbegin', '<p id="password_len_error" class="form__error">La password deve essere lunga almeno 8 caratteri</p>');
+    else if (password.value.length >= 8 && pwdFieldset.querySelector('#password_len_error')) pwdFieldset.querySelector('#password_len_error').remove();
+
+    if (rpassword.value != password.value && rpassword.value && !pwdFieldset.querySelector('#different_password_error')) 
+      pwdFieldset.insertAdjacentHTML('afterbegin', '<p id="different_password_error" class="form__error">Le password inserite sono differenti</p>');
+    else if (rpassword.value == password.value && pwdFieldset.querySelector('#different_password_error')) pwdFieldset.querySelector('#different_password_error').remove();
+  });
+  password.addEventListener('focus', () => {
+    if (pwdFieldset.querySelector('#different_password_error')) pwdFieldset.querySelector('#different_password_error').remove();
+  });
+  password.addEventListener('blur', () => {
+    if (password.value.length < 8 && !pwdFieldset.querySelector('#password_len_error')) 
+      pwdFieldset.insertAdjacentHTML('afterbegin', '<p id="password_len_error" class="form__error">La password deve essere lunga almeno 8 caratteri</p>');
+    else if (password.value.length >= 8 && pwdFieldset.querySelector('#password_len_error')) pwdFieldset.querySelector('#password_len_error').remove();
+
+    if (rpassword.value != password.value && rpassword.value && !pwdFieldset.querySelector('#different_password_error')) 
+      pwdFieldset.insertAdjacentHTML('afterbegin', '<p id="different_password_error" class="form__error">Le password inserite sono differenti</p>');
+    else if (rpassword.value == password.value && pwdFieldset.querySelector('#different_password_error')) pwdFieldset.querySelector('#different_password_error').remove();
+  });
+  rpassword.addEventListener('focus', () => {
+    if (pwdFieldset.querySelector('#different_password_error')) pwdFieldset.querySelector('#different_password_error').remove();
+  });
+  rpassword.addEventListener('blur', () => {
+    if (rpassword.value != password.value && !pwdFieldset.querySelector('#different_password_error')) 
+      pwdFieldset.insertAdjacentHTML('afterbegin', '<p id="different_password_error" class="form__error">Le password inserite sono differenti</p>');
+    else if (rpassword.value == password.value && pwdFieldset.querySelector('#different_password_error')) pwdFieldset.querySelector('#different_password_error').remove();
+  });
 }
 
 const addNewsButton = document.querySelector('#addNews');
@@ -309,20 +381,22 @@ if (registerForm) {
       pInfoFieldset.insertAdjacentHTML('afterbegin', '<p id="birthday_error" class="form__error">La data di nascita deve essere minore o uguale a quella attuale</p>');
     else if (new Date(birthday.value) < new Date() && pInfoFieldset.querySelector('#birthday_error')) pInfoFieldset.querySelector('#birthday_error').remove();
   });
+  password.addEventListener('focus', () => {
+    if (pwdFieldset.querySelector('#different_password_error')) pwdFieldset.querySelector('#different_password_error').remove();
+  });
   password.addEventListener('blur', () => {
-    if (password.value.length < 8 && !pwdFieldset.querySelector('#password_error')) 
-      pwdFieldset.insertAdjacentHTML('afterbegin', '<p id="password_error" class="form__error">La password deve essere lunga almeno 8 caratteri</p>');
-    else if (password.value.length >= 8 && pwdFieldset.querySelector('#password_error')) pwdFieldset.querySelector('#password_error').remove();
+    if (password.value.length < 8 && !pwdFieldset.querySelector('#password_len_error')) 
+      pwdFieldset.insertAdjacentHTML('afterbegin', '<p id="password_len_error" class="form__error">La password deve essere lunga almeno 8 caratteri</p>');
+    else if (password.value.length >= 8 && pwdFieldset.querySelector('#password_len_error')) pwdFieldset.querySelector('#password_len_error').remove();
 
     if (rpassword.value != password.value && rpassword.value && !pwdFieldset.querySelector('#different_password_error')) 
       pwdFieldset.insertAdjacentHTML('afterbegin', '<p id="different_password_error" class="form__error">Le password inserite sono differenti</p>');
     else if (rpassword.value == password.value && pwdFieldset.querySelector('#different_password_error')) pwdFieldset.querySelector('#different_password_error').remove();
   });
+  rpassword.addEventListener('focus', () => {
+    if (pwdFieldset.querySelector('#different_password_error')) pwdFieldset.querySelector('#different_password_error').remove();
+  });
   rpassword.addEventListener('blur', () => {
-    if (rpassword.value.length < 8 && !pwdFieldset.querySelector('#rpassword_error')) 
-      pwdFieldset.insertAdjacentHTML('afterbegin', '<p id="rpassword_error" class="form__error">La password deve essere lunga almeno 8 caratteri</p>');
-    else if (rpassword.value.length >= 8 && pwdFieldset.querySelector('#rpassword_error')) pwdFieldset.querySelector('#rpassword_error').remove();
-
     if (rpassword.value != password.value && !pwdFieldset.querySelector('#different_password_error')) 
       pwdFieldset.insertAdjacentHTML('afterbegin', '<p id="different_password_error" class="form__error">Le password inserite sono differenti</p>');
     else if (rpassword.value == password.value && pwdFieldset.querySelector('#different_password_error')) pwdFieldset.querySelector('#different_password_error').remove();

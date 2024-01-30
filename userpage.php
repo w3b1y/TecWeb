@@ -48,7 +48,7 @@ if (isset($_POST['submit'])) {
   (!empty($birthday) && $birthday != $user_info['birthday'] && $birthday < new Datetime()) ?
     $connessione->addData("update user set birthday = '$birthday' where id = '$user'") :
     $error .= '<p class="form__error" id="birthday_error">Inserisci una data di nascita corretta</p>';
-  (!empty($old_password) && !empty($new_password) && !empty($rnew_password) &&
+  (!empty($old_password) && !empty($new_password) && !empty($rnew_password) && strlen($new_password) >= 8 &&
       $new_password == $rnew_password && $old_password == $user_info['password'] && $old_password != $new_password) ? 
     $connessione->addData("update user set password = '$new_password' where id = '$user'") :
     $error .= '<p class="form__error" id="password_error">Errore nel cambio password</p>';
@@ -100,8 +100,8 @@ $trow = "";
 $message = "";
 $invalid_ticket = $connessione->getDataArray("select * from ticket where user_id = '$user' order by departure_time asc");
 if (empty($invalid_ticket)) {
-  $message = '<p class="container__message">Scegli Iberu per il tuo prossimo viaggio e immergiti in un&#39;avventura unica: il biglietto per un&#39;esperienza senza eguali ed è solo un click di distanza!</p>';
-  $fileHTML = str_replace("<usertable/>", $table, $fileHTML);
+  $message = '<p class="container__message">Non hai ancora acquistato alcun biglietto di Iberu Trasporti.</p>';
+  $fileHTML = str_replace("<usertable/>", $trow, $fileHTML);
 }
 else {
   foreach ($invalid_ticket as $it) {

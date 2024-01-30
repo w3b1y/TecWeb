@@ -36,15 +36,19 @@ if(isset($_POST['new_user'])){
     $rnp = clearInput($_POST['rnew_password']);
     $dataOggi = date('Y-m-d');
 
-    if(!empty($nome) && !empty($cognome) && !empty($email) && !empty($data_nascita) && $data_nascita<$dataOggi && !empty($np) && !empty($rnp) && $np==$rnp){
+    $check_email = $connessione->getDataArray("select id from user where email='$email'");
+
+    if(!empty($nome) && !empty($cognome) && !empty($email) && empty($check_email) && !empty($data_nascita) && $data_nascita<$dataOggi && !empty($np) && !empty($rnp) && $np==$rnp && !(strlen($np) < 8 || strlen($rnp) < 8)){
+        $_SESSION['message']='<p class="message js-success-message" id="registrazione_avvenuta">Registrazione avvenuta con successo</p>';
         $connessione->addUser($nome, $cognome, $email, $data_nascita, $np);
-        $ins='<p class="form__error" id="registrazione_avvenuta">Registrazione avvenuta con successo</p>';
-        $fileHTML = str_replace("<registrazione_avvenuta/>", $ins, $fileHTML);
+        $user = $connessione->getDataArray("select id from user where email='$email'")[0];
+        $_SESSION['user'] = $user;
         $nome = '';
         $cognome = '';
         $email = '';
         $data_nascita = '';
-        //wait 10 secondi e poi direttamente pagina_login
+        header("Location: index.php");
+        exit();
     }
     else{
         if(empty($nome)){
@@ -53,6 +57,7 @@ if(isset($_POST['new_user'])){
         if(empty($cognome)){
             $avvisi .='<p class="form__error" id="surname_error">Inserire cognome</p>';
         } 
+        if (!empty($check_email)) $avvisi .= '<p class="form__error" id="email_error">Mail già in utilizzo</p>';
         if(empty($email)){
             $avvisi .= '<p class="form__error" id="email_error">Inserire mail</p>';
         }
@@ -67,7 +72,10 @@ if(isset($_POST['new_user'])){
         }
         if(empty($rnp)){
             $avvisi_p .='<p class="form__error" id="rpassword_error">Reinserire la password</p>';
-        }     
+        } 
+        if(strlen($np) < 8 || strlen($rnp) < 8){
+            $avvisi_p .='<p class="form__error" id="password_len_error">La password deve contenere almeno 8 caratteri</p>';
+        }
         if($np!=$rnp){
             $avvisi_p .='<p class="form__error" id="different_password_error">Le password non corrispondono</p>';
         } 

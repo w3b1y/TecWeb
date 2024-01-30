@@ -186,6 +186,7 @@ fieldset {
   background-color: var(--first-color);
   float: right;
   cursor: pointer;
+  z-index: 3;
 }
 .price {
   display: block;
@@ -1360,11 +1361,12 @@ tr:nth-of-type(2n) {
 
   .news__expand {
     position: absolute;
-    width: 100%;
+    width: fit-content;
     bottom: 0;
     right: 50%;
     transform: translateX(50%);
     font-size: var(--xl-font-size);
+    z-index: 2;
   }
   .news__expand.rotate {
     transform: translateX(50%) rotate(180deg) !important;
