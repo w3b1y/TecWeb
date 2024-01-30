@@ -17,10 +17,21 @@
     <h1 class="logo">
       IBERU TRASPORTI
     </h1>
-    <nav id="navbar" role="navigation">
-      <div class="nav__menu js-nav__menu">
+
+    <nav id="navbar" aria-label="Site">
+
+      <button class="nav__toggle js-nav__toggle">
+        <span class="ri-menu-line"></span>
+      </button>
+
+      <div class="nav__menu js-nav__menu hide-menu">
+
+        <button class="nav__close js-nav__close">
+          <span class="ri-close-line"></span>
+        </button>
+
         <ul class="nav__list">
-          <li class="nav__item js-nav__item">
+          <li class="nav__item js-nav__item jump">
             <a class="nav__link visually-hidden" href="#main">Salta la barra di navigazione</a>
           </li>
           <li class="nav__item js-nav__item">
@@ -42,20 +53,14 @@
             <navbar/>
           </li>
         </ul>
-        <div class="nav__close js-nav__close">
-          <span class="ri-close-line"></span>
         </div>
-      </div>
-      
-      <div class="nav__toggle js-nav__toggle">
-        <span class="ri-menu-line"></span>
-      </div>
+
     </nav>
   </header>
-  <nav id="breadcrumb">
+  <nav id="breadcrumb" aria-label="Path">
     <p class="breadcrumb__nav">Ti trovi in: <span lang="en-US">Home</span></p>
   </nav>
-  <main id="main" role="main">
+  <main id="main">
     <section id="index__search" class="container container--search">
       <h2 class="container__heading container__heading--search container__heading--main">VIAGGIA CON IBERU</h2>
       <message/>
@@ -77,7 +82,6 @@
         <input class="container__input--search" type="datetime-local" name="date" id="date" value="<departure_time/>">
         <label class="visually-hidden" for="seats">Passeggeri (massimo 35 passeggeri)</label>
         <input class="container__input--search" type="number" name="seats" id="seats" placeholder="1" min="1" max="35" value="<total_seats/>">
-        <label class="visually-hidden" for="submit">Cerca</label>
         <input class="submit" type="submit" id="submit" value="Cerca" name="submit">
         </fieldset>
       </form>
@@ -99,7 +103,7 @@
       <comunicazioni/>
       
       <footer class="container__footer">
-        <a href="comunications.php">Visualizza tutte le comunicazioni</a>
+        <a class="more" href="comunications.php">Visualizza tutte le comunicazioni</a>
       </footer>
     </section>
     <section id="index__offers" class="container container--background">
@@ -110,7 +114,7 @@
 
       </div>
       <footer class="container__footer">
-        <a href="offers.php">Visualizza tutte le offerte</a>
+        <a class="more" href="offers.php">Visualizza tutte le offerte</a>
       </footer>
     </section>
   </main>
@@ -120,31 +124,31 @@
       <div class="container__list">
         <span class="container__link" lang="en-US">Homepage</span>
         <ul>
-          <li>
-            <a href="#index__search" class="container__link container__link--heading">Ricerca Biglietto</a>
+          <li class="container__link container__link--heading">
+            Ricerca Biglietto
           </li>
-          <li>
-            <a href="#index__news" class="container__link container__link--heading">Notizie</a>
+          <li class="container__link container__link--heading">
+            Notizie
           </li>
-          <li>
-            <a href="#index__offers" class="container__link container__link--heading">Offerte</a>
+          <li class="container__link container__link--heading">
+            Offerte
           </li>
         </ul>
       </div>
       <div class="container__list"> 
         <a href="offers.php" class="container__link">Offerte</a>
         <ul>
-          <li>
-            <a href="offers.php#offers__super" class="container__link container__link--heading">Super offerte</a>
+          <li class="container__link container__link--heading">
+            Super offerte
           </li>
-          <li>
-            <a href="offers.php#offers__special" class="container__link container__link--heading">Offerte speciali</a>
+          <li class="container__link container__link--heading">
+            Offerte speciali
           </li>
-          <li>
-            <a href="offers.php#offers__student" class="container__link container__link--heading">Offerte per studenti</a>
+          <li class="container__link container__link--heading">
+            Offerte per studenti
           </li>
-          <li>
-            <a href="offers.php#offers__family" class="container__link container__link--heading">Offerte per famiglie e gruppi</a>
+          <li class="container__link container__link--heading">
+            Offerte per famiglie e gruppi
           </li>
         </ul>
       </div>

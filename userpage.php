@@ -18,7 +18,7 @@ if (!isset($_SESSION['user'])) {
   header('Location: index.php');
   exit();
 }
-if (isset($_SESSION['user'])) $fileHTML = str_replace("<navbar/>", '<span class="nav__link" lang="en-US">Account</span>', $fileHTML);
+if (isset($_SESSION['user'])) $fileHTML = str_replace("<navbar/>", '<a href="./logout.php" class="nav__link" lang="en-US">Logout</a>', $fileHTML);
 
 
 $user = $_SESSION['user'];

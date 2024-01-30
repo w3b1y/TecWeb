@@ -6,12 +6,14 @@ const navMenu = document.querySelector('.js-nav__menu'),
 
 if (navToggle) {
   navToggle.addEventListener('click', () => {
+    navMenu.classList.remove('hide-menu');
     navMenu.classList.add('show-menu');
   });
 }
 
 if (navClose) {
   navClose.addEventListener('click', () => {
+    navMenu.classList.add('hide-menu');
     navMenu.classList.remove('show-menu');
   });
 }
@@ -185,30 +187,18 @@ if (tickets) {
 ////////////////////////////////////  USERPAGE & ADMINPAGE  ////////////////////////////////////
 const overviewButton = document.querySelector('#overview');
 const overviewPage = document.querySelector('#page--overview');
-const subscriptionButton = document.querySelector('#subscription');
-const subscriptionPage = document.querySelector('#page--subscription');
+const historyButton = document.querySelector('#history');
+const historyPage = document.querySelector('#page--history');
 const userButton = document.querySelector('#user');
 const userPage = document.querySelector('#page--user');
-const logOutButton = document.querySelector('#logout');
-
-if (logOutButton) {
-  logOutButton.addEventListener('click', () => {
-    localStorage.removeItem('userPage');
-    localStorage.removeItem('adminPage');
-    const currentUrl = window.location.href;
-    const baseUrl = currentUrl.split('/').slice(0, -1).join('/');
-
-    window.location.href = baseUrl + '/logout.php';
-  });
-}
 
 function showPageUser(button, page) {
   overviewPage.classList.add('container--hide');
-  subscriptionPage.classList.add('container--hide');
+  historyPage.classList.add('container--hide');
   userPage.classList.add('container--hide');
 
   overviewButton.classList.remove('nav__button--current');
-  subscriptionButton.classList.remove('nav__button--current');
+  historyButton.classList.remove('nav__button--current');
   userButton.classList.remove('nav__button--current');
 
   page.classList.remove('container--hide');
@@ -216,9 +206,9 @@ function showPageUser(button, page) {
   localStorage.setItem('userPage', button.id);
 }
 
-if (overviewButton && subscriptionButton && userButton) {
+if (overviewButton && historyButton && userButton) {
   overviewButton.addEventListener('click', () => showPageUser(overviewButton, overviewPage));
-  subscriptionButton.addEventListener('click', () => showPageUser(subscriptionButton, subscriptionPage));
+  historyButton.addEventListener('click', () => showPageUser(historyButton, historyPage));
   userButton.addEventListener('click', () => showPageUser(userButton, userPage));
 
   const userForm = document.querySelector('#form--user-data');
@@ -455,7 +445,8 @@ if (buyForm) {
 
 
   date.addEventListener('blur', validateDate);
-  date.addEventListener('input', () => {
+  date.addEventListener('input', (e) => {
+    if (isNaN(e.data)) date.value = date.value.slice(0, -1);
     if (date.value.length > 5) date.value = date.value.slice(0, 5);
     const value = date.value.replace(/\D/g, '');
     date.value = value.slice(0, 2) + (value.length >= 2 ? '/' + value.slice(2, 4) : '');
@@ -463,7 +454,7 @@ if (buyForm) {
 
   function validateDate() {
     const dateRegex = /^(0[1-9]|1[0-2])\/\d{2}$/;
-    const [month, year] = date.split('/');
+    const [month, year] = date.value.split('/');
     const currentYear = new Date().getFullYear().toString().slice(-2);
     const currentMonth = (new Date().getMonth() + 1).toString().padStart(2, '0');
     if (!dateRegex.test(date) && (year < currentYear || (year === currentYear && month < currentMonth)) && !buyForm.querySelector('#card_date__error'))

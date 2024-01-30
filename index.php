@@ -20,7 +20,7 @@ $departure_station = "";
 $arrival_station = "";
 $discount_code = "";
 $datetime = "";
-$passengers = "";
+$passengers = "1";
 $message = "";
 
 

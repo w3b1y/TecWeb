@@ -5,9 +5,11 @@
   --header-height: 3rem;
 
   /*========== Colors ==========*/
-  --first-color: #a30000;
-  --second-color: #ffffff;
-  --third-color: #000000;
+  --first-color: #afc7b0;
+  --second-color: #000000;
+  --third-color: #ffffff;
+  --not-visited-color: #183d4b;
+  --visited-color: #6c0003;
 
   /*========== Font ==========*/
   --body-font: 'Afacad', sans-serif;
@@ -45,12 +47,15 @@ ul {
 }
 
 a {
-  color: var(--first-color);
+  color: var(--not-visited-color);
+}
+a:visited {
+  color: var(--visited-color);
 }
 
 textarea,
 select {
-  border: 3px solid var(--first-color);
+  border: 3px solid var(--visited-color);
   border-radius: 1rem;
   font-size: var(--m-font-size);
   margin: .5rem 0;
@@ -69,6 +74,9 @@ input[type="number"]::-webkit-outer-spin-button {
 fieldset {
   border: none;
 }
+legend {
+  font-size: var(--m-font-size);
+}
 /*==================== NAVBAR ====================*/
 
 #navbar {
@@ -84,10 +92,13 @@ fieldset {
 
 .nav__toggle {
   display: flex;
+  order: 2;
   font-size: 1.5rem;
   font-weight: var(--font-black);
   cursor: pointer;
   color: var(--second-color);
+  height: fit-content;
+  margin: auto 0;
 }
 
 .nav__list {
@@ -98,13 +109,9 @@ fieldset {
 }
 
 .nav__item {
-  color: var(--title-color);
   transition: color .3s;
 }
 
-.nav__item:hover {
-  color: var(--first-color);
-}
 .nav__link {
   display: block;
   width: 100%;
@@ -114,8 +121,14 @@ fieldset {
   top: 1rem;
   right: 1.5rem;
   font-size: 1.5rem;
-  color: var(--title-color);
+  color: var(--second-color);
   cursor: pointer;
+}
+
+.nav__toggle,
+.nav__close {
+  background-color: transparent;
+  border: none;
 }
 
 /*==================== FOOTER ====================*/
@@ -143,7 +156,6 @@ fieldset {
 .container__link {
   display: block;
   margin: 2rem 0 0;
-  color: var(--second-color);
   font-size: var(--l-font-size);
   font-weight: var(--font-bold);
 }
@@ -178,15 +190,14 @@ fieldset {
   margin: .1rem 0;
   padding: 0 .5rem;
   height: 2.2rem;
-  border: 3px solid var(--first-color);
+  border: 3px solid var(--visited-color);
   border-radius: 5rem;
   font-size: var(--xl-font-size);
   font-weight: var(--font-bold);
-  color: var(--second-color);
-  background-color: var(--first-color);
+  color: var(--third-color);
+  background-color: var(--visited-color);
   float: right;
   cursor: pointer;
-  z-index: 3;
 }
 .price {
   display: block;
@@ -194,7 +205,7 @@ fieldset {
 }
 
 .container {
-  padding: 1rem 1.5rem 2rem;
+  padding: 1rem 1.5rem 2.5rem;
 }
 
 .container--background {
@@ -216,7 +227,7 @@ fieldset {
   flex-direction: column;
   text-align: center;
   background-color: transparent;
-  color: var(--first-color);
+  color: var(--visited-color);
   margin-bottom: 1rem;
 }
 
@@ -317,13 +328,19 @@ tr:nth-of-type(2n) {
   background-color: rgb(163, 0, 0, 0.1);
 }
 
+/* .more {
+  padding: .1rem .3rem;
+  background-color: var(--first-color);
+  border-radius: .5rem;
+} */
+
 .form__error {
   width: fit-content;
   margin: .2rem auto;
   padding: .5rem;
-  background-color: var(--first-color);
+  background-color: var(--visited-color);
   color: var(--second-color);
-  border: 3px solid var(--second-color);
+  border: 3px solid var(--visited-color);
   border-radius: 1.5rem;
 }
 .message {
@@ -331,8 +348,7 @@ tr:nth-of-type(2n) {
   margin: .2rem auto;
   padding: .5rem;
   background-color: #04783a;
-  color: var(--second-color);
-  border: 3px solid var(--second-color);
+  color: var(--third-color);
   border-radius: 1.5rem;
 }
 
@@ -367,7 +383,7 @@ tr:nth-of-type(2n) {
   margin: .1rem 0;
   padding: 0 .5rem;
   height: 2.2rem;
-  border: 3px solid var(--first-color);
+  border: 3px solid var(--visited-color);
   border-radius: 5rem;
   font-size: var(--l-font-size);
 }
@@ -382,9 +398,9 @@ tr:nth-of-type(2n) {
   right: 5%;
   transform: translateY(-50%);
   border-radius: 100%;
-  border: 2px solid var(--first-color);
-  background-color: var(--first-color);
-  color: var(--second-color);
+  border: 2px solid var(--visited-color);
+  background-color: var(--visited-color);
+  color: var(--third-color);
 }
 
 #date {
@@ -405,7 +421,7 @@ tr:nth-of-type(2n) {
 }
 
 .container__heading--inverse {
-  color: var(--second-color);
+  color: var(--visited-color);
   text-align: center;
   padding: .5rem 0;
 }
@@ -431,16 +447,16 @@ tr:nth-of-type(2n) {
   position: relative;
   display: flex;
   padding: .8rem .25rem 1.2rem;
-  border: 4px solid var(--first-color);
+  border: 4px solid var(--visited-color);
   border-radius: 1.5rem;
-  background-color: var(--second-color);
+  background-color: var(--third-color);
 }
 .news__date {
   flex: 1.1;
   display: flex;
   flex-direction: column;
   text-align: center;
-  color: var(--first-color);
+  color: var(--visited-color);
 }
 .news__day {
   font-size: 2.25rem;
@@ -485,6 +501,7 @@ tr:nth-of-type(2n) {
   border-radius: 1.5rem;
 }
 .offer__title {
+  text-decoration: underline;
   text-align: center;
   font-size: var(--m-font-size);
 }
@@ -495,9 +512,9 @@ tr:nth-of-type(2n) {
   bottom: 1rem;
   left: 50%;
   transform: translateX(-50%);
-  color: var(--second-color);
+  color: var(--third-color);
   border-radius: .5rem;
-  background-color: rgba(163, 0, 0, 0.785);
+  background-color: rgba(108, 0, 3, .785);
   z-index: 1;
 }
 .offer__description {
@@ -601,7 +618,7 @@ tr:nth-of-type(2n) {
 .about-inverse {
   margin: .5rem auto;
   border-radius: 2rem;
-  background-color: var(--second-color);
+  background-color: var(--third-color);
 }
 
 .container--dynamic,
@@ -616,73 +633,6 @@ tr:nth-of-type(2n) {
   padding-bottom: 1rem;
 }
 
-
-/*==================== OFFERS ====================*/
-
-
-
-/*==================== SUBSCRIPTIONS ====================*/
-.subscription__header::before {
-  content: "";
-  background-color: var(--first-color);
-}
-
-.subscription {
-  position: relative;
-  display: block;
-  margin: 1rem auto;
-  border: 4px solid var(--first-color);
-  border-radius: 1.5rem;
-  background-color: var(--second-color);
-  overflow: hidden;
-}
-.subscription__header {
-  display: flex;
-  flex-direction: column;
-  background-color: var(--second-color);
-}
-.subscription__user {
-  flex: 1;
-  margin: auto 1rem auto auto;
-  font-size: var(--xl-font-size);
-  color: var(--first-color);
-}
-
-.subscription__body {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
-  row-gap: 0.2rem;
-  margin: 1.5rem auto .75rem;
-}
-
-.subscription__offer {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  width: 96%;
-  height: 100%;
-  justify-content: space-between;
-  margin: .2rem auto;
-  padding: .8rem .25rem 1.2rem;
-  border: 4px solid var(--first-color);
-  border-radius: 1.5rem;
-  text-decoration: none;
-}
-
-.subscription__description--type {
-  color: var(--first-color);
-  text-align: center;
-}
-
-.subscription__description--dates {
-  display: flex;
-  flex-direction: column;
-}
-
-#subscription__student::before {
-  background-image: url('../img/student.png');
-}
-
 /*==================== HELP ====================*/
 .faq--list {
   margin-bottom: 2.5rem;
@@ -690,7 +640,7 @@ tr:nth-of-type(2n) {
 
 .faq::before {
   content: "";
-  background-color: #a30000;
+  background-color: var(--first-color);
   background-position: 35%;
   background-repeat: no-repeat;
 }
@@ -699,7 +649,7 @@ tr:nth-of-type(2n) {
   display: flex;
   margin: 0.2rem auto;
   border-radius: 1.5rem;
-  background-color: var(--second-color);
+  background-color: var(--third-color);
 }
 .faq__header {
   width: 0;
@@ -765,8 +715,8 @@ tr:nth-of-type(2n) {
   cursor: pointer;
 }
 .nav__button--current {
-  color: var(--first-color);
-  background: var(--second-color);
+  color: var(--second-color);
+  background: var(--third-color);
   cursor: default;
 }
 
@@ -774,17 +724,17 @@ tr:nth-of-type(2n) {
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
-  border: 4px solid #a30000;
+  border: 4px solid var(--visited-color);
   border-radius: 1.5rem;
   margin-bottom: 1.5rem;
   padding: 0.25rem;
   color: var(--first-color);
-  background-color: var(--second-color);
+  background-color: var(--third-color);
 }
 .container__label {
   text-align: left;
   height: fit-content;
-  color: var(--third-color);
+  color: var(--second-color);
 }
 
 /*==================== USER ====================*/
@@ -886,7 +836,7 @@ tr:nth-of-type(2n) {
   content: "";
   display: inline-block;
   width: 40%;
-  border-right: 3px solid #a30000;
+  border-right: 3px solid var(--first-color);
   text-indent: -999px;
 }
 .ticket__content {
@@ -984,7 +934,6 @@ tr:nth-of-type(2n) {
   }
   .nav__link {
     margin: auto;
-    color: var(--second-color);
   }
 
   .nav__toggle,
@@ -1209,22 +1158,6 @@ tr:nth-of-type(2n) {
     margin: 0 25% 0 auto;
   }
 
-  /*==================== SUBSCRIPTIONS ====================*/
-  .subscription {
-    width: 65%;
-  }
-  .subscription__title {
-    font-size: var(--l-font-size);
-  }
-  .subscription__description--type {
-    font-size: var(--m-font-size);
-  }
-
-  #subscription__student::before {
-    background-size: 45%;
-    background-position: 40%;
-  }
-
   /*==================== HELP ====================*/
   .faq::before {
     background-size: min(50%, 5rem);
@@ -1279,6 +1212,9 @@ tr:nth-of-type(2n) {
 
 
 @media (max-width: 1024px) {
+  legend {
+    font-size: var(--l-font-size);
+  }
 
   .table__head {
     font-size: var(--xl-font-size);
@@ -1300,7 +1236,7 @@ tr:nth-of-type(2n) {
     width: 100%;
     height: 100%;
     transition: right .3s;
-    z-index: 2;
+    z-index: 3;
   }
 
 
@@ -1314,8 +1250,14 @@ tr:nth-of-type(2n) {
   }
 
   /*==================== REUSABLE CSS VARIABLES ====================*/
+  .jump {
+    display: none;
+  }
   .show-menu {
     right: 0;
+  }
+  .hide-menu {
+    display: none;
   }
 
   /*==================== HOME ====================*/
@@ -1416,48 +1358,6 @@ tr:nth-of-type(2n) {
     margin: 1rem 1.5rem;
   }
 
-
-  /*==================== SUBSCRIPTIONS ====================*/
-  .subscription__header {
-    padding: 0 0 .5rem 0;
-    justify-content: space-between;
-  }
-  .subscription__user {
-    flex: 0.5;
-    margin: auto 1rem auto 0;
-    text-align: center;
-  }
-
-  .subscription__header {
-    padding: 0 0 .5rem 0;
-    justify-content: space-between;
-  }
-  .subscription__user {
-    flex: 0.5;
-    margin: auto 1rem auto 0;
-    text-align: center;
-  }
-  .subscription__title {
-    font-size: var(--xl-font-size);
-  }
-
-  .subscription__body {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
-    row-gap: 0.2rem;
-    margin: 1.5rem auto .75rem;
-  }
-
-  .subscription__description--type {
-    text-align: left;
-    font-size: var(--xl-font-size);
-  }
-
-  #subscription__student::before {
-    background-size: 55%;
-    background-position: 40%;
-  }
-
   /*==================== HELP ====================*/
   .faq::before {
     background-size: min(70%, 4rem);
@@ -1496,14 +1396,14 @@ tr:nth-of-type(2n) {
   }
 
   .container__fieldset--user {
-    display: grid;
-    grid-template-columns: 25% 75%;
+    display: flex;
+    flex-direction: column;
     font-size: var(--xl-font-size);
   }
 
   /*==================== ADMIN ====================*/
   .fieldset--image {
-    grid-template-columns: 4% 46% 4% 46%;
+    grid-template-columns: 2% 31% 2% 31% 2% 31%;
     width: 100%;
   }
 
@@ -1603,23 +1503,6 @@ tr:nth-of-type(2n) {
     margin: .5rem 0 0 0;
     padding: 0;
     width: 100%;
-  }
-
-  /*==================== SUBSCRIPTIONS ====================*/
-  .subscription__title {
-    text-align: center;
-  }
-  .subscription__description {
-    padding: 0.2rem !important;
-  }
-
-  .offer__description {
-    margin: 0.1rem auto;
-  }
-
-  #subscription__student::before {
-    background-size: 18%;
-    background-position: 50%;
   }
 
   /*==================== HELP ====================*/

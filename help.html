@@ -17,10 +17,21 @@
     <h1 class="logo">
       IBERU TRASPORTI
     </h1>
-    <nav id="navbar" role="navigation">
-      <div class="nav__menu js-nav__menu">
+
+    <nav id="navbar" aria-label="Site">
+
+      <button class="nav__toggle js-nav__toggle">
+        <span class="ri-menu-line"></span>
+      </button>
+
+      <div class="nav__menu js-nav__menu hide-menu">
+
+        <button class="nav__close js-nav__close">
+          <span class="ri-close-line"></span>
+        </button>
+
         <ul class="nav__list">
-          <li class="nav__item js-nav__item">
+          <li class="nav__item js-nav__item jump">
             <a class="nav__link visually-hidden" href="#main">Salta la barra di navigazione</a>
           </li>
           <li class="nav__item js-nav__item">
@@ -43,20 +54,14 @@
           </li>
         </ul>
         
-        <div class="nav__close js-nav__close">
-          <span class="ri-close-line"></span>
         </div>
-      </div>
-      
-      <div class="nav__toggle js-nav__toggle">
-        <span class="ri-menu-line"></span>
-      </div>
+
     </nav>
   </header>
-  <nav id="breadcrumb">
-    <p class="breadcrumb__nav">Ti trovi in: <a href="index.php" lang="en-US">Home</a> &gt;&gt; <span lang="en-US">Help</span></p>
+  <nav id="breadcrumb" aria-label="Path">
+    <p class="breadcrumb__nav">Ti trovi in: <a class="more" href="index.php" lang="en-US">Home</a> &gt;&gt; <span lang="en-US">Help</span></p>
   </nav>
-  <main id="main" role="main" class="container container--background">
+  <main id="main" class="container container--background">
     <h2 class="container__heading container__heading--main">FAQ</h2>
     <h3 id="0" class="container__heading">ASSISTENZA</h3>
     <ul class="faq--list">
@@ -66,7 +71,7 @@
           <a href="#2" class="visually-hidden">Salta FAQ</a>
         </div>
         <div class="faq__body dynamic__heading-margin">
-          <p class="faq--question">A chi mi devo rivolgere per un rimborso a causa di una coincidenza persa?</p>
+          <h5 class="faq--question">A chi mi devo rivolgere per un rimborso a causa di una coincidenza persa?</h5>
           <p class="faq--answer">Per richiedere un rimborso è necessario in primo luogo che Iberu sia responsabile del danno arrecato, in tal caso ci scusiamo e ti preghiamo di contattare il nostro servizio clienti via email all'indirizzo <a href="mailto:assistenza@iberutrasporti.it">assistenza@iberutrasporti.it</a>.</p>
         </div>
       </li>
@@ -76,7 +81,7 @@
           <a href="#3" class="visually-hidden">Salta FAQ</a>
         </div>
         <div class="faq__body dynamic__heading-margin">
-          <p class="faq--question">Come posso richiedere assistenza per passeggeri con disabilità?</p>
+          <h5 class="faq--question">Come posso richiedere assistenza per passeggeri con disabilità?</h5>
           <p class="faq--answer">Per richiedere assistenza per passeggeri con disabilità, ti preghiamo di contattare il nostro servizio clienti via email all'indirizzo <a href="mailto:assistenza@iberutrasporti.it">assistenza@iberutrasporti.it</a>.</p>
         </div>
       </li>
@@ -86,7 +91,7 @@
           <a href="#4" class="visually-hidden">Salta FAQ</a>
         </div>
         <div class="faq__body dynamic__heading-margin">
-          <p class="faq--question">A chi posso rivolgermi se smarrisco un oggetto sul treno?</p>
+          <h5 class="faq--question">A chi posso rivolgermi se smarrisco un oggetto sul treno?</h5>
           <p class="faq--answer">Nel caso di oggetti smarriti dai clienti, vengono applicate le norme del Codice Civile (art. 927 e seguenti) che prevedono la consegna degli oggetti rinvenuti all'apposito ufficio del comune in cui è stato ritrovato l'oggetto.</p>
         </div>
       </li>
@@ -96,7 +101,7 @@
           <a href="#5" class="visually-hidden">Salta FAQ</a>
         </div>
         <div class="faq__body dynamic__heading-margin">
-          <p class="faq--question">Cosa fare se riscontro un problema durante l'acquisto online del biglietto?</p>
+          <h5 class="faq--question">Cosa fare se riscontro un problema durante l'acquisto online del biglietto?</h5>
           <p class="faq--answer">In caso di problemi durante l'acquisto online, contatta il nostro supporto clienti al numero <span class="contact-number">0123-987654</span> o invia una segnalazione a <a href="mailto:supporto@trenitalia.it">supporto@trenitalia.it</a>.</p>
         </div>
       </li>
@@ -109,7 +114,7 @@
           <a href="#7" class="visually-hidden">Salta FAQ</a>
         </div>
         <div class="faq__body dynamic__heading-margin">
-          <p class="faq--question">Come faccio a conoscere le offerte e le promozioni speciali di Iberu?</p>
+          <h5 class="faq--question">Come faccio a conoscere le offerte e le promozioni speciali di Iberu?</h5>
           <p class="faq--answer">Per conoscere le offerte commerciali e le promozioni speciali, consulta la pagina <a href="./offers.php">Offerte</a></p>
         </div>
       </li>
@@ -119,7 +124,7 @@
           <a href="#8" class="visually-hidden">Salta FAQ</a>
         </div>
         <div class="faq__body dynamic__heading-margin">
-          <p class="faq--question">Quali sono le agevolazioni per i bambini sotto i 15 anni?</p>
+          <h5 class="faq--question">Quali sono le agevolazioni per i bambini sotto i 15 anni?</h5>
           <p class="faq--answer">Iberu è orgoglioso di accompagnare le nuove generazioni nel loro percorso di crescita e di scoperta del mondo, per questo offre speciali agevolazioni per i bambini fino a 12 anni e sconti mirati per i giovani fino ad i 20 anni. Per maggiori informazioni sulle agevolazioni, visita la pagina <a href="./offers.php#offers__family">Agevolazioni e Sconti</a>.</p>
         </div>
       </li>
@@ -129,7 +134,7 @@
           <a href="#9" class="visually-hidden">Salta FAQ</a>
         </div>
         <div class="faq__body dynamic__heading-margin">
-          <p class="faq--question">Quali sono le agevolazioni gli anziani?</p>
+          <h5 class="faq--question">Quali sono le agevolazioni gli anziani?</h5>
           <p class="faq--answer">Offriamo sconti speciali per anziani sopra i 65 anni. Per maggiori informazioni sulle agevolazioni, visita la pagina <a href="./offers.php#offer__old">Agevolazioni e Sconti</a>.</p>
         </div>
       </li>
@@ -142,7 +147,7 @@
           <a href="#11" class="visually-hidden">Salta FAQ</a>
         </div>
         <div class="faq__body dynamic__heading-margin">
-          <p class="faq--question">Ho perso il treno. Come posso utilizzare il mio biglietto?</p>
+          <h5 class="faq--question">Ho perso il treno. Come posso utilizzare il mio biglietto?</h5>
           <p class="faq--answer">Dopo l'orario di partenza del treno prenotato non è possibile chiedere il rimborso. Per alcune tipologie di biglietto è possibile chiedere il cambio del biglietto e/o accedere ad un treno diverso da quello prenotato.</p>
         </div>
       </li>
@@ -152,7 +157,7 @@
           <a href="#12" class="visually-hidden">Salta FAQ</a>
         </div>
         <div class="faq__body dynamic__heading-margin">
-          <p class="faq--question">Il biglietto è cedibile?</p>
+          <h5 class="faq--question">Il biglietto è cedibile?</h5>
           <p class="faq--answer">Attualmente i biglietti acquistati per viaggiare sono nominativi per cui deve essere specificato, in fase d'acquisto, il nominativo cui è associato il biglietto e la verifica dei nominativi è soggetta a riscontro a bordo treno con documento d'identità valido.</p>
         </div>
       </li>
@@ -162,7 +167,7 @@
           <a href="#13" class="visually-hidden">Salta FAQ</a>
         </div>
         <div class="faq__body dynamic__heading-margin">
-          <p class="faq--question">Posso cambiare la data del mio viaggio dopo aver acquistato il biglietto?</p>
+          <h5 class="faq--question">Posso cambiare la data del mio viaggio dopo aver acquistato il biglietto?</h5>
           <p class="faq--answer">Per alcune tipologie di biglietto, è possibile effettuare cambi di data. Ti consigliamo di verificare le condizioni specifiche del tuo biglietto o contattare il nostro servizio clienti al numero <span class="contact-number">0123-456789</span>.</p>
         </div>
       </li>
@@ -172,7 +177,7 @@
           <a href="#14" class="visually-hidden">Salta FAQ</a>
         </div>
         <div class="faq__body dynamic__heading-margin">
-          <p class="faq--question">Quali sono le opzioni di pagamento disponibili per l'acquisto dei biglietti?</p>
+          <h5 class="faq--question">Quali sono le opzioni di pagamento disponibili per l'acquisto dei biglietti?</h5>
           <p class="faq--answer">Accettiamo pagamenti tramite carta di credito, bonifico bancario e PayPal.</p>
         </div>
       </li>
@@ -182,7 +187,7 @@
           <a href="#0" class="visually-hidden">Salta FAQ</a>
         </div>
         <div class="faq__body dynamic__heading-margin">
-          <p class="faq--question">Qual è la politica di rimborso in caso di cancellazione del viaggio?</p>
+          <h5 class="faq--question">Qual è la politica di rimborso in caso di cancellazione del viaggio?</h5>
           <p class="faq--answer">La politica di rimborso varia a seconda del tipo di biglietto acquistato. Per informazioni dettagliate sulla cancellazione e il rimborsoti preghiamo di contattare il nostro servizio clienti via email all'indirizzo <a href="mailto:assistenza@iberutrasporti.it">assistenza@iberutrasporti.it</a>.</p>
         </div>
       </li>
@@ -194,31 +199,31 @@
       <div class="container__list">
         <a href="index.php" class="container__link" lang="en-US">Homepage</a>
         <ul>
-          <li>
-            <a href="index.php#index__search" class="container__link container__link--heading">Ricerca Biglietto</a>
+          <li class="container__link container__link--heading">
+            Ricerca Biglietto
           </li>
-          <li>
-            <a href="index.php#index__news" class="container__link container__link--heading">Notizie</a>
+          <li class="container__link container__link--heading">
+            Notizie
           </li>
-          <li>
-            <a href="index.php#index__offers" class="container__link container__link--heading">Offerte</a>
+          <li class="container__link container__link--heading">
+            Offerte
           </li>
         </ul>
       </div>
       <div class="container__list"> 
         <a href="offers.php" class="container__link">Offerte</a>
         <ul>
-          <li>
-            <a href="offers.php#offers__super" class="container__link container__link--heading">Super offerte</a>
+          <li class="container__link container__link--heading">
+            Super offerte
           </li>
-          <li>
-            <a href="offers.php#offers__special" class="container__link container__link--heading">Offerte speciali</a>
+          <li class="container__link container__link--heading">
+            Offerte speciali
           </li>
-          <li>
-            <a href="offers.php#offers__student" class="container__link container__link--heading">Offerte per studenti</a>
+          <li class="container__link container__link--heading">
+            Offerte per studenti
           </li>
-          <li>
-            <a href="offers.php#offers__family" class="container__link container__link--heading">Offerte per famiglie e gruppi</a>
+          <li class="container__link container__link--heading">
+            Offerte per famiglie e gruppi
           </li>
         </ul>
       </div>

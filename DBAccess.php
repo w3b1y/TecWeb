@@ -2,9 +2,9 @@
 namespace DB;
 class DBAccess{
     private const HOST_B = "localhost";
-    private const DATABASE_NAME = "iberu_transportation";
-    private const USERNAME = "iberu_transportation";
-    private const PASSWORD = "iberu_transportation";
+    private const DATABASE_NAME = "iberu";
+    private const USERNAME = "root";
+    private const PASSWORD = "";
     private $connection;
 
     public function openDBConnection(){

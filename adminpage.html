@@ -17,10 +17,21 @@
     <h1 class="logo">
       IBERU TRASPORTI
     </h1>
-    <nav id="navbar" role="navigation">
-      <div class="nav__menu js-nav__menu">
+
+    <nav id="navbar" aria-label="Site">
+
+      <button class="nav__toggle js-nav__toggle">
+        <span class="ri-menu-line"></span>
+      </button>
+
+      <div class="nav__menu js-nav__menu hide-menu">
+
+        <button class="nav__close js-nav__close">
+          <span class="ri-close-line"></span>
+        </button>
+
         <ul class="nav__list">
-          <li class="nav__item js-nav__item">
+          <li class="nav__item js-nav__item jump">
             <a class="nav__link visually-hidden" href="#main">Salta la barra di navigazione</a>
           </li>
           <li class="nav__item js-nav__item">
@@ -43,21 +54,15 @@
           </li>
         </ul>
         
-        <div class="nav__close js-nav__close">
-          <span class="ri-close-line"></span>
-        </div>
       </div>
-      
-      <div class="nav__toggle js-nav__toggle">
-        <span class="ri-menu-line"></span>
-      </div>
+
     </nav>
   </header>
-  <nav id="breadcrumb">
-    <p class="breadcrumb__nav">Ti trovi in: <a href="index.php" lang="en-US">Home</a> &gt;&gt; Pagina Amministratore </p>
+  <nav id="breadcrumb" aria-label="Path">
+    <p class="breadcrumb__nav">Ti trovi in: <a class="more" href="index.php" lang="en-US">Home</a> &gt;&gt; Pagina Amministratore </p>
   </nav>
-  <main id="main" role="main" class="main--user">
-    <nav id="navbar--secondary">
+  <main id="main" class="main--user">
+    <nav id="navbar--secondary" aria-label="Page">
       <ul class="nav__list--secondary">
         <li class="nav__item--secondary js-nav__item--secondary">
           <button id="addNews" class="nav__button nav__button--current"><span class="term" lang="en-US">Aggiungi notizia</span> <span class="ri-calendar-event-line icon"></span></button>
@@ -65,21 +70,18 @@
         <li class="nav__item--secondary js-nav__item--secondary">
           <button id="addOffer" class="nav__button"><span class="term">Aggiungi offerta</span> <span class="ri-history-line icon"></span></button>
         </li>
-        <li class="nav__item--secondary js-nav__item--secondary">
-          <button id="logout" class="nav__button"><span class="term" lang="en-US">Log Out</span> <span class="ri-logout-box-r-line icon"></span></button>
-        </li>
       </ul>
     </nav>
-    <div id="page--addNews" class="container container--user">
+    <section id="page--addNews" class="container container--user">
       <h2 class="container__heading container__heading--main">NOTIZIE</h2>
-      <section class="container">
+      <div class="container">
         <operazione_avvenuta_news/>
         <h3 class="container__heading">Aggiungi una nuova notizia</h3>
         <form action="adminpage.php" method="post" class="container__fieldset--user">
           <avvisi/>
-          <label class="container__label" for="date__start">Data iniziale</label>
+          <label class="container__label" for="date__start">Data iniziale notizia</label>
           <input class="container__input--search" type="date" name="date_start" id="date__start" value="&lt;data_i/>">
-          <label class="container__label" for="date__end">Data finale</label>
+          <label class="container__label" for="date__end">Data finale notizia</label>
           <input class="container__input--search" type="date" name="date_end" id="date__end" value="&lt;data_f/>">
           <label class="container__label" for="news__title">Titolo</label>
           <input class="container__input--search" type="text" name="news_title" id="news__title" value="&lt;titolo/>">
@@ -87,21 +89,21 @@
           <textarea name="news_content" id="news__content" cols="30" rows="10" ><contenuto/></textarea>
           <input class="submit" type="submit" value="Conferma" name="insert_news">
         </form>
-      </section>
-      <section class="container">
+      </div>
+      <div class="container">
         <h3 class="container__heading">Elimina una notizia esistente</h3>
         <form action="adminpage.php" class="container__fieldset--user">
-          <label class="container__label" for="delete__news">Elimina</label>
+          <label class="container__label" for="delete__news">Elimina notizia</label>
           <select id="delete__news" name="selected_news" class="container__input--search">
             <news/>
           </select>
           <input class="submit" type="submit" value="Elimina" name="delete_news">
         </form>
-      </section>
-    </div>
-    <div id="page--addOffer" class="container container--user container--hide">
+      </div>
+    </section>
+    <section id="page--addOffer" class="container container--user container--hide">
       <h2 class="container__heading container__heading--main">OFFERTE</h2>
-      <section class="container">
+      <div class="container">
         <operazione_avvenuta_offer/>
         <h3 class="container__heading">Aggiungi una nuova offerta</h3>
         <form action="adminpage.php" method="post" class="container__fieldset--user">
@@ -127,69 +129,82 @@
           <input class="container__input--search" type="number" name="minimun" id="tickets" value="&lt;minimo/>">
           <p class="container__label">Sfondo</p>
           <fieldset id="offer__background" class="fieldset--image">
+            <legend class="visually-hidden">Scegli immagine di <span lang="en-US">background</span></legend>
             <input type="radio" id="1" name="offer_name" value="winter-days">
             <label class="label--image" for="1">
+              <span class="visually-hidden">Immagine giornate Natalizie</span>
               <img class="label__image" src="./static/img/winter-days.jpg" alt="">
             </label>
             <input type="radio" id="2" name="offer_name" value="christmas-gift">
             <label class="label--image" for="2">
+              <span class="visually-hidden">Immagine regali Natalizi</span>
               <img class="label__image" src="./static/img/christmas-gift.jpg" alt="">
             </label>
             <input type="radio" id="3" name="offer_name" value="new-year">
             <label class="label--image" for="3">
+              <span class="visually-hidden">Immagine nuovo anno</span>
               <img class="label__image" src="./static/img/new-year.jpg" alt="">
             </label>
             <input type="radio" id="4" name="offer_name" value="love">
             <label class="label--image" for="4">
+              <span class="visually-hidden">Immagine amore</span>
               <img class="label__image" src="./static/img/love.jpg" alt="">
             </label>
             <input type="radio" id="5" name="offer_name" value="young">
             <label class="label--image" for="5">
+              <span class="visually-hidden">Immagine gioventù</span>
               <img class="label__image" src="./static/img/young.jpg" alt="">
             </label>
             <input type="radio" id="6" name="offer_name" value="old">
             <label class="label--image" for="6">
+              <span class="visually-hidden">Immagine anzianità</span>
               <img class="label__image" src="./static/img/old.jpg" alt="">
             </label>
             <input type="radio" id="7" name="offer_name" value="family">
             <label class="label--image" for="7">
+              <span class="visually-hidden">Immagine famiglia</span>
               <img class="label__image" src="./static/img/family.jpg" alt="">
             </label>
             <input type="radio" id="8" name="offer_name" value="group">
             <label class="label--image" for="8">
+              <span class="visually-hidden">Immagine gruppo</span>
               <img class="label__image" src="./static/img/group.jpg" alt="">
             </label>
             <input type="radio" id="9" name="offer_name" value="school">
             <label class="label--image" for="9">
+              <span class="visually-hidden">Immagine scuola</span>
               <img class="label__image" src="./static/img/school.jpg" alt="">
             </label>
             <input type="radio" id="10" name="offer_name" value="ofive">
             <label class="label--image" for="10">
+              <span class="visually-hidden">Immagine 5 viaggi</span>
               <img class="label__image" src="./static/img/five.jpg" alt="">
             </label>
             <input type="radio" id="11" name="offer_name" value="ten">
             <label class="label--image" for="11">
+              <span class="visually-hidden">Immagine 10 viaggi</span>
               <img class="label__image" src="./static/img/ten.jpg" alt="">
             </label>
             <input type="radio" id="12" name="offer_name" value="fifteen">
             <label class="label--image" for="12">
+              <span class="visually-hidden">Immagine 15 viaggi</span>
               <img class="label__image" src="./static/img/fifteen.jpg" alt="">
             </label>
           </fieldset>
           <input class="submit" type="submit" value="Conferma" name="insert_offer">
         </form>
-      </section>
-      <section class="container">
+      </div>
+      <div class="container">
         <h3 class="container__heading">Elimina un'offerta esistente</h3>
         <form action="adminpage.php" class="container__fieldset--user">
-          <label class="container__label" for="delete__offer">Elimina</label>
+          <label class="container__label" for="delete__offer">Elimina offerta</label>
           <select id="delete__offer" name="selected_offer" class="container__input--search">
             <offerte/>
           </select>
           <input class="submit" type="submit" value="Elimina" name="delete_offer">
         </form>
-      </section>
-    </div>
+      </div>
+    </section>
   </main>
 </body>
 </html>

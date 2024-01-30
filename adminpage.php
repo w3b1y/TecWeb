@@ -19,7 +19,7 @@ else if (!isset($_SESSION['admin'])) {
     header('Location: index.php');
     exit();
 }
-if (isset($_SESSION['admin'])) $fileHTML = str_replace("<navbar/>", '<span class="nav__link" lang="en-US">Account</span>', $fileHTML);
+if (isset($_SESSION['admin'])) $fileHTML = str_replace("<navbar/>", '<a href="./logout.php" class="nav__link" lang="en-US">Logout</a>', $fileHTML);
 
 //PAGINA COMUNICAZIONI
 $avvisi='';
@@ -98,9 +98,9 @@ $nome = '';
 $titolo = '';
 $contenuto = '';
 $codice_sconto = '';
-$percentuale = '';
+$percentuale = '5';
 $data_fine = '';
-$minimo = '';
+$minimo = '1';
 
 //al click di insert_offert
 if(isset($_POST['insert_offer'])){
@@ -121,9 +121,9 @@ if(isset($_POST['insert_offer'])){
             $titolo = '';
             $contenuto = '';
             $codice_sconto = '';
-            $percentuale = '';
+            $percentuale = '5';
             $data_fine = '';
-            $minimo = '';
+            $minimo = '1';
         }
     }
     else{

@@ -17,10 +17,21 @@
     <h1 class="logo">
       IBERU TRASPORTI
     </h1>
-    <nav id="navbar" role="navigation">
-      <div class="nav__menu js-nav__menu">
+
+    <nav id="navbar" aria-label="Site">
+
+      <button class="nav__toggle js-nav__toggle">
+        <span class="ri-menu-line"></span>
+      </button>
+
+      <div class="nav__menu js-nav__menu hide-menu">
+
+        <button class="nav__close js-nav__close">
+          <span class="ri-close-line"></span>
+        </button>
+
         <ul class="nav__list">
-          <li class="nav__item js-nav__item">
+          <li class="nav__item js-nav__item jump">
             <a class="nav__link visually-hidden" href="#main">Salta la barra di navigazione</a>
           </li>
           <li class="nav__item js-nav__item">
@@ -43,20 +54,14 @@
           </li>
         </ul>
         
-        <div class="nav__close js-nav__close">
-          <span class="ri-close-line"></span>
         </div>
-      </div>
-      
-      <div class="nav__toggle js-nav__toggle">
-        <span class="ri-menu-line"></span>
-      </div>
+
     </nav>
   </header>
-  <nav id="breadcrumb">
+  <nav id="breadcrumb" aria-label="Path">
     <p class="breadcrumb__nav">Ti trovi in: Registrazione</p>
   </nav>
-  <main id="main" role="main" class="container container--background">
+  <main id="main" class="container container--background">
     <h2 class="container__heading container__heading--main">Registrazione</h2>
     <form action="signUp.php" method="post" id="form--register" class="js-register__form">
       <fieldset class="container__fieldset--user js-register__form--pinfo">
@@ -88,31 +93,31 @@
       <div class="container__list">
         <a href="index.php" class="container__link" lang="en-US">Homepage</a>
         <ul>
-          <li>
-            <a href="index.php#index__search" class="container__link container__link--heading">Ricerca Biglietto</a>
+          <li class="container__link container__link--heading">
+            Ricerca Biglietto
           </li>
-          <li>
-            <a href="index.php#index__news" class="container__link container__link--heading">Notizie</a>
+          <li class="container__link container__link--heading">
+            Notizie
           </li>
-          <li>
-            <a href="index.php#index__offers" class="container__link container__link--heading">Offerte</a>
+          <li class="container__link container__link--heading">
+            Offerte
           </li>
         </ul>
       </div>
       <div class="container__list"> 
         <a href="offers.php" class="container__link">Offerte</a>
         <ul>
-          <li>
-            <a href="offers.php#offers__super" class="container__link container__link--heading">Super offerte</a>
+          <li class="container__link container__link--heading">
+            Super offerte
           </li>
-          <li>
-            <a href="offers.php#offers__special" class="container__link container__link--heading">Offerte speciali</a>
+          <li class="container__link container__link--heading">
+            Offerte speciali
           </li>
-          <li>
-            <a href="offers.php#offers__student" class="container__link container__link--heading">Offerte per studenti</a>
+          <li class="container__link container__link--heading">
+            Offerte per studenti
           </li>
-          <li>
-            <a href="offers.php#offers__family" class="container__link container__link--heading">Offerte per famiglie e gruppi</a>
+          <li class="container__link container__link--heading">
+            Offerte per famiglie e gruppi
           </li>
         </ul>
       </div>
