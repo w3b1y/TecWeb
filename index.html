@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="keywords" content="Iberu trasporti, Trasporto ferroviario, Prenotazioni, Viaggi in treno, Biglietti, Orari, Offerte">
+  <meta name="description" content="Homepage del sito di Iberu trasporti, società viaggi via treno, treni moderni ed evolutivi a disposizione di tutti">
+  <meta name="author" content="Mang00o, Fabbricca, ElenaaaCh, Pax">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="./static/img/icon.png">
+  <link rel="stylesheet" href="./static/css/style.css">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+  <script defer src="./static/js/main.js"></script>
+  <title>Home</title>
+</head>
+<body>
+  <header>
+    <h1 class="logo">
+      IBERU TRASPORTI
+    </h1>
+    <nav id="navbar" role="navigation">
+      <div class="nav__menu js-nav__menu">
+        <ul class="nav__list">
+          <li class="nav__item js-nav__item">
+            <a class="nav__link visually-hidden" href="#main">Salta la barra di navigazione</a>
+          </li>
+          <li class="nav__item js-nav__item">
+            <span class="nav__link" lang="en-US">Home</span>
+          </li>
+          <li class="nav__item js-nav__item">
+            <a class="nav__link" href="offers.php">Offerte</a>
+          </li>
+          <li class="nav__item js-nav__item">
+            <a class="nav__link" href="comunications.php">Comunicazioni</a>
+          </li>
+          <li class="nav__item js-nav__item">
+            <a class="nav__link" href="about.php">Chi Siamo</a>
+          </li>
+          <li class="nav__item js-nav__item">
+            <a class="nav__link" href="help.php" lang="en-US">Help</a>
+          </li>
+          <li class="nav__item js-nav__item">
+            <navbar/>
+          </li>
+        </ul>
+        <div class="nav__close js-nav__close">
+          <span class="ri-close-line"></span>
+        </div>
+      </div>
+      
+      <div class="nav__toggle js-nav__toggle">
+        <span class="ri-menu-line"></span>
+      </div>
+    </nav>
+  </header>
+  <nav id="breadcrumb">
+    <p class="breadcrumb__nav">Ti trovi in: <span lang="en-US">Home</span></p>
+  </nav>
+  <main id="main" role="main">
+    <section id="index__search" class="container container--search">
+      <h2 class="container__heading container__heading--search container__heading--main">VIAGGIA CON IBERU</h2>
+      <message/>
+      <form class="container__form--search js-container__form--search" action="" method="post">
+        <warnings/>
+        <fieldset class="posrel">
+        <legend class="visually-hidden"><span lang="en-US">Fieldset</span> per inserimento stazioni</legend>
+        <label class="visually-hidden" for="from">Partenza</label>
+        <input class="container__input--search" type="text" name="from" id="from" placeholder="Partenza" value="<departure_station/>">
+        <label class="visually-hidden" for="to">Arrivo</label>
+        <input class="container__input--search" type="text" name="to" id="to" placeholder="Arrivo" value="<arrival_station/>">
+        <button id="swap"><span class="visually-hidden">Inverti</span> <span class="ri-arrow-up-down-line"></span></button>
+        </fieldset>
+        <fieldset>
+        <legend class="visually-hidden"><span lang="en-US">Fieldset</span> per inserimento filtri di ricerca</legend>
+        <label class="visually-hidden" for="discount">Codice Sconto</label>
+        <input class="container__input--search" type="text" name="discount_code" id="discount" placeholder="Codice sconto" value="<discount_code/>">
+        <label class="visually-hidden" for="date">Data</label>
+        <input class="container__input--search" type="datetime-local" name="date" id="date" value="<departure_time/>">
+        <label class="visually-hidden" for="seats">Passeggeri (massimo 35 passeggeri)</label>
+        <input class="container__input--search" type="number" name="seats" id="seats" placeholder="1" min="1" max="35" value="1" value="<total_seats/>">
+        <label class="visually-hidden" for="submit">Cerca</label>
+        <input class="submit" type="submit" id="submit" value="Cerca" name="submit">
+        </fieldset>
+      </form>
+    </section>
+    <section class="container--inverse">
+      <h2 class="container__heading container__heading--inverse">LA NOSTRA FLOTTA</h2>
+      <dl class="fleet">
+        <dt class="fleet__train">Treni elettrici</dt>
+        <dd class="fleet__total">135</dd>
+        <dt class="fleet__train">Treni diesel</dt>
+        <dd class="fleet__total">53</dd>
+        <dt class="fleet__train">Treni a carbone</dt>
+        <dd class="fleet__total">16</dd>
+      </dl>
+    </section>
+    <section id="index__news" class="container container--background">
+      <h2 class="container__heading">COMUNICAZIONI</h2>
+      
+      <comunicazioni/>
+      
+      <footer class="container__footer">
+        <a href="comunications.php">Visualizza tutte le comunicazioni</a>
+      </footer>
+    </section>
+    <section id="index__offers" class="container container--background">
+      <h2 class="container__heading">OFFERTE</h2>
+      <div class="container__body--offers">
+        
+        <offerte/>
+
+      </div>
+      <footer class="container__footer">
+        <a href="offers.php">Visualizza tutte le offerte</a>
+      </footer>
+    </section>
+  </main>
+  <footer class="container container--footer">
+    <h2 class="container__heading--footer">IBERU TRASPORTI</h2>
+    <div class="container__body--footer">
+      <div class="container__list">
+        <span class="container__link" lang="en-US">Homepage</span>
+        <ul>
+          <li>
+            <a href="#index__search" class="container__link container__link--heading">Ricerca Biglietto</a>
+          </li>
+          <li>
+            <a href="#index__news" class="container__link container__link--heading">Notizie</a>
+          </li>
+          <li>
+            <a href="#index__offers" class="container__link container__link--heading">Offerte</a>
+          </li>
+        </ul>
+      </div>
+      <div class="container__list"> 
+        <a href="offers.php" class="container__link">Offerte</a>
+        <ul>
+          <li>
+            <a href="offers.php#offers__super" class="container__link container__link--heading">Super offerte</a>
+          </li>
+          <li>
+            <a href="offers.php#offers__special" class="container__link container__link--heading">Offerte speciali</a>
+          </li>
+          <li>
+            <a href="offers.php#offers__student" class="container__link container__link--heading">Offerte per studenti</a>
+          </li>
+          <li>
+            <a href="offers.php#offers__family" class="container__link container__link--heading">Offerte per famiglie e gruppi</a>
+          </li>
+        </ul>
+      </div>
+      <div class="container__list">
+        <a href="comunications.php" class="container__link">Comunicazioni</a>
+        <a href="about.php" class="container__link">Chi Siamo</a>
+        <a href="help.php" class="container__link" lang="en-US">Help</a>
+      </div>
+    </div>  
+    <p class="container__copyright">Societa' Viaggi - <span lang="en-US">All rights reserved.</span></p>
+  </footer>
+</body>
+</html>

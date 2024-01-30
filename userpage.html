@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="keywords" content="Iberu Trasporti, Trasporto ferroviario, Ferrovie, Pagina utente">
+  <meta name="description" content="Iberu Trasporti pagina utente.">
+  <meta name="author" content="Mang00o, Fabbricca, ElenaaaCh, Pax">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="./static/img/icon.png">
+  <link rel="stylesheet" href="./static/css/style.css">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+  <script defer src="./static/js/main.js"></script>
+  <title> Pagina Utente </title>
+</head>
+<body>
+  <header>
+    <h1 class="logo">
+      IBERU TRASPORTI
+    </h1>
+    <nav id="navbar" role="navigation">
+      <div class="nav__menu js-nav__menu">
+        <ul class="nav__list">
+          <li class="nav__item js-nav__item">
+            <a class="nav__link visually-hidden" href="#main">Salta la barra di navigazione</a>
+          </li>
+          <li class="nav__item js-nav__item">
+            <a class="nav__link" href="index.php" lang="en-US">Home</a>
+          </li>
+          <li class="nav__item js-nav__item">
+            <a class="nav__link" href="offers.php">Offerte</a>
+          </li>
+          <li class="nav__item js-nav__item">
+            <a class="nav__link" href="comunications.php">Comunicazioni</a>
+          </li>
+          <li class="nav__item js-nav__item">
+            <a class="nav__link" href="about.php">Chi Siamo</a>
+          </li>
+          <li class="nav__item js-nav__item">
+            <a class="nav__link" href="help.php" lang="en-US">Help</a>
+          </li>
+          <li class="nav__item js-nav__item">
+            <navbar/>
+          </li>
+        </ul>
+        
+        <div class="nav__close js-nav__close">
+          <span class="ri-close-line"></span>
+        </div>
+      </div>
+      
+      <div class="nav__toggle js-nav__toggle">
+        <span class="ri-menu-line"></span>
+      </div>
+    </nav>
+  </header>
+  <nav id="breadcrumb">
+    <p class="breadcrumb__nav">Ti trovi in: <a href="index.php" lang="en-US">Home</a> &gt;&gt; Pagina Utente </p>
+  </nav>
+  <main id="main" role="main" class="main--user">
+    <nav id="navbar--secondary">
+      <ul class="nav__list--secondary">
+        <li class="nav__item--secondary js-nav__item--secondary">
+          <button id="overview" class="nav__button nav__button--current"><span class="term" lang="en-US">Generale</span> <span class="ri-calendar-event-line icon"></s></button>
+        </li>
+        <li class="nav__item--secondary js-nav__item--secondary">
+          <button id="subscription" class="nav__button"><span class="term">Storico</span> <span class="ri-history-line icon"></span></button>
+        </li>
+        <li class="nav__item--secondary js-nav__item--secondary">
+          <button id="user" class="nav__button"><span class="term">Profilo</span> <span class="ri-user-line icon"></span></button>
+        </li>
+        <li class="nav__item--secondary js-nav__item--secondary">
+          <button id="logout" class="nav__button"><span class="term" lang="en-US">Log Out</span> <span class="ri-logout-box-r-line icon"></span></button>
+        </li>
+      </ul>
+    </nav>
+    <div id="page--overview" class="container container--user">
+      <h2 class="container__heading container__heading--main">GENERALE</h2>
+      <h3 class="container__heading">Biglietti validi</h3>
+      <div class="container--tickets">
+        <tickets/>
+      </div>
+    </div>
+    <div id="page--subscription" class="container container--user container--hide">
+      <h2 class="container__heading container__heading--main">STORICO ACQUISTI</h2>
+      <message/>
+      <table class="table">
+        <caption class="table__caption">Tabella biglietti acquistati</caption>
+        <thead class="table__header">
+          <tr class="table__row">
+            <th scope="col" class="table__head">Data</th>
+            <th scope="col" class="table__head">Tratta</th>
+            <th scope="col" class="table__head">Prezzo</th>
+          </tr>
+        </thead>
+        <tbody class="table__body">
+          <trow/>
+        </tbody>
+      </table>
+    </div>
+    <div id="page--user" class="container container--user container--hide">
+      <h2 class="container__heading container__heading--main">PROFILO</h2>
+      <section class="container">
+        <form id="form--user-data" action="userpage.php" method="post">
+          <fieldset class="container__fieldset--user js-register__form--pinfo">
+            <legend>Informazioni personali</legend>
+            <label class="container__label" for="name">Nome</label>
+            <input class="container__input--search" type="text" name="name" id="name" value="<first_name/>">
+            <label class="container__label" for="surname">Cognome</label>
+            <input class="container__input--search" type="text" name="surname" id="surname" value="<last_name/>">
+            <label class="container__label" for="email">Email</label>
+            <input class="container__input--search" type="email" name="email" id="email" value="<email/>">
+            <label class="container__label" for="birthday">Data di nascita</label>
+            <input class="container__input--search" type="date" name="birthday" id="birthday" value="<birthday/>">
+          </fieldset>
+          <fieldset class="container__fieldset--user js-register__form--pwd">
+            <legend>Cambio Password</legend>
+            <label class="container__label" for="old_passwor">Vecchia password</label>
+            <input class="container__input--search" type="password" name="old_password" id="old_password">
+            <label class="container__label" for="new_password">Nuova password</label>
+            <input class="container__input--search" type="password" name="new_password" id="new_password">
+            <label class="container__label" for="rnew_password">Ripeti password</label>
+            <input class="container__input--search" type="password" name="rnew_password" id="rnew_password">
+          </fieldset>
+          <input class="submit" type="submit" value="Conferma" name="submit">
+        </form>
+      </section>
+    </div>
+  </main>
+</body>
+</html>
