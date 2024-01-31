@@ -73,6 +73,7 @@ else {
     $arrival_time_station->add(getDateInterval($qResult_duration[0]));
   
     $train_id = $connessione->getDataArray("select route_schedule.train_id from route_schedule where route_schedule.id=$vt[route_schedule_id]");
+    $train_id = $connessione->getDataArray("select train.name from train where train.id=$train_id[0]");
     $ticket .= '<div class="ticket">
                 <dl class="ticket__route--horizontal">
                   <dt class="route__term--horizontal">'.$departure_station.'</dt>

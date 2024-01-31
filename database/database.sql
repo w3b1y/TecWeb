@@ -199,8 +199,8 @@ INSERT INTO route_station (route_id, station_id, duration, price, order_number) 
 (10, 'Ancona', '05:30:00', 0, 4),
 (11, 'Venezia', '00:00:00', 35, 1),
 (11, 'Milano', '03:00:00', 0, 2),
-(12, 'Venezia', '00:00:00', 35, 1),
-(12, 'Milano', '03:00:00', 0, 2);
+(12, 'Milano', '00:00:00', 35, 1),
+(12, 'Venezia', '03:00:00', 0, 2);
 
 -- Trains
 INSERT INTO train (name, capacity) VALUES
@@ -297,15 +297,15 @@ INSERT INTO news(id, title, content, initial_date, final_date) VALUES
 
 -- Offers
 INSERT INTO offers(class, nome, title, content, discount_code, final_date, discount, people_number) VALUES
-('super', 'christmas-gift', 'Celebra il Natale con stile! Risparmia il 15% su tutte le prenotazioni.', 'Regalati una vacanza indimenticabile con noi! CODICE SCONTO: ABC1234', 'ABC1234', '2023-12-25', 15, NULL),
-('super', 'new-year', 'Festeggia il tuo compleanno con un''offerta speciale!', 'Prenota entro la tua data di compleanno e risparmia il 20% su tutte le destinazioni. Goditi una vacanza unica per celebrare il tuo giorno speciale! CODICE SCONTO: DEF5678', 'DEF5678', '2024-12-31', 20, NULL),
-('super', 'ten', 'Scopri l''estate con la nostra Offerta Super Speciale!', 'Prenota ora e risparmia il 25% sulle tue vacanze estive. Approfitta di questa opportunità per vivere un''estate indimenticabile! CODICE SCONTO: EFG1234', 'EFG1234', '2024-08-31', 25, NULL),
-('special', 'love', 'Vivi momenti romantici con le nostre Offerte di Coppia! Sconto del 5%', 'Prenota per il tuo anniversario o una fuga romantica entro il 14 febbraio e regalati un viaggio indimenticabile con la tua dolce metà! CODICE SCONTO: GHI9012', 'GHI9012', '2024-02-14', 5, NULL),
-('special', 'young', 'Esplora il mondo con le nostre Offerte Speciali per i Giovani!', 'Sconto imperdibile del 10%, riservato ai viaggiatori under 25. Dai il via alla tua prossima avventura con servizi esclusivi e risparmia mentre crei ricordi indimenticabili! CODICE SCONTO: JKL3456', 'JKL3456', '2024-06-01', 10, NULL),
-('special', 'old', 'Esplora il mondo con le nostre Offerte Speciali per i Senior!', 'Sconto speciale del 15%, dedicato ai viaggiatori sopra i 60 anni. Approfitta dei vantaggi e riscopri il lato meraviglioso del viaggio. CODICE SCONTO: MNO7890', 'MNO7890', '2024-12-31', 15, NULL),
-('group', 'family', 'Offerta Famiglia: un''avventura insieme!', 'Pacchetto per due genitori e due bambini sotto i 10 anni con sconto speciale del 15%. Perfetto per creare ricordi indimenticabili per tutta la famiglia! CODICE SCONTO: PQR1234', 'PQR1234', '2024-05-31', 15, 4),
-('group', 'group', 'Offerta Gruppi: più si è, più si risparmia!', 'Prenota per un gruppo di oltre 8 persone e approfitta di uno sconto esclusivo del 20%. Rendete il vostro viaggio un''esperienza straordinaria! CODICE SCONTO: STU5678', 'STU5678', '2024-12-31', 20, 8),
-('student', 'school', 'Offerta Scolastica: Un''esperienza educativa straordinaria!', 'Prenota ora per la tua classe, con due professori e oltre 20 alunni, e ricevi uno sconto esclusivo del 30%. Viaggiate e imparate insieme a tariffe speciali! CODICE SCONTO: VWX9012', 'VWX9012', '2024-06-10', 30, 22),
-('student', 'five', 'Offerta Studenti: Esplora il mondo a prezzi incredibili!', 'Sconto speciale del 15% per gli studenti universitari. Dai il via alle tue avventure mentre risparmi! CODICE SCONTO: YZA1234', 'YZA1234', '2024-06-30', 15, NULL),
-('student', 'fifteen', 'Offerta Studenti: Scopri la bellezza del viaggio con uno sconto del 10%!', 'Prenota ora e risparmia mentre esplori le meraviglie italiane. La tua prossima avventura ti aspetta! CODICE SCONTO: BCD5678', 'BCD5678', '2024-06-30', 10, NULL);
+('super', 'christmas-gift', 'Celebra il Natale con stile! Risparmia il 15% su tutte le prenotazioni.', 'Regalati una vacanza indimenticabile con noi!', 'ABC1234', '2023-12-25', 15, NULL),
+('super', 'new-year', 'Festeggia il tuo compleanno con un''offerta speciale!', 'Prenota entro la tua data di compleanno e risparmia il 20% su tutte le destinazioni. Goditi una vacanza unica per celebrare il tuo giorno speciale!', 'DEF5678', '2024-12-31', 20, NULL),
+('super', 'ten', 'Scopri l''estate con la nostra Offerta Super Speciale!', 'Prenota ora e risparmia il 25% sulle tue vacanze estive. Approfitta di questa opportunità per vivere un''estate indimenticabile!', 'EFG1234', '2024-08-31', 25, NULL),
+('special', 'love', 'Vivi momenti romantici con le nostre Offerte di Coppia! Sconto del 5%', 'Prenota per il tuo anniversario o una fuga romantica entro il 14 febbraio e regalati un viaggio indimenticabile con la tua dolce metà!', 'GHI9012', '2024-02-14', 5, NULL),
+('special', 'young', 'Esplora il mondo con le nostre Offerte Speciali per i Giovani!', 'Sconto imperdibile del 10%, riservato ai viaggiatori under 25. Dai il via alla tua prossima avventura con servizi esclusivi e risparmia mentre crei ricordi indimenticabili!', 'JKL3456', '2024-06-01', 10, NULL),
+('special', 'old', 'Esplora il mondo con le nostre Offerte Speciali per i Senior!', 'Sconto speciale del 15%, dedicato ai viaggiatori sopra i 60 anni. Approfitta dei vantaggi e riscopri il lato meraviglioso del viaggio.', 'MNO7890', '2024-12-31', 15, NULL),
+('group', 'family', 'Offerta Famiglia: un''avventura insieme!', 'Pacchetto per due genitori e due bambini sotto i 10 anni con sconto speciale del 15%. Perfetto per creare ricordi indimenticabili per tutta la famiglia!', 'PQR1234', '2024-05-31', 15, 4),
+('group', 'group', 'Offerta Gruppi: più si è, più si risparmia!', 'Prenota per un gruppo di oltre 8 persone e approfitta di uno sconto esclusivo del 20%. Rendete il vostro viaggio un''esperienza straordinaria!', 'STU5678', '2024-12-31', 20, 8),
+('student', 'school', 'Offerta Scolastica: Un''esperienza educativa straordinaria!', 'Prenota ora per la tua classe, con due professori e oltre 20 alunni, e ricevi uno sconto esclusivo del 30%. Viaggiate e imparate insieme a tariffe speciali!', 'VWX9012', '2024-06-10', 30, 22),
+('student', 'five', 'Offerta Studenti: Esplora il mondo a prezzi incredibili!', 'Sconto speciale del 15% per gli studenti universitari. Dai il via alle tue avventure mentre risparmi!', 'YZA1234', '2024-06-30', 15, NULL),
+('student', 'fifteen', 'Offerta Studenti: Scopri la bellezza del viaggio con uno sconto del 10%!', 'Prenota ora e risparmia mentre esplori le meraviglie italiane. La tua prossima avventura ti aspetta!', 'BCD5678', '2024-06-30', 10, NULL);
 

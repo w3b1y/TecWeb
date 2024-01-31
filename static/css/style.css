@@ -96,7 +96,7 @@ legend {
   font-size: 1.5rem;
   font-weight: var(--font-black);
   cursor: pointer;
-  color: var(--second-color);
+  color: var(--visited-color);
   height: fit-content;
   margin: auto 0;
 }
@@ -121,7 +121,7 @@ legend {
   top: 1rem;
   right: 1.5rem;
   font-size: 1.5rem;
-  color: var(--second-color);
+  color: var(--visited-color);
   cursor: pointer;
 }
 
@@ -305,7 +305,7 @@ legend {
 .table__caption {
   font-weight: var(--font-bold);
   margin-bottom: .5rem;
-  color: var(--first-color);
+  color: var(--visited-color);
   text-align: left;
 }
 .table__head,
@@ -325,14 +325,8 @@ legend {
   border-radius: 0 1rem 0 0;
 }
 tr:nth-of-type(2n) {
-  background-color: rgb(163, 0, 0, 0.1);
+  background-color: rgba(175, 199, 176, 0.2);
 }
-
-/* .more {
-  padding: .1rem .3rem;
-  background-color: var(--first-color);
-  border-radius: .5rem;
-} */
 
 .form__error {
   width: fit-content;
@@ -728,7 +722,7 @@ tr:nth-of-type(2n) {
   border-radius: 1.5rem;
   margin-bottom: 1.5rem;
   padding: 0.25rem;
-  color: var(--first-color);
+  color: var(--visited-color);
   background-color: var(--third-color);
 }
 .container__label {
@@ -1228,7 +1222,7 @@ tr:nth-of-type(2n) {
   /*==================== NAVBAR ====================*/
   .nav__menu {
     position: fixed;
-    background-color: var(--third-color);
+    background-color: var(--first-color);
     backdrop-filter: blur(32px);
     -webkit-backdrop-filter: blur(32px);
     top: 0;
