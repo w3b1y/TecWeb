@@ -53,38 +53,14 @@ if (searchForm) {
     }
   });
 
-  searchFrom.addEventListener('focus', (e) => {
-    e.preventDefault();
+  searchFrom.addEventListener('blur', () => {
     if(searchForm.querySelector('#departure_station_error')) searchForm.querySelector('#departure_station_error').remove();
     else if(searchForm.querySelector('#departure_station_empty')) searchForm.querySelector('#departure_station_empty').remove();
   });
-  searchFrom.addEventListener('blur', (e) => {
-    e.preventDefault();
-    if (searchFrom.value == undefined || searchFrom.value == '') 
-      searchForm.insertAdjacentHTML('afterbegin', '<p id="departure_station_error" class="form__error">Inserisci la stazione di partenza</p>');
-  });
-  searchFrom.addEventListener('keypress', (e) => {
-    if (e.key === 'Enter') {
-      e.preventDefault();
-      searchTo.focus();
-    }
-  });
-
-  searchTo.addEventListener('focus', (e) => {
-    e.preventDefault();
+  
+  searchTo.addEventListener('blur', () => {
     if(searchForm.querySelector('#arrival_station_error')) searchForm.querySelector('#arrival_station_error').remove();
     else if(searchForm.querySelector('#arrival_station_empty')) searchForm.querySelector('#arrival_station_empty').remove();
-  });
-  searchTo.addEventListener('blur', (e) => {
-    e.preventDefault();
-    if (searchTo.value == undefined || searchTo.value == '') 
-      searchForm.insertAdjacentHTML('afterbegin', '<p id="arrival_station_error" class="form__error">Inserisci la stazione di arrivo</p>');
-  });
-  searchTo.addEventListener('keypress', (e) => {
-    if (e.key === 'Enter') {
-      e.preventDefault();
-      searchSwap.focus();
-    }
   });
 
   searchDate.addEventListener('blur', () => {
@@ -224,54 +200,41 @@ if (overviewButton && historyButton && userButton) {
   const emailRegex = /^(?!.*\.\.)[a-zA-Z0-9]+([._]*[a-zA-Z0-9])*@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
   name.addEventListener('blur', () => {
     if (!name.value && !pInfoFieldset.querySelector('#name_error')) 
-    pInfoFieldset.insertAdjacentHTML('afterbegin', '<p id="name_error" class="form__error">Inserisci il tuo nome</p>');
+    pInfoFieldset.insertAdjacentHTML('afterbegin', '<p aria-role="alert" id="name_error" class="form__error">Inserisci il tuo nome</p>');
     else if (name.value && pInfoFieldset.querySelector('#name_error')) pInfoFieldset.querySelector('#name_error').remove();
   });
   surname.addEventListener('blur', () => {
     if (!surname.value && !pInfoFieldset.querySelector('#surname_error'))
-      pInfoFieldset.insertAdjacentHTML('afterbegin', '<p id="surname_error" class="form__error">Inserisci il tuo cognome</p>');
+      pInfoFieldset.insertAdjacentHTML('afterbegin', '<p aria-role="alert" id="surname_error" class="form__error">Inserisci il tuo cognome</p>');
     else if (surname.value && pInfoFieldset.querySelector('#surname_error')) pInfoFieldset.querySelector('#surname_error').remove();
   });
   email.addEventListener('blur', () => {
     if (!emailRegex.test(email.value) && !pInfoFieldset.querySelector('#email_error')) 
-    pInfoFieldset.insertAdjacentHTML('afterbegin', '<p id="email_error" class="form__error">Inserisci un indirizzo email valido</p>');
+    pInfoFieldset.insertAdjacentHTML('afterbegin', '<p aria-role="alert" id="email_error" class="form__error">Inserisci un indirizzo email valido</p>');
     else if (emailRegex.test(email.value) && pInfoFieldset.querySelector('#email_error')) pInfoFieldset.querySelector('#email_error').remove();
   });
   birthday.addEventListener('blur', () => {
     if (new Date(birthday.value) >= new Date() && !pInfoFieldset.querySelector('#birthday_error')) 
-      pInfoFieldset.insertAdjacentHTML('afterbegin', '<p id="birthday_error" class="form__error">La data di nascita deve essere minore o uguale a quella attuale</p>');
+      pInfoFieldset.insertAdjacentHTML('afterbegin', '<p aria-role="alert" id="birthday_error" class="form__error">La data di nascita deve essere minore o uguale a quella attuale</p>');
     else if (new Date(birthday.value) < new Date() && pInfoFieldset.querySelector('#birthday_error')) pInfoFieldset.querySelector('#birthday_error').remove();
   });
-  opassword.addEventListener('focus', () => {
-    if (pwdFieldset.querySelector('#different_password_error')) pwdFieldset.querySelector('#different_password_error').remove();
-  });
   opassword.addEventListener('blur', () => {
-    if (password.value.length < 8 && !pwdFieldset.querySelector('#password_len_error')) 
-      pwdFieldset.insertAdjacentHTML('afterbegin', '<p id="password_len_error" class="form__error">La password deve essere lunga almeno 8 caratteri</p>');
-    else if (password.value.length >= 8 && pwdFieldset.querySelector('#password_len_error')) pwdFieldset.querySelector('#password_len_error').remove();
-
-    if (rpassword.value != password.value && rpassword.value && !pwdFieldset.querySelector('#different_password_error')) 
-      pwdFieldset.insertAdjacentHTML('afterbegin', '<p id="different_password_error" class="form__error">Le password inserite sono differenti</p>');
-    else if (rpassword.value == password.value && pwdFieldset.querySelector('#different_password_error')) pwdFieldset.querySelector('#different_password_error').remove();
-  });
-  password.addEventListener('focus', () => {
-    if (pwdFieldset.querySelector('#different_password_error')) pwdFieldset.querySelector('#different_password_error').remove();
+    if (opassword.value && opassword.value.length < 8 && !pwdFieldset.querySelector('#password_len_error')) 
+      pwdFieldset.insertAdjacentHTML('afterbegin', '<p aria-role="alert" id="password_len_error" class="form__error">La password deve essere lunga almeno 8 caratteri</p>');
+    else if (opassword.value.length >= 8 && pwdFieldset.querySelector('#password_len_error')) pwdFieldset.querySelector('#password_len_error').remove();
   });
   password.addEventListener('blur', () => {
-    if (password.value.length < 8 && !pwdFieldset.querySelector('#password_len_error')) 
-      pwdFieldset.insertAdjacentHTML('afterbegin', '<p id="password_len_error" class="form__error">La password deve essere lunga almeno 8 caratteri</p>');
+    if (password.value && password.value.length < 8 && !pwdFieldset.querySelector('#password_len_error')) 
+      pwdFieldset.insertAdjacentHTML('afterbegin', '<p aria-role="alert" id="password_len_error" class="form__error">La password deve essere lunga almeno 8 caratteri</p>');
     else if (password.value.length >= 8 && pwdFieldset.querySelector('#password_len_error')) pwdFieldset.querySelector('#password_len_error').remove();
 
     if (rpassword.value != password.value && rpassword.value && !pwdFieldset.querySelector('#different_password_error')) 
-      pwdFieldset.insertAdjacentHTML('afterbegin', '<p id="different_password_error" class="form__error">Le password inserite sono differenti</p>');
+      pwdFieldset.insertAdjacentHTML('afterbegin', '<p aria-role="alert" id="different_password_error" class="form__error">Le password inserite sono differenti</p>');
     else if (rpassword.value == password.value && pwdFieldset.querySelector('#different_password_error')) pwdFieldset.querySelector('#different_password_error').remove();
-  });
-  rpassword.addEventListener('focus', () => {
-    if (pwdFieldset.querySelector('#different_password_error')) pwdFieldset.querySelector('#different_password_error').remove();
   });
   rpassword.addEventListener('blur', () => {
     if (rpassword.value != password.value && !pwdFieldset.querySelector('#different_password_error')) 
-      pwdFieldset.insertAdjacentHTML('afterbegin', '<p id="different_password_error" class="form__error">Le password inserite sono differenti</p>');
+      pwdFieldset.insertAdjacentHTML('afterbegin', '<p aria-role="alert" id="different_password_error" class="form__error">Le password inserite sono differenti</p>');
     else if (rpassword.value == password.value && pwdFieldset.querySelector('#different_password_error')) pwdFieldset.querySelector('#different_password_error').remove();
   });
 }
@@ -296,6 +259,64 @@ function showPageAdmin(button, page) {
 if (addNewsButton && addOfferButton) {
   addNewsButton.addEventListener('click', () => showPageAdmin(addNewsButton, addNewsPage));
   addOfferButton.addEventListener('click', () => showPageAdmin(addOfferButton, addOfferPage));
+
+  const newsForm = document.querySelector('#form--insert-news');
+  const startDate = newsForm.querySelector('#news__date--start');
+  const endDate = newsForm.querySelector('#news__date--end');
+  const newsTitle = newsForm.querySelector('#news__title');
+  const newsContent = newsForm.querySelector('#news__content');
+
+  startDate.addEventListener('blur', () => {
+    if (startDate.value && newsForm.querySelector('#initial_date_empty')) newsForm.querySelector('#initial_date_empty').remove();
+    if (startDate.value && endDate.value && new Date(startDate.value) < new Date(endDate.value) && 
+        newsForm.querySelector('#datetime_error')) newsForm.querySelector('#datetime_error').remove();
+  });
+  endDate.addEventListener('blur', () => {
+    if (endDate.value && newsForm.querySelector('#final_date_empty')) newsForm.querySelector('#final_date_empty').remove();
+    if (startDate.value && endDate.value && new Date(startDate.value) < new Date(endDate.value) && 
+        newsForm.querySelector('#datetime_error')) newsForm.querySelector('#datetime_error').remove();
+  });
+  newsTitle.addEventListener('blur', () => {
+    if (endDate.value && newsForm.querySelector('#title_empty')) newsForm.querySelector('#title_empty').remove();
+  });
+  newsContent.addEventListener('blur', () => {
+    if (newsContent.value && newsForm.querySelector('#content_empty')) newsForm.querySelector('#content_empty').remove();
+  });
+
+
+
+  const offerForm = document.querySelector('#form--insert-offer');
+  const offerTitle = offerForm.querySelector('#offer__title');
+  const offerContent = offerForm.querySelector('#offer__content');
+  const offerDiscountCode = offerForm.querySelector('#offer__discount-code');
+  const offerDiscountPercentage = offerForm.querySelector('#offer__discount-percentage');
+  const offerEndDate = offerForm.querySelector('#offer__date--end');
+  const offerMinPeople = offerForm.querySelector('#offer__min-people');
+
+  offerTitle.addEventListener('blur', () => {
+    if (offerEndDate.value && offerForm.querySelector('#offer__error--title')) 
+      offerForm.querySelector('#offer__error--title').remove();
+  });
+  offerContent.addEventListener('blur', () => {
+    if (offerContent.value && offerForm.querySelector('#offer__error--content')) 
+      offerForm.querySelector('#offer__error--content').remove();
+  });
+  offerDiscountCode.addEventListener('blur', () => {
+    if (offerDiscountCode.value && offerForm.querySelector('#offer__error--discount-code')) 
+      offerForm.querySelector('#offer__error--discount-code').remove();
+  });
+  offerDiscountPercentage.addEventListener('blur', () => {
+    if (offerDiscountPercentage.value && offerForm.querySelector('#offer__error--discount-percentage')) 
+      offerForm.querySelector('#offer__error--discount-percentage').remove();
+  });
+  offerEndDate.addEventListener('blur', () => {
+    if (offerEndDate.value && offerForm.querySelector('#offer__error--end-date')) 
+      offerForm.querySelector('#offer__error--end-date').remove();
+  });
+  offerMinPeople.addEventListener('blur', () => {
+    if (offerMinPeople.value && offerForm.querySelector('#offer__error--min-people')) 
+      offerForm.querySelector('#offer__error--min-people').remove();
+  });
 }
 
 window.onload = () => {
@@ -316,24 +337,20 @@ if (loginForm) {
   const email = loginForm.querySelector('#email');
   const password = loginForm.querySelector('#new_password');
   const emailRegex = /^(?!.*\.\.)[a-zA-Z0-9]+([._]*[a-zA-Z0-9])*@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-  email.addEventListener('blur', (e) => {
-    e.preventDefault();
-    if (!emailRegex.test(email.value) && !loginForm.querySelector('#email_error')) 
-      loginForm.insertAdjacentHTML('afterbegin', '<p id="email_error" class="form__error">Inserisci un indirizzo email valido</p>');
+  email.addEventListener('blur', () => {
+    if (email.value && !emailRegex.test(email.value) && !loginForm.querySelector('#email_error')) 
+      loginForm.insertAdjacentHTML('afterbegin', '<p aria-role="alert" id="email_error" class="form__error">Inserisci un indirizzo email valido</p>');
     else if (emailRegex.test(email.value) && loginForm.querySelector('#email_error')) loginForm.querySelector('#email_error').remove();
   });
-  email.addEventListener('focus', (e) => {
-    e.preventDefault();
+  email.addEventListener('focus', () => {
     if (password.value && loginForm.querySelector('#login_error')) loginForm.querySelector('#login_error').remove();
   });
-  password.addEventListener('blur', (e) => {
-    e.preventDefault();
-    if (password.value.length < 8 && !loginForm.querySelector('#password_error')) 
-      loginForm.insertAdjacentHTML('afterbegin', '<p id="password_error" class="form__error">La password deve essere lunga almeno 8 caratteri</p>');
+  password.addEventListener('blur', () => {
+    if (password.value && password.value.length < 8 && !loginForm.querySelector('#password_error')) 
+      loginForm.insertAdjacentHTML('afterbegin', '<p aria-role="alert" id="password_error" class="form__error">La password deve essere lunga almeno 8 caratteri</p>');
     else if (password.value.length >= 8 && loginForm.querySelector('#password_error')) loginForm.querySelector('#password_error').remove();
   });
-  password.addEventListener('focus', (e) => {
-    e.preventDefault();
+  password.addEventListener('focus', () => {
     if (email.value && loginForm.querySelector('#login_error')) loginForm.querySelector('#login_error').remove();
   });
 }
@@ -352,43 +369,34 @@ if (registerForm) {
   const rpassword = registerForm.querySelector('#rnew_password');
   const emailRegex = /^(?!.*\.\.)[a-zA-Z0-9]+([._]*[a-zA-Z0-9])*@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
   name.addEventListener('blur', () => {
-    if (!name.value && !pInfoFieldset.querySelector('#name_error')) 
-    pInfoFieldset.insertAdjacentHTML('afterbegin', '<p id="name_error" class="form__error">Inserisci il tuo nome</p>');
-    else if (name.value && pInfoFieldset.querySelector('#name_error')) pInfoFieldset.querySelector('#name_error').remove();
+    if (name.value && pInfoFieldset.querySelector('#name_error')) pInfoFieldset.querySelector('#name_error').remove();
   });
   surname.addEventListener('blur', () => {
-    if (!surname.value && !pInfoFieldset.querySelector('#surname_error'))
-      pInfoFieldset.insertAdjacentHTML('afterbegin', '<p id="surname_error" class="form__error">Inserisci il tuo cognome</p>');
-    else if (surname.value && pInfoFieldset.querySelector('#surname_error')) pInfoFieldset.querySelector('#surname_error').remove();
+    if (surname.value && pInfoFieldset.querySelector('#surname_error')) pInfoFieldset.querySelector('#surname_error').remove();
   });
   email.addEventListener('blur', () => {
-    if (!emailRegex.test(email.value) && !pInfoFieldset.querySelector('#email_error')) 
-    pInfoFieldset.insertAdjacentHTML('afterbegin', '<p id="email_error" class="form__error">Inserisci un indirizzo email valido</p>');
+    if (email.value && !emailRegex.test(email.value) && !pInfoFieldset.querySelector('#email_error')) 
+    pInfoFieldset.insertAdjacentHTML('afterbegin', '<p aria-role="alert" id="email_error" class="form__error">Inserisci un indirizzo email valido</p>');
     else if (emailRegex.test(email.value) && pInfoFieldset.querySelector('#email_error')) pInfoFieldset.querySelector('#email_error').remove();
   });
   birthday.addEventListener('blur', () => {
-    if (new Date(birthday.value) >= new Date() && !pInfoFieldset.querySelector('#birthday_error')) 
-      pInfoFieldset.insertAdjacentHTML('afterbegin', '<p id="birthday_error" class="form__error">La data di nascita deve essere minore o uguale a quella attuale</p>');
-    else if (new Date(birthday.value) < new Date() && pInfoFieldset.querySelector('#birthday_error')) pInfoFieldset.querySelector('#birthday_error').remove();
+    if (new Date(birthday.value) < new Date() && pInfoFieldset.querySelector('#birthday_error')) pInfoFieldset.querySelector('#birthday_error').remove();
   });
   password.addEventListener('focus', () => {
     if (pwdFieldset.querySelector('#different_password_error')) pwdFieldset.querySelector('#different_password_error').remove();
   });
   password.addEventListener('blur', () => {
-    if (password.value.length < 8 && !pwdFieldset.querySelector('#password_len_error')) 
-      pwdFieldset.insertAdjacentHTML('afterbegin', '<p id="password_len_error" class="form__error">La password deve essere lunga almeno 8 caratteri</p>');
+    if (password.value && password.value.length < 8 && !pwdFieldset.querySelector('#password_len_error')) 
+      pwdFieldset.insertAdjacentHTML('afterbegin', '<p aria-role="alert" id="password_len_error" class="form__error">La password deve essere lunga almeno 8 caratteri</p>');
     else if (password.value.length >= 8 && pwdFieldset.querySelector('#password_len_error')) pwdFieldset.querySelector('#password_len_error').remove();
 
     if (rpassword.value != password.value && rpassword.value && !pwdFieldset.querySelector('#different_password_error')) 
-      pwdFieldset.insertAdjacentHTML('afterbegin', '<p id="different_password_error" class="form__error">Le password inserite sono differenti</p>');
+      pwdFieldset.insertAdjacentHTML('afterbegin', '<p aria-role="alert" id="different_password_error" class="form__error">Le password inserite sono differenti</p>');
     else if (rpassword.value == password.value && pwdFieldset.querySelector('#different_password_error')) pwdFieldset.querySelector('#different_password_error').remove();
-  });
-  rpassword.addEventListener('focus', () => {
-    if (pwdFieldset.querySelector('#different_password_error')) pwdFieldset.querySelector('#different_password_error').remove();
   });
   rpassword.addEventListener('blur', () => {
     if (rpassword.value != password.value && !pwdFieldset.querySelector('#different_password_error')) 
-      pwdFieldset.insertAdjacentHTML('afterbegin', '<p id="different_password_error" class="form__error">Le password inserite sono differenti</p>');
+      pwdFieldset.insertAdjacentHTML('afterbegin', '<p aria-role="alert" id="different_password_error" class="form__error">Le password inserite sono differenti</p>');
     else if (rpassword.value == password.value && pwdFieldset.querySelector('#different_password_error')) pwdFieldset.querySelector('#different_password_error').remove();
   });
 }
@@ -409,33 +417,25 @@ if (buyForm) {
   const emailRegex = /^(?!.*\.\.)[a-zA-Z0-9]+([._]*[a-zA-Z0-9])*@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
   name.addEventListener('blur', () => {
-    if (!name.value && !buyForm.querySelector('#name_error')) 
-    buyForm.insertAdjacentHTML('afterbegin', '<p id="name_error" class="form__error">Inserisci il tuo nome</p>');
-    else if (name.value && buyForm.querySelector('#name_error')) buyForm.querySelector('#name_error').remove();
+    if (name.value && buyForm.querySelector('#name_error')) buyForm.querySelector('#name_error').remove();
   });
   surname.addEventListener('blur', () => {
-    if (!surname.value && !buyForm.querySelector('#surname_error'))
-      buyForm.insertAdjacentHTML('afterbegin', '<p id="surname_error" class="form__error">Inserisci il tuo cognome</p>');
-    else if (surname.value && buyForm.querySelector('#surname_error')) buyForm.querySelector('#surname_error').remove();
+    if (surname.value && buyForm.querySelector('#surname_error')) buyForm.querySelector('#surname_error').remove();
   });
   email.addEventListener('blur', () => {
-    if (!emailRegex.test(email.value) && !buyForm.querySelector('#email_error')) 
-    buyForm.insertAdjacentHTML('afterbegin', '<p id="email_error" class="form__error">Inserisci un indirizzo email valido</p>');
+    if (email.value && !emailRegex.test(email.value) && !buyForm.querySelector('#email_error'))
+    buyForm.insertAdjacentHTML('afterbegin', '<p aria-role="alert" id="email_error" class="form__error">Inserisci un indirizzo email valido</p>');
     else if (emailRegex.test(email.value) && buyForm.querySelector('#email_error')) buyForm.querySelector('#email_error').remove();
   });
   birthday.addEventListener('blur', () => {
-    if (new Date(birthday.value) >= new Date() && !buyForm.querySelector('#birthday_error')) 
-      buyForm.insertAdjacentHTML('afterbegin', '<p id="birthday_error" class="form__error">La data di nascita deve essere minore o uguale a quella attuale</p>');
-    else if (new Date(birthday.value) < new Date() && buyForm.querySelector('#birthday_error')) buyForm.querySelector('#birthday_error').remove();
+    if (new Date(birthday.value) < new Date() && buyForm.querySelector('#birthday_error')) buyForm.querySelector('#birthday_error').remove();
   });
 
 
 
   const cvvRegex = /^[0-9]{3}$/;
   cvv.addEventListener('blur', () => {
-    if (!cvvRegex.test(cvv.value) && !buyForm.querySelector('#cvv_error')) 
-      buyForm.insertAdjacentHTML('afterbegin', '<p id="cvv_error" class="form__error">Inserisci un codice CVV valido</p>');
-    else if (cvvRegex.test(cvv.value) && buyForm.querySelector('#cvv_error')) buyForm.querySelector('#cvv_error').remove();
+    if (cvvRegex.test(cvv.value) && buyForm.querySelector('#cvv_error')) buyForm.querySelector('#cvv_error').remove();
   });
   cvv.addEventListener('input', () => {
     if (cvv.value.length > 3) cvv.value = cvv.value.slice(0, 3);
@@ -458,7 +458,7 @@ if (buyForm) {
     const currentYear = new Date().getFullYear().toString().slice(-2);
     const currentMonth = (new Date().getMonth() + 1).toString().padStart(2, '0');
     if (!dateRegex.test(date) && (year < currentYear || (year === currentYear && month < currentMonth)) && !buyForm.querySelector('#card_date__error'))
-      buyForm.insertAdjacentHTML('afterbegin', '<p id="card_date__error" class="form__error">Data non valida<p>');
+      buyForm.insertAdjacentHTML('afterbegin', '<p aria-role="alert" id="card_date__error" class="form__error">Data non valida<p>');
     else if (dateRegex.test(date) && !(year < currentYear || (year === currentYear && month < currentMonth)) && buyForm.querySelector('#card_date__error'))
       buyForm.querySelector('#card_date__error').remove();
 
@@ -476,9 +476,7 @@ if (buyForm) {
   function validateCard() {
     const cardNumber = cardNumberInput.value.replace(/\s/g, '');
     const cardRegex = /^[0-9]{16}$/;
-    if (!cardRegex.test(cardNumber) && !isValidLuhn(cardNumber) && !buyForm.querySelector('#card__error'))
-      buyForm.insertAdjacentHTML('afterbegin', '<p id="card__error" class="form__error">Numero di carta non valido<p>');
-    else if (cardRegex.test(cardNumber) && buyForm.querySelector('#card__error'))
+    if (cardRegex.test(cardNumber) && buyForm.querySelector('#card__error'))
       buyForm.querySelector('#card__error').remove();
   }
   function formatCardNumber(cardNumber) {

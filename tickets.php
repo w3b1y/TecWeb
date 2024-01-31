@@ -145,8 +145,8 @@ if(isset($_SESSION['ricerca'])){
                                 $dateTime->format("d/m/y") : ((clone $dateTime)->modify('+1 day'))->format("d/m/y")).'</p>
                             <p class="ticket__content">Identificativo treno: '.$train_id[0].'</p>
                             <p>Scegli la classe:</p>
-                            <button class="ticket__class js-first__class ticket__class--selected">Prima classe</button>
-                            <button class="ticket__class js-second__class">Seconda classe</button>
+                            <button aria-label="Prima classe" class="ticket__class js-first__class ticket__class--selected">Prima classe</button>
+                            <button aria-label="Seconda classe" class="ticket__class js-second__class">Seconda classe</button>
                         </div>
                         </div>
                         <div>

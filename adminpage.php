@@ -9,183 +9,168 @@ header('Cache-Control: max-age=31536000');
 
 use DB\DBAccess;
 
-$connessione = new DBAccess();
-$connessione->openDBConnection();
+$connection = new DBAccess();
+$connection->openDBConnection();
 
 if (!isset($_SESSION['user']) && !isset($_SESSION['admin'])) {
-    header('Location: login.php');
-    exit();
+  header('Location: login.php');
+  exit();
 }
 else if (!isset($_SESSION['admin'])) {
-    header('Location: index.php');
-    exit();
+  header('Location: index.php');
+  exit();
 }
 if (isset($_SESSION['admin'])) $fileHTML = str_replace("<navbar/>", '<a href="./logout.php" class="nav__link" lang="en-US">Logout</a>', $fileHTML);
 
-//PAGINA COMUNICAZIONI
-$avvisi='';
 
-//variabili per il form
-$data_i = '';
-$data_f = '';
-$titolo = '';
-$contenuto = '';
-$ins = '';
+$warnings = '';
+$start_date = '';
+$end_date = '';
+$title = '';
+$content = '';
+$message = '';
 
-//al click di insert_submit
 if(isset($_POST['insert_news'])){
-    $data_i = $_POST['date_start'];
-    $data_f = $_POST['date_end'];
-    $titolo = clearInput($_POST['news_title']);
-    $contenuto = clearInput($_POST['news_content']);
-
-    if(!empty($data_i) && !empty($data_f) && !empty($titolo) && !empty($contenuto) && $data_f>=$data_i){
-        $connessione->addComunication($data_i,$data_f,$titolo,$contenuto);
-        $ins='<p class="message" id="inserimento_news">Inserimento notizia avvenuto con successo</p>';
-        $fileHTML = str_replace("<operazione_avvenuta_news/>", $ins, $fileHTML);
-        $data_i = '';
-        $data_f = '';
-        $titolo = '';
-        $contenuto = '';
-    }
-    else{
-        if(empty($data_i)){
-            $avvisi .='<p class="form__error" id="initial_date_empty">Inserisci una data iniziale</p>';
-        } 
-        if(empty($data_f)){
-            $avvisi .='<p class="form__error" id="final_date_empty">Inserisci una data finale</p>';
-        } 
-        if($data_f>=$data_i){
-            $avvisi .= '<p class="form__error" id="datetime_error">La data finale deve essere maggiore o uguale alla data iniziale</p>';
-        }
-        if(empty($titolo)){
-            $avvisi .='<p class="form__error" id="title_empty">Inserisci un titolo</p>';
-        }      
-    }
+  if(!empty($_POST['news__date--start']) && !empty($_POST['news__date--start']) && !empty($_POST['news__date--end']) &&
+    !empty(clearInput($_POST['news__title'])) && !empty(clearInput($_POST['news__content'])) && $_POST['news__date--end'] >= $_POST['news__date--start']) {
+    $connection->addComunication($_POST['news__date--start'], $_POST['news__date--end'], $_POST['news__title'], $_POST['news__content']);
+    $message='<p aria-role="alert" class="message" id="insert_news">Inserimento notizia avvenuto con successo</p>';
+    $fileHTML = str_replace("<operazione_avvenuta_news/>", $message, $fileHTML);
+  }
+  else{
+    (empty($_POST['news__date--start'])) ?
+      $warnings .='<p aria-role="alert" class="form__error" id="initial_date_empty">Inserisci una data iniziale</p>' :
+      $start_date = $_POST['news__date--start'];
+    (empty($_POST['news__date--end'])) ?
+      $warnings .='<p aria-role="alert" class="form__error" id="final_date_empty">Inserisci una data finale</p>' :
+      $end_date = $_POST['news__date--end'];
+    (empty($_POST['news__title'])) ?
+      $warnings .='<p aria-role="alert" class="form__error" id="title_empty">Inserisci un titolo</p>' :
+      $title = $_POST['news__title'];
+    (empty($_POST['news__content'])) ?
+      $warnings .='<p aria-role="alert" class="form__error" id="content_empty">Inserisci un titolo</p>' :
+      $content = $_POST['news__content'];
+    if($_POST['news__date--end']<$_POST['news__date--start'])
+      $warnings .= '<p aria-role="alert" class="form__error" id="datetime_error">La data finale deve essere maggiore o uguale alla data iniziale</p>';  
+  }
 }
-$fileHTML = str_replace("<operazione_avvenuta_news/>", $ins, $fileHTML);
-$fileHTML = str_replace("&lt;data_i/>", $data_i, $fileHTML);
-$fileHTML = str_replace("&lt;data_f/>", $data_f, $fileHTML);
-$fileHTML = str_replace("&lt;titolo/>", $titolo, $fileHTML);
-$fileHTML = str_replace("<contenuto/>", $contenuto, $fileHTML);
-$fileHTML = str_replace("<avvisi/>", $avvisi, $fileHTML);
+$fileHTML = str_replace("<operazione_avvenuta_news/>", $message, $fileHTML);
+$fileHTML = str_replace("&lt;data_i/>", $start_date, $fileHTML);
+$fileHTML = str_replace("&lt;data_f/>", $end_date, $fileHTML);
+$fileHTML = str_replace("&lt;titolo/>", $title, $fileHTML);
+$fileHTML = str_replace("<contenuto/>", $content, $fileHTML);
+$fileHTML = str_replace("<avvisi/>", $warnings, $fileHTML);
 
+
+// FORM DELETE NEWS
 if(isset($_GET['delete_news'])){
-    $elimina=$_GET['selected_news'];
-    $connessione->deleteComunication($elimina);
-    $del='<p class="form__error" id="eliminazione_new">Eliminazione notizia avvenuta con successo</p>';
-    $fileHTML = str_replace("<operazione_avvenuta_news/>", $del, $fileHTML);
+  $delete = $_GET['selected_news'];
+  $connection->deleteComunication($delete);
+  $del='<p aria-role="alert" class="message" id="eliminazione_new">Eliminazione notizia avvenuta con successo</p>';
+  $fileHTML = str_replace("<operazione_avvenuta_news/>", $del, $fileHTML);
 }
 
-$comunicazioni= $connessione->viewComunication();
+// NEWS LIST CREATION
+$news = $connection->viewComunication();
 $newsList = '';
-if($comunicazioni != null){
-    foreach($comunicazioni as $comunicazione){       
-        $newsList .='<option value="'.$comunicazione['id'].'">'.$comunicazione['title'].'</option>';
-    }
+if($news != null){
+  foreach($news as $n){       
+    $newsList .='<option value="'.$n['id'].'">'.$n['title'].'</option>';
+  }
 }
-else{
-    $newsList = "<p>Nessuna comunicazione presente</p>";
-}
+else
+  $newsList = "<p>Nessuna comunicazione presente</p>";
+
+
 $fileHTML = str_replace("<news/>", $newsList, $fileHTML);
 
 
-//PAGINA OFFERTE
-$avvisi_offer='';
 
-//variabili per il form
-$classe = '';
-$nome = '';
-$titolo = '';
-$contenuto = '';
-$codice_sconto = '';
-$percentuale = '5';
-$data_fine = '';
-$minimo = '1';
+$warnings = '';
+$class = '';
+$name = '';
+$title = '';
+$content = '';
+$discount_code = '';
+$percentage = '5';
+$end_date = '';
+$minimum = '1';
+$message = '';
 
-//al click di insert_offert
 if(isset($_POST['insert_offer'])){
-    $classe = $_POST['offer_class'];
-    $nome = $_POST['offer_name'];
-    $titolo = clearInput($_POST['offer_title']);
-    $contenuto = $_POST['offer_content'];
-    $codice_sconto = clearInput($_POST['discount_code']);
-    $percentuale = $_POST['discount_percentage'];
-    $data_fine = $_POST['offer_end'];
-    $minimo = $_POST['minimun'];
 
-    if(!empty($classe) && !empty($nome) && !empty($titolo) && !empty($contenuto) && !empty($codice_sconto) && !empty($percentuale) && !empty($data_fine)){
-        if(($classe!="group") || ($classe=="group" && !empty($minimo) && $minimo>=2)){
-            $connessione->addOffer($classe, $nome, $titolo, $contenuto, $codice_sconto, $percentuale, $data_fine, $minimo);
-            $ins ='<p class="form__error" id="inserimento_offerta">Inserimento offerta avvenuto con successo</p>';
-            $classe = '';
-            $titolo = '';
-            $contenuto = '';
-            $codice_sconto = '';
-            $percentuale = '5';
-            $data_fine = '';
-            $minimo = '1';
-        }
-        else{
-            $avvisi_offer.='<p class="form__error" id="group_error">Inserisci un numero di persone superiore o uguale a 2</p>';
-        }
-    }
-    else{
-        (empty($classe)) ? 
-            $avvisi_offer .='<p class="form__error" id="class_error">Seleziona una categoria</p>':
-            $classe=$_POST['offer_class'];
-        
-        if(empty($titolo)){
-            $avvisi_offer .='<p class="form__error" id="title_error">Inserisci un titolo</p>';
-        }
-        if(empty($contenuto)){
-            $avvisi_offer .='<p class="form__error" id="content_error">Inserisci una descrizione </p>';
-        }
-        if(empty($codice_sconto)){
-            $avvisi_offer .='<p class="form__error" id="cod_error">Inserisci un codice sconto</p>';
-        }
-        if(empty($percentuale)){
-            $avvisi_offer .='<p class="form__error" id="perc_error">Inserisci una percentuale numerica di sconto</p>';
-        }
-        if(empty($data_fine)){
-            $avvisi_offer .='<p class="form__error" id="final_date_error">Inserisci la data fine offerta</p>';
-        }
-        if(empty($nome)){
-            $avvisi_offer .='<p class="form__error" id="img_error">Seleziona una immagine</p>';
-        }
-        if($classe=="group" && empty($minimo) && $minimo<2){
-            $avvisi_offer .='<p class="form__error" id="group_error">Inserisci un numero di persone superiore o uguale a 2</p>';
-        }
-    }
+  if(!empty($_POST['offer__background']) && !empty(clearInput($_POST['offer__title'])) && !empty($_POST['offer__content']) &&
+    !empty(clearInput($_POST['offer__discount-code'])) && !empty($_POST['offer__date--end']) && !empty($_POST['offer__discount-percentage']) &&
+    $_POST['offer__discount-percentage'] > 1 && !empty($_POST['offer__min-people']) && $_POST['offer__min-people'] >= 1 &&
+    (($_POST['offer__category'] != "group") || ($_POST['offer__category'] == "group" && $_POST['offer__min-people'] >= 2))) {
+
+      $connection->addOffer($_POST['offer__category'], $_POST['offer__background'], clearInput($_POST['offer__title']), 
+      $_POST['offer__content'], clearInput($_POST['offer__discount-code']), $percentage, $_POST['offer__date--end'], $minimum);
+      $message ='<p aria-role="alert" class="message" id="insert_news">Inserimento offerta avvenuto con successo</p>';
+  }
+  else{ 
+    (empty($_POST['offer__title'])) ?
+      $warnings .='<p aria-role="alert" class="form__error" id="offer__error--title">Inserisci un titolo</p>' :
+      $title = $_POST['offer__title'];
+    (empty($_POST['offer__content'])) ?
+      $warnings .='<p aria-role="alert" class="form__error" id="offer__error--content">Inserisci una descrizione </p>' :
+      $content = $_POST['offer__content'];
+    (empty($_POST['offer__discount-code'])) ?
+      $warnings .='<p aria-role="alert" class="form__error" id="offer__error--discount-code">Inserisci un codice sconto</p>' :
+      $discount_code = $_POST['offer__discount-code'];
+    (empty($_POST['offer__discount-percentage']) || $_POST['offer__discount-percentage'] <= 1) ?
+      $warnings .='<p aria-role="alert" class="form__error" id="offer__error--discount-percentage">Inserisci una percentuale numerica di sconto</p>' :
+      $percentage = $_POST['offer__discount-percentage'];
+    (empty($_POST['offer__date--end'])) ?
+      $warnings .='<p aria-role="alert" class="form__error" id="offer__error--end-date">Inserisci la data fine offerta</p>' :
+      $end_date = $_POST['offer__date--end'];
+    (empty($_POST['offer__min-people']) || $_POST['offer__min-people'] < 1) ?
+      $warnings .='<p aria-role="alert" class="form__error" id="offer__error--min-people">Inserisci un numero minimo di persone</p>' :
+      $minimum = $_POST['offer__min-people'];
+    (empty($_POST['offer__background'])) ?
+      $warnings .='<p aria-role="alert" class="form__error" id="offer__error--background">Seleziona una immagine</p>' :
+      $name = $_POST['offer__background'];
+    if($class=="group" && (empty($_POST['offer__min-people']) || $_POST['offer__min-people'] < 2))
+      $warnings .='<p aria-role="alert" class="form__error" id="offer__error--group">Inserisci un numero di persone superiore o uguale a 2</p>';
+  }
 }
-$fileHTML = str_replace("<operazione_avvenuta_offer/>", $ins, $fileHTML);
-$fileHTML = str_replace("&lt;titolo/>", $titolo, $fileHTML);
-$fileHTML = str_replace("<contenuto/>", $contenuto, $fileHTML);
-$fileHTML = str_replace("&lt;codice_sconto/>", $codice_sconto, $fileHTML);
-$fileHTML = str_replace("&lt;percentuale/>", $percentuale, $fileHTML);
-$fileHTML = str_replace("&lt;data_fine/>", $data_fine, $fileHTML);
-$fileHTML = str_replace("&lt;minimo/>", $minimo, $fileHTML);
-$fileHTML = str_replace("<avvisi_offer/>", $avvisi_offer, $fileHTML);
+$fileHTML = str_replace("<offer__success/>", $message, $fileHTML);
+$fileHTML = str_replace("&lt;offer__title/>", $title, $fileHTML);
+$fileHTML = str_replace("<offer__content/>", $content, $fileHTML);
+$fileHTML = str_replace("&lt;offer__discount-code/>", $discount_code, $fileHTML);
+$fileHTML = str_replace("&lt;offer__discount-percentage/>", $percentage, $fileHTML);
+$fileHTML = str_replace("&lt;offer__date--end/>", $end_date, $fileHTML);
+$fileHTML = str_replace("&lt;offer__min-people/>", $minimum, $fileHTML);
+$fileHTML = str_replace("<offer__warnings/>", $warnings, $fileHTML);
 
+
+// FORM DELETE OFFER
 if(isset($_GET['delete_offer'])){
-    $elimina=$_GET['selected_offer'];
-    $connessione->deleteOffer($elimina);
-    $del='<p class="form__error" id="eliminazione_offerta">Eliminazione offerta avvenuta con successo</p>';
-    $fileHTML = str_replace("<operazione_avvenuta_offer/>", $del, $fileHTML);
+  $delete = $_GET['selected_offer'];
+  $connection->deleteOffer($delete);
+  $del = '<p aria-role="alert" class="message" id="eliminazione_offerta">Eliminazione offerta avvenuta con successo</p>';
+  $fileHTML = str_replace("<operazione_avvenuta_offer/>", $del, $fileHTML);
 }
 
-$offerte= $connessione->viewOffers();
-$offerteList = '';
-if($offerte != null){
-    foreach($offerte as $offerta){       
-        $offerteList .='<option value="'.$offerta['id'].'">'. $offerta['class'].' - '.$offerta['title'].'</option>';
-    }
+
+// OFFER LIST CREATION
+$offers = $connection->viewOffers();
+$offersList = '';
+if($offers != null){
+  foreach($offers as $offer){ 
+    ($name && $offer['title'] == $name) ?
+      $offersList .= '<option value="'.$offer['id'].'" selected>'. $offer['class'].' - '.$offer['title'].'</option>' :
+      $offersList .= '<option value="'.$offer['id'].'">'. $offer['class'].' - '.$offer['title'].'</option>';
+  }
 }
-else{
-    $offerteList = "<p>Nessuna offerta presente</p>";
-}
-$fileHTML = str_replace("<offerte/>", $offerteList, $fileHTML);
-$connessione->closeConnection();
+else
+  $offersList = "<p>Nessuna offerta presente</p>";
+
+
+
+$fileHTML = str_replace("<offerte/>", $offersList, $fileHTML);
+
+$connection->closeConnection();
 
 echo $fileHTML;
 ?>
