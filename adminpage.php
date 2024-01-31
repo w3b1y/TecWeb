@@ -41,7 +41,7 @@ if(isset($_POST['insert_news'])){
 
     if(!empty($data_i) && !empty($data_f) && !empty($titolo) && !empty($contenuto) && $data_f>=$data_i){
         $connessione->addComunication($data_i,$data_f,$titolo,$contenuto);
-        $ins='<p class="form__error" id="inserimento_news">Inserimento notizia avvenuto con successo</p>';
+        $ins='<p class="message" id="inserimento_news">Inserimento notizia avvenuto con successo</p>';
         $fileHTML = str_replace("<operazione_avvenuta_news/>", $ins, $fileHTML);
         $data_i = '';
         $data_f = '';
@@ -115,7 +115,7 @@ if(isset($_POST['insert_offer'])){
     $minimo = $_POST['minimun'];
 
     if(!empty($classe) && !empty($nome) && !empty($titolo) && !empty($contenuto) && !empty($codice_sconto) && !empty($percentuale) && !empty($data_fine)){
-        if(($classe!="group") || ($classe=="group" && !empty($minimo) && $minimo>=3)){
+        if(($classe!="group") || ($classe=="group" && !empty($minimo) && $minimo>=2)){
             $connessione->addOffer($classe, $nome, $titolo, $contenuto, $codice_sconto, $percentuale, $data_fine, $minimo);
             $ins ='<p class="form__error" id="inserimento_offerta">Inserimento offerta avvenuto con successo</p>';
             $classe = '';
@@ -126,11 +126,15 @@ if(isset($_POST['insert_offer'])){
             $data_fine = '';
             $minimo = '1';
         }
+        else{
+            $avvisi_offer.='<p class="form__error" id="group_error">Inserisci un numero di persone superiore o uguale a 2</p>';
+        }
     }
     else{
-        if(empty($classe)){
-            $avvisi_offer .='<p class="form__error" id="class_error">Seleziona una categoria</p>';
-        }
+        (empty($classe)) ? 
+            $avvisi_offer .='<p class="form__error" id="class_error">Seleziona una categoria</p>':
+            $classe=$_POST['offer_class'];
+        
         if(empty($titolo)){
             $avvisi_offer .='<p class="form__error" id="title_error">Inserisci un titolo</p>';
         }
@@ -149,8 +153,8 @@ if(isset($_POST['insert_offer'])){
         if(empty($nome)){
             $avvisi_offer .='<p class="form__error" id="img_error">Seleziona una immagine</p>';
         }
-        if($classe=="group" && empty($minimo) && $minimo<3){
-            $avvisi_offer .='<p class="form__error" id="group_error">Inserisci un numero di persone superiore o uguale a 3</p>';
+        if($classe=="group" && empty($minimo) && $minimo<2){
+            $avvisi_offer .='<p class="form__error" id="group_error">Inserisci un numero di persone superiore o uguale a 2</p>';
         }
     }
 }
