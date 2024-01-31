@@ -1,5 +1,5 @@
-/* @import url('https://fonts.googleapis.com/css2?family=Afacad:wght@400;500;700&display=swap'); */
-@font-face {
+@import url('https://fonts.googleapis.com/css2?family=Afacad:wght@400;500;700&display=swap');
+/* @font-face {
   font-family: "Afacad";
   src: url("./fonts/Afacad/Afacad-VariableFont_wght.ttf");
   font-display: optional;
@@ -16,7 +16,7 @@
   src: url("./fonts/Afacad/Afacad-VariableFont_wght.ttf");
   font-display: optional;
   font-weight: 600;
-}
+} */
 
 /*==================== VARIABLES CSS ====================*/
 :root {
