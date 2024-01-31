@@ -34,6 +34,7 @@ if ($offerte_super != null) {
                                 <div class="offer__body">
                                     <h3 class="offer__title">'.$offerta['title'].'</h3>
                                     <p class="offer__content">'.$offerta['content'].'</p>
+                                    <p class="offer__content">CODICE SCONTO: '.$offerta['discount_code'].'</p>
                                 </div>
                             </a>';
     }   
@@ -45,6 +46,7 @@ if ($offerte_special != null) {
                                 <div class="offer__body">
                                     <h3 class="offer__title">'.$offerta['title'].'</h3>
                                     <p class="offer__content">'.$offerta['content'].'</p>
+                                    <p class="offer__content">CODICE SCONTO: '.$offerta['discount_code'].'</p>
                                 </div>
                             </a>';
     }  
@@ -56,6 +58,7 @@ if ($offerte_studenti != null) {
                                     <div class="offer__body">
                                         <h3 class="offer__title">'.$offerta['title'].'</h3>
                                         <p class="offer__content">'.$offerta['content'].'</p>
+                                        <p class="offer__content">CODICE SCONTO: '.$offerta['discount_code'].'</p>
                                     </div>
                                 </a>';
     }  
@@ -67,6 +70,7 @@ if ($offerte_gruppi != null) {
                                     <div class="offer__body">
                                         <h3 class="offer__title">'.$offerta['title'].'</h3>
                                         <p class="offer__content">'.$offerta['content'].'</p>
+                                        <p class="offer__content">CODICE SCONTO: '.$offerta['discount_code'].'</p>
                                     </div>
                                 </a>';
     }  

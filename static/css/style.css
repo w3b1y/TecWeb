@@ -472,7 +472,7 @@ tr:nth-of-type(2n) {
 .news__expand {
   background-color: transparent;
   border: none;
-  color: var(--first-color);
+  color: var(--visited-color);
   font-weight: var(--font-bold);
 }
 
@@ -1228,7 +1228,7 @@ tr:nth-of-type(2n) {
   /*==================== NAVBAR ====================*/
   .nav__menu {
     position: fixed;
-    background-color: var(--second-color);
+    background-color: var(--third-color);
     backdrop-filter: blur(32px);
     -webkit-backdrop-filter: blur(32px);
     top: 0;
