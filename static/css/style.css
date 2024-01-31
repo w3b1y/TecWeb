@@ -1,4 +1,22 @@
-@import url('https://fonts.googleapis.com/css2?family=Afacad:wght@400;500;700&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Afacad:wght@400;500;700&display=swap'); */
+@font-face {
+  font-family: "Afacad";
+  src: url("./fonts/Afacad/Afacad-VariableFont_wght.ttf");
+  font-display: optional;
+  font-weight: 400;
+}
+@font-face {
+  font-family: "Afacad";
+  src: url("./fonts/Afacad/Afacad-VariableFont_wght.ttf");
+  font-display: optional;
+  font-weight: 500;
+}
+@font-face {
+  font-family: "Afacad";
+  src: url("./fonts/Afacad/Afacad-VariableFont_wght.ttf");
+  font-display: optional;
+  font-weight: 600;
+}
 
 /*==================== VARIABLES CSS ====================*/
 :root {
@@ -357,7 +375,7 @@ tr:nth-of-type(2n) {
   width: 100%;
   height: 100%;
   z-index: -1;
-  background-image: url("../img/banner.jpg");
+  background-image: url("../img/banner.webp");
   background-position: top;
   background-repeat: no-repeat;
   background-size: cover;
@@ -520,40 +538,40 @@ tr:nth-of-type(2n) {
 }
 
 .offer--winter-days::before {
-  background-image: url('../img/winter-days.jpg');
+  background-image: url('../img/winter-days.webp');
 }
 .offer--christmas-gift::before {
-  background-image: url('../img/christmas-gift.jpg');
+  background-image: url('../img/christmas-gift.webp');
 }
 .offer--new-year::before {
-  background-image: url('../img/new-year.jpg');
+  background-image: url('../img/new-year.webp');
 }
 .offer--love::before {
-  background-image: url('../img/love.jpg');
+  background-image: url('../img/love.webp');
 }
 .offer--young::before {
-  background-image: url('../img/young.jpg');
+  background-image: url('../img/young.webp');
 }
 .offer--old::before {
-  background-image: url('../img/old.jpg');
+  background-image: url('../img/old.webp');
 }
 .offer--family::before {
-  background-image: url('../img/family.jpg');
+  background-image: url('../img/family.webp');
 }
 .offer--group::before {
-  background-image: url('../img/group.jpg');
+  background-image: url('../img/group.webp');
 }
 .offer--school::before {
-  background-image: url('../img/school.jpg');
+  background-image: url('../img/school.webp');
 }
 .offer--five::before {
-  background-image: url('../img/five.jpg');
+  background-image: url('../img/five.webp');
 }
 .offer--ten::before {
-  background-image: url('../img/ten.jpg');
+  background-image: url('../img/ten.webp');
 }
 .offer--fifteen::before {
-  background-image: url('../img/fifteen.jpg');
+  background-image: url('../img/fifteen.webp');
 }
 
 
@@ -1037,13 +1055,13 @@ tr:nth-of-type(2n) {
   }
 
   #discount {
-    width: calc(40% - 3px);
+    width: calc(40% - 4px);
   }
   #date {
-    width: calc(40% - 3px);
+    width: calc(40% - 4px);
   }
   #seats {
-    width: calc(20% - 3px);
+    width: calc(20% - 4px);
   }
 
   /*======================================== FLEET ========================================*/
@@ -1119,7 +1137,7 @@ tr:nth-of-type(2n) {
 
   #about__presentation::before {
     width: 45%;
-    background-image: url('../img/about.jpg');
+    background-image: url('../img/about.webp');
     background-size: cover;
     filter: blur(1.2px);
   }

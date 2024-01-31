@@ -110,7 +110,7 @@ INSERT INTO user (first_name, last_name, email, password, birthday) VALUES
 
 -- Admins
 INSERT INTO admin (email, password) VALUES
-('admin@admin.com', 'admin'),
+('admin@admin.com', 'adminadmin'),
 ('admin1@iberu.com', 'adminpass'),
 ('admin2@iberu.com', 'admin123');
 

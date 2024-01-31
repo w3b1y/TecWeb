@@ -4,6 +4,7 @@ session_start();
 require_once "DBAccess.php"; 
 
 $fileHTML = file_get_contents("offers.html");
+header('Cache-Control: max-age=31536000');
 
 use DB\DBAccess;
 

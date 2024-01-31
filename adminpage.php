@@ -5,6 +5,7 @@ require_once "DBAccess.php";
 require_once "funzioni.php"; 
 
 $fileHTML = file_get_contents("adminpage.html");
+header('Cache-Control: max-age=31536000');
 
 use DB\DBAccess;
 
