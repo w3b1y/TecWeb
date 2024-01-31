@@ -130,7 +130,7 @@ if(isset($_SESSION['ricerca'])){
                         $departure_time_station->format('H:i').'">'.$departure_time_station->format('H:i').'</time></dd>
                         <dt class="route__term--horizontal route__term--line">Durata</dt>
                         <dd class="route__data--horizontal route__data--line"><time datetime="'.
-                        $qResult_duration[0].'">'.$qResult_duration[0].'</time></dd>
+                        $qResult_duration[0].'">'.date2txt(new DateTime($qResult_duration[0])).'</time></dd>
                         <dt class="route__term--horizontal">'.$stazioneArrivo.'</dt>
                         <dd class="route__data--horizontal"><time class="js-arrival_time" datetime="'.
                         $arrive_time_station->format('H:i').'">'.$arrive_time_station->format('H:i').'</time></dd>
