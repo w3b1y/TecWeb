@@ -83,7 +83,7 @@
     </nav>
     <section id="page--addNews" class="container container--user">
       <h2 class="container__heading container__heading--main">AGGIUNGI NOTIZIE</h2>
-      <operazione_avvenuta_news/>
+      <aggiunta_avvenuta_news/>
       <form action="adminpage.php" method="post" id="form--insert-news" class="container__fieldset--user">
         <avvisi/>
         <label for="news__date--start" class="container__label">Data iniziale notizia</label>
@@ -98,6 +98,7 @@
       </form>
     </section>
     <section id="page--removeNews" class="container container--user container--hide">
+      <eliminazione_avvenuta_news/>
       <h2 class="container__heading container__heading--main">RIMUOVI NOTIZIE</h2>
       <form action="adminpage.php" class="container__fieldset--user">
         <label class="container__label" for="delete__news">Elimina notizia</label>
@@ -109,7 +110,7 @@
     </section>
     <section id="page--addOffer" class="container container--user container--hide">
       <h2 class="container__heading container__heading--main">AGGIUNGI OFFERTE</h2>
-      <operazione_avvenuta_offer/>
+      <aggiunta_avvenuta_offer/>
         <form action="adminpage.php" method="post" id="form--insert-offer" class="container__fieldset--user">
           <offer__warnings/>
           <label for="offer__category" class="container__label">Categoria</label>
@@ -223,6 +224,7 @@
         </form>
     </section>
     <section id="page--removeOffer" class="container container--user container--hide">
+      <eliminazione_avvenuta_offer/>
       <h2 class="container__heading container__heading--main">RIMUOVI OFFERTE</h2>
       <form action="adminpage.php" class="container__fieldset--user">
         <label class="container__label" for="delete__offer">Elimina offerta</label>

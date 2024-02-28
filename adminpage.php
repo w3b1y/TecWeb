@@ -54,7 +54,7 @@ if(isset($_POST['insert_news'])){
       $warnings .= '<p aria-role="alert" class="form__error" id="datetime_error">La data finale deve essere maggiore o uguale alla data iniziale</p>';  
   }
 }
-$fileHTML = str_replace("<operazione_avvenuta_news/>", $message, $fileHTML);
+$fileHTML = str_replace("<aggiunta_avvenuta_news/>", $message, $fileHTML);
 $fileHTML = str_replace("&lt;data_i/>", $start_date, $fileHTML);
 $fileHTML = str_replace("&lt;data_f/>", $end_date, $fileHTML);
 $fileHTML = str_replace("&lt;titolo/>", $title, $fileHTML);
@@ -67,7 +67,7 @@ if(isset($_GET['delete_news'])){
   $delete = $_GET['selected_news'];
   $connection->deleteComunication($delete);
   $del='<p aria-role="alert" class="message" id="eliminazione_new">Eliminazione notizia avvenuta con successo</p>';
-  $fileHTML = str_replace("<operazione_avvenuta_news/>", $del, $fileHTML);
+  $fileHTML = str_replace("<eliminazione_avvenuta_news/>", $del, $fileHTML);
 }
 
 // NEWS LIST CREATION
@@ -133,7 +133,7 @@ if(isset($_POST['insert_offer'])){
       $warnings .='<p aria-role="alert" class="form__error" id="offer__error--group">Inserisci un numero di persone superiore o uguale a 2</p>';
   }
 }
-$fileHTML = str_replace("<offer__success/>", $message, $fileHTML);
+$fileHTML = str_replace("<aggiunta_avvenuta_offer/>", $message, $fileHTML);
 $fileHTML = str_replace("&lt;offer__title/>", $title, $fileHTML);
 $fileHTML = str_replace("<offer__content/>", $content, $fileHTML);
 $fileHTML = str_replace("&lt;offer__discount-code/>", $discount_code, $fileHTML);
@@ -148,7 +148,7 @@ if(isset($_GET['delete_offer'])){
   $delete = $_GET['selected_offer'];
   $connection->deleteOffer($delete);
   $del = '<p aria-role="alert" class="message" id="eliminazione_offerta">Eliminazione offerta avvenuta con successo</p>';
-  $fileHTML = str_replace("<operazione_avvenuta_offer/>", $del, $fileHTML);
+  $fileHTML = str_replace("<eliminazione_avvenuta_offer/>", $del, $fileHTML);
 }
 
 
