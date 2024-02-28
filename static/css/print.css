@@ -1,0 +1,75 @@
+.logo {
+  text-indent: 0;
+  font-size: xx-large;
+  width: 100%;
+  color: #000;
+}
+.submit {
+  color: #000;
+}
+#breadcrumb,
+#index__search,
+#index__news .container__footer,
+#index__offers .container__footer,
+#index__fleet {
+    display: none;
+}
+.container__body--offers {
+  display: flex;
+  flex-direction: column;
+  margin: 5rem 0;
+}
+.offer {
+  width: 100%;
+  height: fit-content;
+  margin: 2rem 0;
+}
+.offer__title,
+.offer__content {
+  color: #000;
+}
+.news {
+  border: none;
+}
+.news__content {
+  display: block;
+}
+.news__expand {
+  display: none;
+}
+.container--dynamic::before,
+.container--dynamic-inverse::before {
+  content: "";
+  display: none;
+}
+.dynamic__heading-margin,
+.dynamic__content-margin,
+.dynamic-inverse__heading-margin,
+.dynamic-inverse__content-margin {
+  margin: 0;
+  width: 100%;
+}
+#about__mission,
+#about__contact,
+#about__experience,
+#about__environment,
+.wheelchair__icon,
+.money__icon,
+.ticket__icon,
+.offers__icon,
+#about__mission::before,
+#about__contact::before,
+#about__experience::before,
+#about__environment::before,
+.wheelchair__icon::before,
+.money__icon::before,
+.ticket__icon::before,
+.offers__icon::before {
+  border: none;
+}
+.ticket__class {
+  color: #000;
+}
+.ticket__body {
+  display: block;
+}
