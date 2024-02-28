@@ -35,7 +35,7 @@ if(isset($_POST['insert_news'])){
     !empty(clearInput($_POST['news__title'])) && !empty(clearInput($_POST['news__content'])) && $_POST['news__date--end'] >= $_POST['news__date--start']) {
     $connection->addComunication($_POST['news__date--start'], $_POST['news__date--end'], removeSuperscripts($_POST['news__title']), removeSuperscripts($_POST['news__content']));
     $message='<p aria-role="alert" class="message" id="insert_news">Inserimento notizia avvenuto con successo</p>';
-    $fileHTML = str_replace("<operazione_avvenuta_news/>", $message, $fileHTML);
+    $fileHTML = str_replace("<aggiunta_avvenuta_news/>", $message, $fileHTML);
   }
   else{
     (empty($_POST['news__date--start'])) ?
