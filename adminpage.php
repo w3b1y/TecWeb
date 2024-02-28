@@ -34,7 +34,7 @@ if(isset($_POST['insert_news'])){
   if(!empty($_POST['news__date--start']) && !empty($_POST['news__date--start']) && !empty($_POST['news__date--end']) &&
     !empty(clearInput($_POST['news__title'])) && !empty(clearInput($_POST['news__content'])) && $_POST['news__date--end'] >= $_POST['news__date--start']) {
     $connection->addComunication($_POST['news__date--start'], $_POST['news__date--end'], removeSuperscripts($_POST['news__title']), removeSuperscripts($_POST['news__content']));
-    $message='<p aria-role="alert" class="message" id="insert_news">Inserimento notizia avvenuto con successo</p>';
+    $message='<p aria-role="alert" class="message js-success-message" id="insert_news">Inserimento notizia avvenuto con successo</p>';
     $fileHTML = str_replace("<aggiunta_avvenuta_news/>", $message, $fileHTML);
   }
   else{
@@ -66,7 +66,7 @@ $fileHTML = str_replace("<avvisi/>", $warnings, $fileHTML);
 if(isset($_GET['delete_news'])){
   $delete = $_GET['selected_news'];
   $connection->deleteComunication($delete);
-  $del='<p aria-role="alert" class="message" id="eliminazione_new">Eliminazione notizia avvenuta con successo</p>';
+  $del='<p aria-role="alert" class="message js-success-message" id="eliminazione_new">Eliminazione notizia avvenuta con successo</p>';
   $fileHTML = str_replace("<eliminazione_avvenuta_news/>", $del, $fileHTML);
 }
 
@@ -105,7 +105,7 @@ if(isset($_POST['insert_offer'])){
 
       $connection->addOffer($_POST['offer__category'], $_POST['offer__background'], removeSuperscripts(clearInput($_POST['offer__title'])), 
       removeSuperscripts($_POST['offer__content']), clearInput($_POST['offer__discount-code']), $percentage, $_POST['offer__date--end'], $minimum);
-      $message ='<p aria-role="alert" class="message" id="insert_news">Inserimento offerta avvenuto con successo</p>';
+      $message ='<p aria-role="alert" class="message js-success-message" id="insert_news">Inserimento offerta avvenuto con successo</p>';
   }
   else{ 
     (empty($_POST['offer__title'])) ?
@@ -147,7 +147,7 @@ $fileHTML = str_replace("<offer__warnings/>", $warnings, $fileHTML);
 if(isset($_GET['delete_offer'])){
   $delete = $_GET['selected_offer'];
   $connection->deleteOffer($delete);
-  $del = '<p aria-role="alert" class="message" id="eliminazione_offerta">Eliminazione offerta avvenuta con successo</p>';
+  $del = '<p aria-role="alert" class="message js-success-message" id="eliminazione_offerta">Eliminazione offerta avvenuta con successo</p>';
   $fileHTML = str_replace("<eliminazione_avvenuta_offer/>", $del, $fileHTML);
 }
 
