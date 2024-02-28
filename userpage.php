@@ -64,9 +64,11 @@ else {
   foreach ($valid_ticket as $vt) {
     $departure_station = $vt['departure_station_id'];
     $arrival_station = $vt['arrival_station_id'];
+    $qResult_route = $connessione->getDataArray("select route_id from route_schedule 
+                                                where id = '".$vt['route_schedule_id']."'")[0];
     $qResult_duration = $connessione->getDataArray("select timediff(end.duration, start.duration) as time_difference
               from route_station as start join route_station as end on start.route_id = end.route_id
-              where start.station_id = '$departure_station' and end.station_id = '$arrival_station'");
+              where start.station_id = '$departure_station' and end.station_id = '$arrival_station' and start.route_id='$qResult_route'");
     $qResult_d = new Datetime($qResult_duration[0]);
     $departure_time_station = (new DateTime($vt['departure_time']));
     $arrival_time_station = clone $departure_time_station;

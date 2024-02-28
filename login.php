@@ -18,34 +18,34 @@ if (isset($_SESSION['user']) || isset($_SESSION['admin'])) {
 }
 
 $warnings = "";
-$email = "";
+$user_name = "";
 $password = "";
 
 if (isset($_POST['submit'])) {
-  $email = clearInput($_POST['email']);
+  $user_name = clearInput($_POST['user_name']);
   $password = clearInput($_POST['new_password']);
 
-  if (empty($email) || empty($password) || !preg_match("/^(?!.*\.\.)[a-zA-Z0-9]+([._]*[a-zA-Z0-9])*@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/", $email)) {
-      $warnings = '<p class="form__error" id="login_error">Inserisci email e password</p>';
+  if (empty($user_name) || empty($password)) {
+      $warnings = '<p class="form__error" id="login_error">Inserisci user_name e password</p>';
   }
   else {
-    if ($connection->checkLogin($email, $password)) {
-      $_SESSION['user'] = $connection->getDataArray("select id from user where email = '$email'")[0];
+    if ($connection->checkLogin($user_name, $password)) {
+      $_SESSION['user'] = $connection->getDataArray("select id from user where user_name = '$user_name'")[0];
       $connection->closeConnection();
       header("Location: userpage.php");
       exit();
     } 
-    else if ($connection->checkLoginAdmin($email, $password)) {
-      $_SESSION['admin'] = $connection->getDataArray("select id from admin where email = '$email'")[0];
+    else if ($connection->checkLoginAdmin($user_name, $password)) {
+      $_SESSION['admin'] = $connection->getDataArray("select id from admin where email = '$user_name'")[0];
       $connection->closeConnection();
       header("Location: adminpage.php");
       exit();
     }
-    else $warnings = '<p class="form__error" id="login_error">Email o password errati</p>';
+    else $warnings = '<p class="form__error" id="login_error">Username o password errati</p>';
   }
 }
 
 $fileHTML = str_replace("<warnings/>", $warnings, $fileHTML);
-$fileHTML = str_replace("<email/>", $email, $fileHTML);
+$fileHTML = str_replace("<user_name/>", $user_name, $fileHTML);
 echo $fileHTML;
 ?>

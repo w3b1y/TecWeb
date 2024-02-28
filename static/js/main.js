@@ -24,6 +24,16 @@ const linkAction = () => {
 navLink.forEach(l => l.addEventListener('click', linkAction));
 
 
+window.addEventListener('scroll', () => {
+  if (this.scrollY > 20) document.querySelector('.js-back2top').classList.add('show');
+  else document.querySelector('.js-back2top').classList.remove('show');
+});
+
+const back2top = document.querySelector('.js-back2top');
+back2top.addEventListener('click', () => {
+  window.scrollTo(0, 0);
+});
+
 
 ////////////////////////////////////  HOME  ////////////////////////////////////
 const url = new URL(window.location.href);
@@ -197,6 +207,7 @@ if (overviewButton && historyButton && userButton) {
   const opassword = userForm.querySelector('#old_password');
   const password = userForm.querySelector('#new_password');
   const rpassword = userForm.querySelector('#rnew_password');
+  const submit = userForm.querySelector('.submit');
   const emailRegex = /^(?!.*\.\.)[a-zA-Z0-9]+([._]*[a-zA-Z0-9])*@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
   name.addEventListener('blur', () => {
     if (!name.value && !pInfoFieldset.querySelector('#name_error')) 
@@ -209,7 +220,7 @@ if (overviewButton && historyButton && userButton) {
     else if (surname.value && pInfoFieldset.querySelector('#surname_error')) pInfoFieldset.querySelector('#surname_error').remove();
   });
   email.addEventListener('blur', () => {
-    if (!emailRegex.test(email.value) && !pInfoFieldset.querySelector('#email_error')) 
+    if (!emailRegex.test(email.value) && !pInfoFieldset.querySelector('#email_error'))
     pInfoFieldset.insertAdjacentHTML('afterbegin', '<p aria-role="alert" id="email_error" class="form__error">Inserisci un indirizzo email valido</p>');
     else if (emailRegex.test(email.value) && pInfoFieldset.querySelector('#email_error')) pInfoFieldset.querySelector('#email_error').remove();
   });
@@ -237,19 +248,30 @@ if (overviewButton && historyButton && userButton) {
       pwdFieldset.insertAdjacentHTML('afterbegin', '<p aria-role="alert" id="different_password_error" class="form__error">Le password inserite sono differenti</p>');
     else if (rpassword.value == password.value && pwdFieldset.querySelector('#different_password_error')) pwdFieldset.querySelector('#different_password_error').remove();
   });
+  submit.addEventListener('click', (e) => {
+    if (userForm.querySelector('.form__error')) e.preventDefault();
+  });
 }
 
 const addNewsButton = document.querySelector('#addNews');
 const addNewsPage = document.querySelector('#page--addNews');
+const removeNewsButton = document.querySelector('#removeNews');
+const removeNewsPage = document.querySelector('#page--removeNews');
 const addOfferButton = document.querySelector('#addOffer');
 const addOfferPage = document.querySelector('#page--addOffer');
+const removeOfferButton = document.querySelector('#removeOffer');
+const removeOfferPage = document.querySelector('#page--removeOffer');
 
 function showPageAdmin(button, page) {
   addNewsPage.classList.add('container--hide');
+  removeNewsPage.classList.add('container--hide');
   addOfferPage.classList.add('container--hide');
+  removeOfferPage.classList.add('container--hide');
 
   addNewsButton.classList.remove('nav__button--current');
+  removeNewsButton.classList.remove('nav__button--current');
   addOfferButton.classList.remove('nav__button--current');
+  removeOfferButton.classList.remove('nav__button--current');
 
   page.classList.remove('container--hide');
   button.classList.add('nav__button--current');
@@ -257,14 +279,18 @@ function showPageAdmin(button, page) {
 }
 
 if (addNewsButton && addOfferButton) {
+  console.log(addNewsButton);
   addNewsButton.addEventListener('click', () => showPageAdmin(addNewsButton, addNewsPage));
+  removeNewsButton.addEventListener('click', () => showPageAdmin(removeNewsButton, removeNewsPage));
   addOfferButton.addEventListener('click', () => showPageAdmin(addOfferButton, addOfferPage));
+  removeOfferButton.addEventListener('click', () => showPageAdmin(removeOfferButton, removeOfferPage));
 
   const newsForm = document.querySelector('#form--insert-news');
   const startDate = newsForm.querySelector('#news__date--start');
   const endDate = newsForm.querySelector('#news__date--end');
   const newsTitle = newsForm.querySelector('#news__title');
   const newsContent = newsForm.querySelector('#news__content');
+  const newsSubmit = newsForm.querySelector('.submit');
 
   startDate.addEventListener('blur', () => {
     if (startDate.value && newsForm.querySelector('#initial_date_empty')) newsForm.querySelector('#initial_date_empty').remove();
@@ -334,24 +360,22 @@ window.onload = () => {
 ////////////////////////////////////  LOGIN  ////////////////////////////////////
 const loginForm = document.querySelector('.js-login__form');
 if (loginForm) {
-  const email = loginForm.querySelector('#email');
+  const username = loginForm.querySelector('#user_name');
   const password = loginForm.querySelector('#new_password');
-  const emailRegex = /^(?!.*\.\.)[a-zA-Z0-9]+([._]*[a-zA-Z0-9])*@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-  email.addEventListener('blur', () => {
-    if (email.value && !emailRegex.test(email.value) && !loginForm.querySelector('#email_error')) 
-      loginForm.insertAdjacentHTML('afterbegin', '<p aria-role="alert" id="email_error" class="form__error">Inserisci un indirizzo email valido</p>');
-    else if (emailRegex.test(email.value) && loginForm.querySelector('#email_error')) loginForm.querySelector('#email_error').remove();
+  username.addEventListener('blur', () => {
+    if (username.value && loginForm.querySelector('#username_error')) loginForm.querySelector('#username_error').remove();
   });
-  email.addEventListener('focus', () => {
+  username.addEventListener('focus', () => {
     if (password.value && loginForm.querySelector('#login_error')) loginForm.querySelector('#login_error').remove();
   });
   password.addEventListener('blur', () => {
+    if(password.value == 'admin' || password.value == 'user') return;
     if (password.value && password.value.length < 8 && !loginForm.querySelector('#password_error')) 
       loginForm.insertAdjacentHTML('afterbegin', '<p aria-role="alert" id="password_error" class="form__error">La password deve essere lunga almeno 8 caratteri</p>');
     else if (password.value.length >= 8 && loginForm.querySelector('#password_error')) loginForm.querySelector('#password_error').remove();
   });
   password.addEventListener('focus', () => {
-    if (email.value && loginForm.querySelector('#login_error')) loginForm.querySelector('#login_error').remove();
+    if (username.value && loginForm.querySelector('#login_error')) loginForm.querySelector('#login_error').remove();
   });
 }
 
@@ -361,6 +385,7 @@ const registerForm = document.querySelector('.js-register__form');
 if (registerForm) {
   const pInfoFieldset = registerForm.querySelector('.js-register__form--pinfo');
   const pwdFieldset = registerForm.querySelector('.js-register__form--pwd');
+  const username = registerForm.querySelector('#username');
   const name = registerForm.querySelector('#name');
   const surname = registerForm.querySelector('#surname');
   const email = registerForm.querySelector('#email');
@@ -368,6 +393,9 @@ if (registerForm) {
   const password = registerForm.querySelector('#new_password');
   const rpassword = registerForm.querySelector('#rnew_password');
   const emailRegex = /^(?!.*\.\.)[a-zA-Z0-9]+([._]*[a-zA-Z0-9])*@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  username.addEventListener('blur', () => {
+    if (username.value && pInfoFieldset.querySelector('#username_error')) pInfoFieldset.querySelector('#username_error').remove();
+  });
   name.addEventListener('blur', () => {
     if (name.value && pInfoFieldset.querySelector('#name_error')) pInfoFieldset.querySelector('#name_error').remove();
   });

@@ -28,6 +28,7 @@ $data_nascita = '';
 
 //al click di new_user
 if(isset($_POST['new_user'])){
+    $username = clearInput($_POST['username']);
     $nome = clearInput($_POST['name']);
     $cognome = clearInput($_POST['surname']);
     $email = clearInput($_POST['email']);
@@ -38,9 +39,9 @@ if(isset($_POST['new_user'])){
 
     $check_email = $connessione->getDataArray("select id from user where email='$email'");
 
-    if(!empty($nome) && !empty($cognome) && !empty($email) && empty($check_email) && !empty($data_nascita) && $data_nascita<$dataOggi && !empty($np) && !empty($rnp) && $np==$rnp && !(strlen($np) < 8 || strlen($rnp) < 8)){
+    if(!empty($username) && !empty($nome) && !empty($cognome) && !empty($email) && empty($check_email) && !empty($data_nascita) && $data_nascita<$dataOggi && !empty($np) && !empty($rnp) && $np==$rnp && !(strlen($np) < 8 || strlen($rnp) < 8)){
         $_SESSION['message']='<p class="message js-success-message" id="registrazione_avvenuta">Registrazione avvenuta con successo</p>';
-        $connessione->addUser($nome, $cognome, $email, $data_nascita, $np);
+        $connessione->addUser($username, $nome, $cognome, $email, $data_nascita, $np);
         $user = $connessione->getDataArray("select id from user where email='$email'")[0];
         $_SESSION['user'] = $user;
         $nome = '';
@@ -51,6 +52,9 @@ if(isset($_POST['new_user'])){
         exit();
     }
     else{
+        if(empty($username)){
+            $avvisi .='<p class="form__error" id="username_error">Inserire username</p>';
+        }
         if(empty($nome)){
             $avvisi .='<p class="form__error" id="name_error">Inserire nome</p>';
         } 
@@ -81,6 +85,7 @@ if(isset($_POST['new_user'])){
         } 
     }
 }
+$fileHTML = str_replace("&lt;username/>", $username, $fileHTML);
 $fileHTML = str_replace("&lt;nome/>", $nome, $fileHTML);
 $fileHTML = str_replace("&lt;cognome/>", $cognome, $fileHTML);
 $fileHTML = str_replace("&lt;email/>", $email, $fileHTML);

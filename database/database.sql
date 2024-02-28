@@ -12,6 +12,7 @@ DROP TABLE IF EXISTS user CASCADE;
 
 CREATE TABLE user(
   id INT PRIMARY KEY AUTO_INCREMENT,
+  user_name VARCHAR(40) NOT NULL UNIQUE,
   first_name VARCHAR(40) NOT NULL,
   last_name VARCHAR(40) NOT NULL,
   email VARCHAR(40) NOT NULL UNIQUE,
@@ -93,24 +94,24 @@ CREATE TABLE offers(
 );
 
 -- Users
-INSERT INTO user (first_name, last_name, email, password, birthday) VALUES
-('user', 'user', 'user@user.com', 'useruser', '2001-02-15'),
-('John', 'Doe', 'john.doe@example.com', 'password123', '2001-02-15'),
-('Jane', 'Smith', 'jane.smith@example.com', 'securepass', '2004-04-15'),
-('Alice', 'Johnson', 'alice.johnson@example.com', 'passalice123', '1995-07-21'),
-('Bob', 'Miller', 'bob.miller@example.com', 'bobpass456', '1988-11-30'),
-('Eva', 'Clark', 'eva.clark@example.com', 'evapassword789', '1992-04-05'),
-('David', 'Taylor', 'david.taylor@example.com', 'davidpass321', '1985-09-15'),
-('Sophia', 'Roberts', 'sophia.roberts@example.com', 'sophiapass777', '1998-02-20'),
-('Michael', 'White', 'michael.white@example.com', 'mikepass111', '1982-06-12'),
-('Olivia', 'Anderson', 'olivia.anderson@example.com', 'oliviapass222', '1990-08-25'),
-('Henry', 'Brown', 'henry.brown@example.com', 'henrypass999', '1987-03-08'),
-('Emma', 'Garcia', 'emma.garcia@example.com', 'emmapass444', '1993-12-01'),
-('Liam', 'Smith', 'liam.smith@example.com', 'liampass555', '1996-10-18');
+INSERT INTO user (user_name, first_name, last_name, email, password, birthday) VALUES
+('user', 'user', 'user', 'user@user.com', 'user', '2001-02-15'),
+('John', 'John', 'Doe', 'john.doe@example.com', 'password123', '2001-02-15'),
+('Jane', 'Jane', 'Smith', 'jane.smith@example.com', 'securepass', '2004-04-15'),
+('Alice', 'Alice', 'Johnson', 'alice.johnson@example.com', 'passalice123', '1995-07-21'),
+('Bob', 'Bob', 'Miller', 'bob.miller@example.com', 'bobpass456', '1988-11-30'),
+('Eva', 'Eva', 'Clark', 'eva.clark@example.com', 'evapassword789', '1992-04-05'),
+('David', 'David', 'Taylor', 'david.taylor@example.com', 'davidpass321', '1985-09-15'),
+('Sophia', 'Sophia', 'Roberts', 'sophia.roberts@example.com', 'sophiapass777', '1998-02-20'),
+('Michael', 'Michael', 'White', 'michael.white@example.com', 'mikepass111', '1982-06-12'),
+('Olivia', 'Olivia', 'Anderson', 'olivia.anderson@example.com', 'oliviapass222', '1990-08-25'),
+('Henry', 'Henry', 'Brown', 'henry.brown@example.com', 'henrypass999', '1987-03-08'),
+('Emma', 'Emma', 'Garcia', 'emma.garcia@example.com', 'emmapass444', '1993-12-01'),
+('Liam', 'Liam', 'Smith', 'liam.smith@example.com', 'liampass555', '1996-10-18');
 
 -- Admins
 INSERT INTO admin (email, password) VALUES
-('admin@admin.com', 'adminadmin'),
+('admin', 'admin'),
 ('admin1@iberu.com', 'adminpass'),
 ('admin2@iberu.com', 'admin123');
 

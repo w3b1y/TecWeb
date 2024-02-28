@@ -20,8 +20,8 @@ class DBAccess{
         }
     }
     
-    public function checkLogin(string $email, string $password) {
-        $query = "SELECT email, password FROM user WHERE email = '$email' AND password = '$password'";
+    public function checkLogin(string $user_name, string $password) {
+        $query = "SELECT user_name, password FROM user WHERE user_name = '$user_name' AND password = '$password'";
         $qResult = mysqli_query($this->connection, $query) or die("Errore nel controllo del login".mysqli_error($this->connection));
 
         if(mysqli_num_rows($qResult) == 1){
@@ -161,8 +161,8 @@ class DBAccess{
         //return null;
     }
 
-    public function addUser($nome, $cognome, $email, $data_nascita, $np){
-        $query = "INSERT INTO user VALUES (NULL, \"$nome\", \"$cognome\", \"$email\", \"$np\", \"$data_nascita\")";
+    public function addUser($username, $nome, $cognome, $email, $data_nascita, $np){
+        $query = "INSERT INTO user VALUES (NULL, \"$username\", \"$nome\", \"$cognome\", \"$email\", \"$np\", \"$data_nascita\")";
         mysqli_query($this->connection, $query) or die("Errore nella registrazione dell'utente $nome $cognome ".mysqli_error($this->connection));
     }
 

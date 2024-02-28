@@ -153,7 +153,7 @@ if(isset($_SESSION['ricerca'])){
                         <button aria-label="Espandi la notizia" class="ri-arrow-down-s-line news__expand js-news__expand"></button>
                         <button data-schedule="'.$dt['id'].'" data-class="1"
                         class="submit submit--ticket js-submit" data-firstClass="'.$qResult_price[0].'" data-secondClass="'
-                        .number_format($qResult_price[0] * 0.8, 2).'">€'.$qResult_price[0].'</button>
+                        .number_format($qResult_price[0] * 0.8, 2).'">€'.$qResult_price[0].'  <span class="ri-shopping-cart-line"></span></button>
                         </div>
                     </div>';
             array_splice($ticket_array, $pos, 0, $ticket);

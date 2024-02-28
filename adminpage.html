@@ -68,30 +68,37 @@
     <nav id="navbar--secondary" aria-label="Page">
       <ul class="nav__list--secondary">
         <li class="nav__item--secondary js-nav__item--secondary">
-          <button id="addNews" aria-label="Scheda notizie" class="nav__button nav__button--current"><span class="term" lang="en-US">Notizie</span> <span class="ri-calendar-event-line icon"></span></button>
+          <button id="addNews" aria-label="Scheda aggiunta notizie" class="nav__button nav__button--current"><span class="term" lang="en-US">Aggiungi Notizie</span> <span class="ri-calendar-event-line icon"></span></button>
         </li>
         <li class="nav__item--secondary js-nav__item--secondary">
-          <button id="addOffer" aria-label="Scheda offerte" class="nav__button"><span class="term">Offerte</span> <span class="ri-history-line icon"></span></button>
+          <button id="removeNews" aria-label="Scheda rimozione notizie" class="nav__button"><span class="term" lang="en-US">Rimuovi Notizie</span> <span class="ri-calendar-close-line icon"></span></button>
+        </li>
+        <li class="nav__item--secondary js-nav__item--secondary">
+          <button id="addOffer" aria-label="Scheda aggiunta offerte" class="nav__button"><span class="term">Aggiungi Offerte</span> <span class="ri-history-line icon"></span></button>
+        </li>
+        <li class="nav__item--secondary js-nav__item--secondary">
+          <button id="removeOffer" aria-label="Scheda rimozione offerte" class="nav__button"><span class="term" lang="en-US">Rimuovi Offerte</span> <span class="ri-close-circle-line icon"></span></button>
         </li>
       </ul>
     </nav>
     <section id="page--addNews" class="container container--user">
-      <h2 class="container__heading container__heading--main">NOTIZIE</h2>
+      <h2 class="container__heading container__heading--main">AGGIUNGI NOTIZIE</h2>
       <operazione_avvenuta_news/>
-        <h3 class="container__heading">Aggiungi una nuova notizia</h3>
-        <form action="adminpage.php" method="post" id="form--insert-news" class="container__fieldset--user">
-          <avvisi/>
-          <label for="news__date--start" class="container__label">Data iniziale notizia</label>
-          <input type="date" id="news__date--start" name="news__date--start" class="container__input--search" value="&lt;data_i/>">
-          <label for="news__date--end" class="container__label">Data finale notizia</label>
-          <input type="date" id="news__date--end" name="news__date--end" class="container__input--search" value="&lt;data_f/>">
-          <label for="news__title" class="container__label">Titolo</label>
-          <input type="text" id="news__title" name="news__title" class="container__input--search" value="&lt;titolo/>">
-          <label for="news__content" class="container__label">Contenuto</label>
-          <textarea id="news__content" name="news__content" cols="30" rows="10" ><contenuto/></textarea>
-          <input class="submit" type="submit" value="Conferma" name="insert_news">
-        </form>
-      <h3 class="container__heading">Elimina una notizia esistente</h3>
+      <form action="adminpage.php" method="post" id="form--insert-news" class="container__fieldset--user">
+        <avvisi/>
+        <label for="news__date--start" class="container__label">Data iniziale notizia</label>
+        <input type="date" id="news__date--start" name="news__date--start" class="container__input--search" value="&lt;data_i/>">
+        <label for="news__date--end" class="container__label">Data finale notizia</label>
+        <input type="date" id="news__date--end" name="news__date--end" class="container__input--search" value="&lt;data_f/>">
+        <label for="news__title" class="container__label">Titolo</label>
+        <input type="text" id="news__title" name="news__title" class="container__input--search" value="&lt;titolo/>">
+        <label for="news__content" class="container__label">Contenuto</label>
+        <textarea id="news__content" name="news__content" cols="30" rows="10" ><contenuto/></textarea>
+        <input class="submit" type="submit" value="Conferma" name="insert_news">
+      </form>
+    </section>
+    <section id="page--removeNews" class="container container--user container--hide">
+      <h2 class="container__heading container__heading--main">RIMUOVI NOTIZIE</h2>
       <form action="adminpage.php" class="container__fieldset--user">
         <label class="container__label" for="delete__news">Elimina notizia</label>
         <select id="delete__news" name="selected_news" class="container__input--search">
@@ -101,9 +108,8 @@
       </form>
     </section>
     <section id="page--addOffer" class="container container--user container--hide">
-      <h2 class="container__heading container__heading--main">OFFERTE</h2>
-      <offer__success/>
-        <h3 class="container__heading">Aggiungi una nuova offerta</h3>
+      <h2 class="container__heading container__heading--main">AGGIUNGI OFFERTE</h2>
+      <operazione_avvenuta_offer/>
         <form action="adminpage.php" method="post" id="form--insert-offer" class="container__fieldset--user">
           <offer__warnings/>
           <label for="offer__category" class="container__label">Categoria</label>
@@ -215,15 +221,18 @@
           </fieldset>
           <input class="submit" type="submit" value="Conferma" name="insert_offer">
         </form>
-        <h3 class="container__heading">Elimina un'offerta esistente</h3>
-        <form action="adminpage.php" class="container__fieldset--user">
-          <label class="container__label" for="delete__offer">Elimina offerta</label>
-          <select id="delete__offer" name="selected_offer" class="container__input--search">
-            <offerte/>
-          </select>
-          <input class="submit" type="submit" value="Elimina" name="delete_offer">
-        </form>
     </section>
-  </main>
+    <section id="page--removeOffer" class="container container--user container--hide">
+      <h2 class="container__heading container__heading--main">RIMUOVI OFFERTE</h2>
+      <form action="adminpage.php" class="container__fieldset--user">
+        <label class="container__label" for="delete__offer">Elimina offerta</label>
+        <select id="delete__offer" name="selected_offer" class="container__input--search">
+          <offerte/>
+        </select>
+        <input class="submit" type="submit" value="Elimina" name="delete_offer">
+      </form>
+    </section>
+  <button class="back2top js-back2top ri-arrow-up-line"><span class="visually-hidden">Torna ad inizio pagina</span></button>
+</main>
 </body>
 </html>
