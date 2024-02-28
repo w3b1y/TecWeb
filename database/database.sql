@@ -74,7 +74,7 @@ CREATE TABLE ticket(
 
 CREATE TABLE news(
   id INT PRIMARY KEY AUTO_INCREMENT,
-  title VARCHAR(150) NOT NULL,
+  title VARCHAR(100) NOT NULL,
   content TEXT NOT NULL,
   initial_date DATE NOT NULL,
   final_date DATE NOT NULL
@@ -84,7 +84,7 @@ CREATE TABLE offers(
   id INT PRIMARY KEY AUTO_INCREMENT,
   class VARCHAR (40) NOT NULL,
   nome VARCHAR(40) NOT NULL,
-  title VARCHAR(255) NOT NULL,
+  title VARCHAR(80) NOT NULL,
   content TEXT,
   discount_code VARCHAR(30) NOT NULL,
   final_date DATE NOT NULL,
@@ -284,16 +284,16 @@ INSERT INTO ticket(user_id, route_schedule_id, departure_station_id, arrival_sta
 INSERT INTO news(id, title, content, initial_date, final_date) VALUES
 (1, 'Miglioramenti Infrastrutturali: Nuovi treni veloci sulla tratta Roma - Firenze', 'Siamo lieti di annunciare l''introduzione di nuovi treni veloci sulla tratta Roma - Firenze. I viaggiatori beneficeranno di tempi di percorrenza più brevi e servizi migliorati. Il nuovo servizio entrerà in funzione a partire dal giorno #i.', '2024-03-01', '2024-03-31'),
 (2, 'Soppressione tratta Roma - Napoli', 'La tratta Roma - Napoli sarà soppressa, causa lavori alla linea ferroviaria, a partire dal giorno 
-      #i fino al giorno #f. Ci scusiamo per il disagio.', '2024-01-15', '2024-01-17'),
+      #i fino al giorno #f. Ci scusiamo per il disagio.', '2024-03-15', '2024-03-17'),
 (3, 'Soppressione tratta Milano - Torino', 'La tratta Milano - Torino sarà soppressa, causa lavori alla linea ferroviaria, a partire dal giorno #i fino al giorno #f. Ci scusiamo per il disagio.', '2024-04-12', '2024-04-16'),
-(4, 'Soppressione tratta Roma - Milano', 'La tratta Roma - Milano sarà soppressa, causa lavori alla linea ferroviaria, a partire dal giorno #i fino al giorno #f. Ci scusiamo per il disagio.', '2024-01-15', '2024-01-17'),
+(4, 'Soppressione tratta Roma - Milano', 'La tratta Roma - Milano sarà soppressa, causa lavori alla linea ferroviaria, a partire dal giorno #i fino al giorno #f. Ci scusiamo per il disagio.', '2024-03-25', '2024-03-27'),
 (5, 'Sospensione temporanea servizio Firenze - Napoli', 'Il servizio ferroviario tra Firenze e Napoli sarà temporaneamente sospeso per lavori sulla linea. La sospensione avrà luogo dal giorno #i al giorno #f. Ci scusiamo per l''inconveniente.', '2024-03-05', '2024-03-10'),
-(6, 'Nuova tratta diretta Bologna - Venezia', 'Siamo lieti di annunciare l''apertura di una nuova tratta diretta tra Bologna e Venezia, che inizierà a operare dal giorno #i. Migliorerà la connettività tra le due importanti città italiane.', '2024-02-20', '2024-02-28'),
+(6, 'Nuova tratta diretta Bologna - Venezia', 'Siamo lieti di annunciare l''apertura di una nuova tratta diretta tra Bologna e Venezia, che inizierà a operare dal giorno #i. Migliorerà la connettività tra le due importanti città italiane.', '2024-03-20', '2024-04-28'),
 (7, 'Modifiche orari servizio Genova - Palermo', 'Si avvisano gli utenti che ci saranno modifiche agli orari del servizio ferroviario tra Genova e Palermo a partire dal giorno #i per ottimizzare la gestione delle corse. Si prega di verificare gli orari aggiornati.', '2024-05-01', '2024-05-05'),
 (8, 'Sciopero del Personale: Sospensione temporanea di treni sulla tratta Napoli - Bari', 'A causa di uno sciopero del personale ferroviario, alcuni treni sulla tratta Napoli - Bari saranno sospesi a partire dal giorno #i fino al giorno #f. Gli utenti sono invitati a pianificare i propri viaggi di conseguenza.', '2024-03-20', '2024-03-22'),
-(9, 'Caduta di Alberi: Interruzione del servizio sulla tratta Genova - Milano', 'A causa della caduta di alberi sulla linea ferroviaria, il servizio tra Genova e Milano è temporaneamente interrotto. I tecnici sono al lavoro per ripristinare la normale operatività. Si prevede che la situazione sarà risolta entro il giorno #f.', '2024-02-05', '2024-02-06'),
-(10, 'Forti Ritardi: Attesa prolungata su diverse tratte ferroviarie', 'A causa di problemi tecnici sulla rete ferroviaria, si verificano ritardi significativi su diverse tratte, inclusi percorsi tra Milano, Roma e Firenze. I viaggiatori sono invitati a consultare gli annunci in stazione per informazioni aggiornate.', '2024-02-09', '2024-02-11'),
-(11, 'Incidente Ferroviario: Interruzione del servizio sulla tratta Torino - Venezia', 'A seguito di un incidente ferroviario sulla tratta Torino - Venezia, il servizio è temporaneamente interrotto. I passeggeri sono invitati a considerare alternative di viaggio. Le autorità stanno indagando sull''incidente.', '2024-02-04', '2024-02-15');
+(9, 'Caduta di Alberi: Interruzione del servizio sulla tratta Genova - Milano', 'A causa della caduta di alberi sulla linea ferroviaria, il servizio tra Genova e Milano è temporaneamente interrotto. I tecnici sono al lavoro per ripristinare la normale operatività. Si prevede che la situazione sarà risolta entro il giorno #f.', '2024-03-05', '2024-03-06'),
+(10, 'Forti Ritardi: Attesa prolungata su diverse tratte ferroviarie', 'A causa di problemi tecnici sulla rete ferroviaria, si verificano ritardi significativi su diverse tratte, inclusi percorsi tra Milano, Roma e Firenze. I viaggiatori sono invitati a consultare gli annunci in stazione per informazioni aggiornate.', '2024-03-09', '2024-03-11'),
+(11, 'Incidente Ferroviario: Interruzione del servizio sulla tratta Torino - Venezia', 'A seguito di un incidente ferroviario sulla tratta Torino - Venezia, il servizio è temporaneamente interrotto. I passeggeri sono invitati a considerare alternative di viaggio. Le autorità stanno indagando sull''incidente.', '2024-03-04', '2024-03-15');
 
 -- Offers
 INSERT INTO offers(class, nome, title, content, discount_code, final_date, discount, people_number) VALUES

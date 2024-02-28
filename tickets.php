@@ -164,8 +164,8 @@ if(isset($_SESSION['ricerca'])){
     }
     $pos_counter = 0;
     foreach($ticket_array as &$t) {
-        $t = str_replace("<ticket_id/>", $pos_counter, $t);
-        $t = str_replace("<next_ticket_id/>", ($pos_counter < count($ticket_array) - 1 ? $pos_counter + 1 : 0), $t);
+        $t = str_replace("<ticket_id/>", 't_'.$pos_counter, $t);
+        $t = str_replace("<next_ticket_id/>", 't_'.($pos_counter < count($ticket_array) - 1 ? $pos_counter + 1 : 0), $t);
         $pos_counter++;
     }
     $tickets = implode($ticket_array);

@@ -22,6 +22,11 @@ function date2txt(DateTime $date){
     return $txt;
 }
 
+function removeSuperscripts(string $str){
+    $str=str_replace('"', '', $str);
+    return $str;
+}
+
 function sortDate($array, $new) {
     $length = count($array);
 

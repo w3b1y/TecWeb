@@ -33,7 +33,7 @@ $message = '';
 if(isset($_POST['insert_news'])){
   if(!empty($_POST['news__date--start']) && !empty($_POST['news__date--start']) && !empty($_POST['news__date--end']) &&
     !empty(clearInput($_POST['news__title'])) && !empty(clearInput($_POST['news__content'])) && $_POST['news__date--end'] >= $_POST['news__date--start']) {
-    $connection->addComunication($_POST['news__date--start'], $_POST['news__date--end'], $_POST['news__title'], $_POST['news__content']);
+    $connection->addComunication($_POST['news__date--start'], $_POST['news__date--end'], removeSuperscripts($_POST['news__title']), removeSuperscripts($_POST['news__content']));
     $message='<p aria-role="alert" class="message" id="insert_news">Inserimento notizia avvenuto con successo</p>';
     $fileHTML = str_replace("<operazione_avvenuta_news/>", $message, $fileHTML);
   }
@@ -98,14 +98,13 @@ $minimum = '1';
 $message = '';
 
 if(isset($_POST['insert_offer'])){
-
   if(!empty($_POST['offer__background']) && !empty(clearInput($_POST['offer__title'])) && !empty($_POST['offer__content']) &&
     !empty(clearInput($_POST['offer__discount-code'])) && !empty($_POST['offer__date--end']) && !empty($_POST['offer__discount-percentage']) &&
     $_POST['offer__discount-percentage'] > 1 && !empty($_POST['offer__min-people']) && $_POST['offer__min-people'] >= 1 &&
     (($_POST['offer__category'] != "group") || ($_POST['offer__category'] == "group" && $_POST['offer__min-people'] >= 2))) {
 
-      $connection->addOffer($_POST['offer__category'], $_POST['offer__background'], clearInput($_POST['offer__title']), 
-      $_POST['offer__content'], clearInput($_POST['offer__discount-code']), $percentage, $_POST['offer__date--end'], $minimum);
+      $connection->addOffer($_POST['offer__category'], $_POST['offer__background'], removeSuperscripts(clearInput($_POST['offer__title'])), 
+      removeSuperscripts($_POST['offer__content']), clearInput($_POST['offer__discount-code']), $percentage, $_POST['offer__date--end'], $minimum);
       $message ='<p aria-role="alert" class="message" id="insert_news">Inserimento offerta avvenuto con successo</p>';
   }
   else{ 
