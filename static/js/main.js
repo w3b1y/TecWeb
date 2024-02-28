@@ -136,13 +136,13 @@ if (tickets) {
     firstClass.addEventListener('click', () => {
       firstClass.classList.add('ticket__class--selected');
       secondClass.classList.remove('ticket__class--selected');
-      priceButton.innerHTML = `€${priceButton.dataset.firstclass}`
+      priceButton.innerHTML = `€${priceButton.dataset.firstclass}   <span class="ri-shopping-cart-line"></span>`
       priceButton.dataset.class = 1;
     });
     secondClass.addEventListener('click', () => {
       secondClass.classList.add('ticket__class--selected');
       firstClass.classList.remove('ticket__class--selected');
-      priceButton.innerHTML = `€${priceButton.dataset.secondclass}`
+      priceButton.innerHTML = `€${priceButton.dataset.secondclass}   <span class="ri-shopping-cart-line"></span>`
       priceButton.dataset.class = 2;
     });
     submitButton.addEventListener('click', () => {

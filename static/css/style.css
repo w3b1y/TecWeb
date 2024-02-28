@@ -866,6 +866,9 @@ tr:nth-of-type(2n) {
   border: 2px solid var(--second-color);
   border-radius: 50%;
 }
+p.ticket__class {
+  padding: .2rem 2.5rem;
+}
 .ticket__class {
   width: 100%;
   margin-bottom: .2rem;
